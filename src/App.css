@@ -1,0 +1,14 @@
+.overflow-div {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+
+}
+
+.overflow-div::-webkit-scrollbar {
+    display: none;
+}
+
+.home::-webkit-scrollbar {
+    width: 2px;
+}
