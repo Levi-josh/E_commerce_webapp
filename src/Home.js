@@ -22,15 +22,16 @@ const Home = () => {
                     <FaAddressBook className='hidden md:block' />
                 </div>
             </header>
-            <div className='overflow-hidden w-120 flex justify-center items-center sm:w-130 md:w-130 lg:w-130  pt-16 sm:pt-28 md:pt-32 lg:pt-36  m-auto'>
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full  md:h-96 bg-no-repeat bg-cover bg-center' />
-                <div className='absolute mt-80 flex '>
-                    <div className='  bg-blue-600 w-3 h-3 rounded-lg'></div>
-                    <div className='  bg-blue-600 w-3 h-3 rounded-lg'></div>
-                    <div className='  bg-blue-600 w-3 h-3 rounded-lg'></div>
-                    <div className='  bg-blue-600 w-3 h-3 rounded-lg'></div>
-                    <div className='  bg-blue-600 w-3 h-3 rounded-lg'></div>
-                </div>
+            <div className='overflow-hidden w-120 flex justify-center items-center sm:w-130 md:w-130 lg:w-130  pt-16 sm:pt-28 md:pt-32 lg:pt-36  m-auto  '>
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full  md:h-96 bg-no-repeat bg-cover bg-center ' />
+
+            </div>
+            <div className='absolute flex m-auto z-10 w-full  justify-center '>
+                <div className='  bg-blue-600 w-3 h-3 rounded-lg'></div>
+                <div className='  bg-blue-600 w-3 h-3 rounded-lg'></div>
+                <div className='  bg-blue-600 w-3 h-3 rounded-lg'></div>
+                <div className='  bg-blue-600 w-3 h-3 rounded-lg'></div>
+                <div className='  bg-blue-600 w-3 h-3 rounded-lg'></div>
             </div>
             <section>
                 <div className='mt-10 text-center mb-8 md:flex lg:w-130 md:m-auto md:w-130 md:justify-between md:items-center md:mt-12 md:mb-12'>
