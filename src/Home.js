@@ -23,7 +23,7 @@ const Home = () => {
                 </div>
             </header>
             <div className='overflow-hidden w-120 flex justify-center items-center sm:w-150 md:w-130 lg:w-130  pt-16  m-auto'>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-full  md:h-96 bg-no-repeat bg-cover bg-center' />
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full  md:h-96 bg-no-repeat bg-cover bg-center' />
             </div>
             <section>
                 <div className='mt-10 text-center mb-8 md:flex lg:w-130 md:m-auto md:w-130 md:justify-between md:items-center md:mt-12 md:mb-12'>
@@ -31,7 +31,9 @@ const Home = () => {
                     <p><strong>soundcity</strong> is a gift and decoration store based in hcmc, vietnie since 2019.</p>
                 </div>
                 <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
+                    <div>
 
+                    </div>
                     <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-72 h-48 lg:w-full md:h-72 md:w-full sm:w-96 xl:h-100 sm:h-56' />
                     <img src={homeimage} className='w-72 h-48 lg:w-full md:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56' />
                     <img src={homeimage} className='w-72 h-48 lg:w-full md:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56' />
@@ -39,10 +41,12 @@ const Home = () => {
 
                 </div>
                 {/*overflow hidden divs*/}
+
+
                 <div>
-                    <div>
+                    <div className='flex justify-between'>
                         <h1>NEW ARRIVAL</h1>
-                        <p className='hidden md:block'>see more...</p>
+                        <p className='hidden md:block '>see more...</p>
                     </div>
                     <div className='overflow-div '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-10 md:w-20  lg:w-15' />
@@ -53,6 +57,17 @@ const Home = () => {
                     <p className='md:hidden'>see more...</p>
                 </div>
                 {/*ends*/}
+
+                {/*about starts*/}
+                <div className='flex w-full'>
+
+                    <img src='https://img.freepik.com/free-vector/fashion-business-man-accessories-set_1284-16521.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='h-72 w-full' />
+                    <div className='px-20'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eum illum quam numquam impedit quo? Facere, optio! Voluptatum, possimus? Voluptatum corrupti error saepe illo ut dignissimos corporis itaque modi beatae?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nemo quam molestias quos sapiente nihil est, sed esse iure facilis voluptatum ad dolor architecto eos iste provident autem tempore quisquam.
+                    </div>
+                </div>
+                {/*about ends*/}
                 <div className='grid grid-cols-2 w-130 gap-4 justify-items-center m-auto lg:flex mt-5 md:gap-5'>
                     <div className=' bg-yellow-800 w-full h-36 pt-4 pl-4 lg:h-44 '>
                         <FaCar />
