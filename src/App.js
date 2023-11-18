@@ -4,13 +4,23 @@ import { Route, Routes, RouterProvider, createBrowserRouter, createRoutesFromEle
 import Home from './Home';
 import Cart from './Cart';
 import ScrollToTOP from './ScrollToTOP.js';
+import Shopcart from './Shopcart.js';
+import Complete from './Complete.js';
+import Checkout from './Checkout.js';
+
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
 
     <Route path='/' element={<ScrollToTOP />} >
+
       <Route index element={<Home />} />
-      <Route path='/cart' element={<Cart />} />
+      <Route path='/cart' element={<Cart />} >
+        <Route index element={<Shopcart />} />
+        <Route path='/cart/checkout' element={<Checkout />} />
+        <Route path='/cart/complete' element={<Complete />} />
+
+      </Route>
     </Route>
 
   ));
