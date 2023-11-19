@@ -91,9 +91,9 @@ const Home = () => {
                 {/*about starts*/}
                 <div className='md:flex md:p-10 shadow-lg w-110 m-auto shadow-black mt-10 border-t-2 p-5 sm:p-10 sm:px-20 '>
 
-                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64' />
+                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64 ' />
                     <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
-                        <h1 className='font-bold text-lg md:text-2xl lg:text-3xl'>
+                        <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif  '>
                             Special Fashon sales
                         </h1>
                         <p className='mt-3 md:mt-4 lg:mt-8 md:text-lg'>
