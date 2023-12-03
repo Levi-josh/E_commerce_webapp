@@ -57,15 +57,16 @@ const Weblify = () => {
             <div className=' lg:ml-60  '>
                 <h1 className='lg:hidden w-110  m-auto mt-10 font-bold text-xl sm:w-140'> Analytics</h1>
                 <p className='w-110  m-auto mt-12 text-lg mb-3 lg:mt-8 lg:w-22 sm:w-140 lg:m-0 lg:mb-3 lg:text-xl font-medium'>shorturl1ttt</p>
-                <div className='  py-12   w-110 sm:w-140 lg:w-22 border-2 border-blue-700 m-auto lg:m-0 break-words  px-2 '>
-                    <div className='flex gap-3'>
+                <div className='flex flex-col gap-5  py-12   w-80 sm:w-140 lg:w-22 border-2   border-blue-700 m-auto lg:m-0   px-5 '>
 
-                        <h1 className='font-bold flex'>Original<span className='flex-nowrap'> URL:</span></h1>
-                        <p className=' '>http//www.example.com/page1</p>
+                    <div className='grid grid-cols-3 gap-10 sm:grid-cols-4 sm:gap-0  lg:grid-cols-5 lg:gap-8'>
+                        <h1 className='col-span-1 font-bold whitespace-nowrap  '>Original URL :</h1>
+                        <p className='break-words col-span-2 lg:col-span-4 sm:col-span-3' >http//www.example.com/page111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
                     </div>
+
                     <div className='flex'>
                         <h1>Custom text</h1>
-                        <p>customtext1</p>
+                        <p className=''>customtext1</p>
 
                     </div>
                     <div className='flex'>
