@@ -35,9 +35,10 @@ const Home = () => {
                 <div className='   w-3 h-3 rounded-lg border border-black'></div>
             </div>
             <section>
-                <div className='mt-10 text-center mb-8 md:flex lg:w-130 md:m-auto md:w-130 md:justify-between md:items-center md:mt-12 md:mb-12'>
-                    <h1 className='text-2xl font-bold'>simply unique/better  </h1>
-                    <p><strong>Glamour Grove</strong> is a gift and decoration store based in hcmc, vietnie since 2019.</p>
+                <div className=' mt-10 lg:px-10 text-center mb-8 gap-3 sm:gap-4 flex-col flex md:flex-row md:gap-10 lg:w-130  md:m-auto md:w-130 md:justify-between  md:items-center md:mt-12 md:mb-12'>
+                    <h1 className='text-xl font-bold sm:text-2xl  lg:text-3xl whitespace-nowrap'>Simply unique/<span className='md:flex md:flex-wrap'>simply better</span>  </h1>
+                    <p className='px-5 sm:px-14 md:px-0 '><strong>Glamour Grove</strong> is a gift and decoration store based in hcmc, vietnie since 2019.Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
                 </div>
                 <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
                     <div className='md:w-full'>
@@ -78,7 +79,7 @@ const Home = () => {
                         <h1 className='font-bold my-2 ml-3 sm:ml-4 md:ml-5  text-lg sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
                         <p className='hidden md:block lg:mt-10 md:mr-5 lg:mr-6 md:mt-8 lg:text-lg'>more products...</p>
                     </div>
-                    <div className='overflow-div '>
+                    <div className='overflow-div  md:pl-6 '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-10 md:w-20  lg:w-15' />
                         <img src={homeimage} className='w-10 md:w-20 lg:w-15' />
                         <img src={homeimage} className='w-10 md:w-20  lg:w-15' />

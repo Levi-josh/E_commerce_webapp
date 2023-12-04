@@ -7,16 +7,16 @@ const Shopcart = () => {
             <div className='lg:flex items-start lg:w-110 m-auto gap-10 lg:mt-10 '>
                 <div className='lg:w-full lg:flex lg:flex-col lg:justify-center items-center  '>
 
-                    <ul className='border-b border-black pb-6 pl-3 sm:pl-5 sm:pb-7 lg:justify-between  lg:flex lg:pb-0 lg:pl-0  lg:w-full'>
-                        <li className='sm:text-lg'>Product</li>
+                    <ul className='border-b border-black pb-6 pl-3 sm:pl-5 sm:pb-7  lg:grid-cols-6 lg:grid lg:pb-0 lg:pl-0  lg:w-full'>
+                        <li className='sm:text-lg lg:col-span-3'>Product</li>
 
-                        <li className='hidden lg:block'>Quatity</li>
-                        <li className='hidden lg:block'>Price</li>
-                        <li className='hidden lg:block'>Subtotal</li>
+                        <li className='hidden lg:grid lg:col-span-1'>Quatity</li>
+                        <li className='hidden lg:grid lg:col-span-1'>Price</li>
+                        <li className='hidden lg:grid lg:col-span-1'>Subtotal</li>
 
                     </ul>
 
-                    <div className='flex gap-5 justify-center border-b lg:w-full   border-gray-400 mt-5 sm:mt-8  sm:pb-8  sm:m-auto pb-5  lg:justify-start '>
+                    <div className='flex gap-5 justify-center border-b lg:w-full   border-gray-400 mt-5 sm:mt-8  sm:pb-8  sm:m-auto pb-5 lg:grid lg:grid-cols-7 lg:gap-x-28  '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 sm:w-52 lg:hidden ' />
                         <div className='grid grid-cols-2 place-items-center gap-x-10 lg:hidden  '>
                             <h1>watch</h1>
@@ -28,20 +28,20 @@ const Shopcart = () => {
                             <h1>$300</h1>
 
                         </div>
-                        <div className='lg:flex hidden justify-between  w-full'>
-                            <div className='flex'>
-                                <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 hidden lg:block ' />
-                                <div >
-                                    <h1>watch</h1>
-                                    <FaTimes />
-                                </div>
+
+                        <div className='hidden lg:flex lg:col-span-3'>
+                            <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 hidden lg:block ' />
+                            <div >
+                                <h1>watch</h1>
+                                <FaTimes />
                             </div>
                         </div>
-                        <div className='lg:flex hidden'>
-                            <div className='w-16 h-8 border border-black text-center'>-3+</div>
-                            <h1>$100</h1>
-                            <h1>$300</h1>
-                        </div>
+
+
+                        <div className='hidden lg:grid w-16 h-8 border border-black text-center lg:col-span-1'>-3+</div>
+                        <h1 className='hidden lg:grid lg:col-span-1'>$100</h1>
+                        <h1 className='hidden lg:grid lg:col-span-1'>$300</h1>
+
 
                     </div>
                 </div>
