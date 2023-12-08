@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink } from 'react-router-dom'
 
@@ -22,12 +22,12 @@ const Home = () => {
                     <FaAddressBook className='hidden md:block' />
                 </div>
             </header>
-            <div className='overflow- w-120 flex gap-10 justify-center items-center sm:w-130 md:w-130 lg:w-130  pt-16 sm:pt-28 md:pt-32 lg:pt-36  m-auto  '>
+            <div className='overflow-hidden w-120 flex gap-10 justify-center items-center sm:w-130 md:w-130 lg:w-130  pt-16 sm:pt-28 md:pt-32 lg:pt-36  m-auto  '>
                 <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full   md:h-96 bg-no-repeat bg-cover bg-center   ' />
 
 
             </div>
-            <div className='absolute flex m-auto  w-full  justify-center mt-3 gap-1 md:gap-2'>
+            <div className='absolute  flex m-auto  w-full  justify-center mt-3 gap-1 md:gap-2'>
                 <div className='   w-3 h-3 rounded-lg border border-black '></div>
                 <div className='   w-3 h-3 rounded-lg border border-black '></div>
                 <div className='  w-3 h-3 rounded-lg border border-black'></div>
@@ -79,11 +79,27 @@ const Home = () => {
                         <h1 className='font-bold my-2 ml-3 sm:ml-4 md:ml-5  text-lg sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
                         <p className='hidden md:block lg:mt-10 md:mr-5 lg:mr-6 md:mt-8 lg:text-lg'>more products...</p>
                     </div>
-                    <div className='overflow-div  md:pl-6 '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-10 md:w-20  lg:w-15' />
-                        <img src={homeimage} className='w-10 md:w-20 lg:w-15' />
-                        <img src={homeimage} className='w-10 md:w-20  lg:w-15' />
-                        <img src={homeimage} className='w-10 md:w-20  lg:w-15' />
+                    <div className='flex  gap-5   bg-gray-900 '>
+                        <div className='w-72 md:w-80 lg:w-96  bg-yellow-800  '>
+                            <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className=' ' />
+                            <div>
+                                <FaStar />
+                                <p>Leather watch</p>
+                                <p>$50</p>
+                            </div>
+                        </div>
+                        <div className='w-140 md:w-80 lg:w-96   bg-yellow-800 '>
+                            <img src={homeimage} className='  ' />
+                        </div>
+                        <div className='w-140 md:w-20 lg:w-96  bg-yellow-800 '>
+                            <img src={homeimage} className=' ' />
+                        </div>
+                        <div className='w-140 md:w-20  lg:w-96 bg-yellow-800'>
+                            <img src={homeimage} className='' />
+                        </div>
+                        <div className='w-140 md:w-20  lg:w-96 bg-yellow-800'>
+                            <img src={homeimage} className='' />
+                        </div>
                     </div>
                     <p className='md:hidden mt-2 ml-3 sm:ml-4'>more products...</p>
                 </div>
