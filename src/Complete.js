@@ -3,7 +3,7 @@ import React from 'react'
 const Complete = () => {
     return (
         <div className='pt-6 sm:pt-8 pb-20'>
-            <div className='m-auto px-5 w-110 md:w-150 lg:w-200 shadow-xl shadow-slate-300 py-6 sm:py-14 md:py-16  md:text-center   '>
+            <div className='m-auto px-5 w-110 md:w-150 lg:w-200 shadow-xl border-0.5 md:border border-slate-300 shadow-slate-300 py-6 sm:py-14 md:py-16  md:text-center   '>
                 <p className='md:text-lg lg:text-xl font-medium text-gray-600'>Thank you!</p>
                 <div className='flex flex-col md:gap-1 mt-3 mb-5 sm:my-4 md:mb-7 md:mt-2 lg:mt-3 lg:mb-10 '>
                     <h1 className='font-semibold text-xl md:text-3xl lg:text-4xl '>Your order has been</h1> <h1 className='font-semibold text-xl md:text-3xl lg:text-4xl'>received</h1>
@@ -15,19 +15,19 @@ const Complete = () => {
                 </div>
                 <div className='flex flex-col  gap-1 md:flex-row md:hidden border-b-0.5 border-gray-400 pb-4 mt-8'>
                     <p className='text-gray-600 font-medium'>Order code:</p>
-                    <p>#231_486e</p>
+                    <p className='font-semibold'>#231_486e</p>
                 </div>
                 <div className='flex flex-col gap-1 md:flex-row md:hidden border-b-0.5 border-gray-400 py-4'>
                     <p className='text-gray-600 font-medium'>Date:</p>
-                    <p>October 19,2023</p>
+                    <p className='font-semibold'>October 19,2023</p>
                 </div>
                 <div className='flex flex-col  gap-1 md:flex-row md:hidden border-b-0.5 border-gray-400 py-4'>
                     <p className='text-gray-600 font-medium'>Total:</p>
-                    <p>$250.000</p>
+                    <p className='font-semibold'>$250.000</p>
                 </div>
                 <div className='flex flex-col gap-1 md:flex-row md:hidden border-b-0.5 border-gray-400 py-4'>
                     <p className='text-gray-600 font-medium' >Payment method:</p>
-                    <p>Credit card</p>
+                    <p className='font-semibold'>Credit card</p>
                 </div>
                 <div className='md:flex text-left hidden md:flex-row md:justify-center gap-10 mt-8 items-center '>
                     <div className='lg:text-lg font-semibold text-gray-600 flex flex-col gap-3  '>
@@ -44,7 +44,7 @@ const Complete = () => {
                     </div>
                 </div>
 
-                <button>Purchase history</button>
+                <button className=' w-full py-3 md:w-48 block m-auto  bg-black text-white md:py-2 rounded-3xl mt-9 md:mt-8 md:font-medium lg:font-semibold text-lg'>Purchase history</button>
             </div>
         </div>
     )
