@@ -44,7 +44,7 @@ const Complete = () => {
                     </div>
                 </div>
 
-                <button className=' w-full py-3 md:w-48 block m-auto  bg-black text-white md:py-2 rounded-3xl mt-9 md:mt-8 md:font-medium lg:font-semibold text-lg'>Purchase history</button>
+                <button className=' w-full py-3 sm:w-22 md:w-48 block m-auto  bg-black text-white md:py-2 rounded-3xl mt-9 md:mt-8 md:font-medium lg:font-semibold text-lg'>Purchase history</button>
             </div>
         </div>
     )
