@@ -3,8 +3,8 @@ import { FaArrowDown, FaTimes } from 'react-icons/fa'
 
 const Checkout = () => {
     return (
-        <div className='pt-6 sm:pt-8 pb-20'>
-            <div>
+        <div className='pt-6 sm:pt-8 pb-20 flex flex-col  md:flex-row md:items-start'>
+            <div className='flex flex-col gap-5 m-auto'>
                 <div className='flex flex-col gap-3'>
                     <h1>Contact Information</h1>
                     <div className='flex flex-col gap-5'>
@@ -94,11 +94,11 @@ const Checkout = () => {
 
 
 
-            <div className='w-110 border border-black px-5'>
+            <div className='w-110 border border-black px-5 m-auto md:m-0'>
                 <h1>Order Summary</h1>
-                <div className='flex gap-5  border-b lg:w-full   border-gray-400  pb-5 mb-3 mt-5    '>
+                <div className='flex gap-5  border-b lg:w-full   border-gray-400  pb-5  mt-5    '>
                     <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 sm:w-52  ' />
-                    <div className='grid grid-cols-2 place-content-between  '>
+                    <div className='grid grid-cols-2 place-content-between   '>
                         <h1>watch</h1>
                         <h1>$100</h1>
                         <div className='w-16 h-8 border border-black text-center'>-3+</div>
@@ -109,11 +109,15 @@ const Checkout = () => {
 
                     </div>
                 </div>
-                <div className='flex justify-between items-center border-gray-400 border-b  py-3 mt-3'>
+                <div className='flex justify-between items-center border-gray-400 border-b  py-3 '>
+                    <h1 className='sm:text-lg lg:text-xl'>Shipping</h1>
+                    <h1 className='sm:text-lg lg:text-xl'>free</h1>
+                </div>
+                <div className='flex justify-between items-center border-gray-400 border-b  py-3 '>
                     <h1 className='sm:text-lg lg:text-xl'>Subtotal</h1>
                     <h1 className='sm:text-lg lg:text-xl'>$1200</h1>
                 </div>
-                <div className='flex justify-between items-center py-3 my-3'>
+                <div className='flex justify-between items-center py-3 '>
                     <h1 className='sm:text-lg lg:text-xl'>Total</h1>
                     <h1 className='sm:text-lg lg:text-xl'>$2000</h1>
                 </div>
