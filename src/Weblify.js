@@ -58,22 +58,22 @@ const Weblify = () => {
                 <h1 className='lg:hidden w-110  m-auto mt-10 font-bold text-xl sm:w-140'> Analytics</h1>
                 <p className='w-110  m-auto mt-12 text-lg mb-3 lg:mt-8 lg:w-22 sm:w-140 lg:m-0 lg:mb-3 lg:text-xl font-medium'>shorturl1ttt</p>
 
-                <div className='flex flex-col gap-5   py-12   w-80 sm:w-140 lg:w-22 border-2   border-blue-700 m-auto lg:m-0   px-5  '>
-                    <div className='flex   '>
+                <div className='flex flex-col gap-5   py-12   w-80 sm:w-135 md:w-140 lg:w-25 xl:w-22 border-2   border-blue-700 m-auto lg:m-0    '>
+                    <div className='flex gap-2 px-7  justify-center  '>
                         <h1 className=' font-bold whitespace-nowrap  '>Original URL :</h1>
                         <p className='break-words max-w-22 sm:max-w-130 ' >http//www.example.com/page1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
                     </div>
 
-                    <div className='flex gap-4'>
+                    <div className='flex gap-4 px-7 '>
                         <h1 className='font-bold'>Custom text :</h1>
                         <p className=''>customtext1</p>
 
                     </div>
-                    <div className='flex gap-5'>
+                    <div className='flex gap-5 px-7'>
                         <h1 className='font-bold'>Click count :</h1>
                         <p>100</p>
                     </div>
-                    <div className='flex gap-5'>
+                    <div className='flex gap-5 px-7'>
                         <h1 className='font-bold'>View count :</h1>
                         <p>500</p>
                     </div>
