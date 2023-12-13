@@ -79,6 +79,26 @@ const Weblify = () => {
                     </div>
 
                 </div>
+                <div className='flex flex-col gap-5   py-12   w-80 sm:w-140 lg:w-22 border-2   border-blue-700 m-auto lg:m-0   px-5  '>
+                    <div className='flex   '>
+                        <h1 className=' font-bold whitespace-nowrap  '>Original URL :</h1>
+                        <p className='break-words max-w-22 sm:max-w-130 bg-blue-400 block' >http//www.example.com/page1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
+                    </div>
+
+                    <div className='flex gap-4'>
+                        <h1 className='font-bold'>Custom text :</h1>
+                        <p className=''>customtext1</p>
+
+                    </div>
+                    <div className='flex gap-5'>
+                        <h1 className='font-bold'>Click count :</h1>
+                        <p>100</p>
+                    </div>
+                    <div className='flex gap-5'>
+                        <h1 className='font-bold'>View count :</h1>
+                        <p>500</p>
+                    </div>
+                </div>
 
             </div>
             <div className='lg:ml-60'>

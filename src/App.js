@@ -8,6 +8,7 @@ import Shopcart from './Shopcart.js';
 import Complete from './Complete.js';
 import Checkout from './Checkout.js';
 import Weblify from './Weblify.js';
+import Demo from './Demo.js';
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
@@ -16,6 +17,7 @@ function App() {
 
       <Route index element={<Home />} />
       <Route path='/weblify' element={<Weblify />} />
+      <Route path='/demo' element={<Demo />} />
       <Route path='/cart' element={<Cart />} >
         <Route index element={<Shopcart />} />
         <Route path='/cart/checkout' element={<Checkout />} />
