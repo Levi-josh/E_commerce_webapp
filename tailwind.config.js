@@ -20,6 +20,9 @@ module.exports = {
         400: "1050px",
 
       },
+      margin: {
+        46: "184px"
+      },
       maxWidth: {
         22: "60%",
 

@@ -57,32 +57,11 @@ const Weblify = () => {
             <div className=' lg:ml-60  '>
                 <h1 className='lg:hidden w-110  m-auto mt-10 font-bold text-xl sm:w-140'> Analytics</h1>
                 <p className='w-110  m-auto mt-12 text-lg mb-3 lg:mt-8 lg:w-22 sm:w-140 lg:m-0 lg:mb-3 lg:text-xl font-medium'>shorturl1ttt</p>
-                <div className='flex flex-col gap-5   py-12   w-80 sm:w-140 lg:w-22 border-2   border-blue-700 m-auto lg:m-0   px-5 '>
 
-                    <div className='grid grid-cols-3 gap-10 sm:gap-102 sm:justify-between sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-4   xl:grid-cols-5 '>
-                        <h1 className='col-span-1 font-bold whitespace-nowrap    '>Original URL :</h1>
-                        <p className='break-words lg:col-span-3 col-span-2 md:col-span-4 xl:col-span-4 sm:col-span-3' >http//www.example.com/page1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
-                    </div>
-
-                    <div className='flex gap-4'>
-                        <h1 className='font-bold'>Custom text :</h1>
-                        <p className=''>customtext1</p>
-
-                    </div>
-                    <div className='flex gap-5'>
-                        <h1 className='font-bold'>Click count :</h1>
-                        <p>100</p>
-                    </div>
-                    <div className='flex gap-5'>
-                        <h1 className='font-bold'>View count :</h1>
-                        <p>500</p>
-                    </div>
-
-                </div>
                 <div className='flex flex-col gap-5   py-12   w-80 sm:w-140 lg:w-22 border-2   border-blue-700 m-auto lg:m-0   px-5  '>
                     <div className='flex   '>
                         <h1 className=' font-bold whitespace-nowrap  '>Original URL :</h1>
-                        <p className='break-words max-w-22 sm:max-w-130 bg-blue-400 block' >http//www.example.com/page1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
+                        <p className='break-words max-w-22 sm:max-w-130 ' >http//www.example.com/page1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
                     </div>
 
                     <div className='flex gap-4'>
@@ -101,8 +80,19 @@ const Weblify = () => {
                 </div>
 
             </div>
-            <div className='lg:ml-60'>
+            <div className='lg:ml-60 mb-40 '>
+                <div className='absolute flex gap-16  pl-8    h-60'>
+                    <div className='   z-10  flex items-end gap-2 '>
+                        <div className='w-4 bg-blue-600 h-10'></div>
+                        <div className='w-4 bg-red-600 h-8'></div>
+                    </div>
+                    <div className='   z-10  flex items-end gap-2 '>
+                        <div className='w-4 bg-blue-600 h-52'></div>
+                        <div className='w-4 bg-red-600 h-20'></div>
+                    </div>
+                </div>
                 <table className='border border-blue-600 w-110 m-auto lg:mt-12 lg:m-0 lg:w-140 h-60 mt-10'>
+
                     <tbody>
                         <tr className='border border-blue-600'>
                             <td className='border border-blue-600'></td>
@@ -169,7 +159,10 @@ const Weblify = () => {
                         </tr>
                     </tbody>
                 </table>
+
             </div>
+
+
         </div >
     )
 }
