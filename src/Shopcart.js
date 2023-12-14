@@ -3,7 +3,7 @@ import { FaTimes } from 'react-icons/fa'
 
 const Shopcart = () => {
     return (
-        <div className='pt-6 sm:pt-8'>
+        <div className='pt-6 sm:pt-8 / sm:gap-11 md:gap-14 lg:gap-15  '>
             <div className='lg:flex items-start lg:w-110 m-auto gap-5 lg:mt-10 '>
                 <div className=' lg:w-130 lg:flex lg:flex-col lg:justify-center items-center  '>
 

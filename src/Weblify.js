@@ -80,18 +80,31 @@ const Weblify = () => {
                 </div>
 
             </div>
-            <div className='lg:ml-60 mb-40 '>
-                <div className='absolute flex gap-16  pl-8    h-60'>
-                    <div className='   z-10  flex items-end gap-2 '>
+            <div className='lg:ml-60 mb-40 w-110 sm:w-150 md:w-250 m-auto lg:w-250 '>
+                <div className='absolute flex justify-start sm:gap-11 md:gap-14 lg:gap-15  sm:w-150 md:w-250 lg:w-250   h-60 sm:pl-6 md:pl-8 '>
+                    <div className='     flex items-end justify-center gap-2  '>
                         <div className='w-4 bg-blue-600 h-10'></div>
                         <div className='w-4 bg-red-600 h-8'></div>
                     </div>
-                    <div className='   z-10  flex items-end gap-2 '>
+                    <div className='     flex items-end gap-2 '>
                         <div className='w-4 bg-blue-600 h-52'></div>
                         <div className='w-4 bg-red-600 h-20'></div>
                     </div>
+
+                    <div className='     flex items-end gap-2 '>
+                        <div className='w-4 bg-blue-600 h-10'></div>
+                        <div className='w-4 bg-red-600 h-40'></div>
+                    </div>
+                    <div className='     flex items-end gap-2 '>
+                        <div className='w-4 bg-blue-600 h-44'></div>
+                        <div className='w-4 bg-red-600 h-28'></div>
+                    </div>
+                    <div className='     flex items-end gap-2 '>
+                        <div className='w-4 bg-blue-600 h-16'></div>
+                        <div className='w-4 bg-red-600 h-32'></div>
+                    </div>
                 </div>
-                <table className='border border-blue-600 w-110 m-auto lg:mt-12 lg:m-0 lg:w-140 h-60 mt-10'>
+                <table className='border border-blue-600 w-110 sm:w-150 md:w-250 m-auto lg:mt-12 lg:m-0 lg:w-250 h-60 mt-10'>
 
                     <tbody>
                         <tr className='border border-blue-600'>
