@@ -3,88 +3,93 @@ import { FaArrowDown, FaTimes } from 'react-icons/fa'
 
 const Checkout = () => {
     return (
-        <div className='pt-6 sm:pt-8 pb-20 gap-5 lg:gap-0 flex flex-col lg:justify-between  lg:flex-row lg:items-start'>
-            <div className='flex flex-col gap-5 w-110 sm:w-140 m-auto lg:w-22 '>
-                <div className='flex flex-col gap-3 border border-black px-5 md:px-7'>
-                    <h1>Contact Information</h1>
+        <div className='pt-6 sm:pt-8 pb-20 gap-5 sm:gap-7 lg:gap-0 flex flex-col lg:justify-between  lg:flex-row lg:items-start'>
+            <div className='flex flex-col gap-5 sm:gap-8 w-110 sm:w-130 md:w-140 m-auto lg:w-22 '>
+                <div className='flex flex-col gap-4 border border-black px-5 md:px-7 py-6 rounded-lg w-full'>
+                    <h1 className='font-bold sm:text-lg lg:text-xl '>Contact Information</h1>
                     <div className='flex flex-col gap-5'>
                         <div className='flex gap-5'>
                             <div className='flex flex-col gap-2 w-full'>
-                                <label>FIRST NAME</label>
-                                <input type='text' className='outline-none border border-black' />
+                                <label className='font-semibold text-gray-600 lg:text-lg'>FIRST NAME</label>
+                                <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='First name' />
                             </div>
                             <div className='flex flex-col gap-2  w-full'>
-                                <label>LAST NAME</label>
-                                <input type='text' className='outline-none border border-black' />
+                                <label className='font-semibold text-gray-600 lg:text-lg'>LAST NAME</label>
+                                <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Last name' />
                             </div>
                         </div>
                         <div className='flex flex-col gap-2'>
-                            <label>PHONE NUMBER</label>
-                            <input type='text' className='outline-none border border-black' />
+                            <label className='font-semibold text-gray-600 lg:text-lg'>PHONE NUMBER</label>
+                            <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Phone number' />
                         </div>
                         <div className='flex flex-col gap-2'>
-                            <label>EMAIL ADDRESS</label>
-                            <input type='text' className='outline-none border border-black' />
+                            <label className='font-semibold text-gray-600 lg:text-lg'>EMAIL ADDRESS</label>
+                            <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Email address' />
                         </div>
                     </div>
                 </div>
-                <div className='border border-black px-5 md:px-7'>
-                    <h1>Shipping Address</h1>
-                    <div>
-                        <div>
-                            <label>STREET ADDRESS *</label>
-                            <input type='text' className='outline-none border border-black' />
+                <div className='flex flex-col gap-4 border border-black px-5 md:px-7 py-6 rounded-lg'>
+                    <h1 className='font-bold sm:text-lg lg:text-xl  '>Shipping Address</h1>
+                    <div className='flex flex-col gap-5'>
+                        <div className='flex flex-col gap-2'>
+                            <label className='font-semibold text-gray-600 lg:text-lg'>STREET ADDRESS *</label>
+                            <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Street address' />
                         </div>
-                        <div>
-                            <label>COUNTRY *</label>
-                            <div>
+                        <div className='flex flex-col gap-2'>
+                            <label className=' text-gray-600 font-semibold lg:text-lg'>COUNTRY *</label>
+                            <div className='flex w-full border border-black p-2 rounded-md justify-between items-center'>
+                                <label className=' text-gray-600'>Country</label>
+
                                 <FaArrowDown />
                             </div>
                         </div>
-                        <div>
-                            <label>TOWN/CITY *</label>
-                            <input type='text' className='outline-none border border-black' />
+                        <div className='flex flex-col gap-2'>
+                            <label className='font-semibold text-gray-600 lg:text-lg'>TOWN/CITY *</label>
+                            <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Town/city' />
                         </div>
-                        <div className='flex'>
+                        <div className='flex gap-5'>
                             <div className='flex flex-col gap-2'>
-                                <label>STATE</label>
-                                <input type='text' className='outline-none border border-black' />
+                                <label className='font-semibold text-gray-600 lg:text-lg'>STATE</label>
+                                <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='State' />
                             </div>
                             <div className='flex flex-col gap-2'>
-                                <label>ZIP CODE</label>
-                                <input type='text' className='outline-none border border-black' />
+                                <label className='font-semibold text-gray-600 lg:text-lg'>ZIP CODE</label>
+                                <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Zip code' />
                             </div>
                         </div>
-                        <div className='flex items-center'>
-                            <input type='checkbox' />
-                            <p>use a different billing address (optional)</p>
+                        <div className='flex items-center gap-2'>
+                            <input type='checkbox' className='lg:w-4lg:h-4' />
+                            <p className=' text-gray-600 lg:text-lg'>use a different billing address (optional)</p>
                         </div>
                     </div>
                 </div>
-                <div className='border border-black px-5 md:px-7'>
-                    <h1>Payment Method</h1>
-                    <div>
-                        <div>
-                            <input type='radio' />
-                            <p>Pay by Card Credit</p>
+                <div className='flex flex-col gap-4 border border-black px-5 md:px-7 py-6 rounded-lg'>
+                    <h1 className='font-bold sm:text-lg lg:text-xl '>Payment Method</h1>
+                    <div className='flex flex-col gap-6'>
+                        <div className='flex gap-2 w-full border border-black p-2 rounded-md'>
+                            <input type='radio' className='lg:w-4' />
+                            <p className='font-bold lg:text-lg'>Pay by Card Credit</p>
                         </div>
-                        <div>
-                            <input type='radio' />
-                            <p>Paypal</p>
+                        <div className='flex gap-2 w-full border border-black p-2 rounded-md'>
+                            <input type='radio' className=' lg:w-4' />
+                            <p className='font-bold lg:text-lg'>Paypal</p>
                         </div>
-                        <hr></hr>
-                        <div>
-                            <label>CARD NUMBER</label>
-                            <input type='text' className='outline-none border border-black' />
+                        <div className='border-b-0.5 border-black'></div>
+                    </div>
+
+                    <div className='flex flex-col gap-4 mt-3'>
+                        <div className='flex flex-col gap-2  '>
+                            <label className='font-semibold text-gray-600 lg:text-lg' >CARD NUMBER</label>
+                            <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Card number' />
                         </div>
-                        <div className='flex'>
+                        <div className='flex gap-5'>
                             <div className='flex flex-col gap-2'>
-                                <label>EXPIRATION DATE</label>
-                                <input type='text' className='outline-none border border-black' />
+                                <label className='font-semibold text-gray-600 lg:text-lg'>EXPIRATION DATE</label>
+                                <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Expiration date' />
                             </div>
                             <div className='flex flex-col gap-2'>
-                                <label>CVC</label>
-                                <input type='text' className='outline-none border border-black' />
+                                <label className='font-semibold text-gray-600 lg:text-lg'>CVC</label>
+                                <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Cvc' />
                             </div>
                         </div>
                     </div>
@@ -94,7 +99,7 @@ const Checkout = () => {
 
 
 
-            <div className='w-110 border border-black px-5 py-3 md:px-7 md:py-5 m-auto sm:w-140 mt-0 lg:w-10'>
+            <div className='w-110 border sm:w-130 border-black px-5 py-3 md:px-7 md:py-5 m-auto md:w-140 mt-0 lg:w-10 rounded-lg'>
                 <h1 className='text-lg  font-bold sm:text-xl lg:text-2xl'>Order Summary</h1>
                 <div className='flex gap-5  border-b lg:w-full   border-gray-400  pb-5  mt-5    '>
                     <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 sm:w-52  ' />

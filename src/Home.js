@@ -79,34 +79,32 @@ const Home = () => {
                         <h1 className='font-bold my-2 ml-3 sm:ml-4 md:ml-5  text-lg sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
                         <p className='hidden md:block lg:mt-10 md:mr-5 lg:mr-6 md:mt-8 lg:text-lg'>more products...</p>
                     </div>
-                    <div className='flex  gap-5   bg-gray-900 '>
-                        <div className='w-72 md:w-80 lg:w-96  bg-yellow-800  '>
-                            <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className=' ' />
+                    <div className='flex overflow-x-hidden  gap-5   bg-gray-900 '>
+                        <div className='w-full block  bg-yellow-800  '>
+                            <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-full ' />
                             <div>
                                 <FaStar />
                                 <p>Leather watch</p>
                                 <p>$50</p>
                             </div>
                         </div>
-                        <div className='w-140 md:w-80 lg:w-96   bg-yellow-800 '>
-                            <img src={homeimage} className='  ' />
-                        </div>
-                        <div className='w-140 md:w-20 lg:w-96  bg-yellow-800 '>
-                            <img src={homeimage} className=' ' />
-                        </div>
-                        <div className='w-140 md:w-20  lg:w-96 bg-yellow-800'>
-                            <img src={homeimage} className='' />
-                        </div>
-                        <div className='w-140 md:w-20  lg:w-96 bg-yellow-800'>
-                            <img src={homeimage} className='' />
-                        </div>
+
+                        <img src={homeimage} className='w-full  ' />
+
+                        <img src={homeimage} className='w-full ' />
+
+                        <img src={homeimage} className='w-full' />
+
+
+                        <img src={homeimage} className='w-full' />
+
                     </div>
                     <p className='md:hidden mt-2 ml-3 sm:ml-4'>more products...</p>
                 </div>
                 {/*ends*/}
 
                 {/*about starts*/}
-                <div className='md:flex md:p-10 shadow-lg w-110 m-auto shadow-black mt-10 border-t-2 p-5 sm:p-10 sm:px-20 '>
+                <div className='md:flex md:p-10 shadow-lg w-110 m-auto shadow-gray-400 mt-10 border-t   p-5 sm:p-10 sm:px-20 '>
 
                     <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64 ' />
                     <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
@@ -125,25 +123,25 @@ const Home = () => {
                 </div>
                 {/*about ends*/}
                 <div className='grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-5 md:gap-5'>
-                    <div className=' bg-yellow-800 w-full h-36 pt-4 pl-4 lg:h-44 '>
-                        <FaCar />
-                        <h2>Free shipping</h2>
-                        <p>Order above $200. </p>
+                    <div className=' bg-yellow-800 w-full h-36 pt-4 pl-4 lg:h-44 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 '>
+                        <FaCar className='text-xl font-bold sm:text-2xl ' />
+                        <h2 className='text-lg font-bold sm:text-xl '>Free shipping</h2>
+                        <p className='font-semibold md:text-lg '>Order above $200. </p>
                     </div>
-                    <div className='bg-yellow-800   w-full h-36  pt-4 pl-4  lg:h-44'>
-                        <FaWallet />
-                        <h2>Money back</h2>
-                        <p>30 days guarantee.</p>
+                    <div className='bg-yellow-800   w-full h-36  pt-4 pl-4  lg:h-44 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6'>
+                        <FaWallet className='text-xl font-bold sm:text-2xl ' />
+                        <h2 className='text-lg font-bold sm:text-xl '>Money back</h2>
+                        <p className='font-semibold md:text-lg '>30 days guarantee.</p>
                     </div>
-                    <div className='bg-yellow-800 w-full h-36  pt-4 pl-4 lg:h-44'>
-                        <FaLock />
-                        <h2>Secure payments</h2>
-                        <p>Secure by stripe.</p>
+                    <div className='bg-yellow-800 w-full h-36  pt-4 pl-4 lg:h-44 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6'>
+                        <FaLock className='text-xl font-bold sm:text-2xl ' />
+                        <h2 className='text-lg font-bold sm:text-xl '>Secure payments</h2>
+                        <p className='font-semibold md:text-lg '>Secure by stripe.</p>
                     </div>
-                    <div className='bg-yellow-800 w-full h-36  pt-4 pl-4 lg:h-44'>
-                        <FaPhone />
-                        <h2>24/7 support</h2>
-                        <p>Phone and email support.</p>
+                    <div className='bg-yellow-800 w-full h-36  pt-4 pl-4 lg:h-44 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5 sm:pt-6 md:pl-6 md:pt-6'>
+                        <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' />
+                        <h2 className='text-lg font-bold sm:text-xl '>24/7 support</h2>
+                        <p className='font-semibold md:text-lg '>Phone and email support.</p>
                     </div>
                 </div>
             </section>
