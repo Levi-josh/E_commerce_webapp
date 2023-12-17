@@ -19,3 +19,113 @@
 /*.home::-webkit-scrollbar {
     width: 2px;
 }*/
+
+.blurred-div {
+    width: 300px;
+    height: 200px;
+    background-color: #3498db;
+    /* Set background color as needed */
+    color: #fff;
+    /* Set text color as needed */
+    padding: 20px;
+    margin: 50px;
+    border-radius: 10px;
+    /* Apply backdrop filter for blurring */
+    backdrop-filter: blur(8px);
+    /* Fallback for browsers that do not support backdrop-filter */
+    /* background-color: rgba(52, 152, 219, 0.5);
+    /* Adjust alpha value for transparency */
+}
+
+.blurred-div:hover {
+    transform: scale(1.1);
+}
+
+.blurr {
+    position: relative;
+}
+
+.blurr:hover::before {
+    opacity: 1;
+
+    cursor: pointer;
+}
+
+.blurr::before {
+    width: 100%;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    content: '';
+    z-index: 7;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.blurr1 {
+    position: relative;
+}
+
+.blurr1:hover::before {
+    opacity: 1;
+
+    cursor: pointer;
+}
+
+.blurr1::before {
+    width: 100%;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    content: '';
+    z-index: 7;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.blurr2 {
+    position: relative;
+
+}
+
+.blurr2:hover::before {
+    opacity: 1;
+
+    cursor: pointer;
+}
+
+.blurr2::before {
+    width: 100%;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    content: '';
+    z-index: 7;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.blurr3 {
+    position: relative;
+}
+
+.blurr3:hover::before {
+    opacity: 1;
+
+    cursor: pointer;
+}
+
+.blurr3::before {
+    width: 100%;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    content: '';
+    z-index: 7;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}

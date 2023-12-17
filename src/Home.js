@@ -41,28 +41,28 @@ const Home = () => {
                     </p>
                 </div>
                 <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
-                    <div className='md:w-full'>
+                    <div className='md:w-full blurr3'>
                         <div className='absolute bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
                             <h1 className='font-bold md:text-lg lg:text-xl'>clothes</h1>
                             <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
                         </div>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full sm:w-96 xl:h-100 sm:h-56 object-cover' />
                     </div>
-                    <div className='md:w-full'>
+                    <div className='md:w-full blurr2'>
                         <div className='absolute bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
                             <h1 className='font-bold md:text-lg lg:text-xl'>Glasses</h1>
                             <p className=' hover:cursor-pointer md:text-lg '>see more...</p>
                         </div>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 object-cover' />
                     </div>
-                    <div className='md:w-full'>
+                    <div className='md:w-full blurr1 '>
                         <div className='absolute bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
                             <h1 className='font-bold md:text-lg lg:text-xl'>Watches</h1>
                             <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
                         </div>
                         <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 object-cover' />
                     </div>
-                    <div className='md:w-full'>
+                    <div className='md:w-full blurr'>
                         <div className='absolute bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
                             <h1 className='font-bold md:text-lg lg:text-xl'>Shoes</h1>
                             <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
@@ -99,7 +99,7 @@ const Home = () => {
                         <img src={homeimage} className='w-full' />
 
                     </div>
-                    <p className='md:hidden mt-2 ml-3 sm:ml-4'>more products...</p>
+                    <p className='md:hidden mt-2 ml-3 sm:ml-4  '>more products...</p>
                 </div>
                 {/*ends*/}
 
@@ -122,29 +122,30 @@ const Home = () => {
                     </div>
                 </div>
                 {/*about ends*/}
-                <div className='grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-5 md:gap-5'>
-                    <div className=' bg-yellow-800 w-full h-36 pt-4 pl-4 lg:h-44 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 '>
+                <div className='grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5'>
+                    <div className=' bg-yellow-800 w-full h-36 md:h-44 pt-4 pl-4 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl '>
                         <FaCar className='text-xl font-bold sm:text-2xl ' />
                         <h2 className='text-lg font-bold sm:text-xl '>Free shipping</h2>
                         <p className='font-semibold md:text-lg '>Order above $200. </p>
                     </div>
-                    <div className='bg-yellow-800   w-full h-36  pt-4 pl-4  lg:h-44 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6'>
+                    <div className='bg-yellow-800   w-full h-36 md:h-44   pt-4 pl-4  lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
                         <FaWallet className='text-xl font-bold sm:text-2xl ' />
                         <h2 className='text-lg font-bold sm:text-xl '>Money back</h2>
                         <p className='font-semibold md:text-lg '>30 days guarantee.</p>
                     </div>
-                    <div className='bg-yellow-800 w-full h-36  pt-4 pl-4 lg:h-44 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6'>
+                    <div className='bg-yellow-800 w-full h-36 md:h-44  pt-4 pl-4 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
                         <FaLock className='text-xl font-bold sm:text-2xl ' />
                         <h2 className='text-lg font-bold sm:text-xl '>Secure payments</h2>
                         <p className='font-semibold md:text-lg '>Secure by stripe.</p>
                     </div>
-                    <div className='bg-yellow-800 w-full h-36  pt-4 pl-4 lg:h-44 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5 sm:pt-6 md:pl-6 md:pt-6'>
+                    <div className='bg-yellow-800 w-full h-36 md:h-44  pt-4 pl-4 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5 sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
                         <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' />
                         <h2 className='text-lg font-bold sm:text-xl '>24/7 support</h2>
                         <p className='font-semibold md:text-lg '>Phone and email support.</p>
                     </div>
                 </div>
             </section>
+            <div class="blurred-div"><p>This is a blurred div.</p></div>
         </div>
     )
 }
