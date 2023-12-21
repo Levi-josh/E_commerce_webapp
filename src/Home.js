@@ -1,27 +1,27 @@
 import React from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink } from 'react-router-dom'
 
 const Home = () => {
     return (
         <div className='home'>
-
             <header className='fixed flex justify-between items-center h-14 sm:h-16 md:h-20 px-3 w-full m-0 bg-white z-10 shadow-lg'>
                 <h1 className='font-bold'>#Glamour Grove</h1>
                 <ul className='hidden md:flex'>
-                    <li>Home</li>
+                    <NavLink to='/'>  <li>Home</li></NavLink>
                     <li>Shop</li>
-                    <li>Product</li>
+                    <NavLink to='/cart/checkout'><li>Product</li></NavLink>
                     <li>About</li>
                 </ul>
-                <div className='flex gap-3'>
-                    <FaShoppingCart />
+                <div className='flex gap-3 items-center'>
+                    <NavLink to='/cart' className=' '><FaShoppingCart /></NavLink>
                     <FaBell />
                     <FaBars className='md:hidden ' />
                     <FaAddressBook className='hidden md:block' />
                 </div>
             </header>
+
             <div className='overflow-hidden w-120 flex gap-10 justify-center items-center sm:w-130 md:w-130 lg:w-130  pt-16 sm:pt-28 md:pt-32 lg:pt-36  m-auto  '>
                 <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full   md:h-96 bg-no-repeat bg-cover bg-center   ' />
 
@@ -74,33 +74,41 @@ const Home = () => {
                 {/*overflow hidden divs*/}
 
 
-                <div>
-                    <div className='flex justify-between items-center'>
-                        <h1 className='font-bold my-2 ml-3 sm:ml-4 md:ml-5  text-lg sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
-                        <p className='hidden md:block lg:mt-10 md:mr-5 lg:mr-6 md:mt-8 lg:text-lg'>more products...</p>
-                    </div>
-                    <div className='flex overflow-x-hidden  gap-5   bg-gray-900 '>
-                        <div className='w-full block  bg-yellow-800  '>
-                            <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-full ' />
-                            <div>
-                                <FaStar />
-                                <p>Leather watch</p>
-                                <p>$50</p>
-                            </div>
-                        </div>
-
-                        <img src={homeimage} className='w-full  ' />
-
-                        <img src={homeimage} className='w-full ' />
-
-                        <img src={homeimage} className='w-full' />
-
-
-                        <img src={homeimage} className='w-full' />
-
-                    </div>
-                    <p className='md:hidden mt-2 ml-3 sm:ml-4  '>more products...</p>
+                {/* <div >*/}
+                <div className='flex justify-between items-center'>
+                    <h1 className='font-bold my-2 ml-3 sm:ml-4 md:ml-5  text-lg sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
+                    <p className='hidden md:block lg:mt-10 md:mr-5 lg:mr-6 md:mt-8 lg:text-lg'>more products...</p>
                 </div>
+                <div className=' flex bg-gray-400  '>
+                    <div className='w-96       '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='w-full ' />
+
+                    </div>
+                    <div className='w-96 h-44  '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
+
+                    </div>
+                    <div className='w-96   '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
+
+                    </div>
+                    <div className='w-96  '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
+
+                    </div>
+                    <div className='w-96 '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
+
+                    </div>
+                    <div className='w-96 '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
+
+                    </div>
+
+
+                </div>
+                <p className='md:hidden mt-2 ml-3 sm:ml-4  '>more products...</p>
+                {/*</div>*/}
                 {/*ends*/}
 
                 {/*about starts*/}
@@ -133,7 +141,7 @@ const Home = () => {
                         <h2 className='text-lg font-bold sm:text-xl '>Money back</h2>
                         <p className='font-semibold md:text-lg '>30 days guarantee.</p>
                     </div>
-                    <div className='bg-yellow-800 w-full h-36 md:h-44  pt-4 pl-4 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
+                    <div className='bg-yellow-800 w-full h-36 md:h-44  pt-4 px-4 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
                         <FaLock className='text-xl font-bold sm:text-2xl ' />
                         <h2 className='text-lg font-bold sm:text-xl '>Secure payments</h2>
                         <p className='font-semibold md:text-lg '>Secure by stripe.</p>
@@ -145,7 +153,41 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <div class="blurred-div"><p>This is a blurred div.</p></div>
+            <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 '>
+                <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-10   lg:pb-10  xl:pb-12  '>
+                    <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>
+                        <div className='md:border-r-0.5 pb-7 md:pb-0 md:pr-5 lg:pr-7 xl:pr-10 flex items-center   '>
+                            <h1 className='font-bold text-lg sm:text-2xl md:text-2xl lg:text-3xl '>Glamour Grove.</h1>
+                        </div>
+                        <div className='pb-8 md:pb-0 md:pl-5 xl:pl-10 lg:pl-7 font-semibold flex items-center '>
+
+                            <p className=' lg:text-lg'>Gift & decoration store</p>
+                        </div>
+                    </div>
+
+                    <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 lg:gap-8 xl:gap-14'>
+                        <NavLink to='/'>  <li>Home</li></NavLink>
+                        <li>Shop</li>
+                        <NavLink to='/cart/checkout'><li>Product</li></NavLink>
+                        <li>About</li>
+                    </ul>
+                </div>
+                <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between '>
+                    <div className='flex justify-center gap-5 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
+                        <p className='whitespace-nowrap'>Copyright 2023 Glamour Grove.All rights reserved </p>
+                        <div className='flex justify-center gap-6 lg:gap-5 xl:gap-7 font-semibold'>
+                            <p className=' whitespace-nowrap'>Privacy policy</p>
+                            <p className=' whitespace-nowrap'>Terms of use</p>
+                        </div>
+                    </div>
+                    <div className='flex items-center gap-7 md:gap-4 text-lg'>
+                        <FaInstagram />
+                        <FaFacebook />
+                        <FaYoutube />
+
+                    </div>
+                </div>
+            </footer>
         </div>
     )
 }

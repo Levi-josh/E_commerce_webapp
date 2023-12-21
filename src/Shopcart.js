@@ -29,7 +29,7 @@ const Shopcart = () => {
 
                         </div>
 
-                        <div className='hidden lg:flex '>
+                        <div className='hidden lg:flex  '>
                             <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 hidden lg:block ' />
                             <div >
                                 <h1>watch</h1>
