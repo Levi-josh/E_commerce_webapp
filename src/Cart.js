@@ -14,8 +14,8 @@ const Cart = () => {
                     <NavLink to='/cart/checkout'><li>Product</li></NavLink>
                     <li>About</li>
                 </ul>
-                <div className='flex  gap-3 md:gap-8 lg:gap-12 xl:gap-15 items-center'>
-                    <NavLink to='/cart' className=' focus:md:bg-yellow-800 focus:md:w-16 focus:md:h-10 rounded-2xl flex justify-center items-center'><FaShoppingCart className='text-lg sm:text-xl' /></NavLink>
+                <div className='flex  gap-3 md:gap-8 lg:gap-9 xl:gap-10 items-center'>
+                    <NavLink to='/cart' className='md:bg-yellow-800 md:w-16 lg:w-24 md:h-8 lg:h-10 md:rounded-xl lg:rounded-2xl flex justify-center items-center'><FaShoppingCart className='md:text-sm lg:text-base w-24  bg-yellow-800  text-white' /></NavLink>
                     <FaBell className='text-lg sm:text-xl' />
                     <FaBars className='md:hidden text-lg sm:text-xl ' />
                     <FaAddressBook className='hidden md:block text-lg sm:text-xl' />
