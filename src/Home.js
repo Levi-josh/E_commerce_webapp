@@ -9,12 +9,12 @@ const Home = () => {
             <header className='fixed flex justify-between items-center h-16 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg'>
                 <h1 className='font-bold sm:text-lg md:text-xl lg:text-2xl'>#Glamour Grove</h1>
                 <ul className='hidden md:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
-                    <NavLink to='/'>  <li>Home</li></NavLink>
+                    <NavLink to='/'>  <li className='font-bold'>Home</li></NavLink>
                     <li>Shop</li>
                     <NavLink to='/cart/checkout'><li>Product</li></NavLink>
                     <li>About</li>
                 </ul>
-                <div className='flex gap-3 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl '>
+                <div className='flex gap-3 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
                     <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-lg lg:text-xl' /></NavLink>
                     <FaBell className=' md:text-xl' />
                     <FaBars className='md:hidden text-lg sm:text-xl ' />

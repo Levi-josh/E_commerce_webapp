@@ -1,12 +1,30 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+
+import { Navigate, useNavigate, Outlet, redirect } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck } from 'react-icons/fa'
+import { useState } from 'react'
 const Cart = () => {
+    const [changecart, setchangecart] = useState(false)
+    const [changecart2, setchangecart2] = useState(false)
+    const [changecart3, setchangecart3] = useState(false)
+    const navigate = useNavigate()
+    function nextcart() {
+        setchangecart(prev => !prev)
+        navigate('/cart/checkout')
+    }
+    function nextcart2() {
+        setchangecart2(prev => !prev)
+        navigate('/cart/complete')
+    }
+    function nextcart3() {
+        setchangecart3(prev => !prev)
+        navigate('/cart/complete')
+    }
     return (
-        <div className='h-full'>
-            <header className='hidden fixed md:flex justify-between items-center h-14 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg'>
+        <div className='  background  '>
+            <header className='hidden fixed md:flex justify-between items-center h-14 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-20 shadow-lg'>
                 <h1 className='font-bold  sm:text-lg md:text-xl lg:text-2xl'>#Glamour Grove</h1>
                 <ul className='hidden md:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl  '>
                     <NavLink to='/'>  <li>Home</li></NavLink>
@@ -22,16 +40,16 @@ const Cart = () => {
                 </div>
             </header>
 
-            <section className='md:pt-20 lg:pt-20'>
-                <p className='text-lg ml-2 py-3 md:hidden w-full fixed bg-white'>back</p>
+            <section className='md:pt-20 lg:pt-24'>
+                <NavLink to='/'><p className='text-lg pl-3  py-3 md:hidden w-full fixed z-20 bg-white'>back</p></NavLink>
                 <h1 className='text-center  font-bold text-3xl pt-12 sm:pt-14 md:pt-0 mb-6 sm:text-green-400 md:text-blue-800 lg:text-purple-900 xl:text-orange-700 md:mt-8 md:mb-8 lg:mt-9 lg:mb-10  xl:text-6xl md:text-4xl lg:text-5xl'>cart</h1>
-                <div className='flex sm:overflow-visible  overflow-hidden  w-full pl-3 sm:pl-7 md:pl-0 gap-5 sm:gap-5 xl:gap-6  sm:justify-center  '>
-                    <div className='block '> <div className='flex items-center   text-lg font-bold gap-3 w-48 sm:w-52 lg:w-60'>   <div className='w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white bg-black flex justify-center items-center'>1</div><div className='flex'>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className='border-black w-full border mt-4'></div></div>
-                    <div className='block '>   <div className='flex items-center text-lg font-bold gap-3 w-48 sm:w-52 lg:w-60'><div className='w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white bg-black flex justify-center items-center'>2</div><div className='flex'>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className='border-black w-full border mt-4'></div></div>
-                    <div className='block  '>   <div className='flex items-center text-lg font-bold gap-3 w-48 sm:w-52 lg:w-60'><div className='w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white bg-black flex justify-center items-center'>3</div><div className='flex'>Complete</div></div><div className='border-black w-full border mt-4'></div></div>
+                <div className='flex sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
+                    <div className={`block -translate-x-50 md:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-green-600' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-green-600' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-green-600' : 'border-black'} w-full border mt-4`}></div></div>
+                    <div className={`block -translate-x-50 md:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${changecart2 ? ' bg-green-600 ' : 'bg-black  '} flex justify-center items-center`}>{changecart2 ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${changecart2 ? ' text-green-600' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${changecart2 ? 'border-green-600' : 'border-black'} w-full border mt-4`}></div></div>
+                    <div className={`block -translate-x-50 md:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-green-600 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-green-600' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-green-600 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
                 </div>
             </section >
-            <Outlet />
+            <Outlet context={{ nextcart, nextcart2, nextcart3 }} />
             <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 '>
                 <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
                     <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>

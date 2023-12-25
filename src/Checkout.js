@@ -1,9 +1,11 @@
 import React from 'react'
 import { FaArrowDown, FaTimes } from 'react-icons/fa'
+import { useOutletContext } from 'react-router-dom'
 
 const Checkout = () => {
+    const { nextcart2 } = useOutletContext()
     return (
-        <div className='pt-6 sm:pt-8 pb-20 gap-5 sm:gap-7 lg:gap-0 flex flex-col lg:justify-between  lg:flex-row lg:items-start'>
+        <div className='pt-6 sm:pt-8 pb-20 gap-5 sm:gap-7 lg:gap-0 flex flex-col lg:justify-between  lg:flex-row lg:items-start h-full'>
             <div className='flex flex-col gap-5 sm:gap-8 w-110 sm:w-130 md:w-140 m-auto lg:w-22 '>
                 <div className='flex flex-col gap-4 border border-black px-5 md:px-7 py-6 rounded-lg w-full'>
                     <h1 className='font-bold sm:text-lg lg:text-xl '>Contact Information</h1>
@@ -37,12 +39,19 @@ const Checkout = () => {
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label className=' text-gray-600 font-semibold lg:text-lg'>COUNTRY *</label>
-                            <div className='flex w-full border border-black p-2 rounded-md justify-between items-center'>
-                                <label className=' text-gray-600'>Country</label>
+                            <div className='relative '>
+                                <div className='flex w-full border border-black p-2 rounded-md justify-between items-center'>
 
-                                <FaArrowDown />
+                                    <label className=' text-gray-600 shadow'>Country</label>
+
+                                    <FaArrowDown />
+
+                                </div>
+                                <div className='absolute bg-white  w-130 right-0 top-0 z-10 h-64 lg:h-72  rounded-lg border-t border-neutral-100 hidden '>hhhhhhhhhhhhhhhh</div>
                             </div>
+
                         </div>
+
                         <div className='flex flex-col gap-2'>
                             <label className='font-semibold text-gray-600 lg:text-lg'>TOWN/CITY *</label>
                             <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Town/city' />
@@ -59,7 +68,7 @@ const Checkout = () => {
                         </div>
                         <div className='flex items-center gap-2'>
                             <input type='checkbox' className='lg:w-4lg:h-4' />
-                            <p className=' text-gray-600 lg:text-lg'>use a different billing address (optional)</p>
+                            <p className=' text-gray-600 lg:text-lg whitespace-nowrap'>use a different billing address (optional)</p>
                         </div>
                     </div>
                 </div>
@@ -93,7 +102,9 @@ const Checkout = () => {
                             </div>
                         </div>
                     </div>
+
                 </div>
+                <button className='hidden lg:block py-3 rounded-lg text-white text-lg font-semibold    bg-blue-600' onClick={nextcart2}>Place order</button>
             </div>
 
 
@@ -127,6 +138,7 @@ const Checkout = () => {
                     <h1 className=' text-lg sm:text-xl lg:text-2xl'>$2000</h1>
                 </div>
             </div>
+            <button className='lg:hidden block m-auto w-110 sm:w-130 md:w-140 py-3 font-semibold rounded-lg text-white  bg-blue-600' onClick={nextcart2}>Place order</button>
 
         </div>
     )

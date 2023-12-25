@@ -1,8 +1,10 @@
 import React from 'react'
+import { useOutletContext } from 'react-router-dom'
 
 const Complete = () => {
+    const { nextcart3 } = useOutletContext()
     return (
-        <div className='pt-6 sm:pt-8 pb-20'>
+        <div className='pt-6 sm:pt-8 pb-20 h-full'>
             <div className='m-auto px-5 w-110 md:w-150 lg:w-200 shadow-xl border-0.5 md:border border-slate-300 shadow-slate-300 py-6 sm:py-14 md:py-16  md:text-center   '>
                 <p className='md:text-lg lg:text-xl font-medium text-gray-600'>Thank you!</p>
                 <div className='flex flex-col md:gap-1 mt-3 mb-5 sm:my-4 md:mb-7 md:mt-2 lg:mt-3 lg:mb-10 '>

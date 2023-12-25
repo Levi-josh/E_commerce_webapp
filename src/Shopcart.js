@@ -1,9 +1,12 @@
 import React from 'react'
 import { FaTimes } from 'react-icons/fa'
+import { useOutletContext } from 'react-router-dom'
 
 const Shopcart = () => {
+    const { nextcart } = useOutletContext()
+
     return (
-        <div className='pt-6 sm:pt-8 / sm:gap-11 md:gap-14 lg:gap-15  '>
+        <div className='pt-6 sm:pt-8 / sm:gap-11 md:gap-14 lg:gap-15 h-full  '>
             <div className='lg:flex items-start lg:w-120 xl:w-110 m-auto gap-5 lg:mt-10 '>
                 <div className=' lg:w-130 lg:flex lg:flex-col lg:justify-center items-center  '>
 
@@ -78,7 +81,7 @@ const Shopcart = () => {
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>Total</h1>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>$2000</h1>
                     </div>
-                    <button className='w-full text-center bg-blue-700 text-white py-3 sm:text-lg lg:text-xl  lg:py-4 rounded-lg'>Checkout</button>
+                    <button className='w-full text-center bg-blue-700 text-white py-3 sm:text-lg lg:text-xl  lg:py-4 rounded-lg ' onClick={nextcart}>Checkout</button>
                 </div>
             </div>
         </div >
