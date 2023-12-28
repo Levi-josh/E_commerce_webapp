@@ -79,28 +79,29 @@ const Home = () => {
                     <h1 className='font-bold my-2 ml-3 sm:ml-4 md:ml-5  text-lg sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
                     <p className='hidden md:block lg:mt-10 md:mr-5 lg:mr-6 md:mt-8 lg:text-lg'>more products...</p>
                 </div>
-                <div className=' flex bg-gray-400  '>
-                    <div className='w-96       '>
+                <div className='w-full   bg-gray-400 inline-flex gap-5    '>
+
+                    <div className='w-full        '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='w-full ' />
 
                     </div>
-                    <div className='w-96 h-44  '>
+                    <div className='w-full  '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>
-                    <div className='w-96   '>
+                    <div className='w-full   '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>
-                    <div className='w-96  '>
+                    <div className='w-full  '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>
-                    <div className='w-96 '>
+                    <div className='w-full '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>
-                    <div className='w-96 '>
+                    <div className='w-full '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>

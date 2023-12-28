@@ -47,7 +47,12 @@ const Checkout = () => {
                                     <FaArrowDown />
 
                                 </div>
-                                <div className='absolute bg-white  w-130 right-0 top-0 z-10 h-64 lg:h-72  rounded-lg border-t border-neutral-100 hidden '>hhhhhhhhhhhhhhhh</div>
+                                <div className='absolute bg-white  w-130 right-0 top-0 z-10 h-64 lg:h-72  rounded-lg border-t border-neutral-100 py-4  '>
+                                    <div className=' h-full '>
+                                        <div className='flex border-b-0.5 border-black py-2 lg:text-xl font-semibold items-center pl-3 gap-3'><input type='radio' className='lg:w-4 lg:h-4' /><p>china</p></div>
+                                        <div className='flex border-b-0.5 border-black py-2 lg:text-xl font-semibold items-center pl-3 gap-3'><input type='radio' className='lg:w-4 lg:h-4' /><p>usa</p></div>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>

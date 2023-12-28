@@ -15,16 +15,34 @@ const Cart = () => {
     const navigate = useNavigate()
     function nextcart() {
         setchangecart(prev => !prev)
-        firstref.current.style.translate = "-10px"
-        secondref.current.style.translate = "-10px"
-        thirdref.current.style.translate = "-10px"
+
+        if (window.matchMedia('(max-width: 600px)').matches) {
+
+            firstref.current.style.translate = "-10px"
+            secondref.current.style.translate = "-10px"
+            thirdref.current.style.translate = "-10px"
+        }
+        else {
+            firstref.current.style.translate = '0px'
+            secondref.current.style.translate = '0px'
+            thirdref.current.style.translate = '0px'
+        }
         navigate('/cart/checkout')
     }
     function nextcart2() {
         setchangecart2(prev => !prev)
-        firstref.current.style.translate = '-205px'
-        secondref.current.style.translate = '-205px'
-        thirdref.current.style.translate = '-205px'
+        if (window.matchMedia('(max-width: 600px)').matches) {
+
+            firstref.current.style.translate = '-205px'
+            secondref.current.style.translate = '-205px'
+            thirdref.current.style.translate = '-205px'
+        }
+        else {
+            firstref.current.style.translate = '0px'
+            secondref.current.style.translate = '0px'
+            thirdref.current.style.translate = '0px'
+        }
+
         navigate('/cart/complete')
     }
     function nextcart3() {

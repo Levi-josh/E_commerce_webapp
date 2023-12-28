@@ -1,20 +1,13 @@
 .overflow-div {
-    display: flex;
-    overflow-x: auto;
+    display: inline-flex;
+    overflow: auto;
     gap: 20px;
 
 }
 
-.overflow-div::-webkit-scrollbar {
-    display: none;
 
-}
 
-.overflow-div::-webkit-scrollbar-thumb {
 
-    border-radius: 10px;
-    background-color: black;
-}
 
 /*.home::-webkit-scrollbar {
     width: 2px;
@@ -148,5 +141,5 @@
     width: 100%;
     height: 100%;
     position: fixed;
-    display: none;
+
 }
