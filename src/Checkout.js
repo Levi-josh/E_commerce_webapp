@@ -1,9 +1,10 @@
 import React from 'react'
-import { FaArrowDown, FaTimes } from 'react-icons/fa'
+import { useState } from 'react'
+import { FaArrowDown, FaChevronDown, FaTimes } from 'react-icons/fa'
 import { useOutletContext } from 'react-router-dom'
 
 const Checkout = () => {
-    const { nextcart2 } = useOutletContext()
+    const { nextcart2, showcountry, selectcountry } = useOutletContext()
     return (
         <div className='pt-6 sm:pt-8 pb-20 gap-5 sm:gap-7 lg:gap-0 flex flex-col lg:justify-between  lg:flex-row lg:items-start h-full'>
             <div className='flex flex-col gap-5 sm:gap-8 w-110 sm:w-130 md:w-140 m-auto lg:w-22 '>
@@ -44,13 +45,13 @@ const Checkout = () => {
 
                                     <label className=' text-gray-600 shadow'>Country</label>
 
-                                    <FaArrowDown />
+                                    <FaChevronDown onClick={selectcountry} />
 
                                 </div>
-                                <div className='absolute bg-white  w-130 right-0 top-0 z-10 h-64 lg:h-72  rounded-lg border-t border-neutral-100 py-4  '>
+                                <div className={`absolute w-full bg-white right-0 md:w-130  z-10 h-64 lg:h-72  rounded-lg border-t border-neutral-100 py-4  ${showcountry ? 'block' : 'hidden'}  `}>
                                     <div className=' h-full '>
-                                        <div className='flex border-b-0.5 border-black py-2 lg:text-xl font-semibold items-center pl-3 gap-3'><input type='radio' className='lg:w-4 lg:h-4' /><p>china</p></div>
-                                        <div className='flex border-b-0.5 border-black py-2 lg:text-xl font-semibold items-center pl-3 gap-3'><input type='radio' className='lg:w-4 lg:h-4' /><p>usa</p></div>
+                                        <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' /><p>china</p></div>
+                                        <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
                                     </div>
                                 </div>
                             </div>

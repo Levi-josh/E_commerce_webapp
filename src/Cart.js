@@ -13,6 +13,12 @@ const Cart = () => {
     const secondref = useRef()
     const thirdref = useRef()
     const navigate = useNavigate()
+    const [showcountry, setcountry] = useState(false)
+
+    function selectcountry() {
+        setcountry(prev => !prev)
+    }
+
     function nextcart() {
         setchangecart(prev => !prev)
 
@@ -50,7 +56,7 @@ const Cart = () => {
         navigate('/cart/complete')
     }
     return (
-        <div className='  background  '>
+        <div className={`  ${showcountry ? 'background' : ''}  `}>
             <header className='hidden fixed md:flex justify-between items-center h-14 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-20 shadow-lg'>
                 <h1 className='font-bold  sm:text-lg md:text-xl lg:text-2xl'>#Glamour Grove</h1>
                 <ul className='hidden md:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl  '>
@@ -76,7 +82,7 @@ const Cart = () => {
                     <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-green-600 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-green-600' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-green-600 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
                 </div>
             </section >
-            <Outlet context={{ nextcart, nextcart2, nextcart3 }} />
+            <Outlet context={{ nextcart, nextcart2, nextcart3, showcountry, selectcountry }} />
             <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 '>
                 <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
                     <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>

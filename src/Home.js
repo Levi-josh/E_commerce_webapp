@@ -14,11 +14,11 @@ const Home = () => {
                     <NavLink to='/cart/checkout'><li>Product</li></NavLink>
                     <li>About</li>
                 </ul>
-                <div className='flex gap-3 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
-                    <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-lg lg:text-xl' /></NavLink>
-                    <FaBell className=' md:text-xl' />
-                    <FaBars className='md:hidden text-lg sm:text-xl ' />
-                    <FaAddressBook className='hidden md:block text-lg sm:text-xl' />
+                <div className='flex gap-3 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
+                    <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-lg lg:text-xl hover:scale-125' /></NavLink>
+                    <FaBell className=' md:text-xl hover:scale-125' />
+                    <FaBars className='md:hidden text-lg sm:text-xl hover:scale-125 ' />
+                    <FaAddressBook className='hidden md:block text-lg sm:text-xl hover:scale-125' />
                 </div>
             </header>
 
