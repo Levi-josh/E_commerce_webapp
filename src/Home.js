@@ -2,8 +2,13 @@ import React from 'react'
 import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink } from 'react-router-dom'
+import { useState } from 'react'
 
 const Home = () => {
+    const [menubar, setmenubar] = useState(false)
+    function showmenu() {
+        setmenubar(prev => !prev)
+    }
     return (
         <div className='home'>
             <header className='fixed flex justify-between items-center h-16 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg'>
@@ -14,13 +19,18 @@ const Home = () => {
                     <NavLink to='/cart/checkout'><li>Product</li></NavLink>
                     <li>About</li>
                 </ul>
-                <div className='flex gap-3 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
+                <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
                     <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-lg lg:text-xl hover:scale-125' /></NavLink>
                     <FaBell className=' md:text-xl hover:scale-125' />
                     <FaBars className='md:hidden text-lg sm:text-xl hover:scale-125 ' />
-                    <FaAddressBook className='hidden md:block text-lg sm:text-xl hover:scale-125' />
+                    <FaAddressBook className='hidden md:block text-lg sm:text-xl hover:scale-125' onClick={showmenu} />
                 </div>
-            </header>
+
+                <div className={`w-25  md:w-22 lg:w-12  xl:w-20    bg-white top-0 shadow-lg shadow-neutral-500 right-0 fixed h-full ${menubar ? 'block' : 'hidden'} `}>
+
+                </div>
+            </header >
+
 
             <div className='overflow-hidden w-120 flex gap-10 justify-center items-center sm:w-130 md:w-130 lg:w-130  pt-20 sm:pt-32 md:pt-36 lg:pt-40  m-auto  '>
                 <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full   md:h-96 bg-no-repeat bg-cover bg-center   ' />
@@ -79,30 +89,30 @@ const Home = () => {
                     <h1 className='font-bold my-2 ml-3 sm:ml-4 md:ml-5  text-lg sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
                     <p className='hidden md:block lg:mt-10 md:mr-5 lg:mr-6 md:mt-8 lg:text-lg'>more products...</p>
                 </div>
-                <div className='w-full   bg-gray-400 inline-flex gap-5    '>
+                <div className='   bg-gray-400  gap-5    '>
 
-                    <div className='w-full        '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='w-full ' />
-
-                    </div>
-                    <div className='w-full  '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
+                    <div className='w-full block bg-slate-400        '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='w-full hidden ' />
 
                     </div>
-                    <div className='w-full   '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
+                    <div className='w-full block bg-slate-600  '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='hidden ' />
 
                     </div>
-                    <div className='w-full  '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
+                    <div className='w-full block bg-slate-500   '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='hidden ' />
 
                     </div>
-                    <div className='w-full '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
+                    <div className='w-full block bg-slate-700  '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='hidden ' />
 
                     </div>
-                    <div className='w-full '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
+                    <div className='w-full block bg-slate-800 '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='hidden ' />
+
+                    </div>
+                    <div className='w-full block bg-slate-900 '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='hidden ' />
 
                     </div>
 
@@ -189,7 +199,7 @@ const Home = () => {
                     </div>
                 </div>
             </footer>
-        </div>
+        </div >
     )
 }
 

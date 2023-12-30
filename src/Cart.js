@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import { Navigate, useNavigate, Outlet, redirect } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck, FaChevronLeft } from 'react-icons/fa'
 import { useState } from 'react'
 const Cart = () => {
     const [changecart, setchangecart] = useState(false)
@@ -73,9 +73,12 @@ const Cart = () => {
                 </div>
             </header>
 
-            <section className='md:pt-20 lg:pt-24'>
-                <NavLink to='/'><p className='text-lg pl-3  py-3 md:hidden w-full fixed z-20 bg-white'>back</p></NavLink>
-                <h1 className='text-center  font-bold text-3xl pt-12 sm:pt-14 md:pt-0 mb-6 sm:text-green-400 md:text-blue-800 lg:text-purple-900 xl:text-orange-700 md:mt-8 md:mb-8 lg:mt-9 lg:mb-10  xl:text-6xl md:text-4xl lg:text-5xl'>cart</h1>
+            <section className='  md:pt-20 lg:pt-24'>
+                <div className='flex items-center pl-3 py-3 w-full gap-2 fixed z-20 bg-white md:hidden  '>
+                    <FaChevronLeft />
+                    <NavLink to='/'><p className='text-lg'>back</p></NavLink>
+                </div>
+                <h1 className='text-center  font-bold text-3xl pt-16 sm:pt-16 md:pt-0 mb-6 sm:text-green-400 md:text-blue-800 lg:text-purple-900 xl:text-orange-700 md:mt-8 md:mb-8 lg:mt-9 lg:mb-10  xl:text-6xl md:text-4xl lg:text-5xl'>cart</h1>
                 <div className='flex sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
                     <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-green-600' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-green-600' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-green-600' : 'border-black'} w-full border mt-4`}></div></div>
                     <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${changecart2 ? ' bg-green-600 ' : 'bg-black  '} flex justify-center items-center`}>{changecart2 ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${changecart2 ? ' text-green-600' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${changecart2 ? 'border-green-600' : 'border-black'} w-full border mt-4`}></div></div>
