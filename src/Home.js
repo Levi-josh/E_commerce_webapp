@@ -10,8 +10,8 @@ const Home = () => {
         setmenubar(prev => !prev)
     }
     return (
-        <div className='home'>
-            <header className='fixed flex justify-between items-center h-16 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg'>
+        <div className={`${menubar ? 'home ' : ''}  `}>
+            <header className='fixed flex justify-between items-center h-16 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className='font-bold sm:text-lg md:text-xl lg:text-2xl'>#Glamour Grove</h1>
                 <ul className='hidden md:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
                     <NavLink to='/'>  <li className='font-bold'>Home</li></NavLink>
@@ -22,18 +22,27 @@ const Home = () => {
                 <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
                     <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-lg lg:text-xl hover:scale-125' /></NavLink>
                     <FaBell className=' md:text-xl hover:scale-125' />
-                    <FaBars className='md:hidden text-lg sm:text-xl hover:scale-125 ' />
+                    <FaBars className='md:hidden text-lg sm:text-xl hover:scale-125 ' onClick={showmenu} />
                     <FaAddressBook className='hidden md:block text-lg sm:text-xl hover:scale-125' onClick={showmenu} />
                 </div>
 
-                <div className={`w-25  md:w-22 lg:w-12  xl:w-20    bg-white top-0 shadow-lg shadow-neutral-500 right-0 fixed h-full ${menubar ? 'block' : 'hidden'} `}>
-
+                <div className={`w-25 md:w-22 lg:w-12  xl:w-20     bg-white top-0 shadow-lg shadow-neutral-500 right-0 fixed z-20 h-full ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+                    <ul>
+                        <li onClick={showmenu}>shop</li>
+                        <li>pending order</li>
+                        <li>new order</li>
+                        <li>history</li>
+                    </ul>
                 </div>
             </header >
 
 
-            <div className='overflow-hidden w-120 flex gap-10 justify-center items-center sm:w-130 md:w-130 lg:w-130  pt-20 sm:pt-32 md:pt-36 lg:pt-40  m-auto  '>
+            <div className=' overflow-auto w-120 sm:w-130 m-auto  flex gap-5 items-center   pt-20 sm:pt-32 md:pt-36 lg:pt-40  '>
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full    md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full  md:h-96 bg-no-repeat bg-cover bg-center   ' />
                 <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full   md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full  md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full  md:h-96 bg-no-repeat bg-cover bg-center   ' />
 
 
             </div>

@@ -9,9 +9,9 @@
 
 
 
-/*.home::-webkit-scrollbar {
-    width: 2px;
-}*/
+.home {
+    backdrop-filter: blur(100px);
+}
 
 .blurred-div {
     width: 300px;

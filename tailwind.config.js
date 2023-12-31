@@ -45,6 +45,9 @@ module.exports = {
       },
       translate: {
         50: "205px"
+      },
+      transitionDuration: {
+        2000: "200000ms"
       }
     },
   },
