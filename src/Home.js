@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
@@ -37,12 +37,12 @@ const Home = () => {
             </header >
 
 
-            <div className=' overflow-auto w-120 sm:w-130 m-auto  flex gap-5 items-center   pt-20 sm:pt-32 md:pt-36 lg:pt-40  '>
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full    md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full  md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full   md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full  md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full  md:h-96 bg-no-repeat bg-cover bg-center   ' />
+            <div className=' overflow-auto  w-120 sm:w-130 m-auto   flex gap-5 items-center   pt-20 sm:pt-32 md:pt-36 lg:pt-40  '>
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full  md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full   md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className=' min-w-full  md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full    md:h-96 bg-no-repeat bg-cover bg-center   ' />
 
 
             </div>
@@ -98,30 +98,41 @@ const Home = () => {
                     <h1 className='font-bold my-2 ml-3 sm:ml-4 md:ml-5  text-lg sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
                     <p className='hidden md:block lg:mt-10 md:mr-5 lg:mr-6 md:mt-8 lg:text-lg'>more products...</p>
                 </div>
-                <div className='   bg-gray-400  gap-5    '>
+                <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div      '>
 
-                    <div className='w-full block bg-slate-400        '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='w-full hidden ' />
+                    <div className='min-w-20 p-2 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-600            '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='rounded-lg ' />
+                        <div>
+                            <div className='flex '>
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStar />
+                                <FaStarHalfAlt />
+                            </div>
+                            <h1>Rolex watch</h1>
+                            <p>$400</p>
+                            <button>Place Order</button>
+                        </div>
+                    </div>
+                    <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30    '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>
-                    <div className='w-full block bg-slate-600  '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='hidden ' />
+                    <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30     '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>
-                    <div className='w-full block bg-slate-500   '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='hidden ' />
+                    <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30   '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>
-                    <div className='w-full block bg-slate-700  '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='hidden ' />
+                    <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30   '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>
-                    <div className='w-full block bg-slate-800 '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='hidden ' />
-
-                    </div>
-                    <div className='w-full block bg-slate-900 '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='hidden ' />
+                    <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30  '>
+                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>
 
