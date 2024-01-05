@@ -3,12 +3,22 @@ import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPho
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 const Home = () => {
     const [menubar, setmenubar] = useState(false)
+    const [array, setarray] = useState(0)
     function showmenu() {
         setmenubar(prev => !prev)
     }
+    useEffect(() => {
+        setInterval(() => {
+            setarray(prev => prev + 1)
+        }, 200);
+
+    }, [array]
+    )
+
     return (
         <div className={`${menubar ? 'home ' : ''}  `}>
             <header className='fixed flex justify-between items-center h-16 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
@@ -100,7 +110,7 @@ const Home = () => {
                 </div>
                 <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div      '>
 
-                    <div className='min-w-20 p-2 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-600            '>
+                    <div className='min-w-20 p-2 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-800            '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='rounded-lg ' />
                         <div>
                             <div className='flex '>
@@ -112,7 +122,7 @@ const Home = () => {
                             </div>
                             <h1>Rolex watch</h1>
                             <p>$400</p>
-                            <button>Place Order</button>
+                            <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white'>Add to cart</button>
                         </div>
                     </div>
                     <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30    '>
