@@ -4,6 +4,18 @@ import homeimage from './hotdog image.jpg'
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css/pagination';
+
+import './swiper.css'
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+import 'swiper/css/scrollbar';
 
 const Home = () => {
     const [menubar, setmenubar] = useState(false)
@@ -11,16 +23,22 @@ const Home = () => {
     function showmenu() {
         setmenubar(prev => !prev)
     }
+    /*setInterval()
     useEffect(() => {
-        setInterval(() => {
-            setarray(prev => prev + 1)
-        }, 200);
+        const interval = setInterval(() => {
 
-    }, [array]
-    )
+            setarray(prev => prev + 1)
+
+
+
+        }, 2000)
+        return () => clearInterval(interval)
+    }, []
+    )*/
 
     return (
         <div className={`${menubar ? 'home ' : ''}  `}>
+
             <header className='fixed flex justify-between items-center h-16 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className='font-bold sm:text-lg md:text-xl lg:text-2xl'>#Glamour Grove</h1>
                 <ul className='hidden md:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
@@ -47,15 +65,35 @@ const Home = () => {
             </header >
 
 
-            <div className=' overflow-auto  w-120 sm:w-130 m-auto   flex gap-5 items-center   pt-20 sm:pt-32 md:pt-36 lg:pt-40  '>
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full  md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full   md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className=' min-w-full  md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full    md:h-96 bg-no-repeat bg-cover bg-center   ' />
+            <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
+                breakpoints={{
+                    640: { style: { paddingTop: '40px' } }
+                }}
+
+                spaceBetween={20}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
 
 
-            </div>
+
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')} className='   w-120 sm:w-130 m-auto gap-2     pt-20 sm:pt-32 md:pt-36 lg:pt-40  '>
+                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                </SwiperSlide>
+                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                </SwiperSlide>
+                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                </SwiperSlide>
+                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                </SwiperSlide>
+                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                </SwiperSlide>
+                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                </SwiperSlide>
+
+
+            </Swiper>
             <div className='absolute  flex m-auto  w-full  justify-center mt-3 gap-1 md:gap-2'>
                 <div className='   w-3 h-3 rounded-lg border border-black '></div>
                 <div className='   w-3 h-3 rounded-lg border border-black '></div>

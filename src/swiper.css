@@ -1,0 +1,30 @@
+/* MySwiper.module.css */
+
+/* Styles for pagination container */
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+
+/* Styles for pagination bullets */
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: white;
+    /* Change the background color */
+    border-radius: 50%;
+    /* Optional: Make bullets circular */
+    margin: 0 5px;
+    /* Adjust the spacing between bullets */
+    cursor: pointer;
+}
+
+/* Styles for active pagination bullet */
+.swiper-pagination-bullet-active {
+    background-color: blue;
+    /* Change the active bullet color */
+}
