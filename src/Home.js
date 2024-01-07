@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
@@ -51,7 +51,7 @@ const Home = () => {
                     <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-lg lg:text-xl hover:scale-125' /></NavLink>
                     <FaBell className=' md:text-xl hover:scale-125' />
                     <FaBars className='md:hidden text-lg sm:text-xl hover:scale-125 ' onClick={showmenu} />
-                    <FaAddressBook className='hidden md:block text-lg sm:text-xl hover:scale-125' onClick={showmenu} />
+                    <FaUserCircle className='hidden md:block text-lg sm:text-xl hover:scale-125' onClick={showmenu} />
                 </div>
 
                 <div className={`w-25 md:w-22 lg:w-12  xl:w-20     bg-white top-0 shadow-lg shadow-neutral-500 right-0 fixed z-20 h-full ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
@@ -64,43 +64,43 @@ const Home = () => {
                 </div>
             </header >
 
-
-            <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
-                breakpoints={{
-                    640: { style: { paddingTop: '40px' } }
-                }}
-
-                spaceBetween={20}
-                slidesPerView={1}
-                navigation
-                pagination={{ clickable: true }}
+            <div className='         pt-20 sm:pt-32 md:pt-36 lg:pt-40  '>
+                <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
 
 
-
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')} className='   w-120 sm:w-130 m-auto gap-2     pt-20 sm:pt-32 md:pt-36 lg:pt-40  '>
-                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                </SwiperSlide>
-                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                </SwiperSlide>
-                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                </SwiperSlide>
-                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                </SwiperSlide>
-                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                </SwiperSlide>
-                <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                </SwiperSlide>
+                    spaceBetween={20}
+                    slidesPerView={1}
+                    navigation
+                    pagination={{ clickable: true }}
+                    loop={true}
+                    /* autoplay={{
+                         delay: 3000, // Autoplay delay in milliseconds
+                         disableOnInteraction: false, // Allow manual navigation to stop autoplay
+                     }}*/
 
 
-            </Swiper>
-            <div className='absolute  flex m-auto  w-full  justify-center mt-3 gap-1 md:gap-2'>
-                <div className='   w-3 h-3 rounded-lg border border-black '></div>
-                <div className='   w-3 h-3 rounded-lg border border-black '></div>
-                <div className='  w-3 h-3 rounded-lg border border-black'></div>
-                <div className='   w-3 h-3 rounded-lg border border-black'></div>
-                <div className='   w-3 h-3 rounded-lg border border-black'></div>
+                    onSwiper={(swiper) => console.log(swiper)}
+                    onSlideChange={() => console.log('slide change')} className='   w-120 sm:w-130 lg:w-140 m-auto   '>
+
+                    <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    </SwiperSlide>
+
+                    <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXTxreOJSjKV3Rr6tYE-2XYcPlaHcuBs4nUg&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    </SwiperSlide>
+
+                    <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2o09ztmF7LPpqO-80mbCFlOvnDlkF0CwI7w&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    </SwiperSlide>
+                    <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72       md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    </SwiperSlide>
+                    <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    </SwiperSlide>
+                    <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    </SwiperSlide>
+
+
+                </Swiper>
             </div>
+
             <section>
                 <div className=' mt-10 lg:px-10 text-center mb-8 gap-3 sm:gap-4 flex-col flex md:flex-row md:gap-10 lg:w-130  md:m-auto md:w-130 md:justify-between  md:items-center md:mt-12 md:mb-12'>
                     <h1 className='text-xl font-bold sm:text-2xl  lg:text-3xl whitespace-nowrap'>Simply unique/<span className='md:flex md:flex-wrap'>simply better</span>  </h1>
@@ -151,7 +151,7 @@ const Home = () => {
                     <div className='min-w-20 p-2 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-800            '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='rounded-lg ' />
                         <div>
-                            <div className='flex '>
+                            <div className='flex text-yellow-800 '>
                                 <FaStar />
                                 <FaStar />
                                 <FaStar />
@@ -195,7 +195,7 @@ const Home = () => {
 
                     <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64 ' />
                     <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
-                        <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif  '>
+                        <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif   '>
                             Special Fashon sales
                         </h1>
                         <p className='mt-3 md:mt-4 lg:mt-8 md:text-lg'>
@@ -209,7 +209,7 @@ const Home = () => {
                     </div>
                 </div>
                 {/*about ends*/}
-                <div className='grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5'>
+                <div className='grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5 text-white'>
                     <div className=' bg-yellow-800 w-full h-40 md:h-44 pt-4 pl-4 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl '>
                         <FaCar className='text-xl font-bold sm:text-2xl ' />
                         <h2 className='text-lg font-bold sm:text-xl '>Free shipping</h2>

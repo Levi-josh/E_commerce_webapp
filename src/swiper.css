@@ -14,7 +14,7 @@
     width: 10px;
     height: 10px;
     display: inline-block;
-    background-color: white;
+    background-color: rgb(133, 77, 14);
     /* Change the background color */
     border-radius: 50%;
     /* Optional: Make bullets circular */
@@ -25,6 +25,6 @@
 
 /* Styles for active pagination bullet */
 .swiper-pagination-bullet-active {
-    background-color: blue;
+    background-color: white;
     /* Change the active bullet color */
 }

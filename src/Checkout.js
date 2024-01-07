@@ -110,7 +110,7 @@ const Checkout = () => {
                     </div>
 
                 </div>
-                <button className='hidden lg:block py-3 rounded-lg text-white text-lg font-semibold    bg-blue-600' onClick={nextcart2}>Place order</button>
+                <button className='hidden lg:block py-3 rounded-lg text-white text-lg font-semibold    bg-yellow-800' onClick={nextcart2}>Place order</button>
             </div>
 
 
@@ -144,7 +144,7 @@ const Checkout = () => {
                     <h1 className=' text-lg sm:text-xl lg:text-2xl'>$2000</h1>
                 </div>
             </div>
-            <button className='lg:hidden block m-auto w-110 sm:w-130 md:w-140 py-3 font-semibold rounded-lg text-white  bg-blue-600' onClick={nextcart2}>Place order</button>
+            <button className='lg:hidden block m-auto w-110 sm:w-130 md:w-140 py-3 font-semibold rounded-lg text-white  bg-yellow-800' onClick={nextcart2}>Place order</button>
 
         </div>
     )

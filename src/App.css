@@ -1,14 +1,16 @@
 .overflow-div::-webkit-scrollbar {
-    width: 3px;
+
+    background-color: gainsboro;
+    height: 5px;
 
 
 }
 
-/*.overflow-div::-webkit-scrollbar-thumb {
+.overflow-div::-webkit-scrollbar-thumb {
     background-color: black;
-    border-radius: 5px;
-    width: 1px;
-}*/
+    border-radius: 20px;
+
+}
 
 
 

@@ -6,7 +6,7 @@ const Complete = () => {
     return (
         <div className='pt-6 sm:pt-8 pb-20 h-full'>
             <div className='m-auto px-5 w-110 md:w-150 lg:w-200 shadow-xl border-0.5 md:border border-slate-300 shadow-slate-300 py-6 sm:py-14 md:py-16  md:text-center   '>
-                <p className='md:text-lg lg:text-xl font-medium text-gray-600'>Thank you!</p>
+                <p className='md:text-lg lg:text-xl font-medium text-yellow-800'>Thank you!</p>
                 <div className='flex flex-col md:gap-1 mt-3 mb-5 sm:my-4 md:mb-7 md:mt-2 lg:mt-3 lg:mb-10 '>
                     <h1 className='font-semibold text-xl md:text-3xl lg:text-4xl '>Your order has been</h1> <h1 className='font-semibold text-xl md:text-3xl lg:text-4xl'>received</h1>
                 </div>
@@ -46,7 +46,7 @@ const Complete = () => {
                     </div>
                 </div>
 
-                <button className=' w-full py-3 sm:w-22 md:w-48 block m-auto  bg-black text-white md:py-2 rounded-3xl mt-9 md:mt-8 md:font-medium lg:font-semibold text-lg'>Purchase history</button>
+                <button className=' w-full py-3 sm:w-22 md:w-48 block m-auto  bg-yellow-800 text-white md:py-2 rounded-3xl mt-9 md:mt-8 md:font-medium lg:font-semibold text-lg'>Purchase history</button>
             </div>
         </div>
     )

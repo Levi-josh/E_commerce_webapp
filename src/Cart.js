@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import { Navigate, useNavigate, Outlet, redirect } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck, FaChevronLeft } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck, FaChevronLeft, FaUserCircle } from 'react-icons/fa'
 import { useState } from 'react'
 const Cart = () => {
     const [changecart, setchangecart] = useState(false)
@@ -65,11 +65,11 @@ const Cart = () => {
                     <NavLink to='/cart/checkout'><li>Product</li></NavLink>
                     <li>About</li>
                 </ul>
-                <div className='flex  gap-3 md:gap-8 lg:gap-9 xl:gap-10 items-center'>
-                    <NavLink to='/cart' className='md:bg-yellow-800 md:w-16 lg:w-24 md:h-8 lg:h-10 md:rounded-xl lg:rounded-2xl flex justify-center items-center'><FaShoppingCart className='md:text-sm lg:text-base w-24  bg-yellow-800  text-white' /></NavLink>
-                    <FaBell className='text-lg sm:text-xl' />
+                <div className='flex  gap-5 md:gap-8 lg:gap-12 xl:gap-14 items-center bg-yellow-800 py-3 px-6 md:py-2 lg:py-3 lg:px-3 md:px-4 rounded-3xl '>
+                    <NavLink to='/cart' className='md:bg-white md:py-2 md:px-5 lg:px-6 lg:py-2 md:rounded-xl lg:rounded-2xl flex justify-center items-center'><FaShoppingCart className='md:text-sm lg:text-base    text-yellow-800' /></NavLink>
+                    <FaBell className='text-lg sm:text-xl text-white' />
                     <FaBars className='md:hidden text-lg sm:text-xl ' />
-                    <FaAddressBook className='hidden md:block text-lg sm:text-xl' />
+                    <FaUserCircle className='hidden md:block text-lg sm:text-xl text-white' />
                 </div>
             </header>
 
@@ -80,9 +80,9 @@ const Cart = () => {
                 </div>
                 <h1 className='text-center   font-bold text-3xl pt-16 sm:pt-16 md:pt-0 mb-6 sm:text-green-400 md:text-blue-800 lg:text-purple-900 xl:text-orange-700 md:mt-8 md:mb-8 lg:mt-9 lg:mb-10  xl:text-6xl md:text-4xl lg:text-5xl'>cart</h1>
                 <div className='flex sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
-                    <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-green-600' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-green-600' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-green-600' : 'border-black'} w-full border mt-4`}></div></div>
-                    <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${changecart2 ? ' bg-green-600 ' : 'bg-black  '} flex justify-center items-center`}>{changecart2 ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${changecart2 ? ' text-green-600' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${changecart2 ? 'border-green-600' : 'border-black'} w-full border mt-4`}></div></div>
-                    <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-green-600 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-green-600' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-green-600 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
+                    <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-yellow-800' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-yellow-800' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-yellow-800' : 'border-black'} w-full border mt-4`}></div></div>
+                    <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${changecart2 ? ' bg-yellow-800 ' : 'bg-black  '} flex justify-center items-center`}>{changecart2 ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${changecart2 ? ' text-yellow-800' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${changecart2 ? 'border-yellow-800' : 'border-black'} w-full border mt-4`}></div></div>
+                    <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-800 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-yellow-800' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-800 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
                 </div>
             </section >
             <Outlet context={{ nextcart, nextcart2, nextcart3, showcountry, selectcountry }} />
