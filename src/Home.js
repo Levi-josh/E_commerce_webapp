@@ -4,7 +4,7 @@ import homeimage from './hotdog image.jpg'
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/pagination';
@@ -14,7 +14,7 @@ import './swiper.css'
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-
+import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
 
 const Home = () => {
@@ -23,6 +23,7 @@ const Home = () => {
     function showmenu() {
         setmenubar(prev => !prev)
     }
+
     /*setInterval()
     useEffect(() => {
         const interval = setInterval(() => {
@@ -37,7 +38,7 @@ const Home = () => {
     )*/
 
     return (
-        <div className={`${menubar ? 'home ' : ''}  `}>
+        <div className={`${menubar ? '' : ''}  `}>
 
             <header className='fixed flex justify-between items-center h-16 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className='font-bold sm:text-lg md:text-xl lg:text-2xl'>#Glamour Grove</h1>
@@ -48,13 +49,14 @@ const Home = () => {
                     <li>About</li>
                 </ul>
                 <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
-                    <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-lg lg:text-xl hover:scale-125' /></NavLink>
-                    <FaBell className=' md:text-xl hover:scale-125' />
+                    <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-xl lg:text-2xl hover:scale-125' /></NavLink>
+                    <FaBell className=' md:text-xl lg:text-2xl hover:scale-125' />
                     <FaBars className='md:hidden text-lg sm:text-xl hover:scale-125 ' onClick={showmenu} />
-                    <FaUserCircle className='hidden md:block text-lg sm:text-xl hover:scale-125' onClick={showmenu} />
+                    <FaUserCircle className='hidden md:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
                 </div>
 
-                <div className={`w-25 md:w-22 lg:w-12  xl:w-20     bg-white top-0 shadow-lg shadow-neutral-500 right-0 fixed z-20 h-full ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+                <div className={`menu lg:w-15 md:w-20 sm:w-22 w-25 h-full      bg-white top-0 md:top-20 lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-20 md:h-110 lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+                    <div className=' h-40'></div>
                     <ul>
                         <li onClick={showmenu}>shop</li>
                         <li>pending order</li>
@@ -65,18 +67,18 @@ const Home = () => {
             </header >
 
             <div className='         pt-20 sm:pt-32 md:pt-36 lg:pt-40  '>
-                <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
+                <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
 
 
                     spaceBetween={20}
                     slidesPerView={1}
-                    navigation
+
                     pagination={{ clickable: true }}
                     loop={true}
-                    /* autoplay={{
-                         delay: 3000, // Autoplay delay in milliseconds
-                         disableOnInteraction: false, // Allow manual navigation to stop autoplay
-                     }}*/
+                    autoplay={{
+                        delay: 3000, // Autoplay delay in milliseconds
+                        disableOnInteraction: false, // Allow manual navigation to stop autoplay
+                    }}
 
 
                     onSwiper={(swiper) => console.log(swiper)}
@@ -195,7 +197,7 @@ const Home = () => {
 
                     <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64 ' />
                     <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
-                        <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif   '>
+                        <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif    '>
                             Special Fashon sales
                         </h1>
                         <p className='mt-3 md:mt-4 lg:mt-8 md:text-lg'>

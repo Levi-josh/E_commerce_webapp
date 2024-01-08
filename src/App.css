@@ -20,6 +20,8 @@
     backdrop-filter: blur(100px);
 }
 
+
+
 .blurred-div {
     width: 300px;
     height: 200px;
@@ -129,6 +131,17 @@
 
         opacity: 0;
         transition: opacity 0.3s ease;
+    }
+
+    .menu {
+        top: 88px
+    }
+
+}
+
+@media screen and (min-width:1024px) {
+    .menu {
+        top: 104px;
     }
 }
 

@@ -65,11 +65,11 @@ const Cart = () => {
                     <NavLink to='/cart/checkout'><li>Product</li></NavLink>
                     <li>About</li>
                 </ul>
-                <div className='flex  gap-5 md:gap-8 lg:gap-12 xl:gap-14 items-center bg-yellow-800 py-3 px-6 md:py-2 lg:py-3 lg:px-3 md:px-4 rounded-3xl '>
-                    <NavLink to='/cart' className='md:bg-white md:py-2 md:px-5 lg:px-6 lg:py-2 md:rounded-xl lg:rounded-2xl flex justify-center items-center'><FaShoppingCart className='md:text-sm lg:text-base    text-yellow-800' /></NavLink>
-                    <FaBell className='text-lg sm:text-xl text-white' />
+                <div className='relative flex  gap-5 md:gap-8 lg:gap-12 xl:gap-14 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4  md:px-8 rounded-3xl '>
+                    <NavLink to='/cart' className=''><FaShoppingCart className='md:text-xl lg:text-2xl text-white ' /></NavLink>
+                    <FaBell className='text-xl lg:text-2xl text-white' />
                     <FaBars className='md:hidden text-lg sm:text-xl ' />
-                    <FaUserCircle className='hidden md:block text-lg sm:text-xl text-white' />
+                    <FaUserCircle className='hidden md:block text-xl lg:text-2xl text-white' />
                 </div>
             </header>
 
