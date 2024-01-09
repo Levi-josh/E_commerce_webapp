@@ -16,6 +16,13 @@
 .overflow-div::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: 20px;
+}
+
+/* Add your desired color to the background property */
+input[type="radio"] {
+    background-color: black;
+    /* Change this to your preferred color */
+    /* You may also want to change the border color */
 
 }
 

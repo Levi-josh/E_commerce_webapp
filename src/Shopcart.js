@@ -54,21 +54,21 @@ const Shopcart = () => {
                     <h1 className='font-bold sm:text-lg md:text-xl lg:text-2xl '>Cart summary</h1>
                     <div className='flex  border border-black mt-5 justify-between p-3 lg:mt-4 xl:mt-5 '>
                         <div className='flex gap-2'>
-                            <input type='radio' className='lg:w-4 active:bg-yellow-800 ' />
+                            <input type='radio' name='checkout' className='lg:w-4 active:bg-yellow-800 ' />
                             <p className='sm:text-lg lg:text-xl font-semibold'>Free shipping</p>
                         </div>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>$0.00</h1>
                     </div>
                     <div className='flex   border border-black mt-5 justify-between p-3  '>
                         <div className='flex gap-2'>
-                            <input type='radio' className='lg:w-4 ' />
+                            <input type='radio' name='checkout' className='lg:w-4 ' />
                             <p className='sm:text-lg lg:text-xl font-semibold'>Express shipping</p>
                         </div>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>+$20.00</h1>
                     </div>
                     <div className='flex   border border-black mt-5 justify-between p-3 '>
                         <div className='flex gap-2'>
-                            <input type='radio' className='lg:w-4 ' />
+                            <input type='radio' name='checkout' className='lg:w-4 ' />
                             <p className='sm:text-lg lg:text-xl font-semibold'>Pick up</p>
                         </div>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>%21.00</h1>

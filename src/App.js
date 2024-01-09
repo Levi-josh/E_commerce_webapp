@@ -9,6 +9,9 @@ import Complete from './Complete.js';
 import Checkout from './Checkout.js';
 import Weblify from './Weblify.js';
 import Demo from './Demo.js';
+import Contact from './Contact.js';
+import About from './About.js';
+import Product from './Product.js';
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
@@ -17,6 +20,10 @@ function App() {
 
       <Route index element={<Home />} />
       <Route path='/weblify' element={<Weblify />} />
+      <Route path='/contact' element={<Contact />} />
+      <Route path='/about' element={<About />} />
+      <Route path='/product' element={<Product />} />
+
       <Route path='/demo' element={<Demo />} />
       <Route path='/cart' element={<Cart />} >
         <Route index element={<Shopcart />} />

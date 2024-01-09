@@ -41,12 +41,14 @@ const Home = () => {
         <div className={`${menubar ? 'home' : ''}  `}>
 
             <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
-                <h1 className='font-bold text-xl sm:text-2xl lg:text-2xl'><span className=''>#</span>Glamour Grove</h1>
+                <h1 className={`font-bold text-xl sm:text-2xl lg:text-2xl h ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
                 <ul className='hidden lg:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
                     <NavLink to='/'>  <li className='font-bold'>Home</li></NavLink>
-                    <li>Shop</li>
-                    <NavLink to='/cart/checkout'><li>Product</li></NavLink>
-                    <li>About</li>
+
+                    <NavLink to='/product'><li>Product</li></NavLink>
+                    <NavLink to='/contact'><li>contact</li></NavLink>
+                    <NavLink to='/about'><li>About us</li></NavLink>
+
                 </ul>
                 <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
                     <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-xl lg:text-2xl hover:scale-125' /></NavLink>
@@ -55,7 +57,7 @@ const Home = () => {
                     <FaUserCircle className='hidden md:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
                 </div>
 
-                <div className={`menu lg:w-15 md:w-22 sm:w-23 w-25 h-full      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+                <div className={`menu lg:w-15 md:w-25 sm:w-25 w-140 h-screen      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
                     <div className=' h-40'></div>
                     <ul>
                         <li onClick={showmenu}>shop</li>
@@ -67,7 +69,7 @@ const Home = () => {
                 </div>
             </header >
 
-            <div className='         pt-24 sm:pt-36 md:pt-40 lg:pt-40  '>
+            <div className='         pt-24 sm:pt-36 md:pt-40 lg:pt-40   '>
                 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
 
 
@@ -194,7 +196,7 @@ const Home = () => {
                 {/*ends*/}
 
                 {/*about starts*/}
-                <div className='md:flex md:p-10 shadow-lg w-110 m-auto shadow-gray-400 mt-10 border-t   p-5 sm:p-10 sm:px-20 '>
+                <div className='md:flex md:p-10 shadow-lg w-110 m-auto  mt-10    p-5 sm:p-10 sm:px-20 '>
 
                     <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64 ' />
                     <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
