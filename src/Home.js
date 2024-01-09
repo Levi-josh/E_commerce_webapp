@@ -38,11 +38,11 @@ const Home = () => {
     )*/
 
     return (
-        <div className={`${menubar ? '' : ''}  `}>
+        <div className={`${menubar ? 'home  ' : ''}  `}>
 
-            <header className='fixed flex justify-between items-center h-16 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
-                <h1 className='font-bold sm:text-lg md:text-xl lg:text-2xl'>#Glamour Grove</h1>
-                <ul className='hidden md:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
+            <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
+                <h1 className='font-bold text-xl sm:text-2xl lg:text-2xl'>#Glamour Grove</h1>
+                <ul className='hidden lg:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
                     <NavLink to='/'>  <li className='font-bold'>Home</li></NavLink>
                     <li>Shop</li>
                     <NavLink to='/cart/checkout'><li>Product</li></NavLink>
@@ -66,7 +66,7 @@ const Home = () => {
                 </div>
             </header >
 
-            <div className='         pt-20 sm:pt-32 md:pt-36 lg:pt-40  '>
+            <div className='         pt-24 sm:pt-36 md:pt-40 lg:pt-40  '>
                 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
 
 
@@ -87,10 +87,10 @@ const Home = () => {
                     <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
                     </SwiperSlide>
 
-                    <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXTxreOJSjKV3Rr6tYE-2XYcPlaHcuBs4nUg&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXTxreOJSjKV3Rr6tYE-2XYcPlaHcuBs4nUg&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center    ' />
                     </SwiperSlide>
 
-                    <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2o09ztmF7LPpqO-80mbCFlOvnDlkF0CwI7w&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2o09ztmF7LPpqO-80mbCFlOvnDlkF0CwI7w&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center object-cover   ' />
                     </SwiperSlide>
                     <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72       md:h-96 bg-no-repeat bg-cover bg-center   ' />
                     </SwiperSlide>
