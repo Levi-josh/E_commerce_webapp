@@ -38,7 +38,7 @@ const Home = () => {
     )*/
 
     return (
-        <div className={`${menubar ? 'home  ' : ''}  `}>
+        <div className={`${menubar ? 'home' : ''}  `}>
 
             <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className='font-bold text-xl sm:text-2xl lg:text-2xl'><span className=''>#</span>Glamour Grove</h1>
@@ -62,6 +62,7 @@ const Home = () => {
                         <li>pending order</li>
                         <li>new order</li>
                         <li>history</li>
+                        <li>Favourite</li>
                     </ul>
                 </div>
             </header >
