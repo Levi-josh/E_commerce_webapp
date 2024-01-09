@@ -55,7 +55,7 @@ const Home = () => {
                     <FaUserCircle className='hidden md:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
                 </div>
 
-                <div className={`menu lg:w-15 md:w-20 sm:w-22 w-25 h-full      bg-white top-0 md:top-20 lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30 md:h-110 lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+                <div className={`menu lg:w-15 md:w-22 sm:w-23 w-25 h-full      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
                     <div className=' h-40'></div>
                     <ul>
                         <li onClick={showmenu}>shop</li>
