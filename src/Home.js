@@ -41,7 +41,7 @@ const Home = () => {
         <div className={`${menubar ? 'home  ' : ''}  `}>
 
             <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
-                <h1 className='font-bold text-xl sm:text-2xl lg:text-2xl'>#Glamour Grove</h1>
+                <h1 className='font-bold text-xl sm:text-2xl lg:text-2xl'><span className=''>#</span>Glamour Grove</h1>
                 <ul className='hidden lg:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
                     <NavLink to='/'>  <li className='font-bold'>Home</li></NavLink>
                     <li>Shop</li>
@@ -55,7 +55,7 @@ const Home = () => {
                     <FaUserCircle className='hidden md:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
                 </div>
 
-                <div className={`menu lg:w-15 md:w-20 sm:w-22 w-25 h-full      bg-white top-0 md:top-20 lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-20 md:h-110 lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+                <div className={`menu lg:w-15 md:w-20 sm:w-22 w-25 h-full      bg-white top-0 md:top-20 lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30 md:h-110 lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
                     <div className=' h-40'></div>
                     <ul>
                         <li onClick={showmenu}>shop</li>

@@ -7,6 +7,12 @@
 
 }
 
+.body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 .overflow-div::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: 20px;
@@ -14,16 +20,24 @@
 }
 
 
+@media screen and (max-width: 767px) {
+    .home {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
 
+    }
 
+    .home::before {
+        backdrop-filter: blur(5px);
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        position: fixed;
+        content: '';
+        z-index: 10;
 
-.home::before {
-    backdrop-filter: blur(5px);
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    position: absolute;
-    content: '';
+    }
 }
 
 
