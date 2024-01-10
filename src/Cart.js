@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import { Navigate, useNavigate, Outlet, redirect } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck, FaChevronLeft, FaUserCircle } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck, FaChevronLeft, FaUserCircle, FaArrowLeft } from 'react-icons/fa'
 import { useState } from 'react'
 const Cart = () => {
     const [changecart, setchangecart] = useState(false)
@@ -57,27 +57,26 @@ const Cart = () => {
     }
     return (
         <div className={`  ${showcountry ? 'background' : ''}  `}>
-            <header className='hidden fixed lg:flex justify-between items-center h-14 sm:h-20 md:h-20 lg:h-24 px-3 w-full top-0 bg-white z-20 shadow-lg'>
-                <h1 className='font-bold  sm:text-lg md:text-xl lg:text-2xl'>#Glamour Grove</h1>
+            <header className=' fixed flex justify-between items-center h-14 sm:h-20 md:h-20 lg:h-24 px-3 w-full top-0 bg-white z-20 shadow-lg'>
+                <h1 className='hidden lg:block text-2xl font-bold'>#Glamour Glove</h1>
+                <NavLink to='../' path='relative'> <FaArrowLeft className='font-bold  sm:text-lg md:text-xl lg:hidden' ></FaArrowLeft></NavLink>
                 <ul className='hidden lg:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl  '>
                     <NavLink to='/'>  <li>Home</li></NavLink>
-                    <li>Shop</li>
-                    <NavLink to='/cart/checkout'><li>Product</li></NavLink>
-                    <li>About</li>
+
+                    <NavLink to='/product'><li>Product</li></NavLink>
+                    <li>Contact</li>
+                    <li>About us</li>
                 </ul>
                 <div className='relative flex  gap-5 md:gap-8 lg:gap-12 xl:gap-14 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4  md:px-8 rounded-3xl '>
                     <NavLink to='/cart' className=''><FaShoppingCart className='md:text-xl lg:text-2xl text-white ' /></NavLink>
                     <FaBell className='text-xl lg:text-2xl text-white' />
-                    <FaBars className='md:hidden text-lg sm:text-xl ' />
+                    <FaBars className='lg:hidden text-lg sm:text-xl text-white ' />
                     <FaUserCircle className='hidden lg:block text-xl lg:text-2xl text-white' />
                 </div>
             </header>
 
-            <section className='    lg:pt-0 '>
-                <div className='flex items-center pl-3 py-3 sm:py-6 w-full gap-2  fixed z-20 bg-white top-0 lg:hidden shadow-lg   '>
-                    <FaChevronLeft />
-                    <NavLink to='/'><p className='text-lg'>back</p></NavLink>
-                </div>
+            <section className='    lg:pt-0  '>
+
                 <h1 className='text-center   font-bold text-3xl pt-16 sm:pt-28 sm:mb-8  mb-6 sm:text-green-400 md:text-blue-800 lg:text-purple-900 xl:text-orange-700  md:mb-8 lg:mt-9 lg:mb-10  xl:text-6xl md:text-4xl lg:text-5xl'>cart</h1>
                 <div className='flex sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
                     <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-yellow-800' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-yellow-800' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-yellow-800' : 'border-black'} w-full border mt-4`}></div></div>
@@ -100,9 +99,11 @@ const Cart = () => {
 
                     <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14'>
                         <NavLink to='/'>  <li>Home</li></NavLink>
-                        <li>Shop</li>
-                        <NavLink to='/cart/checkout'><li>Product</li></NavLink>
-                        <li>About</li>
+
+                        <NavLink to='/product'><li>Product</li></NavLink>
+                        <NavLink to='/contact'><li>Contact</li></NavLink>
+                        <NavLink to='/about'><li>About us</li></NavLink>
+
                     </ul>
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>

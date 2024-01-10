@@ -60,8 +60,8 @@ const Home = () => {
                 <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
                     <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-xl lg:text-2xl hover:scale-125' /></NavLink>
                     <FaBell className=' md:text-xl lg:text-2xl hover:scale-125' />
-                    <FaBars className='md:hidden text-lg sm:text-xl hover:scale-125 ' onClick={showmenu} />
-                    <FaUserCircle className='hidden md:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
+                    <FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' onClick={showmenu} />
+                    <FaUserCircle className='hidden lg:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
                 </div>
 
                 <div className={`menu lg:w-15 md:w-25 sm:w-25 w-140 h-screen      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
@@ -87,15 +87,17 @@ const Home = () => {
                     <button className='w-20 lg:w-14 bg-yellow-800 text-white' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
                 <div className='px-4 pt-12 sm:pt-14 lg:pt-16'>
-                    {showinput && <input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 border border-black outline-none mt-3 sm:mt-4' autoFocus />}
-                    <div className='flex justify-between mt-3 pb-3 border-b border-yellow-800  '>
+                    <div>
+                        {showinput && <input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 border border-black outline-none mt-3 sm:mt-4' autoFocus />}
+                    </div>
+                    <div className='flex justify-between py-3 border-b border-yellow-800 hover:cursor-pointer  '>
                         <p className='font-semibold sm:text-lg lg:text-xl  '>december collection</p>
-                        <input type="checkbox" />
+                        <input type="checkbox" className='hover:cursor-pointer  lg:w-4' name='collection' />
 
                     </div>
-                    <div className='flex justify-between mt-3 pb-3 border-b border-yellow-800  '>
+                    <div className='flex justify-between py-3 border-b border-yellow-800 hover:cursor-pointer  '>
                         <p className='font-semibold sm:text-lg lg:text-xl  '>september collection</p>
-                        <input type="checkbox" />
+                        <input type="checkbox" className='hover:cursor-pointer lg:w-4' name='collection' />
 
                     </div>
                 </div>
@@ -287,9 +289,10 @@ const Home = () => {
                     <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14'>
                         <NavLink to='/'>  <li>Home</li></NavLink>
 
-                        <NavLink to=''><li>Product</li></NavLink>
-                        <li>Contact</li>
-                        <li>About us</li>
+                        <NavLink to='product'><li>Product</li></NavLink>
+                        <NavLink to='contact'><li>Contact</li></NavLink>
+                        <NavLink to='about'><li>About us</li></NavLink>
+
                     </ul>
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
