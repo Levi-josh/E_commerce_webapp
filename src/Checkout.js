@@ -46,10 +46,10 @@ const Checkout = () => {
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label className=' text-gray-600 font-semibold lg:text-lg'>COUNTRY *</label>
-                            <div className='relative '>
+                            <div className=' '>
                                 <div className='flex w-full border border-black p-2 rounded-md justify-between items-center'>
 
-                                    <label className=' text-gray-600 shadow'>Country</label>
+                                    <label className=' text-gray-600 '>Country</label>
 
                                     <FaChevronDown onClick={selectcountry} />
 
