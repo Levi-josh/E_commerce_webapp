@@ -57,7 +57,7 @@ const Cart = () => {
     }
     return (
         <div className={`  ${showcountry ? 'background' : ''}  `}>
-            <header className='hidden fixed lg:flex justify-between items-center h-14 sm:h-20 md:h-20 lg:h-24 px-3 w-full m-0 bg-white z-20 shadow-lg'>
+            <header className='hidden fixed lg:flex justify-between items-center h-14 sm:h-20 md:h-20 lg:h-24 px-3 w-full top-0 bg-white z-20 shadow-lg'>
                 <h1 className='font-bold  sm:text-lg md:text-xl lg:text-2xl'>#Glamour Grove</h1>
                 <ul className='hidden lg:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl  '>
                     <NavLink to='/'>  <li>Home</li></NavLink>
@@ -73,7 +73,7 @@ const Cart = () => {
                 </div>
             </header>
 
-            <section className='    lg:pt-24'>
+            <section className='    lg:pt-0 '>
                 <div className='flex items-center pl-3 py-3 sm:py-6 w-full gap-2  fixed z-20 bg-white top-0 lg:hidden shadow-lg   '>
                     <FaChevronLeft />
                     <NavLink to='/'><p className='text-lg'>back</p></NavLink>

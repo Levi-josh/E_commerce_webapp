@@ -171,17 +171,42 @@ input[type="radio"] {
 }
 
 .background {
-    height: 100%;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 
 .background::before {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 5;
     content: "";
-
+    backdrop-filter: blur(3px);
     width: 100%;
     height: 100%;
     position: fixed;
-    display: none;
 
+}
+
+.p-home {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.p-home::before {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 11;
+    content: "";
+    backdrop-filter: blur(3px);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+
+
+}
+
+.popout {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

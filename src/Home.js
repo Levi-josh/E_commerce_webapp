@@ -19,6 +19,8 @@ import 'swiper/css/scrollbar';
 
 const Home = () => {
     const [menubar, setmenubar] = useState(false)
+    const [popout, setpopout] = useState(true)
+    const [popout2, setpopout2] = useState(false)
     const [array, setarray] = useState(0)
     function showmenu() {
         setmenubar(prev => !prev)
@@ -38,7 +40,7 @@ const Home = () => {
     )*/
 
     return (
-        <div className={`${menubar ? 'home' : ''}  `}>
+        <div className={`${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `}>
 
             <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className={`font-bold text-xl sm:text-2xl lg:text-2xl h ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
@@ -68,7 +70,28 @@ const Home = () => {
                     </ul>
                 </div>
             </header >
-
+            <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-20 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${popout2 ? 'block' : 'hidden'}  `}>
+                <div className=' h-full '>
+                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' /><p>china</p></div>
+                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
+                </div>
+            </div>
+            <div className={`fixed  w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100   ${popout ? 'block' : 'hidden'}  `}>
+                <div className='flex px-4 justify-between items-center pt-5 pb-1 border-b-2 border-yellow-800'>
+                    <h1 className='text-xl font-extrabold'>Cart</h1>
+                    <button className='w-20 lg:w-14 bg-yellow-800 text-white'>New cart</button>
+                </div>
+                <div className='px-4'>
+                    <input type='text' placeholder='create new cart' className='w-full  border border-black outline-none mt-3' />
+                    <div className='flex justify-between '>
+                        <p>december collection</p>
+                        <input type="checkbox" />
+                    </div>
+                </div>
+                <div className='fixed w-full bottom-0 bg-yellow-800 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-20 lg:h-16'>
+                    <button className='w-12 bg-white text-lg sm:text-xl lg:text-2xl font-bold rounded-lg h-8 lg:h-9 sm:h-10'>Create</button>
+                </div>
+            </div>
             <div className='         pt-24 sm:pt-36 md:pt-40 lg:pt-40   '>
                 <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
 
@@ -148,23 +171,23 @@ const Home = () => {
 
                 {/* <div >*/}
                 <div className='flex justify-between items-center'>
-                    <h1 className='font-bold my-2 ml-3 sm:ml-4 md:ml-5  text-lg sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
+                    <h1 className=' font-extrabold my-3 ml-3 sm:ml-4 md:ml-5  text-xl sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
                     <p className='hidden md:block lg:mt-10 md:mr-5 lg:mr-6 md:mt-8 lg:text-lg'>more products...</p>
                 </div>
                 <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div      '>
 
-                    <div className='min-w-20 p-2 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-800            '>
+                    <div className='min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-800            '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='rounded-lg ' />
-                        <div>
-                            <div className='flex text-yellow-800 '>
+                        <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
+                            <div className='flex text-yellow-800 sm:text-lg lg:text-xl '>
                                 <FaStar />
                                 <FaStar />
                                 <FaStar />
                                 <FaStar />
                                 <FaStarHalfAlt />
                             </div>
-                            <h1>Rolex watch</h1>
-                            <p>$400</p>
+                            <h1 className='text-lg font-bold lg:text-xl'>Rolex watch</h1>
+                            <p className='font-semibold md:text-lg lg:text-xl'>$400</p>
                             <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white'>Add to cart</button>
                         </div>
                     </div>
@@ -251,9 +274,10 @@ const Home = () => {
 
                     <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14'>
                         <NavLink to='/'>  <li>Home</li></NavLink>
-                        <li>Shop</li>
-                        <NavLink to='/cart/checkout'><li>Product</li></NavLink>
-                        <li>About</li>
+
+                        <NavLink to=''><li>Product</li></NavLink>
+                        <li>Contact</li>
+                        <li>About us</li>
                     </ul>
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>

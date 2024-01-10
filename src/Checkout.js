@@ -7,6 +7,12 @@ const Checkout = () => {
     const { nextcart2, showcountry, selectcountry } = useOutletContext()
     return (
         <div className='pt-6 sm:pt-8 pb-20 gap-5 sm:gap-7 lg:gap-0 flex flex-col lg:justify-between  lg:flex-row lg:items-start h-full'>
+            <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-10 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${showcountry ? 'block' : 'hidden'}  `}>
+                <div className=' h-full '>
+                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' /><p>china</p></div>
+                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
+                </div>
+            </div>
             <div className='flex flex-col gap-5 sm:gap-8 w-110 sm:w-130 md:w-140 m-auto lg:w-22 '>
                 <div className='flex flex-col gap-4 border border-black px-5 md:px-7 py-6 rounded-lg w-full'>
                     <h1 className='font-bold sm:text-lg lg:text-xl '>Contact Information</h1>
@@ -48,15 +54,12 @@ const Checkout = () => {
                                     <FaChevronDown onClick={selectcountry} />
 
                                 </div>
-                                <div className={`absolute w-full bg-white right-0 md:w-130  z-10 h-64 lg:h-72  rounded-lg border-t border-neutral-100 py-4  ${showcountry ? 'block' : 'hidden'}  `}>
-                                    <div className=' h-full '>
-                                        <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' /><p>china</p></div>
-                                        <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
-                                    </div>
-                                </div>
                             </div>
-
                         </div>
+
+
+
+
 
                         <div className='flex flex-col gap-2'>
                             <label className='font-semibold text-gray-600 lg:text-lg'>TOWN/CITY *</label>
