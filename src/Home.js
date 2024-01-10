@@ -19,8 +19,10 @@ import 'swiper/css/scrollbar';
 
 const Home = () => {
     const [menubar, setmenubar] = useState(false)
-    const [popout, setpopout] = useState(true)
+    const [popout, setpopout] = useState(false)
     const [popout2, setpopout2] = useState(false)
+    const [showinput, setshowinput] = useState(false)
+
     const [array, setarray] = useState(0)
     function showmenu() {
         setmenubar(prev => !prev)
@@ -38,6 +40,9 @@ const Home = () => {
         return () => clearInterval(interval)
     }, []
     )*/
+    function buyorder() {
+        setpopout(prev => !prev)
+    }
 
     return (
         <div className={`${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `}>
@@ -76,20 +81,27 @@ const Home = () => {
                     <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
                 </div>
             </div>
-            <div className={`fixed  w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100   ${popout ? 'block' : 'hidden'}  `}>
-                <div className='flex px-4 justify-between items-center pt-5 pb-1 border-b-2 border-yellow-800'>
-                    <h1 className='text-xl font-extrabold'>Cart</h1>
-                    <button className='w-20 lg:w-14 bg-yellow-800 text-white'>New cart</button>
+            <div className={`fixed  w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96   rounded-xl border-t border-neutral-100   ${popout ? 'block' : 'hidden'}  `}>
+                <div className='flex fixed rounded-t-xl top-0 bg-white w-full z-10 px-4 justify-between items-center py-3 sm:py-4 shadow-lg'>
+                    <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
+                    <button className='w-20 lg:w-14 bg-yellow-800 text-white' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
-                <div className='px-4'>
-                    <input type='text' placeholder='create new cart' className='w-full  border border-black outline-none mt-3' />
-                    <div className='flex justify-between '>
-                        <p>december collection</p>
+                <div className='px-4 pt-12 sm:pt-14 lg:pt-16'>
+                    {showinput && <input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 border border-black outline-none mt-3 sm:mt-4' autoFocus />}
+                    <div className='flex justify-between mt-3 pb-3 border-b border-yellow-800  '>
+                        <p className='font-semibold sm:text-lg lg:text-xl  '>december collection</p>
                         <input type="checkbox" />
+
+                    </div>
+                    <div className='flex justify-between mt-3 pb-3 border-b border-yellow-800  '>
+                        <p className='font-semibold sm:text-lg lg:text-xl  '>september collection</p>
+                        <input type="checkbox" />
+
                     </div>
                 </div>
-                <div className='fixed w-full bottom-0 bg-yellow-800 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-20 lg:h-16'>
-                    <button className='w-12 bg-white text-lg sm:text-xl lg:text-2xl font-bold rounded-lg h-8 lg:h-9 sm:h-10'>Create</button>
+                <div className='fixed w-full bottom-0 bg-yellow-800 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
+                    {showinput && <button className='w-12 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 '>Create</button>}
+                    {<button className='w-12 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
                 </div>
             </div>
             <div className='         pt-24 sm:pt-36 md:pt-40 lg:pt-40   '>
@@ -188,7 +200,7 @@ const Home = () => {
                             </div>
                             <h1 className='text-lg font-bold lg:text-xl'>Rolex watch</h1>
                             <p className='font-semibold md:text-lg lg:text-xl'>$400</p>
-                            <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white'>Add to cart</button>
+                            <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={buyorder}>Add to cart</button>
                         </div>
                     </div>
                     <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30    '>
