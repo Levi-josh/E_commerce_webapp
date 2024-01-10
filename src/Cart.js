@@ -57,7 +57,7 @@ const Cart = () => {
     }
     return (
         <div className={`  ${showcountry ? 'background' : ''}  `}>
-            <header className=' fixed flex justify-between items-center h-14 sm:h-20 md:h-20 lg:h-24 px-3 w-full top-0 bg-white z-20 shadow-lg'>
+            <header className=' fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-20 shadow-lg'>
                 <h1 className='hidden lg:block text-2xl font-bold'>#Glamour Glove</h1>
                 <NavLink to='../' path='relative'> <FaArrowLeft className='font-bold  sm:text-lg md:text-xl lg:hidden' ></FaArrowLeft></NavLink>
                 <ul className='hidden lg:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl  '>
@@ -77,7 +77,7 @@ const Cart = () => {
 
             <section className='    lg:pt-0  '>
 
-                <h1 className='text-center   font-bold text-3xl pt-16 sm:pt-28 sm:mb-8  mb-6 sm:text-green-400 md:text-blue-800 lg:text-purple-900 xl:text-orange-700  md:mb-8 lg:mt-9 lg:mb-10  xl:text-6xl md:text-4xl lg:text-5xl'>cart</h1>
+                <h1 className='text-center   font-bold text-3xl pt-24 sm:pt-28 sm:mb-8  mb-6 sm:text-green-400 md:text-blue-800 lg:text-purple-900 xl:text-orange-700  md:mb-8 lg:mt-9 lg:mb-10  xl:text-6xl md:text-4xl lg:text-5xl'>cart</h1>
                 <div className='flex sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
                     <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-yellow-800' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-yellow-800' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-yellow-800' : 'border-black'} w-full border mt-4`}></div></div>
                     <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${changecart2 ? ' bg-yellow-800 ' : 'bg-black  '} flex justify-center items-center`}>{changecart2 ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${changecart2 ? ' text-yellow-800' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${changecart2 ? 'border-yellow-800' : 'border-black'} w-full border mt-4`}></div></div>
