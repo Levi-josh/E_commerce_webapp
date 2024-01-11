@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
@@ -42,6 +42,7 @@ const Home = () => {
     )*/
     function buyorder() {
         setpopout(prev => !prev)
+        setshowinput(false)
     }
 
     return (
@@ -81,29 +82,30 @@ const Home = () => {
                     <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
                 </div>
             </div>
-            <div className={`fixed  w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96   rounded-xl border-t border-neutral-100   ${popout ? 'block' : 'hidden'}  `}>
-                <div className='flex fixed rounded-t-xl top-0 bg-white w-full z-10 px-4 justify-between items-center py-3 sm:py-4 shadow-lg'>
+            <div className={`fixed  w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-96 sm:h-96   rounded-xl border-t border-neutral-100   ${popout ? 'block' : 'hidden'}  `}>
+                <FaTimesCircle className='absolute right-0  text-yellow-800 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={buyorder} />
+                <div className='flex fixed rounded-t-xl top-0 bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
-                    <button className='w-20 lg:w-14 bg-yellow-800 text-white' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
+                    <button className='w-20  lg:w-14 bg-yellow-800 text-white' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
-                <div className='px-4 pt-12 sm:pt-14 lg:pt-16'>
+                <div className='px-4 pt-14 sm:pt-14 lg:pt-16'>
                     <div>
                         {showinput && <input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 border border-black outline-none mt-3 sm:mt-4' autoFocus />}
                     </div>
                     <div className='flex justify-between py-3 border-b border-yellow-800 hover:cursor-pointer  '>
                         <p className='font-semibold sm:text-lg lg:text-xl  '>december collection</p>
-                        <input type="checkbox" className='hover:cursor-pointer  lg:w-4' name='collection' />
+                        <input type="radio" className='hover:cursor-pointer  lg:w-4' name='collection' />
 
                     </div>
                     <div className='flex justify-between py-3 border-b border-yellow-800 hover:cursor-pointer  '>
                         <p className='font-semibold sm:text-lg lg:text-xl  '>september collection</p>
-                        <input type="checkbox" className='hover:cursor-pointer lg:w-4' name='collection' />
+                        <input type="radio" className='hover:cursor-pointer lg:w-4' name='collection' />
 
                     </div>
                 </div>
                 <div className='fixed w-full bottom-0 bg-yellow-800 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
-                    {showinput && <button className='w-12 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 '>Create</button>}
-                    {<button className='w-12 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
+                    {showinput && <button className='w-15 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 '>Create</button>}
+                    {<button className='md:w-12 w-14 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
                 </div>
             </div>
             <div className='         pt-24 sm:pt-36 md:pt-40 lg:pt-40   '>

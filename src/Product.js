@@ -12,7 +12,9 @@ function Product() {
         <div>
             <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className={`font-bold hidden lg:block lg:text-2xl  `}><span className=''>#</span>Glamour Grove</h1>
-                <NavLink to='../' relative='path'> <FaArrowLeft className='font-bold  sm:text-lg md:text-xl lg:hidden' ></FaArrowLeft></NavLink>
+
+                <NavLink to='../' relative='path'> <FaArrowLeft className='font-bold  text-xl md:text-2xl lg:hidden' ></FaArrowLeft></NavLink>
+                <input className='outline-none border rounded-xl w-130 sm:w-140 border-black lg:w-25 m-auto h-9 lg:hidden  ' placeholder='Search products' />
 
                 <ul className='hidden lg:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
@@ -40,18 +42,18 @@ function Product() {
                     </ul>
                 </div>
             </header >
-            <div className='pt-28 lg:pt-32   '>
+            <div className='sm:pt-28 pt-24 lg:pt-32   '>
 
-                <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white border-black justify-center mb-3 sticky top-20 sm:top-24 py-3 sm:py-4 lg:py-5'>
-                    <input className='outline-none border-2 w-130 border-yellow-800 lg:w-25 m-auto h-9 lg:h-11  ' />
-                    <div className='flex justify-center gap-3 lg:gap-4'>
-                        <button className='w-14 md:w-16 lg:w-13 bg-yellow-800 py-1 lg:py-2'>Clothes</button>
-                        <button className='w-14 md:w-16 lg:w-13 bg-yellow-800 py-1 lg:py-2'>Shoes</button>
-                        <button className='w-14 md:w-16 lg:w-13 bg-yellow-800 py-1 lg:py-2'>Glasses</button>
-                        <button className='w-14 md:w-16 lg:w-13 bg-yellow-800 py-1 lg:py-2'>Watches</button>
+                <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white shadow-md justify-center mb-3 sticky top-20 sm:top-24 lg:top-20 py-3 sm:py-4 lg:py-5'>
+                    <input className='outline-none hidden lg:block border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-2xl  ' placeholder='Search products' />
+                    <div className='flex justify-center gap-2 md:gap-12 lg:gap-4 sm:gap-10'>
+                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-yellow-800 py-1 lg:py-2 text-white '>Clothes</button>
+                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-yellow-800 py-1 lg:py-2 text-white'>Shoes</button>
+                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-yellow-800 py-1 lg:py-2 text-white'>Glasses</button>
+                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-yellow-800 py-1 lg:py-2 text-white '>Watches</button>
                     </div>
                 </div>
-                <div className=' grid grid-cols-2 md:grid-cols-3           '>
+                <div className=' grid grid-cols-2 md:grid-cols-3 mt-5 sm:mt-8 lg:mt-12          '>
 
                     <div className='min-w-30 p-2 md:p-3 lg:p-4  rounded-lg border-2 border-yellow-800            '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='rounded-lg ' />
