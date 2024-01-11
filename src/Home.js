@@ -65,13 +65,18 @@ const Home = () => {
                     <FaUserCircle className='hidden lg:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
                 </div>
 
-                <div className={`menu lg:w-15 md:w-25 sm:w-25 w-140 h-screen      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
-                    <div className=' h-40'></div>
-                    <ul>
-                        <li onClick={showmenu}>shop</li>
-                        <li>pending order</li>
-                        <li>new order</li>
-                        <li>history</li>
+                <div className={`menu lg:w-15 md:w-22 sm:w-25 w-140 h-screen      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+
+                    <div className=' h-130 bg-yellow-800 lg:rounded-t-xl'>
+                        <FaTimesCircle className='absolute left-2 top-2  text-white z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
+                    </div>
+                    <ul className='flex flex-col'>
+                        <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100'>Home</li>
+                        <li className='border-b py-3 pl-3 text-lg font-semibold'>Products</li>
+                        <li className='border-b py-3 pl-3 text-lg font-semibold'>Contact</li>
+                        <li className='border-b py-3 pl-3 text-lg font-semibold'>About</li>
+                        <li>Carts</li>
+                        <li>History</li>
                         <li>Favourite</li>
                     </ul>
                 </div>
