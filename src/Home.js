@@ -67,7 +67,7 @@ const Home = () => {
 
                 <div className={`menu lg:w-15 md:w-22 sm:w-25 w-140 h-screen      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
 
-                    <div className=' h-130 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl justify-center items-center'>
+                    <div className=' h-130 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl justify-center items-center'>
                         <FaTimesCircle className='absolute left-2 top-2  text-white z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
                         <div className='flex items-center flex-col'>
                             <h1 className='font-bold text-xl text-white sm:text-2xl'>Glamour Grove</h1>
