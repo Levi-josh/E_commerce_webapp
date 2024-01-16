@@ -66,23 +66,23 @@ const Home = () => {
                     <FaUserCircle className='hidden lg:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
                 </div>
 
-                <div className={`menu lg:w-15 md:w-22 sm:w-25 w-140 h-screen      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+                <div className={`menu lg:w-15 md:w-22 sm:w-25 w-135 h-screen      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
 
                     <div className=' h-130 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl justify-center items-center'>
-                        <FaTimesCircle className='absolute left-2 top-2  text-white z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
+                        <FaTimesCircle className='absolute left-2 top-2  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
                         <div className='flex items-center flex-col'>
-                            <h1 className='font-bold text-xl text-white sm:text-2xl'>Glamour Grove</h1>
-                            <div className='bg-white text-yellow-800 px-5 shadow-lg'><p>The best shopping app </p></div>
+                            <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 outline-2 outline outline-white   rounded-full  bg-no-repeat bg-cover bg-center    ' />
+                            <p className='text-white'>The best shopping app </p>
                         </div>
                     </div>
                     <ul className='flex flex-col lg:text-center'>
-                        <NavLink to={'/'}> <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden' onClick={() => { setmenubar(false) }}>Home</li></NavLink>
-                        <NavLink to={'/product'}><li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Products</li></NavLink>
-                        <NavLink to={'/contact'}> <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Contact</li></NavLink>
-                        <NavLink to={'/about'}> <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</li></NavLink>
-                        <li className='hover:bg-neutral-100 border-b py-3 pl-3 font-semibold text-lg hover:cursor-pointer' onClick={buyorder}>Carts</li>
-                        <li className='hover:bg-neutral-100 border-b py-3 pl-3 text-lg font-semibold hover:cursor-pointer'>History</li>
-                        <li className='hover:bg-neutral-100 border-b py-3 pl-3 text-lg font-semibold hover:cursor-pointer hover:transition-all '>Favourite</li>
+                        <NavLink to={'/'}> <li className='border-b py-2 pl-2  sm:py-3 sm:pl-3 sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden' onClick={() => { setmenubar(false) }}>Home</li></NavLink>
+                        <NavLink to={'/product'}><li className='border-b py-2 sm:py-3 pl-2 sm:pl-3 sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Products</li></NavLink>
+                        <NavLink to={'/contact'}> <li className='border-b py-2 pl-2 sm:py-3 sm:pl-3 sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Contact</li></NavLink>
+                        <NavLink to={'/about'}> <li className='border-b py-2 pl-2  sm:py-3 sm:pl-3 sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</li></NavLink>
+                        <li className='hover:bg-neutral-100 border-b py-2 pl-2 sm:py-3 sm:pl-3 font-semibold sm:text-lg hover:cursor-pointer' onClick={buyorder}>Carts</li>
+                        <li className='hover:bg-neutral-100 border-b py-2 pl-2 sm:py-3 sm:pl-3 sm:text-lg font-semibold hover:cursor-pointer'>History</li>
+                        <li className='hover:bg-neutral-100 border-b py-2 pl-2 sm:py-3 sm:pl-3 sm:text-lg font-semibold hover:cursor-pointer hover:transition-all '>Favourite</li>
                     </ul>
                 </div>
             </header >

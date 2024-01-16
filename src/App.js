@@ -12,12 +12,17 @@ import Demo from './Demo.js';
 import Contact from './Contact.js';
 import About from './About.js';
 import Product from './Product.js';
+import Login from './Login.js';
+import Logout from './Logout.js';
+import Missing from './Missing.js';
+import Error from './Error.js';
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
 
     <Route path='/' element={<ScrollToTOP />} >
-
+      <Route path='*' element={<Missing />} />
+      <Route errorElement={<Error />} />
       <Route index element={<Home />} />
       <Route path='/weblify' element={<Weblify />} />
       <Route path='/contact' element={<Contact />} />
@@ -32,6 +37,8 @@ function App() {
 
 
       </Route>
+      <Route path='/login' element={<Login />} />
+      <Route path='/logout' element={<Logout />} />
     </Route>
 
   ));
