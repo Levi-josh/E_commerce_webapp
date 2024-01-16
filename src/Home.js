@@ -43,6 +43,7 @@ const Home = () => {
     function buyorder() {
         setpopout(prev => !prev)
         setshowinput(false)
+        setmenubar(false)
     }
 
     return (
@@ -75,11 +76,11 @@ const Home = () => {
                         </div>
                     </div>
                     <ul className='flex flex-col lg:text-center'>
-                        <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Home</li>
-                        <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Products</li>
-                        <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Contact</li>
-                        <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</li>
-                        <li className='hover:bg-neutral-100 border-b py-3 pl-3 font-semibold text-lg hover:cursor-pointer'>Carts</li>
+                        <NavLink to={'/'}> <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden' onClick={() => { setmenubar(false) }}>Home</li></NavLink>
+                        <NavLink to={'/product'}><li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Products</li></NavLink>
+                        <NavLink to={'/contact'}> <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Contact</li></NavLink>
+                        <NavLink to={'/about'}> <li className='border-b py-3 pl-3 text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</li></NavLink>
+                        <li className='hover:bg-neutral-100 border-b py-3 pl-3 font-semibold text-lg hover:cursor-pointer' onClick={buyorder}>Carts</li>
                         <li className='hover:bg-neutral-100 border-b py-3 pl-3 text-lg font-semibold hover:cursor-pointer'>History</li>
                         <li className='hover:bg-neutral-100 border-b py-3 pl-3 text-lg font-semibold hover:cursor-pointer hover:transition-all '>Favourite</li>
                     </ul>
