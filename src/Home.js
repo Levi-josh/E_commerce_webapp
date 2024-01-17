@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
@@ -70,20 +70,23 @@ const Home = () => {
 
                     <div className=' h-135 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl justify-center items-center'>
                         <FaTimesCircle className='absolute left-2 top-2  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
-                        <div className='flex items-center flex-col'>
+                        <div className='flex items-center flex-col gap-2'>
                             <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-white   rounded-full  bg-no-repeat bg-cover bg-center    ' />
-                            <p className='text-white'>The best shopping app </p>
+                            <p className='text-white font-serif'>The best shopping app </p>
                         </div>
                     </div>
-                    <ul className='flex flex-col lg:text-center'>
-                        <NavLink to={'/'}> <li className='border-b py-2 pl-2  sm:py-3 sm:pl-3 sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden' onClick={() => { setmenubar(false) }}>Home</li></NavLink>
-                        <NavLink to={'/product'}><li className='border-b py-2 sm:py-3 pl-2 sm:pl-3 sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Products</li></NavLink>
-                        <NavLink to={'/contact'}> <li className='border-b py-2 pl-2 sm:py-3 sm:pl-3 sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>Contact</li></NavLink>
-                        <NavLink to={'/about'}> <li className='border-b py-2 pl-2  sm:py-3 sm:pl-3 sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</li></NavLink>
-                        <li className='hover:bg-neutral-100 border-b py-2 pl-2 sm:py-3 sm:pl-3 font-semibold sm:text-lg hover:cursor-pointer' onClick={buyorder}>Carts</li>
-                        <li className='hover:bg-neutral-100 border-b py-2 pl-2 sm:py-3 sm:pl-3 sm:text-lg font-semibold hover:cursor-pointer'>History</li>
-                        <li className='hover:bg-neutral-100 border-b py-2 pl-2 sm:py-3 sm:pl-3 sm:text-lg font-semibold hover:cursor-pointer hover:transition-all '>Favourite</li>
-                    </ul>
+                    <div className='flex flex-col lg:text-center lg:hidden'>
+                        <NavLink to={'/'} ><div className='flex hover:bg-neutral-100  gap-2 items-center pl-2 sm:pl-3'><FaHome /> <p className='    py-2 sm:py-3  sm:text-lg font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
+                        <NavLink to={'/product'}><div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'><FaShopify /><p className='  py-2 sm:py-3 sm:text-lg font-semibold  lg:hidden'>Products</p></div></NavLink>
+                        <NavLink to={'/contact'}><div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'> <FaPhone /><p className=' py-2  sm:py-3  sm:text-lg font-semibold  lg:hidden'>Contact</p></div></NavLink>
+                        <NavLink to={'/about'}> <div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'><FaExclamationCircle /><p className=' py-2  sm:py-3  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
+                    </div>
+                    <div className='flex flex-col  border-t lg:bg-inherit pl-2 sm:pl-3 lg:pl-0  bg-neutral-100'>
+                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b '> <FaShoppingCart /><p className=' py-2  sm:py-3  font-semibold sm:text-lg ' onClick={buyorder}>Carts</p></div>
+                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b'><FaHistory /> <p className=' py-2  sm:py-3  sm:text-lg font-semibold '>History</p></div>
+                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b'><FaStar />  <p className=' py-2 sm:py-3  sm:text-lg font-semibold  '>Favourite</p></div>
+                    </div>
+                    <NavLink to={'/login'}> <p className='absolute bottom-7 right-7 font-bold text-lg sm:text-xl text-yellow-800 '>Sign In</p></NavLink>
                 </div>
             </header >
             <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-20 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${popout2 ? 'block' : 'hidden'}  `}>
