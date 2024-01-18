@@ -1,7 +1,7 @@
 import React from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
@@ -28,6 +28,12 @@ const Home = () => {
         setmenubar(prev => !prev)
     }
 
+    const location = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location])
+
+    console.log(location)
     /*setInterval()
     useEffect(() => {
         const interval = setInterval(() => {
@@ -201,7 +207,7 @@ const Home = () => {
                 {/* <div >*/}
                 <div className='flex justify-between items-center'>
                     <h1 className=' font-extrabold my-3 ml-3 sm:ml-4 md:ml-5  text-xl sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
-                    <p className='hidden md:block lg:mt-10 md:mr-5 lg:mr-6 md:mt-8 lg:text-lg'>more products...</p>
+                    <NavLink to={'/product'}>   <div className='hidden font-semibold md:flex items-center lg:pt-10 md:pr-5 lg:pr-6 md:pt-8 md:text-lg '> <p className=' lg:text-lg'>more products</p><div><FaAngleRight className='' /></div></div></NavLink>
                 </div>
                 <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div      '>
 
@@ -243,7 +249,7 @@ const Home = () => {
 
 
                 </div>
-                <p className='md:hidden mt-2 ml-3 sm:ml-4  '>more products...</p>
+                <NavLink to={'/product'}><div className='flex md:hidden  pt-2 pl-3 sm:pl-4'><p className='font-semibold '>more products</p><FaAngleRight className='text-lg mt-1' /></div></NavLink>
                 {/*</div>*/}
                 {/*ends*/}
 
@@ -261,7 +267,7 @@ const Home = () => {
                         </p>
                         <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
                             <h1 className='w-30 border border-dashed  border-black mt-3 md:mt-0 lg:w-20 md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  '>30% OFF</h1>
-                            <button className='w-40 bg-yellow-800 mt-4 text-white md:w-24 md:mt-0 lg:w-20 md:h-10 md:rounded-lg font-semibold h-8 md:text-lg'>Shop Now</button>
+                            <NavLink to={'/product'}> <button className='w-40 bg-yellow-800 mt-4 text-white md:w-24 md:mt-0 lg:w-20 md:h-10 md:rounded-lg font-semibold h-8 md:text-lg'>Shop Now</button></NavLink>
                         </div>
                     </div>
                 </div>

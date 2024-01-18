@@ -6,12 +6,12 @@ import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPho
 const ScrollToTOP = () => {
 
 
-
-    const location = useLocation();
-    useEffect(() => {
-        window.scrollTo(0, 0);
-
-    }, [location]);
+    /*
+        const location = useLocation();
+        useEffect(() => {
+            window.scrollTo(0, 0);
+    
+        }, [location]);*/
 
     return (
 
