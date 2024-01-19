@@ -82,17 +82,17 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='flex flex-col lg:text-center lg:hidden'>
-                        <NavLink to={'/'} ><div className='flex hover:bg-neutral-100  gap-2 items-center pl-2 sm:pl-3'><FaHome /> <p className='    py-2 sm:py-3  sm:text-lg font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
-                        <NavLink to={'/product'}><div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'><FaShopify /><p className='  py-2 sm:py-3 sm:text-lg font-semibold  lg:hidden'>Products</p></div></NavLink>
-                        <NavLink to={'/contact'}><div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'> <FaPhone /><p className=' py-2  sm:py-3  sm:text-lg font-semibold  lg:hidden'>Contact</p></div></NavLink>
-                        <NavLink to={'/about'}> <div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'><FaExclamationCircle /><p className=' py-2  sm:py-3  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
+                        <NavLink to={'/'} ><div className='flex hover:bg-neutral-100  gap-2 items-center pl-2 sm:pl-3'><FaHome className='text-lg' /> <p className='    py-2 sm:py-3  sm:text-lg font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
+                        <NavLink to={'/product'}><div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'><FaShopify className='text-lg' /><p className='  py-2 sm:py-3 sm:text-lg font-semibold  lg:hidden'>Products</p></div></NavLink>
+                        <NavLink to={'/contact'}><div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'> <FaPhone className='text-lg' /><p className=' py-2  sm:py-3  sm:text-lg font-semibold  lg:hidden'>Contact</p></div></NavLink>
+                        <NavLink to={'/about'}> <div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'><FaExclamationCircle className='text-lg' /><p className=' py-2  sm:py-3  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
                     </div>
                     <div className='flex flex-col  border-t lg:bg-inherit pl-2 sm:pl-3 lg:pl-0  bg-neutral-100'>
-                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b '> <FaShoppingCart /><p className=' py-2  sm:py-3  font-semibold sm:text-lg ' onClick={buyorder}>Carts</p></div>
-                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b'><FaHistory /> <p className=' py-2  sm:py-3  sm:text-lg font-semibold '>History</p></div>
-                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b'><FaStar />  <p className=' py-2 sm:py-3  sm:text-lg font-semibold  '>Favourite</p></div>
+                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b '> <FaShoppingCart className='text-lg' /><p className=' py-2  sm:py-3  font-semibold sm:text-lg ' onClick={buyorder}>Carts</p></div>
+                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b'><FaHistory className='text-lg' /> <p className=' py-2  sm:py-3  sm:text-lg font-semibold '>History</p></div>
+                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b'><FaStar className='text-lg' />  <p className=' py-2 sm:py-3  sm:text-lg font-semibold  '>Favourite</p></div>
                     </div>
-                    <NavLink to={'/login'}> <p className='absolute bottom-7 right-7 font-bold text-lg sm:text-xl text-yellow-800 '>Sign In</p></NavLink>
+                    <NavLink to={'/login'}> <p className='fixed bottom-10  lg:bottom-7 right-7 font-bold text-lg sm:text-xl text-yellow-800 '>Sign In</p></NavLink>
                 </div>
             </header >
             <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-20 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${popout2 ? 'block' : 'hidden'}  `}>
@@ -142,8 +142,8 @@ const Home = () => {
                     }}
 
 
-                    onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log('slide change')} className='   w-120 sm:w-130 lg:w-140 m-auto   '>
+                    //onSwiper={(swiper) => console.log(swiper)}
+                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-130 lg:w-140 m-auto   '>
 
                     <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
                     </SwiperSlide>
@@ -162,7 +162,7 @@ const Home = () => {
 
 
                 </Swiper>
-            </div>
+            </div >
 
             <section>
                 <div className=' mt-10 lg:px-10 text-center mb-8 gap-3 sm:gap-4 flex-col flex md:flex-row md:gap-10 lg:w-130  md:m-auto md:w-130 md:justify-between  md:items-center md:mt-12 md:mb-12'>
