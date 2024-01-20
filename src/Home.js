@@ -76,8 +76,8 @@ const Home = () => {
                             <p className='text-white font-serif'>The best shopping app </p>
                         </div>
                     </div>
-                    <div className='flex flex-col lg:text-center lg:hidden'>
-                        <NavLink to={'/'} ><div className='flex hover:bg-neutral-100  gap-2 items-center pl-2 sm:pl-3'><FaHome className='text-lg' /> <p className='    py-2 sm:py-3  sm:text-lg font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
+                    <div className='flex flex-col lg:text-center pt-2 sm:pt-3 lg:hidden'>
+                        <NavLink to={'/'} ><div className='flex hover:bg-neutral-100  gap-4 items-center pl-3 sm:pl-3'><FaHome className='text-lg' /> <p className='    py-2 sm:py-3  text-lg font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
                         <NavLink to={'/product'}><div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'><FaShopify className='text-lg' /><p className='  py-2 sm:py-3 sm:text-lg font-semibold  lg:hidden'>Products</p></div></NavLink>
                         <NavLink to={'/contact'}><div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'> <FaPhone className='text-lg' /><p className=' py-2  sm:py-3  sm:text-lg font-semibold  lg:hidden'>Contact</p></div></NavLink>
                         <NavLink to={'/about'}> <div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'><FaExclamationCircle className='text-lg' /><p className=' py-2  sm:py-3  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
