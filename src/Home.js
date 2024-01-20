@@ -28,12 +28,7 @@ const Home = () => {
         setmenubar(prev => !prev)
     }
 
-    const location = useLocation();
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [location])
 
-    console.log(location)
     /*setInterval()
     useEffect(() => {
         const interval = setInterval(() => {
@@ -66,7 +61,7 @@ const Home = () => {
 
                 </ul>
                 <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
-                    <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-xl lg:text-2xl hover:scale-125' /></NavLink>
+                    <NavLink to='/cart/:id' className=' '><FaShoppingCart className='md:text-xl lg:text-2xl hover:scale-125' /></NavLink>
                     <FaBell className=' md:text-xl lg:text-2xl hover:scale-125' />
                     <FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' onClick={showmenu} />
                     <FaUserCircle className='hidden lg:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
@@ -112,12 +107,12 @@ const Home = () => {
                         {showinput && <input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 border border-black outline-none mt-3 sm:mt-4' autoFocus />}
                     </div>
                     <div className='flex justify-between py-3 border-b border-yellow-800 hover:cursor-pointer  '>
-                        <p className='font-semibold sm:text-lg lg:text-xl  '>december collection</p>
+                        <NavLink to={'/cart/:id'}>  <p className='font-semibold sm:text-lg lg:text-xl  '>december collection</p></NavLink>
                         <input type="radio" className='hover:cursor-pointer  lg:w-4' name='collection' />
 
                     </div>
                     <div className='flex justify-between py-3 border-b border-yellow-800 hover:cursor-pointer  '>
-                        <p className='font-semibold sm:text-lg lg:text-xl  '>september collection</p>
+                        <NavLink to={'/cart/:id'}><p className='font-semibold sm:text-lg lg:text-xl  '>september collection</p></NavLink>
                         <input type="radio" className='hover:cursor-pointer lg:w-4' name='collection' />
 
                     </div>
@@ -207,7 +202,7 @@ const Home = () => {
                 {/* <div >*/}
                 <div className='flex justify-between items-center'>
                     <h1 className=' font-extrabold my-3 ml-3 sm:ml-4 md:ml-5  text-xl sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
-                    <NavLink to={'/product'}>   <div className='hidden font-semibold md:flex items-center lg:pt-10 md:pr-5 lg:pr-6 md:pt-8 md:text-lg '> <p className=' lg:text-lg'>more products</p><div><FaAngleRight className='' /></div></div></NavLink>
+                    <NavLink to={'/product'}>   <div className='hidden font-semibold md:flex items-center lg:pt-10 md:pr-5 lg:pr-6 md:pt-8 md:text-lg '> <p className=' lg:text-lg'>more products</p><div className='pt-1'><FaAngleRight className='text-lg' /></div></div></NavLink>
                 </div>
                 <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div      '>
 
@@ -249,7 +244,7 @@ const Home = () => {
 
 
                 </div>
-                <NavLink to={'/product'}><div className='flex md:hidden  pt-2 pl-3 sm:pl-4'><p className='font-semibold '>more products</p><FaAngleRight className='text-lg mt-1' /></div></NavLink>
+                <NavLink to={'/product'}><div className='flex md:hidden  pt-2 pl-3 sm:pl-4'><p className='font-semibold '>more products</p><div className='pt-1'><FaAngleRight className='text-lg ' /></div></div></NavLink>
                 {/*</div>*/}
                 {/*ends*/}
 
@@ -266,8 +261,8 @@ const Home = () => {
 
                         </p>
                         <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
-                            <h1 className='w-30 border border-dashed  border-black mt-3 md:mt-0 lg:w-20 md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  '>30% OFF</h1>
-                            <NavLink to={'/product'}> <button className='w-40 bg-yellow-800 mt-4 text-white md:w-24 md:mt-0 lg:w-20 md:h-10 md:rounded-lg font-semibold h-8 md:text-lg'>Shop Now</button></NavLink>
+                            <h1 className='w-30 border border-dashed  border-black mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  '>30% OFF</h1>
+                            <NavLink to={'/product'}> <button className='w-40 bg-yellow-800 mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 md:text-lg'>Shop Now</button></NavLink>
                         </div>
                     </div>
                 </div>

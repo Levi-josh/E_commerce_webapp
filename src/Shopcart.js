@@ -19,24 +19,24 @@ const Shopcart = () => {
                         </div>
     </ul>*/}
 
-                    <div className='flex gap-5 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8 lg:mt-0  sm:m-auto pb-5 lg:flex   '>
+                    <div className='flex gap-2 sm:gap-5 lg:gap-0 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 sm:w-52  ' />
-                        <div className='grid grid-cols-2 grid-rows-4 gap-x-10  '>
-                            <h1>product:</h1>
-                            <p>watch</p>
-                            <h1>Price:</h1>
-                            <p>$100</p>
-                            <h1>Subtotal:</h1>
-                            <p>$300</p>
-
-
-                            <div className='w-full h-8 border border-black text-center'>-3+</div>
-
-
-
+                        <div className='flex flex-col justify-between'>
+                            <div className='grid grid-cols-2 grid-rows-4 gap-x-10  '>
+                                <h1 className='font-bold'>Watch</h1>
+                                <div className=' pt-1 '><FaTimes /></div>
+                                <h1 className='font-bold'>Price:</h1>
+                                <p>$100</p>
+                                <h1 className='font-bold'>Subtotal:</h1>
+                                <p>$300</p>
+                            </div>
+                            <div className='w-full h-8 border flex justify-between'>
+                                <button className='bg-yellow-800 font-bold text-lg text-white w-20'>-</button>
+                                <div>1</div>
+                                <button className='w-20 bg-yellow-800 font-bold text-white text-lg'>+</button>
+                            </div>
 
                         </div>
-
                         {/*<div className='hidden lg:flex  '>
                             <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 hidden lg:block ' />
                             <div >

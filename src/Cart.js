@@ -33,7 +33,7 @@ const Cart = () => {
             secondref.current.style.translate = '0px'
             thirdref.current.style.translate = '0px'
         }
-        navigate('/cart/checkout')
+        navigate('/cart/:id/checkout')
     }
     function nextcart2() {
         setchangecart2(prev => !prev)
@@ -49,11 +49,11 @@ const Cart = () => {
             thirdref.current.style.translate = '0px'
         }
 
-        navigate('/cart/complete')
+        navigate('/cart/:id/complete')
     }
     function nextcart3() {
         setchangecart3(prev => !prev)
-        navigate('/cart/complete')
+        navigate('/cart/:id/complete')
     }
     return (
         <div className={`  ${showcountry ? 'background' : ''}  `}>
