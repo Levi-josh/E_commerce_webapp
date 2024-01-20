@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink, useLocation } from 'react-router-dom'
@@ -28,6 +28,7 @@ const Home = () => {
         setmenubar(prev => !prev)
     }
 
+    const b = useRef()
 
     /*setInterval()
     useEffect(() => {
@@ -48,7 +49,7 @@ const Home = () => {
     }
 
     return (
-        <div className={`${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `}>
+        <div className={`${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `} >
 
             <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className={`font-bold text-xl sm:text-2xl lg:text-2xl h ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
@@ -67,7 +68,7 @@ const Home = () => {
                     <FaUserCircle className='hidden lg:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
                 </div>
 
-                <div className={`menu lg:w-15 md:w-22 sm:w-25 w-135 h-screen      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+                <div className={`menu lg:w-15 md:w-22 sm:w-25 w-135 h-screen      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
 
                     <div className=' h-135 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl justify-center items-center'>
                         <FaTimesCircle className='absolute left-2 top-2  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
@@ -76,18 +77,22 @@ const Home = () => {
                             <p className='text-white font-serif'>The best shopping app </p>
                         </div>
                     </div>
-                    <div className='flex flex-col lg:text-center pt-2 sm:pt-3 lg:hidden'>
-                        <NavLink to={'/'} ><div className='flex hover:bg-neutral-100  gap-4 items-center pl-3 sm:pl-3'><FaHome className='text-lg' /> <p className='    py-2 sm:py-3  text-lg font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
-                        <NavLink to={'/product'}><div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'><FaShopify className='text-lg' /><p className='  py-2 sm:py-3 sm:text-lg font-semibold  lg:hidden'>Products</p></div></NavLink>
-                        <NavLink to={'/contact'}><div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'> <FaPhone className='text-lg' /><p className=' py-2  sm:py-3  sm:text-lg font-semibold  lg:hidden'>Contact</p></div></NavLink>
-                        <NavLink to={'/about'}> <div className='flex hover:bg-neutral-100 gap-2 items-center pl-2 sm:pl-3'><FaExclamationCircle className='text-lg' /><p className=' py-2  sm:py-3  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
+                    <div className='flex flex-col justify-between h-180 md:h-175 lg:h-170   '>
+                        <div>
+                            <div className='flex flex-col lg:text-center pt-2 sm:pt-3 lg:hidden'>
+                                <NavLink to={'/'} ><div className='flex hover:lg:bg-neutral-100  gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaHome className='text-lg sm:text-xl md:text-2xl' /> <p className='    py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
+                                <NavLink to={'/product'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaShopify className='text-lg sm:text-xl md:text-2xl' /><p className='  py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden'>Products</p></div></NavLink>
+                                <NavLink to={'/contact'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3 sm:py-4  sm:text-lg md:text-xl font-semibold  lg:hidden'>Contact</p></div></NavLink>
+                                <NavLink to={'/about'}> <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
+                            </div>
+                            <div className='flex flex-col  border-t lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  bg-neutral-100'>
+                                <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-100 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b '> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={buyorder}>Carts</p></div>
+                                <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-100 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b'><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div>
+                                <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-100 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b'><FaStar className='text-lg sm:text-xl md:text-2xl' />  <p className=' py-3 sm:py-4  sm:text-lg md:text-xl font-semibold  '>Favourite</p></div>
+                            </div>
+                        </div>
+                        <NavLink to={'/login'}> <p className='font-bold text-lg sm:text-xl text-yellow-800 text-right mb-7 mr-7 '>Sign In</p></NavLink>
                     </div>
-                    <div className='flex flex-col  border-t lg:bg-inherit pl-2 sm:pl-3 lg:pl-0  bg-neutral-100'>
-                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b '> <FaShoppingCart className='text-lg' /><p className=' py-2  sm:py-3  font-semibold sm:text-lg ' onClick={buyorder}>Carts</p></div>
-                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b'><FaHistory className='text-lg' /> <p className=' py-2  sm:py-3  sm:text-lg font-semibold '>History</p></div>
-                        <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:bg-neutral-100 gap-2 lg:cursor-pointer lg:border-b'><FaStar className='text-lg' />  <p className=' py-2 sm:py-3  sm:text-lg font-semibold  '>Favourite</p></div>
-                    </div>
-                    <NavLink to={'/login'}> <p className='fixed bottom-10  lg:bottom-7 right-7 font-bold text-lg sm:text-xl text-yellow-800 '>Sign In</p></NavLink>
                 </div>
             </header >
             <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-20 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${popout2 ? 'block' : 'hidden'}  `}>
@@ -166,29 +171,29 @@ const Home = () => {
                     </p>
                 </div>
                 <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
-                    <div className='md:w-full blurr3'>
-                        <div className='absolute bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
+                    <div className='md:w-full blurr3' onScroll={() => { b.current.style.top == '20px' ? console.log('hi') : console.log('hi') }} ref={b}>
+                        <div className='absolute hidden  bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
                             <h1 className='font-bold md:text-lg lg:text-xl'>clothes</h1>
                             <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
                         </div>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full sm:w-96 xl:h-100 sm:h-56 object-cover' />
                     </div>
                     <div className='md:w-full blurr2'>
-                        <div className='absolute bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
+                        <div className='absolute hidden bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
                             <h1 className='font-bold md:text-lg lg:text-xl'>Glasses</h1>
                             <p className=' hover:cursor-pointer md:text-lg '>see more...</p>
                         </div>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 object-cover' />
                     </div>
                     <div className='md:w-full blurr1 '>
-                        <div className='absolute bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
+                        <div className='absolute hidden bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
                             <h1 className='font-bold md:text-lg lg:text-xl'>Watches</h1>
                             <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
                         </div>
                         <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 object-cover' />
                     </div>
                     <div className='md:w-full blurr'>
-                        <div className='absolute bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
+                        <div className='absolute hidden bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
                             <h1 className='font-bold md:text-lg lg:text-xl'>Shoes</h1>
                             <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
                         </div>
@@ -244,7 +249,7 @@ const Home = () => {
 
 
                 </div>
-                <NavLink to={'/product'}><div className='flex md:hidden  pt-2 pl-3 sm:pl-4'><p className='font-semibold '>more products</p><div className='pt-1'><FaAngleRight className='text-lg ' /></div></div></NavLink>
+                <NavLink to={'/product'}><div className='flex md:hidden  pt-4 pl-3 sm:pl-4 '><p className='font-semibold  '>more products</p><div className='pt-1'><FaAngleRight className='text-lg ' /></div></div></NavLink>
                 {/*</div>*/}
                 {/*ends*/}
 

@@ -15,7 +15,7 @@ const ScrollToTOP = () => {
 
     return (
 
-        <div>
+        <div onScroll={() => { console.log('hi') }}>
 
 
             <Outlet />

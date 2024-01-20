@@ -14,12 +14,12 @@ function Product() {
     return (
         <div className={` ${popout ? 'p-home' : ''}`}>
             <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
-                <h1 className={`font-bold hidden lg:block lg:text-2xl  `}><span className=''>#</span>Glamour Grove</h1>
+                <h1 className={`font-bold hidden  lg:text-2xl  `}><span className=''>#</span>Glamour Grove</h1>
 
-                <NavLink to='../' relative='path'> <FaArrowLeft className='font-bold  text-xl md:text-2xl lg:hidden' ></FaArrowLeft></NavLink>
-                <input className='outline-none border rounded-xl w-130 sm:w-140 border-black lg:w-25 m-auto h-9 lg:hidden pl-2 placeholder:pl-2 ' placeholder='Search products' />
+                <NavLink to='../' relative='path'> <FaArrowLeft className='font-bold  text-xl md:text-2xl ' ></FaArrowLeft></NavLink>
+                <input className='outline-none border rounded-xl w-130 sm:w-140 border-black lg:w-25 m-auto h-9  pl-2 placeholder:pl-2 ' placeholder='Search products' />
 
-                <ul className='hidden lg:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
+                <ul className='hidden  gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
                     <NavLink to='/product'><li className='font-bold'>Product</li></NavLink>
@@ -27,7 +27,7 @@ function Product() {
                     <NavLink to='/about'><li>About us</li></NavLink>
 
                 </ul>
-                <div className='hidden lg:flex gap-5 sm:gap-7 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
+                <div className='hidden  gap-5 sm:gap-7 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
                     <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-xl lg:text-2xl hover:scale-125' /></NavLink>
                     <FaBell className=' md:text-xl lg:text-2xl hover:scale-125' />
                     <FaBars className='md:hidden text-lg sm:text-xl hover:scale-125 ' />
@@ -82,7 +82,7 @@ function Product() {
             <div className='sm:pt-28 pt-24 lg:pt-32   '>
 
                 <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white border-b  justify-center mb-3 sticky top-20 sm:top-24 lg:top-20 py-3 sm:py-4 lg:py-5'>
-                    <input className='outline-none hidden lg:block border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-2xl pl-4 placeholder:pl-4  ' placeholder='Search products' />
+                    <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-2xl pl-4 placeholder:pl-4  ' placeholder='Search products' />
                     <div className='flex justify-center gap-2 md:gap-12 lg:gap-4 sm:gap-10'>
                         <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-neutral-100  focus:bg-yellow-800 focus:text-white focus:border-yellow-800 '>Clothes</button>
                         <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white  border py-1 lg:py-2 text-black hover:bg-neutral-100 focus:bg-yellow-800 focus:text-white focus:border-yellow-800'>Shoes</button>
