@@ -91,7 +91,7 @@ const Home = () => {
                                 <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-100 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b'><FaStar className='text-lg sm:text-xl md:text-2xl' />  <p className=' py-3 sm:py-4  sm:text-lg md:text-xl font-semibold  '>Favourite</p></div>
                             </div>
                         </div>
-                        <NavLink to={'/login'}> <p className='font-bold text-lg sm:text-xl text-yellow-800 text-right mb-7 mr-7 '>Sign In</p></NavLink>
+                        <NavLink to={'/login'}> <p className='font-bold text-lg sm:text-xl text-yellow-800 text-right mb-10 lg:mb-7 mr-7 '>Sign In</p></NavLink>
                     </div>
                 </div>
             </header >
