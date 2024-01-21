@@ -13,7 +13,7 @@ function Product() {
     }
     return (
         <div className={` ${popout ? 'p-home' : ''}`}>
-            <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
+            <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 sm:px-5 lg:px-7 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className={`font-bold hidden  lg:text-2xl  `}><span className=''>#</span>Glamour Grove</h1>
 
                 <NavLink to='../' relative='path'> <FaArrowLeft className='font-bold  text-xl md:text-2xl ' ></FaArrowLeft></NavLink>
@@ -90,9 +90,9 @@ function Product() {
                         <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-neutral-100 focus:bg-yellow-800 focus:text-white focus:border-yellow-800 '>Watches</button>
                     </div>
                 </div>
-                <div className=' grid grid-cols-2 md:grid-cols-3 mt-5 sm:mt-8 lg:mt-12          '>
+                <div className='grid grid-cols-2 md:grid-cols-3 mt-5 sm:mt-8 lg:mt-12           '>
 
-                    <div className='min-w-30 p-2 md:p-3 lg:p-4  rounded-lg border-2 border-yellow-800            '>
+                    <div className='w-20 p-2 md:p-3 lg:p-4  rounded-lg border-2 shadow-lg           '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='rounded-lg ' />
                         <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
                             <div className='flex text-yellow-800 sm:text-lg lg:text-xl '>
@@ -107,11 +107,11 @@ function Product() {
                             <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={buyorder}>Add to cart</button>
                         </div>
                     </div>
-                    <div className='min-w-30    '>
+                    <div className='w-20    '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>
-                    <div className='min-w-30     '>
+                    <div className='w-20     '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
 
                     </div>

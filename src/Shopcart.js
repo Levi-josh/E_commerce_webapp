@@ -21,8 +21,8 @@ const Shopcart = () => {
 
                     <div className='flex gap-2 sm:gap-5 lg:gap-0 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   '>
                         <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 sm:w-52  ' />
-                        <div className='flex flex-col '>
-                            <div className='grid grid-cols-2 grid-rows-4 gap-x-10  '>
+                        <div className='flex flex-col justify-between '>
+                            <div className='grid grid-cols-2 grid-rows-4   gap-x-10  '>
                                 <h1 className='font-bold'>Watch</h1>
                                 <div className=' pt-1 '><FaTimes /></div>
                                 <h1 className='font-bold'>Price:</h1>
