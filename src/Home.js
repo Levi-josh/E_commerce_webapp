@@ -49,7 +49,7 @@ const Home = () => {
     }
 
     return (
-        <div className={`${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `} >
+        <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `} >
 
             <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className={`font-bold text-xl sm:text-2xl lg:text-2xl h ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
@@ -68,7 +68,7 @@ const Home = () => {
                     <FaUserCircle className='hidden lg:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
                 </div>
 
-                <div className={`menu lg:w-15 md:w-22 sm:w-25 w-135 h-full      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+                <div className={`menu lg:w-15 fixed md:w-22 sm:w-25 w-135 h-screen    bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
 
                     <div className=' h-135 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl justify-center items-center'>
                         <FaTimesCircle className='absolute left-2 top-2  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
