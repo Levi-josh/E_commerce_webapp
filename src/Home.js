@@ -74,16 +74,16 @@ const Home = () => {
                     <FaUserCircle className='hidden lg:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
                 </div>
 
-                <div className={`menu lg:w-15 fixed md:w-22 sm:w-25 w-135 max-h-full    bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+                <div className={`menu lg:w-15 fixed md:w-22 sm:w-25 w-135 h-full    bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
 
-                    <div className=' h-135 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl justify-center items-center'>
+                    <div className=' h-190 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl justify-center items-center'>
                         <FaTimesCircle className='absolute left-2 top-2  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
                         <div className='flex items-center flex-col gap-2'>
                             <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-white   rounded-full  bg-no-repeat bg-cover bg-center    ' />
                             <p className='text-white font-serif'>The best shopping app </p>
                         </div>
                     </div>
-                    <div className='flex flex-col lg:justify-between h-180 md:h-175 lg:h-170   '>
+                    <div className='flex flex-col h-200  justify-between   lg:h-170   '>
                         <div>
                             <div className='flex flex-col lg:text-center pt-2 sm:pt-3 lg:hidden'>
                                 <NavLink to={'/'} ><div className='flex hover:lg:bg-neutral-100  gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaHome className='text-lg sm:text-xl md:text-2xl' /> <p className='    py-2 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
@@ -97,8 +97,8 @@ const Home = () => {
                                 <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-100 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b'><FaStar className='text-lg sm:text-xl md:text-2xl' />  <p className=' py-2 sm:py-4  sm:text-lg md:text-xl font-semibold  '>Favourite</p></div>
                             </div>
                         </div>
-                        <div className='h-full flex justify-end mt-10 sm:mt-12 lg:mt-0 lg:items-center '>
-                            <NavLink to={'/login'}> <p className='font-bold   sm:text-xl text-yellow-800 text-right  lg:mb-7 mr-7 '>Sign In</p></NavLink>
+                        <div className=' flex justify-end  lg:mt-0 lg:items-center '>
+                            <NavLink to={'/login'}> <p className='font-bold   sm:text-xl text-yellow-800 text-right  mb-7 mr-7 '>Sign In</p></NavLink>
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@ const Home = () => {
                 <FaTimesCircle className='absolute right-0  text-yellow-800 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={buyorder} />
                 <div className='flex fixed rounded-t-xl top-0 bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
-                    <button className='w-20 p-1  lg:w-14 bg-yellow-800 text-white font-semibold' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
+                    <button className='w-10 p-1  lg:w-14 bg-yellow-800 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
                 <div className='px-4 pt-16 sm:pt-16 lg:pt-16'>
                     <div>
