@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useState } from 'react'
@@ -58,20 +58,21 @@ const Home = () => {
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `} >
 
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
-                <h1 className={`font-bold text-xl sm:text-2xl lg:text-2xl h ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
-                <ul className='hidden lg:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
-                    <NavLink to='/'>  <li className='font-bold'>Home</li></NavLink>
+                <h1 className={`font-bold text-xl sm:text-2xl  xl:text-3xl h ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
+                <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
+                    <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
                     <NavLink to='/product'><li>Product</li></NavLink>
                     <NavLink to='/contact'><li>contact</li></NavLink>
                     <NavLink to='/about'><li>About us</li></NavLink>
 
                 </ul>
-                <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
-                    <NavLink to='/cart/:id' className=' '><FaShoppingCart className='md:text-xl lg:text-2xl hover:scale-125' /></NavLink>
-                    <FaBell className=' md:text-xl lg:text-2xl hover:scale-125' />
+                <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-8 xl:gap-12 items-center    '>
+                    <div className='text-3xl bg-yellow-800  flex justify-center py-1 px-6 text-white rounded-full'><FaBell className=' ' /></div>
+                    <NavLink to='/cart/:id' className=' '><div className='flex items-center text-lg  text-white bg-yellow-800 py-1 px-3 rounded-full'><p>Cart</p><FaShoppingCart className='' /></div></NavLink>
+
                     <FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' onClick={showmenu} />
-                    <FaUserCircle className='hidden lg:block text-xl lg:text-2xl hover:scale-125' onClick={showmenu} />
+                    <div className='lg:flex items-center  bg-yellow-800 text-lg py-1 px-3 text-white rounded-full hidden '><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' onClick={showmenu} /></div>
                 </div>
 
                 <div className={`menu lg:w-15 fixed md:w-22 sm:w-25 w-135 h-full    bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
