@@ -3,7 +3,10 @@ import React, { useRef } from 'react'
 import { Navigate, useNavigate, Outlet, redirect } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck, FaChevronLeft, FaUserCircle, FaArrowLeft } from 'react-icons/fa'
+//import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown } from 'react-icons/fa'
+
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaExclamationCircle, FaLock, FaHistory, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck, FaChevronLeft, FaUserCircle, FaArrowLeft, FaShopify, FaStarHalf, FaStarHalfAlt, FaTimesCircle, FaHome, FaShoppingBag, FaStar, FaShoppingBasket, FaArrowRight, FaAngleLeft, FaArrowDown, FaAngleDown } from 'react-icons/fa'
+
 import { useState } from 'react'
 const Cart = () => {
     const [changecart, setchangecart] = useState(false)
@@ -14,6 +17,38 @@ const Cart = () => {
     const thirdref = useRef()
     const navigate = useNavigate()
     const [showcountry, setcountry] = useState(false)
+
+    const [menubar, setmenubar] = useState(false)
+    const [popout, setpopout] = useState(false)
+    const [popout2, setpopout2] = useState(false)
+    const [showinput, setshowinput] = useState(false)
+
+    const [array, setarray] = useState(0)
+    function showmenu() {
+        setmenubar(prev => !prev)
+    }
+
+    const b = useRef()
+
+
+
+    /*setInterval()
+    useEffect(() => {
+        const interval = setInterval(() => {
+ 
+            setarray(prev => prev + 1)
+ 
+ 
+ 
+        }, 2000)
+        return () => clearInterval(interval)
+    }, []
+    )*/
+    function buyorder() {
+        setpopout(prev => !prev)
+        setshowinput(false)
+        setmenubar(false)
+    }
 
     function selectcountry() {
         setcountry(prev => !prev)
@@ -56,24 +91,87 @@ const Cart = () => {
         navigate('/cart/:id/complete')
     }
     return (
-        <div className={`  ${showcountry ? 'background' : ''}  `}>
-            <header className=' fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-20 shadow-lg'>
-                <h1 className='hidden lg:block text-2xl font-bold'>#Glamour Glove</h1>
-                <NavLink to='../' path='relative'> <FaArrowLeft className='font-bold  sm:text-lg md:text-xl lg:hidden' ></FaArrowLeft></NavLink>
-                <ul className='hidden lg:flex gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl  '>
-                    <NavLink to='/'>  <li>Home</li></NavLink>
+        <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `}>
+            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
+                <h1 className={`font-bold text-xl sm:text-2xl hidden  lg:block xl:text-3xl h ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
+                <FaAngleLeft className='lg:hidden' />
+                <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
+                    <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
                     <NavLink to='/product'><li>Product</li></NavLink>
-                    <li>Contact</li>
-                    <li>About us</li>
+                    <NavLink to='/contact'><li>contact</li></NavLink>
+                    <NavLink to='/about'><li>About us</li></NavLink>
+
                 </ul>
-                <div className='relative hidden lg:flex  gap-5 md:gap-8 lg:gap-12 xl:gap-14 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4  md:px-8 rounded-3xl '>
-                    <NavLink to='/cart' className=''><FaShoppingCart className='md:text-xl lg:text-2xl text-white ' /></NavLink>
-                    <FaBell className='text-xl lg:text-2xl text-white' />
-                    <FaBars className='lg:hidden text-lg sm:text-xl text-white ' />
-                    <FaUserCircle className='hidden lg:block text-xl lg:text-2xl text-white' />
+                <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-8 xl:gap-12 items-center    '>
+                    <div className='text-3xl  flex justify-center py-1 px-6 text-black rounded-full'><FaBell className=' ' /></div>
+                    <NavLink to='/cart/:id' className=' '><div className='flex items-center text-lg  text-white bg-yellow-800 py-1 px-3 rounded-full'><p>Cart</p><FaShoppingCart className='' /></div></NavLink>
+
+                    <FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' onClick={showmenu} />
+                    <div className='lg:flex items-center   text-lg py-1 px-3 text-black rounded-full hidden '><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' onClick={showmenu} /></div>
                 </div>
-            </header>
+            </header >
+            <div className={`menu lg:w-15 fixed md:w-22 sm:w-25 w-135 h-full    bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
+
+                <div className=' h-190 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl justify-center items-center'>
+                    <FaTimesCircle className='absolute left-2 top-2  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
+                    <div className='flex items-center flex-col gap-2'>
+                        <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-white   rounded-full  bg-no-repeat bg-cover bg-center    ' />
+                        <p className='text-white font-serif'>The best shopping app </p>
+                    </div>
+                </div>
+                <div className='flex flex-col h-200  justify-between   lg:h-170   '>
+                    <div>
+                        <div className='flex flex-col lg:text-center pt-2 sm:pt-3 lg:hidden'>
+                            <NavLink to={'/'} ><div className='flex hover:lg:bg-neutral-100  gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaHome className='text-lg sm:text-xl md:text-2xl' /> <p className='    py-2 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
+                            <NavLink to={'/product'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaShopify className='text-lg sm:text-xl md:text-2xl' /><p className='  py-2 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden'>Products</p></div></NavLink>
+                            <NavLink to={'/contact'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl' /><p className=' py-2 sm:py-4  sm:text-lg md:text-xl font-semibold  lg:hidden'>Contact</p></div></NavLink>
+                            <NavLink to={'/about'}> <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
+                        </div>
+                        <div className='flex flex-col  border-t lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  bg-neutral-100'>
+                            <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-100 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b '> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-2  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={buyorder}>Carts</p></div>
+                            <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-100 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b'><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-2  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div>
+                            <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-100 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b'><FaStar className='text-lg sm:text-xl md:text-2xl' />  <p className=' py-2 sm:py-4  sm:text-lg md:text-xl font-semibold  '>Favourite</p></div>
+                        </div>
+                    </div>
+                    <div className=' flex justify-end  lg:mt-0 lg:items-center '>
+                        <NavLink to={'/login'}> <p className='font-bold   sm:text-xl text-yellow-800 text-right  mb-7 mr-7 '>Sign In</p></NavLink>
+                    </div>
+                </div>
+            </div>
+
+            <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-20 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${popout2 ? 'block' : 'hidden'}  `}>
+                <div className=' h-full '>
+                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' /><p>china</p></div>
+                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
+                </div>
+            </div>
+            <div className={`fixed  w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96   rounded-xl border-t border-neutral-100   ${popout ? 'block' : 'hidden'}  `}>
+                <FaTimesCircle className='absolute right-0  text-yellow-800 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={buyorder} />
+                <div className='flex fixed rounded-t-xl top-0 bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
+                    <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
+                    <button className='w-10 p-1  lg:w-14 bg-yellow-800 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
+                </div>
+                <div className='px-4 pt-16 sm:pt-16 lg:pt-16'>
+                    <div>
+                        {showinput && <input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 border border-black outline-none mt-3 sm:mt-4' autoFocus />}
+                    </div>
+                    <div className='flex justify-between py-3 border-b border-yellow-800 hover:cursor-pointer  '>
+                        <NavLink to={'/cart/:id'}>  <p className='font-semibold sm:text-lg lg:text-xl  '>december collection</p></NavLink>
+                        <input type="radio" className='hover:cursor-pointer  lg:w-4' name='collection' />
+
+                    </div>
+                    <div className='flex justify-between py-3 border-b border-yellow-800 hover:cursor-pointer  '>
+                        <NavLink to={'/cart/:id'}><p className='font-semibold sm:text-lg lg:text-xl  '>september collection</p></NavLink>
+                        <input type="radio" className='hover:cursor-pointer lg:w-4' name='collection' />
+
+                    </div>
+                </div>
+                <div className='fixed w-full bottom-0 bg-yellow-800 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
+                    {showinput && <button className='w-15 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 '>Create</button>}
+                    {<button className='md:w-12 w-14 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
+                </div>
+            </div>
 
             <section className='  pt-24 sm:pt-28     lg:pt-32  '>
 
