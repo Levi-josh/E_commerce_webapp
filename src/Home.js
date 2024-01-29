@@ -54,7 +54,7 @@ const Home = () => {
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `} >
 
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
-                <h1 className={`font-bold text-xl sm:text-2xl  xl:text-3xl  ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
+                <h1 className={`font-bold text-lg sm:text-2xl  xl:text-3xl  ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
