@@ -94,7 +94,7 @@ const Cart = () => {
         <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `}>
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <h1 className={`font-bold text-xl sm:text-2xl hidden  lg:block xl:text-3xl h ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
-                <FaAngleLeft className='lg:hidden' />
+                <NavLink to={'/'}><FaAngleLeft className='lg:hidden' /></NavLink>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
@@ -103,12 +103,12 @@ const Cart = () => {
                     <NavLink to='/about'><li>About us</li></NavLink>
 
                 </ul>
-                <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-8 xl:gap-12 items-center    '>
-                    <div className='text-3xl  flex justify-center py-1 px-6 text-black rounded-full'><FaBell className=' ' /></div>
-                    <NavLink to='/cart/:id' className=' '><div className='flex items-center text-lg  text-white bg-yellow-800 py-1 px-3 rounded-full'><p>Cart</p><FaShoppingCart className='' /></div></NavLink>
+                <div className='flex gap-5 sm:gap-7 md:gap-8 lg:gap-4 xl:gap-12 items-center    '>
+                    <div className='text-lg sm:text-xl flex items-center md:text-2xl   outline outline-2 outline-yellow-800 justify-center  h-8 w-102 sm:h-10 md:w-101 sm:w-103 text-black rounded-full hover:cursor-pointer hover:bg-yellow-700'><FaBell className=' ' /></div>
+                    <NavLink to='/cart/:id' className=' '><div className='flex text-lg sm:text-xl md:text-2xl  outline outline-2 outline-yellow-800 items-center justify-center  text-white bg-yellow-800   w-101 h-10 rounded-full'><p className='font-semibold text-lg'>Cart</p><FaShoppingCart className='text-2xl' /></div></NavLink>
 
-                    <FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' onClick={showmenu} />
-                    <div className='lg:flex items-center   text-lg py-1 px-3 text-black rounded-full hidden '><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' onClick={showmenu} /></div>
+                    <div className='h-8 w-102 sm:h-10 md:w-101 sm:w-103 lg:hidden'><FaBars className='lg:hidden text-lg  sm:text-xl hover:scale-125 ' onClick={showmenu} /></div>
+                    <div className={`lg:flex items-center justify-center hidden  ${menubar ? ' bg-yellow-800 text-white' : 'hover:bg-yellow-700 text-black'} outline outline-2 outline-yellow-800 md:text-2xl  h-8 w-102 sm:h-10 md:w-101 sm:w-103 rounded-full hover:cursor-pointer  `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
                 </div>
             </header >
             <div className={`menu lg:w-15 fixed md:w-22 sm:w-25 w-135 h-full    bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
