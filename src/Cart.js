@@ -93,8 +93,8 @@ const Cart = () => {
     return (
         <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `}>
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
-                <h1 className={`font-bold text-xl sm:text-2xl hidden  lg:block xl:text-3xl  `}><span className=''>#</span>Glamour Grove</h1>
-                <NavLink to={'/'}><FaAngleLeft className={`lg:hidden text-2xl font-bold ${menubar ? ' invisible lg:visible' : 'visble'}`} /></NavLink>
+                <h1 className={`font-bold text-xl sm:text-2xl hidden   lg:inline xl:text-3xl  `}><span className=''>#</span>Glamour Grove</h1>
+                <NavLink to={'/'} className={'lg:hidden'}><FaAngleLeft className={`lg:hidden text-2xl font-bold ${menubar ? ' invisible lg:visible' : 'visble'}`} /></NavLink>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
@@ -107,14 +107,14 @@ const Cart = () => {
                     <div className='text-lg sm:text-xl flex items-center md:text-2xl   outline outline-2 outline-yellow-800 justify-center  h-8 w-102 sm:h-10 md:w-101 sm:w-103 text-black rounded-full hover:cursor-pointer hover:bg-yellow-700'><FaBell className=' ' /></div>
                     <NavLink to='/cart/:id' className=' '><div className='flex text-lg sm:text-xl md:text-2xl  outline outline-2 outline-yellow-800 items-center justify-center  text-white bg-yellow-800 w-102 h-8 sm:w-103 md:w-101 sm:h-10 rounded-full'><p className='md:font-semibold text-xs sm:text-base md:text-lg'>Cart</p><FaShoppingCart className='text-base sm:text-xl md:text-2xl' /></div></NavLink>
 
-                    <div className='  outline outline-2 outline-yellow-800   flex justify-center items-center rounded-full h-8 w-102 sm:h-10 md:w-101 sm:w-103 lg:hidden'><FaBars className='lg:hidden text-lg  sm:text-xl hover:scale-125 ' onClick={showmenu} /></div>
+                    <div className='  outline outline-2 outline-yellow-800   flex justify-center items-center rounded-full h-8 w-102 sm:h-10 md:w-101 sm:w-103 lg:hidden hover:bg-yellow-700'><FaBars className='lg:hidden text-lg  sm:text-xl ' onClick={showmenu} /></div>
                     <div className={`lg:flex items-center justify-center hidden  ${menubar ? ' bg-yellow-800 text-white' : 'hover:bg-yellow-700 text-black'} outline outline-2 outline-yellow-800 md:text-lg  h-8 w-102 sm:h-10 md:w-101 sm:w-103 rounded-full hover:cursor-pointer  `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
                 </div>
             </header >
             <div className={`menu lg:w-15 fixed md:w-22 sm:w-25 w-135 h-full    bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
 
-                <div className=' h-190 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl justify-center items-center'>
-                    <FaTimesCircle className='absolute left-2 top-2  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
+                <div className=' h-190 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center'>
+                    <FaTimesCircle className='absolute left-2 top-2 lg:hidden text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
                     <div className='flex items-center flex-col gap-2'>
                         <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-white   rounded-full  bg-no-repeat bg-cover bg-center    ' />
                         <p className='text-white font-serif'>The best shopping app </p>

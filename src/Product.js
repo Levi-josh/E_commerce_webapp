@@ -84,10 +84,10 @@ function Product() {
                 <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white border-b  justify-center mb-3 sticky top-20 sm:top-24 lg:top-20 py-3 sm:py-4 lg:py-5'>
                     <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-2xl pl-4 placeholder:pl-4  ' placeholder='Search products' />
                     <div className='flex justify-center gap-2 md:gap-12 lg:gap-4 sm:gap-10'>
-                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-neutral-100  focus:bg-yellow-800 focus:text-white focus:border-yellow-800 '>Clothes</button>
-                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white  border py-1 lg:py-2 text-black hover:bg-neutral-100 focus:bg-yellow-800 focus:text-white focus:border-yellow-800'>Shoes</button>
-                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-neutral-100 focus:bg-yellow-800 focus:text-white focus:border-yellow-800'>Glasses</button>
-                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-neutral-100 focus:bg-yellow-800 focus:text-white focus:border-yellow-800 '>Watches</button>
+                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-yellow-700  focus:bg-yellow-800 focus:text-white border-yellow-800 '>Clothes</button>
+                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white  border py-1 lg:py-2 text-black hover:bg-yellow-700 focus:bg-yellow-800 focus:text-white border-yellow-800'>Shoes</button>
+                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-yellow-700 focus:bg-yellow-800 focus:text-white border-yellow-800'>Glasses</button>
+                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border  hover:bg-yellow-700 focus:bg-yellow-800 focus:text-white border-yellow-800 '>Watches</button>
                     </div>
                 </div>
                 <div className='grid grid-cols-2 md:grid-cols-3 mt-5 sm:mt-8 lg:mt-12           '>
