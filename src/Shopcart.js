@@ -79,14 +79,14 @@ const Shopcart = () => {
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>%21.00</h1>
                     </div>
                     <div className='flex justify-between items-center border-gray-400 border-b  p-3 mt-3'>
-                        <h1 className='sm:text-lg lg:text-xl font-semibold'>Subtotal</h1>
-                        <h1 className='sm:text-lg lg:text-xl font-semibold'>$1200</h1>
+                        <h1 className='sm:text-lg lg:text-xl font-semibold'>Items Purchased</h1>
+                        <h1 className='sm:text-lg lg:text-xl font-semibold'>20</h1>
                     </div>
                     <div className='flex justify-between items-center p-3 my-3'>
-                        <h1 className='sm:text-lg lg:text-xl font-semibold'>Total</h1>
+                        <h1 className='sm:text-lg lg:text-xl font-semibold'>Total Amount</h1>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>$2000</h1>
                     </div>
-                    <button className='w-full text-center bg-yellow-800 text-white py-3 sm:text-lg lg:text-xl  lg:py-4 rounded-lg ' onClick={nextcart}>Checkout</button>
+                    <button className='w-full text-center bg-yellow-800 text-white py-3 sm:text-lg lg:text-xl  lg:py-4  ' onClick={nextcart}>Checkout</button>
                 </div>
             </div>
         </div >

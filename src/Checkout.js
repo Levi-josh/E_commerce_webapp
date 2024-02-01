@@ -33,7 +33,7 @@ const Checkout = () => {
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label className='font-semibold text-gray-600 lg:text-lg'>EMAIL ADDRESS</label>
-                            <input type='text' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Email address' />
+                            <input type='email' className='outline-none border border-black w-full rounded-md py-1 px-2' placeholder='Email address' />
                         </div>
                     </div>
                 </div>
@@ -85,11 +85,11 @@ const Checkout = () => {
                     <h1 className='font-bold sm:text-lg lg:text-xl '>Payment Method</h1>
                     <div className='flex flex-col gap-6'>
                         <div className='flex gap-2 w-full border border-black p-2 rounded-md'>
-                            <input type='radio' className='lg:w-4' />
+                            <input type='radio' name='payment' className='lg:w-4' />
                             <p className='font-bold lg:text-lg'>Pay by Card Credit</p>
                         </div>
                         <div className='flex gap-2 w-full border border-black p-2 rounded-md'>
-                            <input type='radio' className=' lg:w-4' />
+                            <input type='radio' name='payment' className=' lg:w-4' />
                             <p className='font-bold lg:text-lg'>Paypal</p>
                         </div>
                         <div className='border-b-0.5 border-black'></div>
@@ -139,8 +139,8 @@ const Checkout = () => {
                     <h1 className='sm:text-lg lg:text-xl font-semibold'>free</h1>
                 </div>
                 <div className='flex justify-between items-center border-gray-400 border-b  py-3 sm:py-4  '>
-                    <h1 className='sm:text-lg lg:text-xl font-medium'>Subtotal</h1>
-                    <h1 className='sm:text-lg lg:text-xl font-semibold'>$1200</h1>
+                    <h1 className='sm:text-lg lg:text-xl font-medium'>Items Purchased</h1>
+                    <h1 className='sm:text-lg lg:text-xl font-semibold'>20</h1>
                 </div>
                 <div className='flex justify-between items-center pt-3 sm:pt-4 font-semibold '>
                     <h1 className='text-lg sm:text-xl lg:text-2xl'>Total</h1>

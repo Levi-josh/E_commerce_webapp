@@ -278,22 +278,22 @@ const Home = () => {
                 </div>
                 {/*about ends*/}
                 <div className='grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5 text-white'>
-                    <div className=' bg-yellow-800 w-full h-40 md:h-44 pt-4 pl-4 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl '>
+                    <div className=' bg-yellow-800 w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl '>
                         <FaCar className='text-xl font-bold sm:text-2xl ' />
                         <h2 className='text-lg font-bold sm:text-xl '>Free shipping</h2>
                         <p className='font-semibold md:text-lg '>Order above $200. </p>
                     </div>
-                    <div className='bg-yellow-800   w-full h-40 md:h-44   pt-4 pl-4  lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
+                    <div className='bg-yellow-800   w-full h-40 md:h-44   pt-4 pl-2  lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
                         <FaWallet className='text-xl font-bold sm:text-2xl ' />
                         <h2 className='text-lg font-bold sm:text-xl '>Money back</h2>
                         <p className='font-semibold md:text-lg '>30 days guarantee.</p>
                     </div>
-                    <div className='bg-yellow-800 w-full h-40 md:h-44  pt-4 px-4 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
+                    <div className='bg-yellow-800 w-full h-40 md:h-44  pt-4 px-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
                         <FaLock className='text-xl font-bold sm:text-2xl ' />
-                        <h2 className='text-lg font-bold sm:text-xl '>Secure payments</h2>
+                        <h2 className='text-lg font-bold sm:text-xl whitespace-nowrap '>Secure payments</h2>
                         <p className='font-semibold md:text-lg '>Secure by stripe.</p>
                     </div>
-                    <div className='bg-yellow-800 w-full h-40 md:h-44  pt-4 pl-4 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5 sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
+                    <div className='bg-yellow-800 w-full h-40 md:h-44  pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5 sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
                         <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' />
                         <h2 className='text-lg font-bold sm:text-xl '>24/7 support</h2>
                         <p className='font-semibold md:text-lg '>Phone and email support.</p>
