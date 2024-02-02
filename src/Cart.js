@@ -175,9 +175,9 @@ const Cart = () => {
                     {<button className='md:w-12 w-14 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
                 </div>
             </div>
-            <div>
-                {emptycart ? <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" /> :
-                    <section className='  pt-24 sm:pt-28     lg:pt-32  '>
+            <div  >
+                {emptycart ? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p></div> :
+                    <section className='  pt-24 sm:pt-28     lg:pt-32 '>
 
                         <h1 className='text-center   font-bold text-3xl  sm:mb-4  mb-3 text-yellow-800  md:mb-4  lg:mb-10  xl:text-6xl sm:text-4xl lg:text-5xl'>cart</h1>
                         <div className='flex bg-white  top-20 sm:top-24   sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
