@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 
 import { Navigate, useNavigate, Outlet, redirect } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
+import cartimg from './icons8-shopping-cart-48.png';
 
 //import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown } from 'react-icons/fa'
 
@@ -106,7 +107,7 @@ const Cart = () => {
                 </ul>
                 <div className='flex gap-3 sm:gap-7 md:gap-8 lg:gap-4 xl:gap-12 items-center    '>
                     <div className='text-lg sm:text-xl flex items-center md:text-2xl   outline outline-2 outline-yellow-800 justify-center  h-8 w-102 sm:h-10 md:w-101 sm:w-103 text-black rounded-full hover:cursor-pointer hover:bg-yellow-700'><FaBell className=' ' /></div>
-                    <NavLink to='/cart/:id' className=' '><div className='flex text-lg sm:text-xl md:text-2xl  outline outline-2 outline-yellow-800 items-center justify-center  text-white bg-yellow-800 w-102 h-8 sm:w-103 md:w-101 sm:h-10 rounded-full'><p className='md:font-semibold text-xs sm:text-base md:text-lg'>Cart</p><FaShoppingCart className='text-base sm:text-xl md:text-2xl' /></div></NavLink>
+                    <NavLink to='/cart/:id' className=' '><div className='flex text-lg sm:text-xl md:text-2xl  outline outline-2 outline-yellow-800 items-center justify-center  text-white bg-yellow-800 w-102 h-8 sm:w-103 md:w-101 sm:h-10 rounded-full'><p className='md:font-semibold text-xs sm:text-base md:text-lg'>Cart</p><img src={cartimg} alt="" className='w-6 sm:w-7 md:w-8 lg:w-9' />{/*<FaShoppingCart className='text-base sm:text-xl md:text-2xl' />*/}</div></NavLink>
 
                     <div className='  outline outline-2 outline-yellow-800   flex justify-center items-center rounded-full h-8 w-102 sm:h-10 md:w-101 sm:w-103 lg:hidden hover:bg-yellow-700'><FaBars className='lg:hidden text-lg  sm:text-xl ' onClick={showmenu} /></div>
                     <div className={`lg:flex items-center justify-center hidden  ${menubar ? ' bg-yellow-800 text-white' : 'hover:bg-yellow-700 text-black'} outline outline-2 outline-yellow-800 md:text-lg  h-8 w-102 sm:h-10 md:w-101 sm:w-103 rounded-full hover:cursor-pointer  `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
@@ -168,7 +169,7 @@ const Cart = () => {
 
                     </div>
                 </div>
-                <a target="_blank" href="https://icons8.com/icon/BBhHIwJINbBl/shopping-cart">Shopping Cart</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
                 <div className='fixed w-full bottom-0 bg-yellow-800 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
                     {showinput && <button className='w-15 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 '>Create</button>}
                     {<button className='md:w-12 w-14 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}

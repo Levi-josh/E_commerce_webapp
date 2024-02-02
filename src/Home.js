@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import cartimg from './hotdog image.jpg';
+import cartimg from './icons8-shopping-cart-48.png';
 import 'swiper/css/pagination';
 
 import './swiper.css'
@@ -66,7 +66,7 @@ const Home = () => {
                 </ul>
                 <div className='flex gap-3 sm:gap-7 md:gap-8 lg:gap-4 xl:gap-12 items-center    '>
                     <div className=' text-lg sm:text-xl md:text-2xl outline outline-2 outline-yellow-800   flex justify-center sm:h-10 md:w-101 h-8 items-center w-102 sm:w-103 text-black rounded-full hover:cursor-pointer hover:bg-yellow-700'><FaBell className=' ' /></div>
-                    <NavLink to='/cart/:id' className=' '><div className='flex  outline outline-2 outline-yellow-800 h-8 items-center text-lg sm:text-xl  sm:w-103 md:text-2xl justify-center text-black w-102  md:w-101 rounded-full sm:h-10 hover:cursor-pointer hover:bg-yellow-700'><p className='hidden'>Cart</p><img src={cartimg} alt="" /></div></NavLink>
+                    <NavLink to='/cart/:id' className=' '><div className='flex  outline outline-2 outline-yellow-800 h-8 items-center text-lg sm:text-xl  sm:w-103 md:text-2xl justify-center text-black w-102  md:w-101 rounded-full sm:h-10 hover:cursor-pointer hover:bg-yellow-700'><p className='hidden'>Cart</p><img src={cartimg} alt="" className='w-6 sm:w-7 md:w-8 lg:w-9' /></div></NavLink>
 
                     <div className='text-lg sm:text-xl lg:hidden outline outline-2 outline-yellow-800   flex justify-center h-8 w-102 sm:h-10 md:w-101 sm:w-103 items-center text-black rounded-full hover:cursor-pointer hover:bg-yellow-700'><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' onClick={showmenu} /></div>
                     <div className={`lg:flex items-center  outline outline-2 outline-yellow-800 justify-center ${menubar ? 'bg-yellow-800 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-700 text-black'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
