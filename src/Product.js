@@ -153,6 +153,7 @@ function Product() {
                     </div>
                 </div>
             </div>
+
             <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 '>
                 <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
                     <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>

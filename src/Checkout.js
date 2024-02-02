@@ -143,7 +143,7 @@ const Checkout = () => {
                     <h1 className='sm:text-lg lg:text-xl font-semibold'>20</h1>
                 </div>
                 <div className='flex justify-between items-center pt-3 sm:pt-4 font-semibold '>
-                    <h1 className='text-lg sm:text-xl lg:text-2xl'>Total</h1>
+                    <h1 className='text-lg sm:text-xl lg:text-2xl'>Total Amount</h1>
                     <h1 className=' text-lg sm:text-xl lg:text-2xl'>$2000</h1>
                 </div>
             </div>

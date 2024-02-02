@@ -22,6 +22,7 @@ const Cart = () => {
     const [popout, setpopout] = useState(false)
     const [popout2, setpopout2] = useState(false)
     const [showinput, setshowinput] = useState(false)
+    const [emptycart, setemptycart] = useState(true)
 
     const [array, setarray] = useState(0)
     function showmenu() {
@@ -167,23 +168,26 @@ const Cart = () => {
 
                     </div>
                 </div>
+                <a target="_blank" href="https://icons8.com/icon/BBhHIwJINbBl/shopping-cart">Shopping Cart</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
                 <div className='fixed w-full bottom-0 bg-yellow-800 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
                     {showinput && <button className='w-15 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 '>Create</button>}
                     {<button className='md:w-12 w-14 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
                 </div>
             </div>
+            <div>
+                {emptycart ? <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" /> :
+                    <section className='  pt-24 sm:pt-28     lg:pt-32  '>
 
-            <section className='  pt-24 sm:pt-28     lg:pt-32  '>
+                        <h1 className='text-center   font-bold text-3xl  sm:mb-4  mb-3 text-yellow-800  md:mb-4  lg:mb-10  xl:text-6xl sm:text-4xl lg:text-5xl'>cart</h1>
+                        <div className='flex bg-white  top-20 sm:top-24   sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
+                            <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-yellow-800' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-yellow-800' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-yellow-800' : 'border-black'} w-full border mt-4`}></div></div>
+                            <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${changecart2 ? ' bg-yellow-800 ' : 'bg-black  '} flex justify-center items-center`}>{changecart2 ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${changecart2 ? ' text-yellow-800' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${changecart2 ? 'border-yellow-800' : 'border-black'} w-full border mt-4`}></div></div>
+                            <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-800 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-yellow-800' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-800 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
+                        </div>
 
-                <h1 className='text-center   font-bold text-3xl  sm:mb-4  mb-3 text-yellow-800  md:mb-4  lg:mb-10  xl:text-6xl sm:text-4xl lg:text-5xl'>cart</h1>
-                <div className='flex bg-white  top-20 sm:top-24   sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
-                    <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-yellow-800' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-yellow-800' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-yellow-800' : 'border-black'} w-full border mt-4`}></div></div>
-                    <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${changecart2 ? ' bg-yellow-800 ' : 'bg-black  '} flex justify-center items-center`}>{changecart2 ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${changecart2 ? ' text-yellow-800' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${changecart2 ? 'border-yellow-800' : 'border-black'} w-full border mt-4`}></div></div>
-                    <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-800 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-yellow-800' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-800 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
-                </div>
-
-                <Outlet context={{ nextcart, nextcart2, nextcart3, showcountry, selectcountry }} />
-            </section>
+                        <Outlet context={{ nextcart, nextcart2, nextcart3, showcountry, selectcountry }} />
+                    </section>}
+            </div>
             <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 '>
                 <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
                     <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>
