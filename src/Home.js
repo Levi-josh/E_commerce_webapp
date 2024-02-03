@@ -152,7 +152,7 @@ const Home = () => {
 
 
                     //onSwiper={(swiper) => console.log(swiper)}
-                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-130 lg:w-140 m-auto   '>
+                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-130 lg:w-130 m-auto   '>
 
                     <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
                     </SwiperSlide>
@@ -162,7 +162,7 @@ const Home = () => {
 
                     <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2o09ztmF7LPpqO-80mbCFlOvnDlkF0CwI7w&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center object-cover   ' />
                     </SwiperSlide>
-                    <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72       md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full h-72       md:h-96 bg-no-repeat bg-cover bg-center   ' />
                     </SwiperSlide>
                     <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
                     </SwiperSlide>

@@ -92,6 +92,10 @@ const Cart = () => {
         setchangecart3(prev => !prev)
         navigate('/cart/:id/complete')
     }
+    function startshop() {
+
+        navigate("/product")
+    }
     return (
         <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `}>
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
@@ -107,7 +111,7 @@ const Cart = () => {
                 </ul>
                 <div className='flex gap-3 sm:gap-7 md:gap-8 lg:gap-4 xl:gap-12 items-center    '>
                     <div className='text-lg sm:text-xl flex items-center md:text-2xl   outline outline-2 outline-yellow-800 justify-center  h-8 w-102 sm:h-10 md:w-101 sm:w-103 text-black rounded-full hover:cursor-pointer hover:bg-yellow-700'><FaBell className=' ' /></div>
-                    <NavLink to='/cart/:id' className=' '><div className='flex text-lg sm:text-xl md:text-2xl  outline outline-2 outline-yellow-800 items-center justify-center  text-white bg-yellow-800 w-102 h-8 sm:w-103 md:w-101 sm:h-10 rounded-full'><p className='md:font-semibold text-xs sm:text-base md:text-lg'>Cart</p><img src={cartimg} alt="" className='w-6 sm:w-7 md:w-8 lg:w-9' />{/*<FaShoppingCart className='text-base sm:text-xl md:text-2xl' />*/}</div></NavLink>
+                    <NavLink to='/cart/:id' className=' '><div className='flex text-lg sm:text-xl md:text-2xl  outline outline-2 outline-yellow-800 items-center justify-center  text-white bg-yellow-800 w-102 h-8 sm:w-103 md:w-101 sm:h-10 rounded-full'><p className='md:font-semibold text-xs sm:text-base md:text-lg'>Cart</p><FaShoppingCart className='text-base sm:text-xl md:text-2xl' /></div></NavLink>
 
                     <div className='  outline outline-2 outline-yellow-800   flex justify-center items-center rounded-full h-8 w-102 sm:h-10 md:w-101 sm:w-103 lg:hidden hover:bg-yellow-700'><FaBars className='lg:hidden text-lg  sm:text-xl ' onClick={showmenu} /></div>
                     <div className={`lg:flex items-center justify-center hidden  ${menubar ? ' bg-yellow-800 text-white' : 'hover:bg-yellow-700 text-black'} outline outline-2 outline-yellow-800 md:text-lg  h-8 w-102 sm:h-10 md:w-101 sm:w-103 rounded-full hover:cursor-pointer  `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
@@ -176,7 +180,7 @@ const Cart = () => {
                 </div>
             </div>
             <div  >
-                {emptycart ? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p></div> :
+                {emptycart ? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-800 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
                     <section className='  pt-24 sm:pt-28     lg:pt-32 '>
 
                         <h1 className='text-center   font-bold text-3xl  sm:mb-4  mb-3 text-yellow-800  md:mb-4  lg:mb-10  xl:text-6xl sm:text-4xl lg:text-5xl'>cart</h1>

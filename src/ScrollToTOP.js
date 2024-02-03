@@ -11,8 +11,8 @@ const ScrollToTOP = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
 
-    }, []);
-    console.log(location.key)
+    }, [location]);
+    console.log(location)
     return (
 
         <div className=''>

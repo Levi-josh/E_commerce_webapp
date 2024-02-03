@@ -81,7 +81,7 @@ function Product() {
             </div>
             <div className='sm:pt-28 pt-24 lg:pt-32   '>
 
-                <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white border-b  justify-center mb-3 sticky top-20 sm:top-24 lg:top-20 py-3 sm:py-4 lg:py-5'>
+                <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white   justify-center mb-3 sticky top-20 sm:top-24 lg:top-20 py-3 sm:py-4 lg:py-5'>
                     <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-2xl pl-4 placeholder:pl-4  ' placeholder='Search products' />
                     <div className='flex justify-center gap-2 md:gap-12 lg:gap-4 sm:gap-10'>
                         <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-yellow-700  focus:bg-yellow-800 focus:text-white border-yellow-800 '>Clothes</button>
