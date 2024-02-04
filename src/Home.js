@@ -23,12 +23,17 @@ const Home = () => {
     const [popout, setpopout] = useState(false)
     const [popout2, setpopout2] = useState(false)
     const [showinput, setshowinput] = useState(false)
-
+    const [check, setcheck] = useState(false)
 
     const [array, setarray] = useState(0)
     function showmenu() {
 
         setmenubar(prev => !prev)
+        console.log("hi")
+    }
+    function showmenu1() {
+
+        setcheck(prev => !prev)
         console.log("hi")
     }
 
@@ -75,7 +80,7 @@ const Home = () => {
                     <div className={`lg:flex items-center  outline outline-2 outline-yellow-800 justify-center ${menubar ? 'bg-yellow-800 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-700 text-black'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
                 </div>
             </header >
-            <div className={`menu lg:w-15 fixed md:w-22 sm:w-25 w-135 h-full    bg-white   lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120  ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'}`}>
+            <div>{menubar && <div className={`menu lg:w-15 fixed md:w-22 sm:w-25 w-135 h-full    bg-white   lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120  `}>
 
                 <div className=' h-190 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center'>
                     <FaTimesCircle className='absolute lg:hidden left-2 top-2  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
@@ -103,7 +108,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
+            }</div>
             <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-20 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${popout2 ? 'block' : 'hidden'}  `}>
                 <div className=' h-full '>
                     <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' /><p>china</p></div>
@@ -275,7 +280,7 @@ const Home = () => {
 
                         </p>
                         <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
-                            <h1 className='w-30 border border-dashed  border-black mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  '>30% OFF</h1>
+                            <h1 className='w-30 border border-dashed  border-black mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  ' onClick={showmenu1}>30% OFF</h1>
                             <NavLink to={'/product'}> <button className='w-40 bg-yellow-800 mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 md:text-lg'>Shop Now</button></NavLink>
                         </div>
                     </div>

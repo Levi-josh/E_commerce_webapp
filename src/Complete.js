@@ -35,7 +35,7 @@ const Complete = () => {
                     <div className='lg:text-lg font-semibold text-gray-600 flex flex-col gap-3  '>
                         <p>Order code:</p>
                         <p>Date:</p>
-                        <p>Total:</p>
+                        <p>Total Amount:</p>
                         <p>Payment method:</p>
                     </div>
                     <div className='flex flex-col gap-3 lg:text-lg font-bold'>
