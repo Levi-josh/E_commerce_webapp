@@ -16,6 +16,12 @@ import Login from './Login.js';
 import Logout from './Logout.js';
 import Missing from './Missing.js';
 import Error from './Error.js';
+import Note from './Note.js';
+import History from './History.js';
+import Firsthistory from './Firsthistory.js';
+import Secondhistory from './Secondhistory.js';
+import Firstnote from './Firstnote.js';
+import Secondnote from './Secondnote.js';
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
@@ -28,6 +34,15 @@ function App() {
       <Route path='/contact' element={<Contact />} />
       <Route path='/about' element={<About />} />
       <Route path='/product' element={<Product />} />
+      <Route path='/note' element={<Note />} >
+        <Route index element={<Firstnote />} />
+        <Route path='/note/:id' element={<Secondnote />} />
+      </Route>
+      <Route path='/history' element={<History />} >
+        <Route index element={<Firsthistory />} />
+        <Route path='/history/:id' element={<Secondhistory />} />
+
+      </Route>
 
       <Route path='/demo' element={<Demo />} />
       <Route path='/cart/:id' element={<Cart />} >

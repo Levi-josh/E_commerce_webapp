@@ -7,11 +7,7 @@
 
 }
 
-.body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
+
 
 .overflow-div::-webkit-scrollbar-thumb {
     background-color: black;
@@ -30,9 +26,9 @@ input[type="radio"] {
 @media screen and (max-width: 1024px) {
     .home {
         width: 100%;
-        height: 100vh;
+        height: 100%;
         overflow: hidden;
-        position: fixed;
+
 
     }
 
@@ -40,10 +36,10 @@ input[type="radio"] {
         backdrop-filter: blur(5px);
         width: 100%;
         height: 100%;
-        background-color: transparent;
+        background-color: rgba(0, 0, 0, 0.3);
         position: fixed;
         content: '';
-        z-index: 10;
+        z-index: 11;
 
     }
 }
@@ -172,7 +168,7 @@ input[type="radio"] {
 }
 
 .background {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     overflow: hidden;
 }
@@ -189,9 +185,9 @@ input[type="radio"] {
 }
 
 .p-home {
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    position: fixed;
+
     overflow: hidden;
 }
 

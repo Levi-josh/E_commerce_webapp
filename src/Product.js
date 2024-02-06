@@ -1,56 +1,36 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaArrowLeft, FaTimesCircle } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaAngleLeft, FaTimesCircle } from 'react-icons/fa'
 function Product() {
     const [menubar, setmenubar] = useState(false)
     const [popout, setpopout] = useState(false)
     const [popout2, setpopout2] = useState(false)
     const [showinput, setshowinput] = useState(false)
+    const [showinput1, setshowinput1] = useState(false)
+    function searchfunc() {
+        setshowinput1(prev => !prev)
+        setshowinput(false)
+    }
     function buyorder() {
         setpopout(prev => !prev)
         setshowinput(false)
     }
     return (
         <div className={` ${popout ? 'p-home' : ''}`}>
-            <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 sm:px-5 lg:px-7 w-full m-0 bg-white z-10 shadow-lg '>
+            <header className='fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className={`font-bold hidden  lg:text-2xl  `}><span className=''>#</span>Glamour Grove</h1>
+                <NavLink to='../' relative='path' className={'md:block hidden'}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
+                <input className='outline-none hidden md:block border rounded-xl w-130 sm:w-140 border-black lg:w-25 m-auto h-9  pl-2 placeholder:pl-2 ' placeholder='Search products' />
+                {!showinput1 ? <NavLink to='../' relative='path' className={'md:hidden absolute'}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc} className='font-bold md:hidden  text-xl md:text-2xl ' ></FaAngleLeft>}
+                {showinput1 ? <input className='outline-none md:hidden border rounded-xl w-130 sm:w-140 border-black lg:w-25 m-auto h-9  pl-2 placeholder:pl-2 ' placeholder='Search products' />
+                    : <h1 className='md:hidden m-auto text-xl sm:text-2xl font-semibold'>Product</h1>}
+                <FaSearch onClick={searchfunc} className={`${showinput1 ? 'hidden' : 'block'} md:hidden`} />
 
-                <NavLink to='../' relative='path'> <FaArrowLeft className='font-bold  text-xl md:text-2xl ' ></FaArrowLeft></NavLink>
-                <input className='outline-none border rounded-xl w-130 sm:w-140 border-black lg:w-25 m-auto h-9  pl-2 placeholder:pl-2 ' placeholder='Search products' />
 
-                <ul className='hidden  gap-12 lg:gap-20 xl:gap-24 md:text-lg lg:text-xl'>
-                    <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
-                    <NavLink to='/product'><li className='font-bold'>Product</li></NavLink>
-                    <NavLink to='/contact'><li>contact</li></NavLink>
-                    <NavLink to='/about'><li>About us</li></NavLink>
-
-                </ul>
-                <div className='hidden  gap-5 sm:gap-7 md:gap-8 lg:gap-12 xl:gap-15 items-center bg-yellow-800 py-3 px-6 md:py-3 lg:py-4 md:px-8 rounded-3xl text-white '>
-                    <NavLink to='/cart' className=' '><FaShoppingCart className='md:text-xl lg:text-2xl hover:scale-125' /></NavLink>
-                    <FaBell className=' md:text-xl lg:text-2xl hover:scale-125' />
-                    <FaBars className='md:hidden text-lg sm:text-xl hover:scale-125 ' />
-                    <FaUserCircle className='hidden md:block text-xl lg:text-2xl hover:scale-125' />
-                </div>
-
-                <div className={`menu lg:w-15 md:w-25 sm:w-25 w-140 h-screen      bg-white top-0  lg:top-24 shadow-lg shadow-black rounded-lg right-0  md:right-3 fixed z-30  lg:h-120 ${menubar ? 'block transition-all  duration-2000 ease-in-out   ' : 'hidden transition-all duration-1000 ease-out'} `}>
-                    <div className=' h-40'></div>
-                    <ul>
-                        <li >shop</li>
-                        <li>pending order</li>
-                        <li>new order</li>
-                        <li>history</li>
-                        <li>Favourite</li>
-                    </ul>
-                </div>
             </header >
-            <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-20 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${popout2 ? 'block' : 'hidden'}  `}>
-                <div className=' h-full '>
-                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' /><p>china</p></div>
-                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
-                </div>
-            </div>
+
             <div className={`fixed  w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-96 sm:h-96   rounded-xl border-t border-neutral-100   ${popout ? 'block' : 'hidden'}  `}>
                 <FaTimesCircle className='absolute right-0  text-yellow-800 z-40 text-2xl  hover:cursor-pointer ' onClick={buyorder} />
                 <div className='flex fixed rounded-t-xl top-0 bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
@@ -104,7 +84,7 @@ function Product() {
                             </div>
                             <h1 className='text-lg font-bold lg:text-xl'>Rolex watch</h1>
                             <p className='font-semibold md:text-lg lg:text-xl'>$400</p>
-                            <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={buyorder}>Add to cart</button>
+                            <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' >Add to cart</button>
                         </div>
                     </div>
                     <div className='w-20    '>
