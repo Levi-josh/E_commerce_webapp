@@ -80,6 +80,7 @@ const Home = () => {
                     <div className={`lg:flex items-center  outline outline-2 outline-yellow-800 justify-center ${menubar ? 'bg-yellow-800 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-700  hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
                 </div>
             </header >
+
             <div>{menubar && <div className={`menu lg:w-15 fixed md:w-22 sm:w-25 w-135 h-full    bg-white   lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120  `}>
 
                 <div className=' h-190 md:h-140 bg-yellow-800 lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center'>
@@ -101,7 +102,7 @@ const Home = () => {
                             <NavLink to={'/contact'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl' /><p className=' py-2 sm:py-4  sm:text-lg md:text-xl font-semibold  lg:hidden'>Contact</p></div></NavLink>
                             <NavLink to={'/about'}> <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
                         </div>
-                        <div className='flex flex-col  border-t lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  bg-neutral-100'>
+                        <div className='flex flex-col border-b  border-t lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  '>
                             <div className='hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b px-6 hover:lg:bg-neutral-100'>
                                 <p className='text-xl font-semibold py-4'>Light </p>
                                 <FaToggleOff className='text-2xl' />
@@ -149,42 +150,48 @@ const Home = () => {
                     {<button className='md:w-12 w-14 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
                 </div>
             </div>
-            <div className='         pt-24 sm:pt-36 md:pt-40 lg:pt-40   '>
-                <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+            <div>
+                <div className='bg-yellow-800 w-106 h-10 flex justify-center items-center fixed popout1 text-white  rounded-full  '>
+                    <p>you're logged in</p>
+                </div>
+                <div className='        pt-24 sm:pt-36 md:pt-40 lg:pt-40   '>
+
+                    <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
 
 
-                    spaceBetween={20}
-                    slidesPerView={1}
+                        spaceBetween={20}
+                        slidesPerView={1}
 
-                    pagination={{ clickable: true }}
-                    loop={true}
-                    autoplay={{
-                        delay: 3000, // Autoplay delay in milliseconds
-                        disableOnInteraction: false, // Allow manual navigation to stop autoplay
-                    }}
+                        pagination={{ clickable: true }}
+                        loop={true}
+                        autoplay={{
+                            delay: 3000, // Autoplay delay in milliseconds
+                            disableOnInteraction: false, // Allow manual navigation to stop autoplay
+                        }}
 
 
                     //onSwiper={(swiper) => console.log(swiper)}
                     /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-130 lg:w-130 m-auto   '>
 
-                    <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                    </SwiperSlide>
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        </SwiperSlide>
 
-                    <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXTxreOJSjKV3Rr6tYE-2XYcPlaHcuBs4nUg&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center    ' />
-                    </SwiperSlide>
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXTxreOJSjKV3Rr6tYE-2XYcPlaHcuBs4nUg&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center    ' />
+                        </SwiperSlide>
 
-                    <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2o09ztmF7LPpqO-80mbCFlOvnDlkF0CwI7w&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center object-cover   ' />
-                    </SwiperSlide>
-                    <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full h-72       md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                    </SwiperSlide>
-                    <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                    </SwiperSlide>
-                    <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                    </SwiperSlide>
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2o09ztmF7LPpqO-80mbCFlOvnDlkF0CwI7w&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center object-cover   ' />
+                        </SwiperSlide>
+                        <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full h-72       md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        </SwiperSlide>
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        </SwiperSlide>
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        </SwiperSlide>
 
 
-                </Swiper>
-            </div >
+                    </Swiper>
+                </div >
+            </div>
 
             <section>
                 <div className=' mt-10 lg:px-10 text-center mb-8 gap-3 sm:gap-4 flex-col flex md:flex-row md:gap-10 lg:w-130  md:m-auto md:w-130 md:justify-between md:items-start   md:mt-12 md:mb-12  '>

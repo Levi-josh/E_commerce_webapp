@@ -98,13 +98,13 @@ const Cart = () => {
     }
     return (
         <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''}  `}>
-            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
-                <NavLink to='../' className={'absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
-                <div className='m-auto flex items-center text-xl sm:text-2xl lg:text-3xl font-semibold'>
+            <header className={`fixed flex sm:justify-between gap-4 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
+                <NavLink to='../' className={'sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
+                <div className='sm:m-auto flex items-center text-xl sm:text-2xl lg:text-3xl font-semibold'>
                     <h1 className=''>Cart</h1>
                     <FaShoppingCart className='text-2xl sm:text-3xl lg:text-4xl' />
                 </div>
-                <FaEllipsisV />
+                <FaEllipsisV className='absolute right-3 sm:static' />
                 {/* <h1 className={`font-bold text-xl sm:text-2xl hidden   lg:inline xl:text-3xl  `}><span className=''>#</span>Glamour Grove</h1>
                 <NavLink to={'/'} className={'lg:hidden'}><FaAngleLeft className={`lg:hidden text-2xl font-bold ${menubar ? ' invisible lg:visible' : 'visble'}`} /></NavLink>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>

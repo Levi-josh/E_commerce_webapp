@@ -208,3 +208,65 @@ input[type="radio"] {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
+
+
+@media screen and (max-width:640px) {
+    .popout1 {
+        top: 0;
+        left: 50%;
+        z-index: 8;
+        transition: all;
+        transform: translate(-50%);
+        animation: spin 1s ease-out 0.2s 1 normal forwards;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: translate(-50%);
+
+
+        }
+
+        80% {
+            transform: translate(-50%, 120px);
+        }
+
+        100% {
+            transform: translate(-50%, 100px);
+
+        }
+    }
+}
+
+@media screen and (min-width:640px) {
+    .popout1 {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%);
+        z-index: 8;
+        opacity: 0.9;
+        transition: all;
+        animation: spin 1s ease-out 0.2s 1 normal forwards;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: translate(-50%);
+
+
+
+        }
+
+        80% {
+            transform: translate(-50%, 140px);
+        }
+
+        100% {
+            transform: translate(-50%, 130px);
+
+
+        }
+    }
+}
