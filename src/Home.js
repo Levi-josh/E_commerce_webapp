@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown, FaToggleOn, FaToggleOff } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown, FaToggleOn, FaToggleOff, FaSubscript, FaUser, FaQuestion, FaVest, FaShare, FaMoneyBill } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
@@ -24,7 +24,7 @@ const Home = () => {
     const [popout2, setpopout2] = useState(false)
     const [showinput, setshowinput] = useState(false)
     const [check, setcheck] = useState(false)
-
+    const navigate = useNavigate()
     const [array, setarray] = useState(0)
     function showmenu() {
 
@@ -35,6 +35,9 @@ const Home = () => {
 
         setcheck(prev => !prev)
         console.log("hi")
+    }
+    function read() {
+        navigate('/note')
     }
 
     const b = useRef()
@@ -151,8 +154,18 @@ const Home = () => {
                 </div>
             </div>
             <div>
-                <div className='bg-yellow-800 w-106 h-10 flex justify-center items-center fixed popout1 text-white  rounded-full  '>
+                <div className=' hidden bg-yellow-800 w-106 h-10  justify-center items-center fixed popout1 text-white  rounded-full  '>
                     <p>you're logged in</p>
+                </div>
+                <div className='bg-white outline-yellow-800 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20 flex justify-center flex-col  fixed popout1 text-black  '>
+                    <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4'>
+                        <FaBell className='text-yellow-800 text-lg sm:text-xl lg:text-2xl' />
+                        <p>Hi welcome josh to glamour... </p>
+                    </div>
+                    <div className='flex justify-center items-center gap-3'>
+                        <button className='bg-yellow-800 text-white w-15 font-semibold' onClick={read}>Read</button>
+                        <button className='bg-yellow-800 text-white w-15 font-semibold '>cancel</button>
+                    </div>
                 </div>
                 <div className='        pt-24 sm:pt-36 md:pt-40 lg:pt-40   '>
 
@@ -194,11 +207,48 @@ const Home = () => {
             </div>
 
             <section>
-                <div className=' mt-10 lg:px-10 text-center mb-8 gap-3 sm:gap-4 flex-col flex md:flex-row md:gap-10 lg:w-130  md:m-auto md:w-130 md:justify-between md:items-start   md:mt-12 md:mb-12  '>
+                {/*<div className=' mt-10 lg:px-10 text-center mb-8 gap-3 sm:gap-4 flex-col flex md:flex-row md:gap-10 lg:w-130  md:m-auto md:w-130 md:justify-between md:items-start   md:mt-12 md:mb-12  '>
                     <h1 className='text-xl font-bold sm:text-2xl  lg:text-4xl whitespace-nowrap'>Simply unique/<span className='md:flex md:flex-wrap'>simply better</span>  </h1>
                     <p className='px-5 sm:px-14 md:px-0 '><strong>Glamour Grove</strong> is a gift and decoration store based in hcmc, vietnie since 2019.Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae corrupti ullam sit labore itaque eum placeat tempora inventore hic velit iste, distinctio sequi dolore at laboriosam.
                     </p>
+                    </div>*/}
+                <div className='mt-10 mb-8 md:mt-12  md:mb-12 grid gap-y-7 grid-cols-3 sm:gap-y-11 md:gap-y-12 lg:gap-y-14 md:grid-cols-4 px-5 py-7  sm:py-11 md:py-12 lg:py-14  w-120 outline outline-2 outline-yellow-800 sm:w-130 lg:w-130 m-auto shadow-lg   '>
+                    <div className='flex flex-col items-center'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
+                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Premium</p>
+                    </div>
+                    <div className='flex flex-col items-center'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaMoneyBill /></div>
+                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Buy shares</p>
+                    </div>
+                    <div className='flex flex-col items-center'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaCar /></div>
+                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Delivery</p>
+                    </div>
+                    <div className='flex flex-col items-center'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaUser /></div>
+                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Account</p>
+                    </div>
+                    <div className='flex flex-col items-center'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
+                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Terms of services</p>
+                    </div>
+                    <div className='flex flex-col items-center'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
+                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold' >Privacy policy</p>
+                    </div>
+                    <div className='flex flex-col items-center    '>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaPhone /></div>
+                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold whitespace-nowrap'>Customer support</p>
+                    </div>
+                    <div className='flex flex-col items-center'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaQuestion /></div>
+                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>FAQ</p>
+                    </div>
+
+
                 </div>
+                <h1 className='font-bold mb-7 text-center text-xl sm:text-2xl lg:text-3xl underline'>Our services</h1>
                 <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
                     <div className='md:w-full blurr3' onScroll={() => { b.current.style.top == '20px' ? console.log('hi') : console.log('hi') }} ref={b}>
                         <div className='absolute hidden  bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
