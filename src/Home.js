@@ -212,7 +212,7 @@ const Home = () => {
                     <p className='px-5 sm:px-14 md:px-0 '><strong>Glamour Grove</strong> is a gift and decoration store based in hcmc, vietnie since 2019.Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae corrupti ullam sit labore itaque eum placeat tempora inventore hic velit iste, distinctio sequi dolore at laboriosam.
                     </p>
                     </div>*/}
-                <div className='mt-10 mb-8 md:mt-12  md:mb-12 grid gap-y-7 grid-cols-3 sm:gap-y-11 md:gap-y-12 lg:gap-y-14 md:grid-cols-4 px-5 py-7  sm:py-11 md:py-12 lg:py-14  w-120  sm:w-130 lg:w-130 m-auto shadow-xl  '>
+                <div className='mt-10 mb-8 md:mt-12  md:mb-12 grid gap-y-7 grid-cols-3 sm:gap-y-11 md:gap-y-12 lg:gap-y-14 md:grid-cols-4 px-5 py-7  sm:py-11 md:py-12 lg:py-14  w-120  sm:w-130 lg:w-130 m-auto shadow-xl outline outline-2 outline-yellow-800  '>
                     <div className='flex flex-col items-center'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
                         <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Premium</p>

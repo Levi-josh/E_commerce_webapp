@@ -18,13 +18,13 @@ function Product() {
     }
     return (
         <div className={` ${popout ? 'p-home' : ''}`}>
-            <header className='fixed flex sm:justify-between gap-4 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 shadow-lg '>
+            <header className='fixed flex sm:justify-between gap-4 sm:gap-0 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className={`font-bold hidden  lg:text-2xl  `}><span className=''>#</span>Glamour Grove</h1>
-                <NavLink to='../' relative='path' className={'md:block hidden'}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
+                <NavLink to='../' relative='path' className={'md:block absolute hidden'}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <input className='outline-none hidden md:block border rounded-xl w-130 sm:w-140 border-black lg:w-25 m-auto h-9  pl-2 placeholder:pl-2 ' placeholder='Search products' />
-                {!showinput1 ? <NavLink to='../' relative='path' className={'md:hidden absolute'}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc} className='font-bold md:hidden  text-xl md:text-2xl ' ></FaAngleLeft>}
+                {!showinput1 ? <NavLink to='../' relative='path' className={'md:hidden sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc} className='font-bold md:hidden sm:absolute  text-xl md:text-2xl ' ></FaAngleLeft>}
                 {showinput1 ? <input className='outline-none md:hidden border rounded-xl w-130 sm:w-140 border-black lg:w-25 m-auto h-9  pl-2 placeholder:pl-2 ' placeholder='Search products' />
-                    : <h1 className='md:hidden  text-xl sm:text-2xl font-semibold'>Product</h1>}
+                    : <h1 className='md:hidden sm:m-auto  text-xl sm:text-2xl font-semibold'>Product</h1>}
                 <FaSearch onClick={searchfunc} className={`${showinput1 ? 'hidden' : 'block'} md:hidden right-3 absolute`} />
 
 
