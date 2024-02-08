@@ -63,7 +63,7 @@ const Home = () => {
     }
 
     return (
-        <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0  `} >
+        <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0  `} ref={b} onScroll={(e) => { console.log(e) }} >
 
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <h1 className={`font-bold text-lg sm:text-2xl  xl:text-3xl   ${menubar ? 'invisible lg:visible' : 'visble'}`}><span className=''>#</span>Glamour Grove</h1>
@@ -157,7 +157,7 @@ const Home = () => {
                 <div className=' hidden bg-yellow-800 w-106 h-10  justify-center items-center fixed popout1 text-white  rounded-full  '>
                     <p>you're logged in</p>
                 </div>
-                <div className='bg-white outline-yellow-800 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20 flex justify-center flex-col  fixed popout1 text-black  '>
+                <div className=' hidden bg-white outline-yellow-800 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20  justify-center flex-col  fixed popout1 text-black  '>
                     <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4'>
                         <FaBell className='text-yellow-800 text-lg sm:text-xl lg:text-2xl' />
                         <p>Hi welcome josh to glamour... </p>
@@ -212,7 +212,7 @@ const Home = () => {
                     <p className='px-5 sm:px-14 md:px-0 '><strong>Glamour Grove</strong> is a gift and decoration store based in hcmc, vietnie since 2019.Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae corrupti ullam sit labore itaque eum placeat tempora inventore hic velit iste, distinctio sequi dolore at laboriosam.
                     </p>
                     </div>*/}
-                <div className='mt-10 mb-8 md:mt-12  md:mb-12 grid gap-y-7 grid-cols-3 sm:gap-y-11 md:gap-y-12 lg:gap-y-14 md:grid-cols-4 px-5 py-7  sm:py-11 md:py-12 lg:py-14  w-120 outline outline-2 outline-yellow-800 sm:w-130 lg:w-130 m-auto shadow-lg   '>
+                <div className='mt-10 mb-8 md:mt-12  md:mb-12 grid gap-y-7 grid-cols-3 sm:gap-y-11 md:gap-y-12 lg:gap-y-14 md:grid-cols-4 px-5 py-7  sm:py-11 md:py-12 lg:py-14  w-120  sm:w-130 lg:w-130 m-auto shadow-xl  '>
                     <div className='flex flex-col items-center'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
                         <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Premium</p>
@@ -238,8 +238,8 @@ const Home = () => {
                         <p className='text-center text-xs sm:text-sm lg:text-base font-semibold' >Privacy policy</p>
                     </div>
                     <div className='flex flex-col items-center    '>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaPhone /></div>
-                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold whitespace-nowrap'>Customer support</p>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white rotate-180 items-center'> <FaPhone /></div>
+                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold whitespace-nowrap'>Support</p>
                     </div>
                     <div className='flex flex-col items-center'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaQuestion /></div>
@@ -250,7 +250,7 @@ const Home = () => {
                 </div>
                 <h1 className='font-bold mb-7 text-center text-xl sm:text-2xl lg:text-3xl underline'>Our services</h1>
                 <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
-                    <div className='md:w-full blurr3' onScroll={() => { b.current.style.top == '20px' ? console.log('hi') : console.log('hi') }} ref={b}>
+                    <div className='md:w-full blurr3'>
                         <div className='absolute hidden  bg-yellow-800 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
                             <h1 className='font-bold md:text-lg lg:text-xl'>clothes</h1>
                             <p className=' hover:cursor-pointer md:text-lg'>see more...</p>

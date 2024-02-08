@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar } from 'react-icons/fa'
@@ -6,7 +6,7 @@ import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPho
 const ScrollToTOP = () => {
 
 
-
+    const b = useRef()
     const location = useLocation();
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -16,7 +16,7 @@ const ScrollToTOP = () => {
 
     return (
 
-        <div className=''>
+        <div className='' ref={b} onScroll={(e) => { console.log(e) }}>
 
 
             <Outlet />
