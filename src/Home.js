@@ -26,9 +26,13 @@ const Home = () => {
     const [check, setcheck] = useState(false)
     const navigate = useNavigate()
     const [array, setarray] = useState(0)
+    const [scroll, setscroll] = useState(0)
     function showmenu() {
 
         setmenubar(prev => !prev)
+        setscroll(window.scrollY)
+        window.scrollTo(0, 1000)
+        console.log(scroll)
         console.log("hi")
     }
     function showmenu1() {
@@ -61,6 +65,10 @@ const Home = () => {
         setshowinput(false)
         setmenubar(false)
     }
+
+
+
+    console.log(scroll)
 
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0  `} ref={b} onScroll={(e) => { console.log(e) }} >
@@ -212,38 +220,38 @@ const Home = () => {
                     <p className='px-5 sm:px-14 md:px-0 '><strong>Glamour Grove</strong> is a gift and decoration store based in hcmc, vietnie since 2019.Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae corrupti ullam sit labore itaque eum placeat tempora inventore hic velit iste, distinctio sequi dolore at laboriosam.
                     </p>
                     </div>*/}
-                <div className='mt-10 mb-8 md:mt-12  md:mb-12 grid gap-y-7 grid-cols-3 sm:gap-y-11 md:gap-y-12 lg:gap-y-14 md:grid-cols-4 px-5 py-7  sm:py-11 md:py-12 lg:py-14  w-120  sm:w-130 lg:w-130 m-auto shadow-xl outline outline-2 outline-yellow-800  '>
+                <div className='mt-10 mb-8 md:mt-12  md:mb-12 grid gap-y-7 grid-cols-3 sm:gap-y-11 md:gap-y-12 lg:gap-y-14 md:grid-cols-4 px-5 py-7  sm:py-11 md:py-12 lg:py-14  w-120  sm:w-130 lg:w-130 m-auto shadow-xl bg-yellow-700 outline outline-2 outline-yellow-800  '>
                     <div className='flex flex-col items-center'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
-                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Premium</p>
+                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Premium</p>
                     </div>
                     <div className='flex flex-col items-center'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaMoneyBill /></div>
-                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Buy shares</p>
+                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Buy shares</p>
                     </div>
                     <div className='flex flex-col items-center'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaCar /></div>
-                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Delivery</p>
+                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Delivery</p>
                     </div>
                     <div className='flex flex-col items-center'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaUser /></div>
-                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Account</p>
+                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Account</p>
                     </div>
                     <div className='flex flex-col items-center'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
-                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>Terms of services</p>
+                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Terms of services</p>
                     </div>
                     <div className='flex flex-col items-center'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
-                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold' >Privacy policy</p>
+                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold' >Privacy policy</p>
                     </div>
                     <div className='flex flex-col items-center    '>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white rotate-180 items-center'> <FaPhone /></div>
-                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold whitespace-nowrap'>Support</p>
+                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold whitespace-nowrap'>Support</p>
                     </div>
                     <div className='flex flex-col items-center'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaQuestion /></div>
-                        <p className='text-center text-xs sm:text-sm lg:text-base font-semibold'>FAQ</p>
+                        <p className='text-center text-white text-xs sm:text-sm lg:text-base font-semibold'>FAQ</p>
                     </div>
 
 
@@ -352,23 +360,23 @@ const Home = () => {
                 </div>
                 {/*about ends*/}
                 <div className='grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5 text-white'>
-                    <div className=' bg-yellow-800 w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl '>
-                        <FaCar className='text-xl font-bold sm:text-2xl ' />
+                    <div className=' bg-yellow-700 outline outline-2 outline-yellow-800 w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl '>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'>   <FaCar className='text-xl font-bold sm:text-2xl ' /></div>
                         <h2 className='text-lg font-bold sm:text-xl '>Free shipping</h2>
                         <p className='font-semibold md:text-lg '>Order above $200. </p>
                     </div>
-                    <div className='bg-yellow-800   w-full h-40 md:h-44   pt-4 pl-2  lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
-                        <FaWallet className='text-xl font-bold sm:text-2xl ' />
+                    <div className='bg-yellow-700 outline outline-2 outline-yellow-800  w-full h-40 md:h-44   pt-4 pl-2  lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'>    <FaWallet className='text-xl font-bold sm:text-2xl ' /></div>
                         <h2 className='text-lg font-bold sm:text-xl '>Money back</h2>
                         <p className='font-semibold md:text-lg '>30 days guarantee.</p>
                     </div>
-                    <div className='bg-yellow-800 w-full h-40 md:h-44  pt-4 px-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
-                        <FaLock className='text-xl font-bold sm:text-2xl ' />
+                    <div className=' bg-yellow-700 outline outline-2 outline-yellow-800 w-full h-40 md:h-44  pt-4 px-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'>   <FaLock className='text-xl font-bold sm:text-2xl ' /></div>
                         <h2 className='text-lg font-bold sm:text-xl whitespace-nowrap '>Secure payments</h2>
                         <p className='font-semibold md:text-lg '>Secure by stripe.</p>
                     </div>
-                    <div className='bg-yellow-800 w-full h-40 md:h-44  pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5 sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
-                        <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' />
+                    <div className='bg-yellow-800 outline outline-2 outline-yellow-700 w-full h-40 md:h-44  pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5 sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>  <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' /></div>
                         <h2 className='text-lg font-bold sm:text-xl '>24/7 support</h2>
                         <p className='font-semibold md:text-lg '>Phone and email support.</p>
                     </div>
