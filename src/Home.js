@@ -27,13 +27,17 @@ const Home = () => {
     const navigate = useNavigate()
     const [array, setarray] = useState(0)
     const [scroll, setscroll] = useState(0)
-    function showmenu() {
+    useEffect(() => {
+
         setscroll(window.scrollY)
+        console.log(scroll)
+    }, [menubar])
+    function showmenu() {
+
         setmenubar(prev => !prev)
 
-        window.scrollTo(0, scroll)
-        console.log(scroll)
-        console.log("hi")
+
+
         Notification.requestPermission().then(perm => {
             if (perm === 'granted') {
                 new Notification('new note', {
@@ -78,7 +82,7 @@ const Home = () => {
 
 
 
-    console.log(scroll)
+
 
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0  `} ref={b} onScroll={(e) => { console.log(e) }} >
@@ -230,37 +234,37 @@ const Home = () => {
                     <p className='px-5 sm:px-14 md:px-0 '><strong>Glamour Grove</strong> is a gift and decoration store based in hcmc, vietnie since 2019.Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae corrupti ullam sit labore itaque eum placeat tempora inventore hic velit iste, distinctio sequi dolore at laboriosam.
                     </p>
                     </div>*/}
-                <div className='mt-10 mb-8 md:mt-12  md:mb-12 grid gap-y-3 grid-cols-3 sm:gap-y-11 md:gap-y-12 lg:gap-y-10 md:grid-cols-4 px-5 py-3  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 m-auto shadow-xl bg-yellow-800 outline outline-2 outline-yellow-800  '>
-                    <div className='flex flex-col items-center w-104 h-104 sm:w-105 sm:h-105 lg:w-106 bg-yellow-700 justify-center lg:h-106 rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
+                <div className='mt-10 mb-8 md:mt-12  md:mb-12 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 m-auto shadow-xl bg-yellow-800 outline outline-2 outline-yellow-700 rounded-xl  '>
+                    <div className='flex flex-col items-center  lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Premium</p>
                     </div>
-                    <div className='flex flex-col items-center w-104 h-104 sm:w-105 sm:h-105 lg:w-106 bg-yellow-700 justify-center lg:h-106 rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaMoneyBill /></div>
+                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center  lg:h-106 rounded-full'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaMoneyBill /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Buy shares</p>
                     </div>
-                    <div className='flex flex-col items-center w-104 h-104 sm:w-105 sm:h-105 lg:w-106 bg-yellow-700 justify-center lg:h-106 rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaCar /></div>
+                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaCar /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Delivery</p>
                     </div>
-                    <div className='flex flex-col items-center w-104 h-104 sm:w-105 sm:h-105 lg:w-106 bg-yellow-700 justify-center lg:h-106 rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaUser /></div>
+                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaUser /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Account</p>
                     </div>
-                    <div className='flex flex-col items-center w-104 h-104 sm:w-105 sm:h-105 lg:w-106 bg-yellow-700 justify-center lg:h-106 rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
+                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Services</p>
                     </div>
-                    <div className='flex flex-col items-center w-104 h-104 sm:w-105 sm:h-105 lg:w-106 bg-yellow-700 justify-center lg:h-106 rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaSubscript /></div>
+                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold' >Privacy policy</p>
                     </div>
-                    <div className='flex flex-col items-center w-104 h-104 sm:w-105 sm:h-105 lg:w-106 bg-yellow-700 justify-center lg:h-106 rounded-full   '>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white rotate-180 items-center'> <FaPhone /></div>
+                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full   '>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white rotate-180 items-center'> <FaPhone /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold whitespace-nowrap'>Support</p>
                     </div>
-                    <div className='flex flex-col items-center w-104 h-104 sm:w-105 sm:h-105 lg:w-106 bg-yellow-700 justify-center lg:h-106 rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-800 text-white items-center'> <FaQuestion /></div>
+                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaQuestion /></div>
                         <p className='text-center text-white text-xs sm:text-sm lg:text-base font-semibold'>FAQ</p>
                     </div>
 
