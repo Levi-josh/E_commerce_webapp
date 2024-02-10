@@ -29,13 +29,15 @@ const Home = () => {
     const [scroll, setscroll] = useState(0)
     useEffect(() => {
 
-        setscroll(window.scrollY)
-        //  console.log(scroll)
+
+        window.scrollTo(0, scroll)
+        console.log(scroll)
     }, [menubar])
     function showmenu() {
-        console.log("hi")
+
         setmenubar(prev => !prev)
-        console.log("hello")
+        setscroll(window.scrollY)
+
 
 
         /*
@@ -111,7 +113,7 @@ const Home = () => {
 
                 <div className=' h-190 md:h-140 bg-yellow-900 lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center'>
                     <FaTimesCircle className='absolute lg:hidden left-4 top-4  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
-                    <FaLightbulb className='absolute lg:hidden right-4 top-4s    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' />
+                    <FaLightbulb className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' />
                     <div className='flex items-center flex-col gap-2'>
                         <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-white   rounded-full  bg-no-repeat bg-cover bg-center    ' />
                         <p className='text-white font-serif'>The best shopping app </p>
