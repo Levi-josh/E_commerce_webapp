@@ -85,11 +85,11 @@ const Checkout = () => {
                     <h1 className='font-bold sm:text-lg lg:text-xl '>Payment Method</h1>
                     <div className='flex flex-col gap-6'>
                         <div className='flex gap-2 w-full border border-black p-2 rounded-md'>
-                            <input type='radio' name='payment' className='lg:w-4' />
+                            <input type='radio' name='payment' className='lg:w-4 accent-yellow-800 ' />
                             <p className='font-bold lg:text-lg'>Pay by Card Credit</p>
                         </div>
                         <div className='flex gap-2 w-full border border-black p-2 rounded-md'>
-                            <input type='radio' name='payment' className=' lg:w-4' />
+                            <input type='radio' name='payment' className=' lg:w-4 accent-yellow-800 ' />
                             <p className='font-bold lg:text-lg'>Paypal</p>
                         </div>
                         <div className='border-b-0.5 border-black'></div>
@@ -113,7 +113,7 @@ const Checkout = () => {
                     </div>
 
                 </div>
-                <button className='hidden lg:block py-3 rounded-lg text-white text-lg font-semibold    bg-yellow-800' onClick={nextcart2}>Place order</button>
+                <button className='hidden lg:block py-3 rounded-lg text-white text-lg font-semibold    bg-yellow-900' onClick={nextcart2}>Place order</button>
             </div>
 
 
@@ -147,7 +147,7 @@ const Checkout = () => {
                     <h1 className=' text-lg sm:text-xl lg:text-2xl'>$2000</h1>
                 </div>
             </div>
-            <button className='lg:hidden block m-auto w-110 sm:w-130 md:w-140 py-3 font-semibold rounded-lg text-white  bg-yellow-800' onClick={nextcart2}>Place order</button>
+            <button className='lg:hidden block m-auto w-110 sm:w-130 md:w-140 py-3 font-semibold rounded-lg text-white  bg-yellow-900' onClick={nextcart2}>Place order</button>
 
         </div>
     )
