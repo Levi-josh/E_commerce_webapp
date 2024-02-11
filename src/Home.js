@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from 'framer-motion'
 import cartimg from './icons8-shopping-cart-48.png';
 import 'swiper/css/pagination';
 
@@ -91,7 +92,7 @@ const Home = () => {
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0  `} ref={b} onScroll={(e) => { console.log(e) }} >
 
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
-                <h1 className={`font-bold text-lg sm:text-2xl  xl:text-3xl   ${menubar ? 'invisible lg:visible' : 'visble'}`}>Glamour Grove</h1>
+                <motion.h1 animate={{ x: -2 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`font-bold text-lg sm:text-2xl  xl:text-3xl   ${menubar ? 'invisible lg:visible' : 'visble'}`} >Glamour Grove</motion.h1>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
@@ -115,6 +116,7 @@ const Home = () => {
                     <FaTimesCircle className='absolute lg:hidden left-4 top-4  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
                     <FaLightbulb className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' />
                     <div className='flex items-center flex-col gap-2'>
+
                         <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-white   rounded-full  bg-no-repeat bg-cover bg-center    ' />
                         <p className='text-white font-serif'>The best shopping app </p>
                     </div>
@@ -129,12 +131,12 @@ const Home = () => {
                             <NavLink to={'/about'}> <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
                         </div>
                         <div className='flex flex-col border-b  border-t lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  '>
-                            <div className='hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b px-6 hover:lg:bg-yellow-700'>
+                            <div className='hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b px-6 hover:lg:bg-neutral-200'>
                                 <p className='text-xl font-semibold py-4'>Light </p>
                                 <FaToggleOff className='text-2xl' />
                             </div>
-                            <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-yellow-700 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b '> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={buyorder}>Carts</p></div>
-                            <NavLink to={'/history'}><div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-yellow-700 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b'><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div></NavLink>
+                            <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-200 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b '> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={buyorder}>Carts</p></div>
+                            <NavLink to={'/history'}><div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-200 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b'><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div></NavLink>
 
                         </div>
                     </div>
@@ -150,7 +152,7 @@ const Home = () => {
                     <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
                 </div>
             </div>
-            <div className={`fixed  w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96   rounded-xl border-t bg-yellow-700  ${popout ? 'block' : 'hidden'}  `}>
+            <motion.div className={`fixed   w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96   rounded-xl border-t   ${popout ? 'block scale-100 ' : 'hidden'}  `}>
                 <FaTimesCircle className='absolute right-0  text-yellow-900 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={buyorder} />
                 <div className='flex fixed rounded-t-xl top-0 bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
@@ -175,7 +177,7 @@ const Home = () => {
                     {showinput && <button className='w-15 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 '>Create</button>}
                     {<button className='md:w-12 w-14 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
                 </div>
-            </div>
+            </motion.div>
             <div>
                 <div className=' hidden bg-yellow-800 w-106 h-10  justify-center items-center fixed popout1 text-white  rounded-full  '>
                     <p>you're logged in</p>
@@ -235,43 +237,43 @@ const Home = () => {
                     <p className='px-5 sm:px-14 md:px-0 '><strong>Glamour Grove</strong> is a gift and decoration store based in hcmc, vietnie since 2019.Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae corrupti ullam sit labore itaque eum placeat tempora inventore hic velit iste, distinctio sequi dolore at laboriosam.
                     </p>
                     </div>*/}
-                <div className='mt-10 mb-8 md:mt-12  md:mb-12 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 m-auto shadow-xl bg-yellow-900 outline outline-2 outline-yellow-700 rounded-xl  '>
-                    <div className='flex flex-col items-center  lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                <div className='mt-10 mb-8 md:mt-12  md:mb-9 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 m-auto shadow-xl bg-yellow-900 outline outline-2 outline-yellow-700 rounded-xl  '>
+                    <div className='flex flex-col items-center   justify-center rounded-full'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Premium</p>
                     </div>
-                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center  lg:h-106 rounded-full'>
+                    <div className='flex flex-col items-center  justify-center  rounded-full'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaMoneyBill /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Buy shares</p>
                     </div>
-                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                    <div className='flex flex-col items-center  justify-center rounded-full'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaCar /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Delivery</p>
                     </div>
-                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                    <div className='flex flex-col items-center  justify-center rounded-full'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaUser /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Account</p>
                     </div>
-                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                    <div className='flex flex-col items-center  justify-center rounded-full'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Services</p>
                     </div>
-                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                    <div className='flex flex-col items-center  justify-center rounded-full'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold' >Privacy policy</p>
                     </div>
-                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full   '>
+                    <div className='flex flex-col items-center  justify-center rounded-full   '>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white rotate-180 items-center'> <FaPhone /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold whitespace-nowrap'>Support</p>
                     </div>
-                    <div className='flex flex-col items-center lg:w-106 lg:hover:bg-yellow-700 justify-center lg:h-106 rounded-full'>
+                    <div className='flex flex-col items-center  justify-center rounded-full'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaQuestion /></div>
                         <p className='text-center text-white text-xs sm:text-sm lg:text-base font-semibold'>FAQ</p>
                     </div>
 
 
                 </div>
-                <h1 className='font-bold mb-7 text-center text-xl sm:text-2xl lg:text-3xl underline'>Our services</h1>
+                <h1 className='font-bold mb-7 md:mb-9 text-center text-2xl sm:text-3xl lg:text-4xl '>Our services</h1>
                 <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
                     <div className='md:w-full blurr3'>
                         <div className='absolute hidden  bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
