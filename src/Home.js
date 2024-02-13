@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown, FaToggleOn, FaToggleOff, FaSubscript, FaUser, FaQuestion, FaVest, FaShare, FaMoneyBill, FaLightbulb } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown, FaToggleOn, FaToggleOff, FaSubscript, FaUser, FaQuestion, FaVest, FaShare, FaMoneyBill, FaLightbulb, FaSearchPlus } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
@@ -7,8 +7,10 @@ import { useEffect } from 'react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import notify from './short-success-sound-glockenspiel-treasure-video-game-6346.mp3'
 import { motion } from 'framer-motion'
 import cartimg from './icons8-shopping-cart-48.png';
+
 import 'swiper/css/pagination';
 
 import './swiper.css'
@@ -25,17 +27,37 @@ const Home = () => {
     const [popout2, setpopout2] = useState(false)
     const [showinput, setshowinput] = useState(false)
     const [check, setcheck] = useState(false)
+    const [loggedin, setloggedin] = useState(true)
     const navigate = useNavigate()
     const [array, setarray] = useState(0)
     const [scroll, setscroll] = useState(0)
+    const [ring, setring] = useState(false)
+    const audiosound = useRef()
     useEffect(() => {
 
 
         window.scrollTo(0, scroll)
-        console.log(scroll)
-    }, [!menubar])
+
+
+
+    }, [menubar])
+    useEffect(() => {
+        if (audiosound.current) {
+            audiosound.current.play().catch(error => {
+                // Auto-play was prevented; handle the error or inform the user
+                console.error('Auto-play prevented:', error.message);
+            })
+        }
+        const interval = setTimeout(() => {
+            setloggedin(prev => !prev)
+
+        }, [3000])
+        return () => clearInterval(interval)
+    }, [])
     function showmenu() {
-        setscroll(window.scrollY)
+        setscroll(menubar ? scroll : window.scrollY)
+        setloggedin(prev => !prev)
+
         setmenubar(prev => !prev)
 
 
@@ -79,6 +101,7 @@ const Home = () => {
     }, []
     )*/
     function buyorder() {
+
         setpopout(prev => !prev)
         setshowinput(false)
         setmenubar(false)
@@ -92,7 +115,7 @@ const Home = () => {
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0  `} ref={b} onScroll={(e) => { console.log(e) }} >
 
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
-                <motion.h1 animate={{ x: -2 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`font-bold text-lg sm:text-2xl  xl:text-3xl   ${menubar ? 'invisible lg:visible' : 'visble'}`} >Glamour Grove</motion.h1>
+                <motion.h1 animate={{ x: -2 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`font-bold text-lg sm:text-2xl  xl:text-3xl    ${menubar ? 'invisible lg:visible' : 'visble'}`} >Glamour Grove</motion.h1>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
@@ -105,8 +128,8 @@ const Home = () => {
                     <NavLink to={'/note'}>   <div className=' text-lg sm:text-xl md:text-2xl outline outline-2 outline-yellow-900   flex justify-center sm:h-10 md:w-101 h-8 items-center w-102 sm:w-103 text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-800'><FaBell className=' ' /></div></NavLink>
                     <NavLink to='/cart/:id' className=' '><div className='flex  outline outline-2 outline-yellow-900 h-8 items-center text-lg sm:text-xl  sm:w-103 md:text-2xl justify-center text-black hover:text-white w-102  md:w-101 rounded-full sm:h-10 hover:cursor-pointer hover:bg-yellow-800'><p className='hidden'>Cart</p><FaShoppingCart /></div></NavLink>
 
-                    <div onClick={showmenu} className='text-lg sm:text-xl lg:hidden outline outline-2 outline-yellow-800   flex justify-center h-8 w-102 sm:h-10 md:w-101 sm:w-103 items-center text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-700'><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' /></div>
-                    <div className={`lg:flex items-center  outline outline-2 outline-yellow-900 justify-center ${menubar ? 'bg-yellow-800 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-700  hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
+                    <div onClick={showmenu} className='text-lg sm:text-xl lg:hidden outline outline-2 outline-yellow-800   flex justify-center h-8 w-102 sm:h-10 md:w-101 sm:w-103 items-center text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-900'><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' /></div>
+                    <div className={`lg:flex items-center  outline outline-2 outline-yellow-900 justify-center ${menubar ? 'bg-yellow-800 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-900  hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
                 </div>
             </header >
 
@@ -156,33 +179,33 @@ const Home = () => {
                 <FaTimesCircle className='absolute right-0  text-yellow-900 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={buyorder} />
                 <div className='flex fixed rounded-t-xl top-0 bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
-                    <button className='w-10 p-1  lg:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
+                    <button className='w-10 p-1 lg:w-350  xl:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
                 <div className='px-4 pt-16 sm:pt-16 lg:pt-16'>
                     <div>
-                        {showinput && <input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 border border-black outline-none mt-3 sm:mt-4' autoFocus />}
+                        {showinput && <div className='bg-gray-800 relative mt-3 sm:mt-4'><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pr-11 border border-black outline-none ' autoFocus /><FaSearchPlus className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' /></div>}
                     </div>
-                    <div className='flex justify-between py-3 border-b border-yellow-700 hover:cursor-pointer  '>
+                    <div className='flex justify-between py-3 border-b border-yellow-900 hover:cursor-pointer  '>
                         <NavLink to={'/cart/:id'}>  <p className='font-semibold sm:text-lg lg:text-xl  '>december collection</p></NavLink>
                         <input type="radio" className='hover:cursor-pointer  lg:w-4' name='collection' />
 
                     </div>
-                    <div className='flex justify-between py-3 border-b border-yellow-700 hover:cursor-pointer  '>
+                    <div className='flex justify-between py-3 border-b border-yellow-900 hover:cursor-pointer  '>
                         <NavLink to={'/cart/:id'}><p className='font-semibold sm:text-lg lg:text-xl  '>september collection</p></NavLink>
                         <input type="radio" className='hover:cursor-pointer lg:w-4' name='collection' />
 
                     </div>
                 </div>
                 <div className='fixed w-full bottom-0 bg-yellow-900 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
-                    {showinput && <button className='w-15 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 '>Create</button>}
-                    {<button className='md:w-12 w-14 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
+
                 </div>
             </motion.div>
             <div>
-                <div className=' hidden bg-yellow-800 w-106 h-10  justify-center items-center fixed popout1 text-white  rounded-full  '>
+                <div className={` bg-yellow-800 ${loggedin ? 'popout1' : 'popout3'} w-106 h-10 flex  justify-center items-center fixed  text-white  rounded-full  `}>
                     <p>you're logged in</p>
                 </div>
-                <div className=' hidden bg-white outline-yellow-900 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20  justify-center flex-col  fixed popout1 text-black  '>
+
+                <div className=' hidden bg-white outline-yellow-700 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20  justify-center flex-col  fixed popout1 text-black  '>
                     <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4'>
                         <FaBell className='text-yellow-900 text-lg sm:text-xl lg:text-2xl' />
                         <p>Hi welcome josh to glamour... </p>
@@ -273,6 +296,10 @@ const Home = () => {
 
 
                 </div>
+                <audio controls className='hidden' ref={audiosound}>
+                    <source src={notify} type="audio/mp3" />
+
+                </audio>
                 <h1 className='font-bold mb-7 md:mb-9 text-center text-2xl sm:text-3xl lg:text-4xl '>Our services</h1>
                 <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
                     <div className='md:w-full blurr3'>

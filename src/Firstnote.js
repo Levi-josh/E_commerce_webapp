@@ -8,7 +8,7 @@ const Firstnote = () => {
 
             <div className='lg:overflow-y-scroll h-full '>
                 <NavLink to={'/note/:id'}>
-                    <div className='lg:px-3 md:px-6 sm:px-5 px-5 border-b pt-5 pb-3 xl:px-4 flex flex-col'>
+                    <div className='lg:px-3 md:px-6 sm:px-5 px-5 border-b  pt-5 pb-3 xl:px-4 flex flex-col'>
                         <div className='flex justify-between items-center'>
                             <p> Hi welcome to glamour grove a tahk.</p>
                             <FaEllipsisV />

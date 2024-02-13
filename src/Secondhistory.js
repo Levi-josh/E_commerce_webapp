@@ -2,7 +2,7 @@ import React from 'react'
 
 const Secondhistory = () => {
     return (
-        <div className='lg:fixed lg:w-126 w-full lg:ml-0 h-full right-0 pt-24 sm:pt-32  lg:pt-24'>
+        <div className='lg:fixed lg:w-126 w-full lg:ml-0 h-full right-0 pt-24 sm:pt-52 lg:pt-24'>
             <div className='lg:overflow-y-scroll h-full '>
                 <div className='m-auto px-5 w-110 md:w-150 xl:w-250 lg:w-200 shadow-xl border-0.5 md:border border-slate-300 shadow-slate-300 py-6 sm:py-14 md:py-16  md:text-center   '>
                     <p className='md:text-lg lg:text-xl font-medium text-yellow-800'>Thank you!</p>

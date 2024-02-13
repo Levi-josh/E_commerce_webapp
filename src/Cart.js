@@ -102,7 +102,7 @@ const Cart = () => {
                 <NavLink to='../' className={'sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <div className='sm:m-auto flex items-center text-xl sm:text-2xl lg:text-3xl font-semibold'>
                     <h1 className=''>Cart</h1>
-                    <FaShoppingCart className='text-2xl sm:text-3xl lg:text-4xl' />
+
                 </div>
                 <FaEllipsisV className='absolute right-3 sm:static' />
                 {/* <h1 className={`font-bold text-xl sm:text-2xl hidden   lg:inline xl:text-3xl  `}><span className=''>#</span>Glamour Grove</h1>
@@ -187,9 +187,9 @@ const Cart = () => {
             </div>
             <div  >
                 {emptycart ? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
-                    <section className='  pt-24 sm:pt-28     lg:pt-32 '>
+                    <section className='  pt-28 sm:pt-32     lg:pt-32 '>
 
-                        <h1 className='text-center   font-bold text-3xl  sm:mb-4  mb-3 text-yellow-900  md:mb-4  lg:mb-10  xl:text-6xl sm:text-4xl lg:text-5xl'>cart</h1>
+                        <h1 className='text-center   font-semibold text-lg  sm:mb-5  mb-5 text-yellow-900  md:mb-5  lg:mb-7 xl:text-2xl sm:text-xl lg:text-2xl'>December collection</h1>
                         <div className='flex bg-white  top-20 sm:top-24   sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
                             <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-yellow-900' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-yellow-900' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
                             <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${changecart2 ? ' bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{changecart2 ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${changecart2 ? ' text-yellow-900' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${changecart2 ? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
