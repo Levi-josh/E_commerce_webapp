@@ -27,7 +27,7 @@ function App() {
   const router = createBrowserRouter(createRoutesFromElements(
 
     <Route path='/' element={<ScrollToTOP />} >
-      <Route path='*' element={<Missing />} />
+      <Route path='/*' element={<Missing />} />
       <Route errorElement={<Error />} />
       <Route index element={<Home />} />
       <Route path='/weblify' element={<Weblify />} />

@@ -38,9 +38,10 @@ const Home = () => {
 
         window.scrollTo(0, scroll)
 
+console.log('hi')
 
+    }, [menubar || popout])
 
-    }, [menubar])
     useEffect(() => {
         if (audiosound.current) {
             audiosound.current.play().catch(error => {
@@ -50,14 +51,12 @@ const Home = () => {
         }
         const interval = setTimeout(() => {
             setloggedin(prev => !prev)
-
         }, [3000])
         return () => clearInterval(interval)
     }, [])
+
     function showmenu() {
         setscroll(menubar ? scroll : window.scrollY)
-        setloggedin(prev => !prev)
-
         setmenubar(prev => !prev)
 
 
@@ -76,9 +75,9 @@ const Home = () => {
                 })*/
     }
     function showmenu1() {
-
+ 
         setcheck(prev => !prev)
-        console.log("hi")
+       
     }
     function read() {
         navigate('/note')
@@ -101,7 +100,7 @@ const Home = () => {
     }, []
     )*/
     function buyorder() {
-
+ setscroll(scroll)
         setpopout(prev => !prev)
         setshowinput(false)
         setmenubar(false)
