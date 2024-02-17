@@ -199,7 +199,7 @@ console.log('hi')
 
                 </div>
             </motion.div>
-            <div>
+           
                 <div className={` bg-yellow-800 ${loggedin ? 'popout1' : 'popout3'} w-106 h-10 flex  justify-center items-center fixed  text-white  rounded-full  `}>
                     <p>you're logged in</p>
                 </div>
@@ -211,10 +211,11 @@ console.log('hi')
                     </div>
                     <div className='flex justify-center items-center gap-3'>
                         <button className='bg-yellow-900 text-white w-15 font-semibold' onClick={read}>Read</button>
-                        <button className='bg-yellow-900 text-white w-15 font-semibold '>cancel</button>
+                        <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
                     </div>
                 </div>
-                <div className='        pt-24 sm:pt-36 md:pt-40 lg:pt-40   '>
+            <div className=' h-screen sm:h-auto sm:pb-0 pb-4  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col gap-4 sm:gap-0 sm:block'>
+                <div className='h-192 sm:h-auto'>
 
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
 
@@ -231,35 +232,30 @@ console.log('hi')
 
 
                     //onSwiper={(swiper) => console.log(swiper)}
-                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-130 lg:w-130 m-auto   '>
+                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-130 lg:w-130 m-auto h-full sm:h-auto    '>
 
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
-                        </SwiperSlide>
-
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXTxreOJSjKV3Rr6tYE-2XYcPlaHcuBs4nUg&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center    ' />
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full sm:h-72 h-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
 
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2o09ztmF7LPpqO-80mbCFlOvnDlkF0CwI7w&usqp=CAU' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center object-cover   ' />
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXTxreOJSjKV3Rr6tYE-2XYcPlaHcuBs4nUg&usqp=CAU' className='min-w-full sm:h-72      md:h-96 bg-no-repeat bg-cover bg-center h-full     ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full h-72       md:h-96 bg-no-repeat bg-cover bg-center   ' />
+
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2o09ztmF7LPpqO-80mbCFlOvnDlkF0CwI7w&usqp=CAU' className='min-w-full sm:h-72      md:h-96 bg-no-repeat bg-cover bg-center object-cover h-full    ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full sm:h-72       md:h-96 bg-no-repeat bg-cover bg-center h-full    ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-72      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full sm:h-72 h-full       md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        </SwiperSlide>
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full sm:h-72 h-full       md:h-96 bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
 
 
                     </Swiper>
                 </div >
-            </div>
-
-            <section>
-                {/*<div className=' mt-10 lg:px-10 text-center mb-8 gap-3 sm:gap-4 flex-col flex md:flex-row md:gap-10 lg:w-130  md:m-auto md:w-130 md:justify-between md:items-start   md:mt-12 md:mb-12  '>
-                    <h1 className='text-xl font-bold sm:text-2xl  lg:text-4xl whitespace-nowrap'>Simply unique/<span className='md:flex md:flex-wrap'>simply better</span>  </h1>
-                    <p className='px-5 sm:px-14 md:px-0 '><strong>Glamour Grove</strong> is a gift and decoration store based in hcmc, vietnie since 2019.Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae corrupti ullam sit labore itaque eum placeat tempora inventore hic velit iste, distinctio sequi dolore at laboriosam.
-                    </p>
-                    </div>*/}
-                <div className='mt-10 mb-8 md:mt-12  md:mb-9 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 m-auto shadow-xl bg-yellow-900 outline outline-2 outline-yellow-700 rounded-xl  '>
+            
+            
+               <div className='flex justify-center h-192 sm:h-auto'>
+                <div className=' sm:mt-12  sm:mb-9 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 shadow-xl bg-yellow-900 outline outline-2 outline-yellow-700 rounded-xl  '>
                     <div className='flex flex-col items-center   justify-center rounded-full'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Premium</p>
@@ -293,8 +289,11 @@ console.log('hi')
                         <p className='text-center text-white text-xs sm:text-sm lg:text-base font-semibold'>FAQ</p>
                     </div>
 
-
+                    </div>
                 </div>
+            </div>
+               
+            <section>
                 <audio controls className='hidden' ref={audiosound}>
                     <source src={notify} type="audio/mp3" />
 
