@@ -33,6 +33,7 @@ const Home = () => {
     const [scroll, setscroll] = useState(0)
     const [ring, setring] = useState(false)
     const audiosound = useRef()
+    const homescreen = useRef()
     useEffect(() => {
 
 
@@ -42,7 +43,9 @@ console.log('hi')
 
     }, [menubar || popout])
 
+
     useEffect(() => {
+         
         if (audiosound.current) {
             audiosound.current.play().catch(error => {
                 // Auto-play was prevented; handle the error or inform the user
@@ -111,7 +114,7 @@ console.log('hi')
 
 
     return (
-        <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0  `} ref={b} onScroll={(e) => { console.log(e) }} >
+        <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `} ref={b} onScroll={(e) => { console.log(e) }} >
 
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <motion.h1 animate={{ x: -2 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`font-bold text-lg sm:text-2xl  xl:text-3xl    ${menubar ? 'invisible lg:visible' : 'visble'}`} >Glamour Grove</motion.h1>
@@ -214,7 +217,7 @@ console.log('hi')
                         <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
                     </div>
                 </div>
-            <div className=' h-screen sm:h-auto sm:pb-0 pb-4  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col gap-4 sm:gap-0 sm:block'>
+            <div  className=' h-full bg-slate-500 sm:h-auto gap-3 sm:pb-0 pb-3  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
                 <div className='h-192 sm:h-auto'>
 
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
