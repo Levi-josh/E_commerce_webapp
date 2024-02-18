@@ -217,7 +217,7 @@ console.log('hi')
                         <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
                     </div>
                 </div>
-            <div  className=' h-full bg-slate-500 sm:h-auto gap-3 sm:pb-0 pb-3  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
+            <div  className=' h-full bg-slate-500 sm:h-auto  sm:pb-0   pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
                 <div className='h-192 sm:h-auto'>
 
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -257,7 +257,7 @@ console.log('hi')
                 </div >
             
             
-               <div className='flex justify-center h-192 sm:h-auto'>
+               <div className='flex justify-center h-192 sm:h-auto mb-6 sm:mb-0'>
                 <div className=' sm:mt-12  sm:mb-9 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 shadow-xl bg-yellow-900 outline outline-2 outline-yellow-700 rounded-xl  '>
                     <div className='flex flex-col items-center   justify-center rounded-full'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
