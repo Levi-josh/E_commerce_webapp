@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown, FaToggleOn, FaToggleOff, FaSubscript, FaUser, FaQuestion, FaVest, FaShare, FaMoneyBill, FaLightbulb, FaSearchPlus } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate, useOutletContext } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
@@ -27,25 +27,46 @@ const Home = () => {
     const [popout2, setpopout2] = useState(false)
     const [showinput, setshowinput] = useState(false)
     const [check, setcheck] = useState(false)
-    const [loggedin, setloggedin] = useState(true)
+     const [loggedin, setloggedin] = useState(true)
     const navigate = useNavigate()
     const [array, setarray] = useState(0)
     const [scroll, setscroll] = useState(0)
     const [ring, setring] = useState(false)
-    const audiosound = useRef()
+    const [items,setitems]=useState([])
+    const [error,seterror]=useState([])
+     const audiosound = useRef()
     const homescreen = useRef()
+
     useEffect(() => {
-
-
         window.scrollTo(0, scroll)
-
-console.log('hi')
-
     }, [menubar || popout])
 
+useEffect(() => {
 
+        const getusersDocuments = async () => {
+            
+            const option = {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+            try {
+                const response = await fetch('https://backend-e-commerce-g7of.onrender.com/getdemo', option);
+                const data = await response.json()
+               setitems(data)
+            }
+
+            catch (err) {
+                seterror(err)
+
+            }
+        }
+        getusersDocuments()
+}, []);
+     console.log(items)
     useEffect(() => {
-         
+         console.log('hi')
         if (audiosound.current) {
             audiosound.current.play().catch(error => {
                 // Auto-play was prevented; handle the error or inform the user
@@ -56,15 +77,12 @@ console.log('hi')
             setloggedin(prev => !prev)
         }, [3000])
         return () => clearInterval(interval)
-    }, [])
+        
+    }, [ring==true])
 
     function showmenu() {
         setscroll(menubar ? scroll : window.scrollY)
         setmenubar(prev => !prev)
-
-
-
-
         /*
                 Notification.requestPermission().then(perm => {
                     if (perm === 'granted') {
@@ -78,30 +96,13 @@ console.log('hi')
                 })*/
     }
     function showmenu1() {
- 
-        setcheck(prev => !prev)
+         setcheck(prev => !prev)
        
     }
     function read() {
         navigate('/note')
     }
 
-    const b = useRef()
-
-
-
-    /*setInterval()
-    useEffect(() => {
-        const interval = setInterval(() => {
-
-            setarray(prev => prev + 1)
-
-
-
-        }, 2000)
-        return () => clearInterval(interval)
-    }, []
-    )*/
     function buyorder() {
  setscroll(scroll)
         setpopout(prev => !prev)
@@ -109,12 +110,8 @@ console.log('hi')
         setmenubar(false)
     }
 
-
-
-
-
     return (
-        <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `} ref={b} onScroll={(e) => { console.log(e) }} >
+        <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
 
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <motion.h1 animate={{ x: -2 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`font-bold text-lg sm:text-2xl  xl:text-3xl    ${menubar ? 'invisible lg:visible' : 'visble'}`} >Glamour Grove</motion.h1>
@@ -258,7 +255,7 @@ console.log('hi')
             
             
                <div className='flex justify-center h-191 sm:h-auto sm:mb-0'>
-                <div className=' sm:mt-12  sm:mb-9 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 shadow-xl bg-yellow-900 outline outline-2 outline-yellow-700 rounded-xl  '>
+                <div className=' sm:mt-12 lg:mt-20   sm:mb-9 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 shadow-xl bg-yellow-900 outline outline-2 outline-yellow-700 rounded-xl  '>
                     <div className='flex flex-col items-center   justify-center rounded-full'>
                         <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
                         <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Premium</p>
@@ -344,43 +341,25 @@ console.log('hi')
                 </div>
                 <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div      '>
 
-                    <div className='min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-900            '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='rounded-lg ' />
-                        <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
-                            <div className='flex text-yellow-900 sm:text-lg lg:text-xl '>
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStarHalfAlt />
+                    {items.map(prev => { 
+                     return(
+                            <div className='min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-900            '>
+                                <img src={prev.image} alt='' className='rounded-lg ' />
+                                <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
+                                    <div className='flex text-yellow-900 sm:text-lg lg:text-xl '>
+                                        <FaStar />
+                                        <FaStar />
+                                        <FaStar />
+                                        <FaStar />
+                                        <FaStarHalfAlt />
+                                    </div>
+                                    <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
+                                    <p className='font-semibold md:text-lg lg:text-xl'>{prev.price}</p>
+                                    <button className='w-full bg-yellow-900 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={buyorder}>Add to cart</button>
+                                </div>
                             </div>
-                            <h1 className='text-lg font-bold lg:text-xl'>Rolex watch</h1>
-                            <p className='font-semibold md:text-lg lg:text-xl'>$400</p>
-                            <button className='w-full bg-yellow-900 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={buyorder}>Add to cart</button>
-                        </div>
-                    </div>
-                    <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30    '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30     '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30   '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30   '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-20 sm:min-w-25 md:min-w-40 lg:min-w-30  '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-
-
+                        )
+                    })}
                 </div>
                 <NavLink to={'/product'}><div className='flex md:hidden  pt-4 pl-3 sm:pl-4 '><p className='font-semibold  '>See all</p><div className='pt-1'><FaAngleRight className='text-lg ' /></div></div></NavLink>
                 {/*</div>*/}

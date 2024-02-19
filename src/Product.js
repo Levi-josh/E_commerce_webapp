@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaAngleLeft, FaTimesCircle } from 'react-icons/fa'
 function Product() {
     const [menubar, setmenubar] = useState(false)
@@ -8,6 +8,8 @@ function Product() {
     const [popout2, setpopout2] = useState(false)
     const [showinput, setshowinput] = useState(false)
     const [showinput1, setshowinput1] = useState(false)
+    const [items,setitems]=useState([])
+    const [error,seterror]=useState([])
     function searchfunc() {
         setshowinput1(prev => !prev)
         setshowinput(false)
@@ -16,8 +18,30 @@ function Product() {
         setpopout(prev => !prev)
         setshowinput(false)
     }
+    
+useLayoutEffect(() => {
+        const getusersDocuments = async () => {
+            const option = {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+            try {
+                const response = await fetch('https://backend-e-commerce-g7of.onrender.com/getdemo', option);
+                const data = await response.json()
+               setitems(data)
+            }
+
+            catch (err) {
+                seterror(err)
+
+            }
+        }
+        getusersDocuments()
+}, [items]);
     return (
-        <div className={` ${popout ? 'p-home' : ''}`}>
+        <div className={` ${popout ? 'p-home' : ''}h-full`}>
             <header className='fixed flex sm:justify-between gap-4 sm:gap-0 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 shadow-lg '>
                 <h1 className={`font-bold hidden  lg:text-2xl  `}><span className=''>#</span>Glamour Grove</h1>
                 <NavLink to='../' relative='path' className={'md:block absolute hidden'}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
@@ -60,7 +84,7 @@ function Product() {
                     {<button className='md:w-12 w-14 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
                 </div>
             </div>
-            <div className='sm:pt-28 pt-24 lg:pt-32   '>
+            <div className='sm:pt-28 pt-24 lg:pt-32    '>
 
                 <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white   justify-center mb-3 sticky top-20 sm:top-24 lg:top-20 py-3 sm:py-4 lg:py-5'>
                     <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-2xl pl-4 placeholder:pl-4  ' placeholder='Search products' />
@@ -71,67 +95,25 @@ function Product() {
                         <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border  hover:bg-yellow-700 focus:bg-yellow-800 focus:text-white border-yellow-800 '>Watches</button>
                     </div>
                 </div>
-                <div className='grid grid-cols-2 md:grid-cols-3 mt-5 sm:mt-8 lg:mt-12           '>
+                <div className='grid grid-cols-2 md:grid-cols-3 mt-5 sm:mt-8 lg:mt-12            '>
 
-                    <div className='w-20 p-2 md:p-3 lg:p-4  rounded-lg border-2 shadow-lg           '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className='rounded-lg ' />
-                        <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
-                            <div className='flex text-yellow-800 sm:text-lg lg:text-xl '>
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStarHalfAlt />
+                    {items.map(prev => {
+                        return (<div className=' p-2 md:p-3 lg:p-4  rounded-lg border-2 shadow-lg           '>
+                            <img src={prev.image} alt='' className='rounded-lg ' />
+                            <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
+                                <div className='flex text-yellow-800 sm:text-lg lg:text-xl '>
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStar />
+                                    <FaStarHalfAlt />
+                                </div>
+                                <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
+                                <p className='font-semibold md:text-lg lg:text-xl'>{ `$${prev.price}`}</p>
+                                <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' >Add to cart</button>
                             </div>
-                            <h1 className='text-lg font-bold lg:text-xl'>Rolex watch</h1>
-                            <p className='font-semibold md:text-lg lg:text-xl'>$400</p>
-                            <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' >Add to cart</button>
-                        </div>
-                    </div>
-                    <div className='w-20    '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='w-20     '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-30  '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-30   '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-30 '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-30 '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-30 '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-30 '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-30 '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-30 '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
-                    <div className='min-w-30 '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' alt='' className=' ' />
-
-                    </div>
+                        </div>)
+                    })}
                 </div>
             </div>
 

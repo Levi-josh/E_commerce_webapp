@@ -52,7 +52,7 @@ const Login = () => {
                     <input type='password' placeholder='Password' className='  outline-none  border-b border-yellow-900  text-black placeholder:font-semibold placeholder:text-neutral-200  ' />
                     <div className='flex items-center gap-3'>
                         <input type='checkbox' className=' accent-yellow-900 sm:w-4 sm:h-4 hover:cursor-pointer lg:w-5 lg:h-5' />
-                        <p className='whitespace-nowrap  font-semibold'>I agree to the terms and condition</p>
+                        <p className='whitespace-nowrap  lg:font-semibold'>I agree to the terms and condition</p>
                     </div>
                     <button className='w-full py-2 md:py-3 rounded-xl smtext-lg lg:text-xl font-semibold  bg-yellow-900 text-white'>Sign In</button>
                 </form>

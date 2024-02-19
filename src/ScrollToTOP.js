@@ -9,6 +9,8 @@ const ScrollToTOP = () => {
     const b = useRef()
     const [error,setError]=useState('')
     const location = useLocation();
+    const [data,setdata]=useState([])
+  
     const accesstoken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N…4MTB9.6uPNKFjMZFwtnelOQ2_akSpeafLSeOAp6XyVRFbqkFE`
   
     useEffect(() => {
@@ -22,13 +24,12 @@ const ScrollToTOP = () => {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',
-                    'Authorization': `Bearer ${accesstoken}`
                 }
             }
             try {
                 const response = await fetch('https://backend-e-commerce-g7of.onrender.com/getuser/65ccb7984abbc67ca9a90231', option);
                 const data = await response.json()
-                console.log(data)
+               setdata(data)
             }
 
             catch (err) {
@@ -38,13 +39,15 @@ const ScrollToTOP = () => {
           console.log(option)
         }
         getusersDocuments()
-  }, []);
+    }, []);
+
+   
+    
 console.log(error)
 
     return (
 
         <div className='' ref={b} onScroll={(e) => { console.log(e) }}>
-
 
             <Outlet />
 
