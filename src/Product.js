@@ -84,76 +84,77 @@ useLayoutEffect(() => {
                     {<button className='md:w-12 w-14 bg-white text-lg sm:text-xl lg:text-xl font-bold rounded-lg h-8 lg:h-9 hidden '>Add to cart</button>}
                 </div>
             </div>
-            <div className='sm:pt-28 pt-24 lg:pt-32    '>
+            {items.length >= 1 ? <>
+                <div className='sm:pt-28 pt-24 lg:pt-32    '>
 
-                <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white   justify-center mb-3 sticky top-20 sm:top-24 lg:top-20 py-3 sm:py-4 lg:py-5'>
-                    <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-2xl pl-4 placeholder:pl-4  ' placeholder='Search products' />
-                    <div className='flex justify-center gap-2 md:gap-12 lg:gap-4 sm:gap-10'>
-                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-yellow-700  focus:bg-yellow-800 focus:text-white border-yellow-800 '>Clothes</button>
-                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white  border py-1 lg:py-2 text-black hover:bg-yellow-700 focus:bg-yellow-800 focus:text-white border-yellow-800'>Shoes</button>
-                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-yellow-700 focus:bg-yellow-800 focus:text-white border-yellow-800'>Glasses</button>
-                        <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border  hover:bg-yellow-700 focus:bg-yellow-800 focus:text-white border-yellow-800 '>Watches</button>
+                    <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white   justify-center mb-3 sticky top-20 sm:top-24 lg:top-20 py-3 sm:py-4 lg:py-5'>
+                        <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-2xl pl-4 placeholder:pl-4  ' placeholder='Search products' />
+                        <div className='flex justify-center gap-2 md:gap-12 lg:gap-4 sm:gap-10'>
+                            <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-yellow-700  focus:bg-yellow-800 focus:text-white border-yellow-800 '>Clothes</button>
+                            <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white  border py-1 lg:py-2 text-black hover:bg-yellow-700 focus:bg-yellow-800 focus:text-white border-yellow-800'>Shoes</button>
+                            <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-yellow-700 focus:bg-yellow-800 focus:text-white border-yellow-800'>Glasses</button>
+                            <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border  hover:bg-yellow-700 focus:bg-yellow-800 focus:text-white border-yellow-800 '>Watches</button>
+                        </div>
                     </div>
-                </div>
-                <div className='grid grid-cols-2 md:grid-cols-3 mt-5 sm:mt-8 lg:mt-12            '>
+                    <div className='grid grid-cols-2 md:grid-cols-3 mt-5 sm:mt-8 lg:mt-12            '>
 
-                    {items.map(prev => {
-                        return (<div className=' p-2 md:p-3 lg:p-4  rounded-lg border-2 shadow-lg           '>
-                            <img src={prev.image} alt='' className='rounded-lg ' />
-                            <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
-                                <div className='flex text-yellow-800 sm:text-lg lg:text-xl '>
-                                    <FaStar />
-                                    <FaStar />
-                                    <FaStar />
-                                    <FaStar />
-                                    <FaStarHalfAlt />
+                        {items.map(prev => {
+                            return (<div className=' p-2 md:p-3 lg:p-4  rounded-lg border-2 shadow-lg           '>
+                                <img src={prev.image} alt='' className='rounded-lg ' />
+                                <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
+                                    <div className='flex text-yellow-800 sm:text-lg lg:text-xl '>
+                                        <FaStar />
+                                        <FaStar />
+                                        <FaStar />
+                                        <FaStar />
+                                        <FaStarHalfAlt />
+                                    </div>
+                                    <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
+                                    <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
+                                    <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' >Add to cart</button>
                                 </div>
-                                <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
-                                <p className='font-semibold md:text-lg lg:text-xl'>{ `$${prev.price}`}</p>
-                                <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' >Add to cart</button>
+                            </div>)
+                        })}
+                    </div>
+                </div>
+
+                <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 '>
+                    <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
+                        <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>
+                            <div className='md:border-r-0.5 pb-5 sm:pb-7 md:pb-0 md:pr-5 lg:pr-7 xl:pr-10 flex items-center   '>
+                                <h1 className='font-bold text-lg sm:text-2xl md:text-2xl lg:text-3xl '>Glamour Grove</h1>
                             </div>
-                        </div>)
-                    })}
-                </div>
-            </div>
+                            <div className='pb-6 sm:pb-8 md:pb-0 md:pl-5 xl:pl-10 lg:pl-7 font-semibold flex items-center '>
 
-            <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 '>
-                <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
-                    <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>
-                        <div className='md:border-r-0.5 pb-5 sm:pb-7 md:pb-0 md:pr-5 lg:pr-7 xl:pr-10 flex items-center   '>
-                            <h1 className='font-bold text-lg sm:text-2xl md:text-2xl lg:text-3xl '>Glamour Grove</h1>
+                                <p className=' lg:text-lg'>Gift & decoration store</p>
+                            </div>
                         </div>
-                        <div className='pb-6 sm:pb-8 md:pb-0 md:pl-5 xl:pl-10 lg:pl-7 font-semibold flex items-center '>
 
-                            <p className=' lg:text-lg'>Gift & decoration store</p>
-                        </div>
+                        <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14'>
+                            <NavLink to='/'>  <li>Home</li></NavLink>
+
+                            <NavLink to='/product'><li>Product</li></NavLink>
+                            <NavLink to='/contact'><li>Contact</li></NavLink>
+                            <NavLink to='/about'><li>About us</li></NavLink>
+
+                        </ul>
                     </div>
+                    <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
+                        <div className='flex justify-center gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
+                            <p className='whitespace-nowrap'>Copyright 2023 Glamour Grove.All rights reserved. </p>
+                            <div className='flex justify-center gap-6 md:gap-4 lg:gap-5 xl:gap-7 font-semibold'>
+                                <p className=' whitespace-nowrap'>Privacy policy</p>
+                                <p className=' whitespace-nowrap'>Terms of use</p>
+                            </div>
+                        </div>
+                        <div className='flex items-center gap-7 md:gap-4 lg:gap-10 text-lg lg:text-xl'>
+                            <FaInstagram />
+                            <FaFacebook />
+                            <FaYoutube />
 
-                    <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14'>
-                        <NavLink to='/'>  <li>Home</li></NavLink>
-
-                        <NavLink to='/product'><li>Product</li></NavLink>
-                        <NavLink to='/contact'><li>Contact</li></NavLink>
-                        <NavLink to='/about'><li>About us</li></NavLink>
-
-                    </ul>
-                </div>
-                <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
-                    <div className='flex justify-center gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
-                        <p className='whitespace-nowrap'>Copyright 2023 Glamour Grove.All rights reserved. </p>
-                        <div className='flex justify-center gap-6 md:gap-4 lg:gap-5 xl:gap-7 font-semibold'>
-                            <p className=' whitespace-nowrap'>Privacy policy</p>
-                            <p className=' whitespace-nowrap'>Terms of use</p>
                         </div>
                     </div>
-                    <div className='flex items-center gap-7 md:gap-4 lg:gap-10 text-lg lg:text-xl'>
-                        <FaInstagram />
-                        <FaFacebook />
-                        <FaYoutube />
-
-                    </div>
-                </div>
-            </footer>
+                </footer></> : <p className='pt-40'>please wait...</p>}
         </div>
     )
 }

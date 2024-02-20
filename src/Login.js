@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import { FaAngleLeft, FaArrowLeft } from 'react-icons/fa'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate, useOutletContext } from 'react-router-dom'
 import image from './hotdog image.jpg'
 
 const Login = () => {
-       const [error,setError]=useState('')
-
-    
-    
-     const handleSubmit = async (e) => {
-    e.preventDefault();
+ const [error,setError]=useState('')
+  const { data, runEffect, changeRunEffect} = useOutletContext()
+  const navigate = useNavigate()
  
-         setError("")
+    
+ const handleSubmit = async (e) => {
+e.preventDefault();
+ 
+  setError("")
          
     const option = {
       method: 'POST',
@@ -35,7 +36,8 @@ const Login = () => {
       setError(err)
 
     }
-    
+   changeRunEffect()
+   navigate('/')
   };
     return (
         <div className='flex justify-center items-center w-full  h-screen '>

@@ -32,18 +32,24 @@ const Home = () => {
     const [array, setarray] = useState(0)
     const [scroll, setscroll] = useState(0)
     const [ring, setring] = useState(false)
+    const [notedisplay, setnotedisplay] = useState('none')
     const [items,setitems]=useState([])
     const [error,seterror]=useState([])
      const audiosound = useRef()
-    const homescreen = useRef()
+    const lognote = useRef()
+     const [intervalId, setIntervalId] = useState(null);
+     const [selectedcart, setseletedcart] = useState('65ccb8c64abbc67ca9a90237');
+    const {data,runEffect,changeRunEffect}= useOutletContext()
 
     useEffect(() => {
         window.scrollTo(0, scroll)
+        
     }, [menubar || popout])
+   
 
 useEffect(() => {
 
-        const getusersDocuments = async () => {
+        const getitems = async () => {
             
             const option = {
                 method: 'GET',
@@ -62,27 +68,13 @@ useEffect(() => {
 
             }
         }
-        getusersDocuments()
-}, []);
-     console.log(items)
-    useEffect(() => {
-         console.log('hi')
-        if (audiosound.current) {
-            audiosound.current.play().catch(error => {
-                // Auto-play was prevented; handle the error or inform the user
-                console.error('Auto-play prevented:', error.message);
-            })
-        }
-        const interval = setTimeout(() => {
-            setloggedin(prev => !prev)
-        }, [3000])
-        return () => clearInterval(interval)
-        
-    }, [ring==true])
+        getitems()
+}, [items]);
 
     function showmenu() {
         setscroll(menubar ? scroll : window.scrollY)
         setmenubar(prev => !prev)
+        
         /*
                 Notification.requestPermission().then(perm => {
                     if (perm === 'granted') {
@@ -103,13 +95,56 @@ useEffect(() => {
         navigate('/note')
     }
 
-    function buyorder() {
- setscroll(scroll)
+        const buyorder = async (id) => {
+            
+            const option = {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+            try {
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/addcart/${selectedcart}/${id}`, option);
+                const data = await response.json()
+               console.log(data)
+            }
+
+            catch (err) {
+                seterror(err)
+
+            }
+        setscroll(scroll)
         setpopout(prev => !prev)
         setshowinput(false)
         setmenubar(false)
-    }
+        }
 
+function selectcartFunc(id) {
+    setseletedcart(id)
+}
+
+
+  useEffect(() => {
+      // Check if the effect should run based on the boolean value
+     
+    if (runEffect) {
+     lognote.current.style.display='flex'
+    audiosound.current?.play().catch(error => {
+    console.error('Auto-play prevented:', error.message);})
+        setTimeout(() => {
+        lognote.current.style.display='none'
+        }, 6000);
+          setTimeout(() => {
+        setloggedin(prev => !prev);
+        }, 3000);
+    localStorage.setItem('hasEffectRun', 'true');
+        changeRunEffect()
+        console.log('hi') 
+      }
+     
+  }, [runEffect]);
+
+console.log(loggedin)
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
 
@@ -168,14 +203,12 @@ useEffect(() => {
                 </div>
             </div>
             }</div>
-            <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-20 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${popout2 ? 'block' : 'hidden'}  `}>
-                <div className=' h-full '>
-                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' /><p>china</p></div>
-                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
-                </div>
-            </div>
+          
             <motion.div className={`fixed   w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96   rounded-xl border-t   ${popout ? 'block scale-100 ' : 'hidden'}  `}>
-                <FaTimesCircle className='absolute right-0  text-yellow-900 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={buyorder} />
+                <FaTimesCircle className='absolute right-0  text-yellow-900 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{ setscroll(scroll)
+                setpopout(prev => !prev)
+                setshowinput(false)
+                setmenubar(false)}} />
                 <div className='flex fixed rounded-t-xl top-0 bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
                     <button className='w-10 p-1 lg:w-350  xl:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
@@ -184,28 +217,24 @@ useEffect(() => {
                     <div>
                         {showinput && <div className='bg-gray-800 relative mt-3 sm:mt-4'><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pr-11 border border-black outline-none ' autoFocus /><FaSearchPlus className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' /></div>}
                     </div>
-                    <div className='flex justify-between py-3 border-b border-yellow-900 hover:cursor-pointer  '>
-                        <NavLink to={'/cart/:id'}>  <p className='font-semibold sm:text-lg lg:text-xl  '>december collection</p></NavLink>
-                        <input type="radio" className='hover:cursor-pointer  lg:w-4' name='collection' />
-
-                    </div>
-                    <div className='flex justify-between py-3 border-b border-yellow-900 hover:cursor-pointer  '>
-                        <NavLink to={'/cart/:id'}><p className='font-semibold sm:text-lg lg:text-xl  '>september collection</p></NavLink>
-                        <input type="radio" className='hover:cursor-pointer lg:w-4' name='collection' />
-
-                    </div>
+                    {data?.items?.map(prev => {
+                        return (<div className='flex justify-between py-3 border-b border-yellow-900 hover:cursor-pointer  '>
+                        <NavLink to={`/cart/${prev._id}`}>  <p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></NavLink>
+                        <input type="radio" className='hover:cursor-pointer  lg:w-4' name='collection'  />
+                        </div>)
+                    })}
                 </div>
                 <div className='fixed w-full bottom-0 bg-yellow-900 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
 
                 </div>
             </motion.div>
            
-                <div className={` bg-yellow-800 ${loggedin ? 'popout1' : 'popout3'} w-106 h-10 flex  justify-center items-center fixed  text-white  rounded-full  `}>
-                    <p>you're logged in</p>
-                </div>
+            <div className={` bg-yellow-800 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
+                <p>you're logged in</p>
+            </div>
 
                 <div className=' hidden bg-white outline-yellow-700 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20  justify-center flex-col  fixed popout1 text-black  '>
-                    <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4'>
+                    <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4' >
                         <FaBell className='text-yellow-900 text-lg sm:text-xl lg:text-2xl' />
                         <p>Hi welcome josh to glamour... </p>
                     </div>
@@ -214,7 +243,7 @@ useEffect(() => {
                         <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
                     </div>
                 </div>
-            <div  className='  sm:h-auto h-121   sm:pb-0 gap-5  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
+            { items.length >= 1 ? <> <div className='  sm:h-auto h-121   sm:pb-0 gap-5  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
                 <div className='h-192 sm:h-auto'>
 
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -254,160 +283,161 @@ useEffect(() => {
                 </div >
             
             
-               <div className='flex justify-center h-191 sm:h-auto sm:mb-0'>
-                <div className=' sm:mt-12 lg:mt-20   sm:mb-9 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 shadow-xl bg-yellow-900 outline outline-2 outline-yellow-700 rounded-xl  '>
-                    <div className='flex flex-col items-center   justify-center rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
-                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Premium</p>
-                    </div>
-                    <div className='flex flex-col items-center  justify-center  rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaMoneyBill /></div>
-                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Buy shares</p>
-                    </div>
-                    <div className='flex flex-col items-center  justify-center rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaCar /></div>
-                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Delivery</p>
-                    </div>
-                    <div className='flex flex-col items-center  justify-center rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaUser /></div>
-                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Account</p>
-                    </div>
-                    <div className='flex flex-col items-center  justify-center rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
-                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Services</p>
-                    </div>
-                    <div className='flex flex-col items-center  justify-center rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
-                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold' >Privacy policy</p>
-                    </div>
-                    <div className='flex flex-col items-center  justify-center rounded-full   '>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white rotate-180 items-center'> <FaPhone /></div>
-                        <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold whitespace-nowrap'>Support</p>
-                    </div>
-                    <div className='flex flex-col items-center  justify-center rounded-full'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaQuestion /></div>
-                        <p className='text-center text-white text-xs sm:text-sm lg:text-base font-semibold'>FAQ</p>
-                    </div>
+                <div className='flex justify-center h-191 sm:h-auto sm:mb-0'>
+                    <div className=' sm:mt-12 lg:mt-20   sm:mb-9 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 shadow-xl bg-yellow-900 outline outline-2 outline-yellow-700 rounded-xl  '>
+                        <div className='flex flex-col items-center   justify-center rounded-full'>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
+                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Premium</p>
+                        </div>
+                        <div className='flex flex-col items-center  justify-center  rounded-full'>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaMoneyBill /></div>
+                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Buy shares</p>
+                        </div>
+                        <div className='flex flex-col items-center  justify-center rounded-full'>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaCar /></div>
+                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Delivery</p>
+                        </div>
+                        <div className='flex flex-col items-center  justify-center rounded-full'>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaUser /></div>
+                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Account</p>
+                        </div>
+                        <div className='flex flex-col items-center  justify-center rounded-full'>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
+                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Services</p>
+                        </div>
+                        <div className='flex flex-col items-center  justify-center rounded-full'>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
+                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold' >Privacy policy</p>
+                        </div>
+                        <div className='flex flex-col items-center  justify-center rounded-full   '>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white rotate-180 items-center'> <FaPhone /></div>
+                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold whitespace-nowrap'>Support</p>
+                        </div>
+                        <div className='flex flex-col items-center  justify-center rounded-full'>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaQuestion /></div>
+                            <p className='text-center text-white text-xs sm:text-sm lg:text-base font-semibold'>FAQ</p>
+                        </div>
 
                     </div>
                 </div>
                 <h1 className='font-bold  sm:mb-9 text-center text-2xl sm:text-3xl lg:text-4xl '>Our services</h1>
-            </div>
+                </div>
                
-            <section className='mt-7 sm:mt-0'>
-                <audio controls className='hidden' ref={audiosound}>
-                    <source src={notify} type="audio/mp3" />
+                <section className='mt-7 sm:mt-0'>
+                    <audio controls className='hidden' ref={audiosound}>
+                        <source src={notify} type="audio/mp3" />
 
-                </audio>
+                    </audio>
 
-                <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
-                    <div className='md:w-full blurr3'>
-                        <div className='absolute hidden  bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
-                            <h1 className='font-bold md:text-lg lg:text-xl'>clothes</h1>
-                            <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
-                        </div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full sm:w-96 xl:h-100 sm:h-56 object-cover' />
-                    </div>
-                    <div className='md:w-full blurr2'>
-                        <div className='absolute hidden bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
-                            <h1 className='font-bold md:text-lg lg:text-xl'>Glasses</h1>
-                            <p className=' hover:cursor-pointer md:text-lg '>see more...</p>
-                        </div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 object-cover' />
-                    </div>
-                    <div className='md:w-full blurr1 '>
-                        <div className='absolute hidden bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
-                            <h1 className='font-bold md:text-lg lg:text-xl'>Watches</h1>
-                            <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 object-cover' />
-                    </div>
-                    <div className='md:w-full blurr'>
-                        <div className='absolute hidden bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
-                            <h1 className='font-bold md:text-lg lg:text-xl'>Shoes</h1>
-                            <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
-                        </div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 ' />
-                    </div>
-
-                </div>
-                {/*overflow hidden divs*/}
-
-
-                {/* <div >*/}
-                <div className='flex justify-between items-center'>
-                    <h1 className=' font-extrabold my-3 ml-3 sm:ml-4 md:ml-5  text-xl sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
-                    <NavLink to={'/product'}>   <div className='hidden font-semibold md:flex items-center  lg:pt-10 md:pr-5 lg:pr-7 md:pt-8 md:text-lg '> <p className=' lg:text-lg'>{`see more`}</p><div className='pt-1'><FaAngleRight className='text-lg' /></div></div></NavLink>
-                </div>
-                <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div      '>
-
-                    {items.map(prev => { 
-                     return(
-                            <div className='min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-900            '>
-                                <img src={prev.image} alt='' className='rounded-lg ' />
-                                <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
-                                    <div className='flex text-yellow-900 sm:text-lg lg:text-xl '>
-                                        <FaStar />
-                                        <FaStar />
-                                        <FaStar />
-                                        <FaStar />
-                                        <FaStarHalfAlt />
-                                    </div>
-                                    <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
-                                    <p className='font-semibold md:text-lg lg:text-xl'>{prev.price}</p>
-                                    <button className='w-full bg-yellow-900 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={buyorder}>Add to cart</button>
-                                </div>
+                    <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
+                        <div className='md:w-full blurr3'>
+                            <div className='absolute hidden  bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
+                                <h1 className='font-bold md:text-lg lg:text-xl'>clothes</h1>
+                                <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
                             </div>
-                        )
-                    })}
-                </div>
-                <NavLink to={'/product'}><div className='flex md:hidden  pt-4 pl-3 sm:pl-4 '><p className='font-semibold  '>See all</p><div className='pt-1'><FaAngleRight className='text-lg ' /></div></div></NavLink>
-                {/*</div>*/}
-                {/*ends*/}
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full sm:w-96 xl:h-100 sm:h-56 object-cover' />
+                        </div>
+                        <div className='md:w-full blurr2'>
+                            <div className='absolute hidden bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
+                                <h1 className='font-bold md:text-lg lg:text-xl'>Glasses</h1>
+                                <p className=' hover:cursor-pointer md:text-lg '>see more...</p>
+                            </div>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 object-cover' />
+                        </div>
+                        <div className='md:w-full blurr1 '>
+                            <div className='absolute hidden bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
+                                <h1 className='font-bold md:text-lg lg:text-xl'>Watches</h1>
+                                <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 object-cover' />
+                        </div>
+                        <div className='md:w-full blurr'>
+                            <div className='absolute hidden bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
+                                <h1 className='font-bold md:text-lg lg:text-xl'>Shoes</h1>
+                                <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
+                            </div>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 ' />
+                        </div>
 
-                {/*about starts*/}
-                <div className='md:flex md:p-10 shadow-lg w-110 m-auto  mt-10    p-5 sm:p-10 sm:px-20 '>
+                    </div>
+                    {/*overflow hidden divs*/}
 
-                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64 ' />
-                    <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
-                        <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif    '>
-                            Special Fashon sales
-                        </h1>
-                        <p className='mt-3 md:mt-4 lg:mt-8 md:text-lg'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eum illum quam numquam impedit quo? Facere, optio! Voluptatum, possimus? Voluptatum corrupti error.
 
-                        </p>
-                        <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
-                            <h1 className='w-30 border border-dashed  border-black mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  ' onClick={showmenu1}>30% OFF</h1>
-                            <NavLink to={'/product'}> <button className='w-40 bg-yellow-900 mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 md:text-lg'>Shop Now</button></NavLink>
+                    {/* <div >*/}
+                    <div className='flex justify-between items-center'>
+                        <h1 className=' font-extrabold my-3 ml-3 sm:ml-4 md:ml-5  text-xl sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
+                        <NavLink to={'/product'}>   <div className='hidden font-semibold md:flex items-center  lg:pt-10 md:pr-5 lg:pr-7 md:pt-8 md:text-lg '> <p className=' lg:text-lg'>{`see more`}</p><div className='pt-1'><FaAngleRight className='text-lg' /></div></div></NavLink>
+                    </div>
+                    <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div      '>
+
+                        {items.map(prev => {
+                            return (
+                                <div className='min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-900            '>
+                                    <img src={prev.image} alt='' className='rounded-lg ' />
+                                    <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
+                                        <div className='flex text-yellow-900 sm:text-lg lg:text-xl '>
+                                            <FaStar />
+                                            <FaStar />
+                                            <FaStar />
+                                            <FaStar />
+                                            <FaStarHalfAlt />
+                                        </div>
+                                        <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
+                                        <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
+                                        <button className='w-full bg-yellow-900 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={() => { buyorder(prev._id) }}>Add to cart</button>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <NavLink to={'/product'}><div className='flex md:hidden  pt-4 pl-3 sm:pl-4 '><p className='font-semibold  '>See all</p><div className='pt-1'><FaAngleRight className='text-lg ' /></div></div></NavLink>
+                    {/*</div>*/}
+                    {/*ends*/}
+
+                    {/*about starts*/}
+                    <div className='md:flex md:p-10 shadow-lg w-110 m-auto  mt-10    p-5 sm:p-10 sm:px-20 '>
+
+                        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64 ' />
+                        <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
+                            <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif    '>
+                                Special Fashon sales
+                            </h1>
+                            <p className='mt-3 md:mt-4 lg:mt-8 md:text-lg'>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eum illum quam numquam impedit quo? Facere, optio! Voluptatum, possimus? Voluptatum corrupti error.
+
+                            </p>
+                            <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
+                                <h1 className='w-30 border border-dashed  border-black mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  ' onClick={showmenu1}>30% OFF</h1>
+                                <NavLink to={'/product'}> <button className='w-40 bg-yellow-900 mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 md:text-lg'>Shop Now</button></NavLink>
+                            </div>
                         </div>
                     </div>
-                </div>
-                {/*about ends*/}
-                <div className='grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5 text-white'>
-                    <div className=' bg-yellow-900 outline outline-2 outline-yellow-700 w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl '>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>   <FaCar className='text-xl font-bold sm:text-2xl ' /></div>
-                        <h2 className='text-lg font-bold sm:text-xl '>Free shipping</h2>
-                        <p className='font-semibold md:text-lg '>Order above $200. </p>
+                    {/*about ends*/}
+                    <div className='grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5 text-white'>
+                        <div className=' bg-yellow-900 outline outline-2 outline-yellow-700 w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl '>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>   <FaCar className='text-xl font-bold sm:text-2xl ' /></div>
+                            <h2 className='text-lg font-bold sm:text-xl '>Free shipping</h2>
+                            <p className='font-semibold md:text-lg '>Order above $200. </p>
+                        </div>
+                        <div className='bg-yellow-900 outline outline-2 outline-yellow-700  w-full h-40 md:h-44   pt-4 pl-2  lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>    <FaWallet className='text-xl font-bold sm:text-2xl ' /></div>
+                            <h2 className='text-lg font-bold sm:text-xl '>Money back</h2>
+                            <p className='font-semibold md:text-lg '>30 days guarantee.</p>
+                        </div>
+                        <div className=' bg-yellow-900 outline outline-2 outline-yellow-700 w-full h-40 md:h-44  pt-4 px-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>   <FaLock className='text-xl font-bold sm:text-2xl ' /></div>
+                            <h2 className='text-lg font-bold sm:text-xl whitespace-nowrap '>Secure payments</h2>
+                            <p className='font-semibold md:text-lg '>Secure by stripe.</p>
+                        </div>
+                        <div className='bg-yellow-900 outline outline-2 outline-yellow-700 w-full h-40 md:h-44  pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5 sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
+                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>  <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' /></div>
+                            <h2 className='text-lg font-bold sm:text-xl '>24/7 support</h2>
+                            <p className='font-semibold md:text-lg '>Phone and email support.</p>
+                        </div>
                     </div>
-                    <div className='bg-yellow-900 outline outline-2 outline-yellow-700  w-full h-40 md:h-44   pt-4 pl-2  lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>    <FaWallet className='text-xl font-bold sm:text-2xl ' /></div>
-                        <h2 className='text-lg font-bold sm:text-xl '>Money back</h2>
-                        <p className='font-semibold md:text-lg '>30 days guarantee.</p>
-                    </div>
-                    <div className=' bg-yellow-900 outline outline-2 outline-yellow-700 w-full h-40 md:h-44  pt-4 px-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>   <FaLock className='text-xl font-bold sm:text-2xl ' /></div>
-                        <h2 className='text-lg font-bold sm:text-xl whitespace-nowrap '>Secure payments</h2>
-                        <p className='font-semibold md:text-lg '>Secure by stripe.</p>
-                    </div>
-                    <div className='bg-yellow-900 outline outline-2 outline-yellow-700 w-full h-40 md:h-44  pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5 sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
-                        <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>  <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' /></div>
-                        <h2 className='text-lg font-bold sm:text-xl '>24/7 support</h2>
-                        <p className='font-semibold md:text-lg '>Phone and email support.</p>
-                    </div>
-                </div>
-            </section>
-            <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 '>
+                </section>
+           
+            <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 bottom-0 '>
                 <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
                     <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>
                         <div className='md:border-r-0.5 pb-5 sm:pb-7 md:pb-0 md:pr-5 lg:pr-7 xl:pr-10 flex items-center   '>
@@ -443,7 +473,8 @@ useEffect(() => {
 
                     </div>
                 </div>
-            </footer>
+                </footer>
+                 </> : <p className='pt-40'>please wait....</p>}
         </div >
     )
 }

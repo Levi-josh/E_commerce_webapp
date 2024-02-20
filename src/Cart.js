@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
+import React, { useRef,useEffect } from 'react'
 
-import { Navigate, useNavigate, Outlet, redirect } from 'react-router-dom'
+import { Navigate, useNavigate, Outlet, redirect, useParams } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 import cartimg from './icons8-shopping-cart-48.png';
 
@@ -24,7 +24,9 @@ const Cart = () => {
     const [popout2, setpopout2] = useState(false)
     const [showinput, setshowinput] = useState(false)
     const [emptycart, setemptycart] = useState(false)
-
+    const [cart,setcart] = useState({})
+    const [error,setError] = useState({})
+    const params =useParams()
     const [array, setarray] = useState(0)
     function showmenu() {
         setmenubar(prev => !prev)
@@ -32,20 +34,29 @@ const Cart = () => {
 
     const b = useRef()
 
+  useEffect(() => {
+    
+        const getcart = async () => {
+            
+            const option = {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+            try {
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getcart/${params.id}`, option);
+                const data = await response.json()
+               setcart(data)
+            }
 
+            catch (err) {
+                setError(err)
 
-    /*setInterval()
-    useEffect(() => {
-        const interval = setInterval(() => {
- 
-            setarray(prev => prev + 1)
- 
- 
- 
-        }, 2000)
-        return () => clearInterval(interval)
-    }, []
-    )*/
+            }
+        }
+        getcart()
+    }, [cart]);
     function buyorder() {
         setpopout(prev => !prev)
         setshowinput(false)
@@ -96,6 +107,7 @@ const Cart = () => {
 
         navigate("/product")
     }
+   
     return (
         <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} h-full  `}>
             <header className={`fixed flex sm:justify-between gap-4 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
@@ -135,7 +147,7 @@ const Cart = () => {
                             <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-yellow-900' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-900 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
                         </div>
 
-                        <Outlet context={{ nextcart, nextcart2, nextcart3, showcountry, selectcountry }} />
+                        <Outlet context={{ nextcart, nextcart2, nextcart3, showcountry, selectcountry,cart }} />
                     </section>}
             </div>
             {/*

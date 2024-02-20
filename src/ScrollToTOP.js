@@ -9,7 +9,8 @@ const ScrollToTOP = () => {
     const b = useRef()
     const [error,setError]=useState('')
     const location = useLocation();
-    const [data,setdata]=useState([])
+    const [data, setdata] = useState({})
+     const [runEffect, setRunEffect] = useState(false);
   
     const accesstoken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N…4MTB9.6uPNKFjMZFwtnelOQ2_akSpeafLSeOAp6XyVRFbqkFE`
   
@@ -36,20 +37,19 @@ const ScrollToTOP = () => {
                 setError(err)
 
             }
-          console.log(option)
         }
         getusersDocuments()
-    }, []);
+    }, [data]);
 
-   
-    
-console.log(error)
+    function changeRunEffect() {
+        setRunEffect(prev=>!prev)
+    }
 
     return (
 
         <div className='' ref={b} onScroll={(e) => { console.log(e) }}>
 
-            <Outlet />
+            <Outlet context={{data,runEffect,changeRunEffect}} />
 
         </div>
     )

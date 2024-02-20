@@ -3,7 +3,7 @@ import { FaTimes } from 'react-icons/fa'
 import { useOutletContext } from 'react-router-dom'
 
 const Shopcart = () => {
-    const { nextcart } = useOutletContext()
+    const { nextcart,cart } = useOutletContext()
 
     return (
         <div className='pt-6 sm:pt-8 / sm:gap-11 md:gap-14 lg:gap-15 h-full  '>
@@ -17,18 +17,18 @@ const Shopcart = () => {
                             <li className='hidden lg:grid lg:col-span-1'>Price</li>
                             <li className='hidden lg:grid lg:col-span-1'>Subtotal</li>
                         </div>
-    </ul>*/}
+    <               /ul>*/}
 
-                    <div className='flex gap-2 sm:gap-5 lg:gap-0 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   '>
-                        <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 sm:w-52  ' />
+                   {cart?.product?.map(prev=>{return( <div className='flex gap-2 sm:gap-5 lg:gap-0 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   '>
+                        <img src={prev.image} className='w-40 sm:w-52 h-full  ' />
                         <div className='flex flex-col justify-between '>
                             <div className='grid grid-cols-2 grid-rows-4   gap-x-10  '>
-                                <h1 className='font-bold'>Watch</h1>
+                               <h1 className='font-bold'>{prev.itemname}</h1>
                                 <div className=' pt-1 '><FaTimes /></div>
                                 <h1 className='font-bold'>Price:</h1>
-                                <p>$100</p>
+                               <p>{`$${prev.price}`}</p>
                                 <h1 className='font-bold'>Subtotal:</h1>
-                                <p>$300</p>
+                                <p>{`$${prev.subtotal}`}</p>
                             </div>
                             <div className='w-full h-8 border flex justify-between'>
                                 <button className='bg-neutral-100 font-bold text-lg text-black w-20'>-</button>
@@ -49,9 +49,9 @@ const Shopcart = () => {
                             <div className='hidden lg:flex w-16 h-8 lg:h-10 lg:w-28 border border-black  justify-center items-center '>-3+</div>
                             <h1 className='hidden lg:block '>$100</h1>
                             <h1 className='hidden lg:block'>$300</h1>
-    </div>*/}
+                        </div>*/}
 
-                    </div>
+                    </div>)})}
                 </div>
 
 
