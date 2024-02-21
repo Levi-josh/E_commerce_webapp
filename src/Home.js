@@ -118,7 +118,12 @@ useEffect(() => {
         setshowinput(false)
         setmenubar(false)
         }
-
+function opencollection() {
+   setscroll(scroll)
+        setpopout(prev => !prev)
+        setshowinput(false)
+        setmenubar(false) 
+}
 function selectcartFunc(id) {
     setseletedcart(id)
 }
@@ -191,7 +196,7 @@ function selectcartFunc(id) {
                                 <p className='text-xl font-semibold py-4'>Light </p>
                                 <FaToggleOff className='text-2xl' />
                             </div>
-                            <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-200 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b '> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={buyorder}>Carts</p></div>
+                            <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-200 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b '> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={opencollection}>Carts</p></div>
                             <NavLink to={'/history'}><div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-200 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b'><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div></NavLink>
 
                         </div>

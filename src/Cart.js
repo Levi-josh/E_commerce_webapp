@@ -35,9 +35,9 @@ const Cart = () => {
     const b = useRef()
 
   useEffect(() => {
-    
+   const myId=localStorage.getItem('mycart') 
         const getcart = async () => {
-            
+               
             const option = {
                 method: 'GET',
                 headers: {
@@ -45,7 +45,7 @@ const Cart = () => {
                 }
             }
             try {
-                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getcart/${params.id}`, option);
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getcart/${myId}`, option);
                 const data = await response.json()
                setcart(data)
             }
@@ -58,11 +58,19 @@ const Cart = () => {
         getcart()
     }, [cart]);
 
-//   useEffect(() => {
-//     localStorage.setItem('myKey',paramId)
-           
-//     }, [cart]);
-   
+    useEffect(() => {
+        if (paramId !=='') {
+            localStorage.setItem('mycart', paramId)
+            console.log('ran')
+        }       
+    }, [paramId]);
+
+    useEffect(() => {
+        if (params.id !==':id') {
+            setparamId(params.id)
+            console.log('ran')
+        }           
+    }, [params.id]);
 
     function selectcountry() {
         setcountry(prev => !prev)
@@ -108,7 +116,7 @@ const Cart = () => {
 
         navigate("/product")
     }
-   console.log(params)
+   
     return (
         <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} h-full  `}>
             <header className={`fixed flex sm:justify-between gap-4 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
