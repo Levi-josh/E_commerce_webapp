@@ -20,6 +20,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import 'swiper/css/scrollbar';
+import myitems from './Newarrival.json'
 
 const Home = () => {
     const [menubar, setmenubar] = useState(false)
@@ -33,13 +34,13 @@ const Home = () => {
     const [scroll, setscroll] = useState(0)
     const [ring, setring] = useState(false)
     const [notedisplay, setnotedisplay] = useState('none')
-    const [items,setitems]=useState([])
+    const [items,setitems]=useState(myitems)
     const [error,seterror]=useState([])
      const audiosound = useRef()
     const lognote = useRef()
      const [intervalId, setIntervalId] = useState(null);
      const [selectedcart, setseletedcart] = useState('65ccb8c64abbc67ca9a90237');
-    const {data,runEffect,changeRunEffect}= useOutletContext()
+    const {data,runEffect,changeRunEffect1}= useOutletContext()
 
     useEffect(() => {
         window.scrollTo(0, scroll)
@@ -60,7 +61,7 @@ useEffect(() => {
             try {
                 const response = await fetch('https://backend-e-commerce-g7of.onrender.com/getdemo', option);
                 const data = await response.json()
-               setitems(data)
+            
             }
 
             catch (err) {
@@ -111,7 +112,6 @@ useEffect(() => {
 
             catch (err) {
                 seterror(err)
-
             }
         setscroll(scroll)
         setpopout(prev => !prev)
@@ -131,20 +131,19 @@ function selectcartFunc(id) {
      lognote.current.style.display='flex'
     audiosound.current?.play().catch(error => {
     console.error('Auto-play prevented:', error.message);})
-        setTimeout(() => {
-        lognote.current.style.display='none'
-        }, 6000);
+      
           setTimeout(() => {
-        setloggedin(prev => !prev);
+        setloggedin(false);
         }, 3000);
     localStorage.setItem('hasEffectRun', 'true');
-        changeRunEffect()
-        console.log('hi') 
-      }
+        
      
+        changeRunEffect1()
+      }
+    
   }, [runEffect]);
 
-console.log(loggedin)
+   console.log(loggedin) 
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
 
@@ -241,9 +240,9 @@ console.log(loggedin)
                     <div className='flex justify-center items-center gap-3'>
                         <button className='bg-yellow-900 text-white w-15 font-semibold' onClick={read}>Read</button>
                         <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
-                    </div>
                 </div>
-            { items.length >= 1 ? <> <div className='  sm:h-auto h-121   sm:pb-0 gap-5  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
+            </div>
+            <div className='  sm:h-auto h-121   sm:pb-0 gap-5  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
                 <div className='h-192 sm:h-auto'>
 
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -384,7 +383,7 @@ console.log(loggedin)
                                         </div>
                                         <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
                                         <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
-                                        <button className='w-full bg-yellow-900 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={() => { buyorder(prev._id) }}>Add to cart</button>
+                                        <button className='w-full bg-yellow-900 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={() => { buyorder(prev.id) }}>Add to cart</button>
                                     </div>
                                 </div>
                             )
@@ -474,7 +473,6 @@ console.log(loggedin)
                     </div>
                 </div>
                 </footer>
-                 </> : <p className='pt-40'>please wait....</p>}
         </div >
     )
 }

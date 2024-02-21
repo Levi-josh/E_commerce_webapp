@@ -44,12 +44,14 @@ const ScrollToTOP = () => {
     function changeRunEffect() {
         setRunEffect(prev=>!prev)
     }
-
+    function changeRunEffect1() {
+        setRunEffect(false)
+    }
     return (
 
-        <div className='' ref={b} onScroll={(e) => { console.log(e) }}>
+        <div className=''>
 
-            <Outlet context={{data,runEffect,changeRunEffect}} />
+            <Outlet context={{data,runEffect,changeRunEffect,changeRunEffect1}} />
 
         </div>
     )

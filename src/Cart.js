@@ -22,7 +22,7 @@ const Cart = () => {
     const [menubar, setmenubar] = useState(false)
     const [popout, setpopout] = useState(false)
     const [popout2, setpopout2] = useState(false)
-    const [showinput, setshowinput] = useState(false)
+    const [paramId, setparamId] = useState('')
     const [emptycart, setemptycart] = useState(false)
     const [cart,setcart] = useState({})
     const [error,setError] = useState({})
@@ -57,11 +57,12 @@ const Cart = () => {
         }
         getcart()
     }, [cart]);
-    function buyorder() {
-        setpopout(prev => !prev)
-        setshowinput(false)
-        setmenubar(false)
-    }
+
+//   useEffect(() => {
+//     localStorage.setItem('myKey',paramId)
+           
+//     }, [cart]);
+   
 
     function selectcountry() {
         setcountry(prev => !prev)
@@ -107,7 +108,7 @@ const Cart = () => {
 
         navigate("/product")
     }
-   
+   console.log(params)
     return (
         <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} h-full  `}>
             <header className={`fixed flex sm:justify-between gap-4 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
