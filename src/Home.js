@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown, FaToggleOn, FaToggleOff, FaSubscript, FaUser, FaQuestion, FaVest, FaShare, FaMoneyBill, FaLightbulb, FaSearchPlus } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook,FaSun, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown, FaToggleOn, FaToggleOff, FaSubscript, FaUser, FaQuestion, FaVest, FaShare, FaMoneyBill, FaLightbulb, FaSearchPlus, FaPlusSquare, FaMoon, } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
-import { Link, NavLink, useLocation, useNavigate, useOutletContext } from 'react-router-dom'
+import { Link, NavLink, json, useLocation, useNavigate, useOutletContext } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
@@ -40,6 +40,7 @@ const Home = () => {
      const audiosound = useRef()
     const lognote = useRef()
      const [intervalId, setIntervalId] = useState(null);
+     const [newcartText, setnewcartText] = useState('');
      const [selectedcart, setseletedcart] = useState('65ccb8c64abbc67ca9a90237');
     const {data,runEffect,changeRunEffect1}= useOutletContext()
 
@@ -141,8 +142,31 @@ const selectcartFunc = async(id)=> {
       }
     
   }, [runEffect]);
+    const handleChange = (e) => {
+    setnewcartText(e.target.value)
+}
+const handleSubmit = async (e) => {
+    // e.preventDefault()
+    console.log('hi')
+   const option = {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body:JSON.stringify({"id":data._id,"title":newcartText})
+            }
+            try {
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/newcart`, option);
+                const data = await response.json()
+               console.log(data)
+            }
 
-    
+            catch (err) {
+            seterror(err) 
+            console.log(err)
+            } 
+}
+  
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
 
@@ -169,7 +193,7 @@ const selectcartFunc = async(id)=> {
 
                 <div className=' h-190 md:h-140 bg-yellow-900 lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center'>
                     <FaTimesCircle className='absolute lg:hidden left-4 top-4  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
-                    <FaLightbulb className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' />
+                    <FaSun className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' />
                     <div className='flex items-center flex-col gap-2'>
 
                         <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-white   rounded-full  bg-no-repeat bg-cover bg-center    ' />
@@ -202,29 +226,33 @@ const selectcartFunc = async(id)=> {
             </div>
             }</div>
           
-            <motion.div className={`fixed   w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96   rounded-xl border-t   ${popout ? 'block ' : 'hidden'}  `}>
+            <motion.div className={`fixed   w-130 sm:w-25 md:w-22   bg-white popout lg:w-10    z-20 h-80 sm:h-96 lg:h-80    rounded-xl border-t   ${popout ? 'block ' : 'hidden'}  `}>
                 <FaTimesCircle className='absolute right-0  text-yellow-900 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{ setscroll(scroll)
                 setpopout(prev => !prev)
                 setshowinput(false)
                 setmenubar(false)}} />
-                <div className='flex fixed rounded-t-xl top-0 bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
+                <div className='flex fixed rounded-t-xl top-0   bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
                     <button className='w-10 p-1 lg:w-350  xl:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
-                <div className='px-4 pt-16 sm:pt-16 lg:pt-16'>
+                <div className='px-4 pt-16 sm:pt-16 lg:pt-16 h-80 sm:h-96 overflow-y-auto lg:h-80 overflow-div     '>
+                    {data.items ?
+                        <div>
                     <div>
-                        {showinput && <div className='bg-gray-800 relative mt-3 sm:mt-4'><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pr-11 border border-black outline-none ' autoFocus /><FaSearchPlus className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' /></div>}
+                        {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></form>}
                     </div>
                     {data?.items?.map(prev => {
-                        return (<div className='flex justify-between py-3 border-b border-yellow-900 hover:cursor-pointer  '>
+                        return (<div className='flex justify-between  py-3 border-b border-yellow-900 hover:cursor-pointer  '>
                         <NavLink to={`/cart/${prev._id}`}>  <p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></NavLink>
                         <input type="radio" className='hover:cursor-pointer accent-yellow-900  lg:w-4' name='collection' checked={checked===prev.selected} onClick={()=>selectcartFunc(prev._id)}  />
                         </div>)
-                    })}
+                    })}</div> :
+                    <p>please wait...</p>
+                    }
                 </div>
-                <div className='fixed w-full bottom-0 bg-yellow-900 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
+                {/* <div className='fixed w-full bottom-0 bg-yellow-900 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
 
-                </div>
+                </div> */}
             </motion.div>
           
             <div className={` bg-yellow-800 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>

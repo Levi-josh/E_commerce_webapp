@@ -35,6 +35,7 @@ const ScrollToTOP = () => {
 
             catch (err) {
                 setError(err)
+                console.log(err.message)
 
             }
         }
