@@ -4,13 +4,37 @@ import { FaArrowDown, FaChevronDown, FaTimes } from 'react-icons/fa'
 import { useOutletContext } from 'react-router-dom'
 
 const Checkout = () => {
-    const { nextcart2, showcountry, selectcountry } = useOutletContext()
+    const { nextcart2, showcountry, getcountry, cart, countries } = useOutletContext()
+    const [selectedcountry, setselectedcountry] = useState()
+    const [error, setError] = useState('')
+    
+    const selectcountry = async (id) => {
+        console.log(id)
+         const option = {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                 },
+                body:JSON.stringify({
+                "id":{id},
+                "id1":`${cart._id}`
+                })
+        }
+        try {
+                const response = await fetch('https://backend-e-commerce-g7of.onrender.com/selcountry', option);
+                const data = await response.json()
+                selectedcountry(data)
+            }
+            catch (err) {
+                setError(err)
+            }
+    }
+
     return (
         <div className='pt-6 sm:pt-8  gap-5 sm:gap-7 lg:gap-0 flex flex-col lg:justify-between  lg:flex-row lg:items-start h-full'>
             <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-40 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${showcountry ? 'block' : 'hidden'}  `}>
                 <div className=' h-full '>
-                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' /><p>china</p></div>
-                    <div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className='md:w-4 md:h-4' /><p>usa</p></div>
+                    {countries.map(prev => { return (<div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' onChange={()=> selectcountry(prev._id)} /><p>prev.country</p></div>)})}
                 </div>
             </div>
             <div className='flex flex-col gap-5 sm:gap-8 w-110 sm:w-130 md:w-140 m-auto lg:w-22 '>
@@ -49,9 +73,9 @@ const Checkout = () => {
                             <div className=' '>
                                 <div className='flex w-full border border-black p-2 rounded-md justify-between items-center'>
 
-                                    <label className=' text-gray-600 '>Country</label>
+                                    <label className=' text-gray-600 '>{`${cart.country?cart.country:"country"}`}</label>
 
-                                    <FaChevronDown onClick={selectcountry} />
+                                    <FaChevronDown onClick={getcountry} />
 
                                 </div>
                             </div>

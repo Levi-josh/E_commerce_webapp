@@ -4,7 +4,42 @@ import { useOutletContext } from 'react-router-dom'
 
 const Shopcart = () => {
     const { nextcart,cart } = useOutletContext()
+    const increasequantity = async(id) => {
+     const option = {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+            try {
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/addquan/${id}/${cart?._id}`, option);
+                const data = await response.json()
+               console.log(data)
+            }
 
+            catch (err) {
+           // seterror(err) 
+            console.log(err)
+            }
+    }
+    const reducequantity = async(id) => {
+     const option = {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+            try {
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/redquan/${id}/${cart?._id}`, option);
+                const data = await response.json()
+               console.log(data)
+            }
+
+            catch (err) {
+            //seterror(err) 
+            console.log(err)
+            }
+    }
     return (
         <div className='pt-6 sm:pt-8 / sm:gap-11 md:gap-14 lg:gap-15 h-full  '>
             <div className='lg:flex items-start lg:w-120 xl:w-110 m-auto gap-10 lg:mt-10 '>
@@ -20,10 +55,10 @@ const Shopcart = () => {
     <               /ul>*/}
 
                    {cart?.product?.map(prev=>{return( <div className='flex gap-2 sm:gap-5 lg:gap-0 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   '>
-                        <img src={prev.image} className='w-40 sm:w-52 h-full  ' />
-                        <div className='flex flex-col justify-between '>
-                            <div className='grid grid-cols-2 grid-rows-4   gap-x-10  '>
-                               <h1 className='font-bold'>{prev.itemname}</h1>
+                        <img src={prev.image} className='w-40 sm:w-52  h-full  ' />
+                        <div className='flex flex-col  w-22 '>
+                            <div className='grid grid-cols-2 grid-rows-4   gap-x-18 gap-y-2 sm:gap-y-3 md:gap-y-4 lg:gap-y-7    '>
+                               <h1 className='md:font-bold whitespace-nowrap'>{prev.itemname}</h1>
                                 <div className=' pt-1 '><FaTimes /></div>
                                 <h1 className='font-bold'>Price:</h1>
                                <p>{`$${prev.price}`}</p>
@@ -31,9 +66,9 @@ const Shopcart = () => {
                                 <p>{`$${prev.subtotal}`}</p>
                             </div>
                             <div className='w-full h-8 border flex justify-between'>
-                                <button className='bg-neutral-100 font-bold text-lg text-black w-20'>-</button>
-                                <div>1</div>
-                                <button className='w-20 bg-gray-100 font-bold text-black text-lg'>+</button>
+                                <button className='bg-neutral-100 font-bold text-lg text-black w-20'onClick={()=>reducequantity(prev._id)}>-</button>
+                               <div>{prev.quantity}</div>
+                                <button className='w-20 bg-gray-100 font-bold text-black text-lg' onClick={()=>increasequantity(prev._id)}>+</button>
                             </div>
 
                         </div>

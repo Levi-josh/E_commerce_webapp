@@ -36,6 +36,7 @@ const Home = () => {
     const [notedisplay, setnotedisplay] = useState('none')
     const [items,setitems]=useState(myitems)
     const [error,seterror]=useState([])
+    const [checked,setchecked]=useState(true)
      const audiosound = useRef()
     const lognote = useRef()
      const [intervalId, setIntervalId] = useState(null);
@@ -47,30 +48,6 @@ const Home = () => {
         
     }, [menubar || popout])
    
-
-useEffect(() => {
-
-        const getitems = async () => {
-            
-            const option = {
-                method: 'GET',
-                headers: {
-                    'content-type': 'application/json',
-                }
-            }
-            try {
-                const response = await fetch('https://backend-e-commerce-g7of.onrender.com/getdemo', option);
-                const data = await response.json()
-            
-            }
-
-            catch (err) {
-                seterror(err)
-
-            }
-        }
-        getitems()
-}, [items]);
 
     function showmenu() {
         setscroll(menubar ? scroll : window.scrollY)
@@ -111,7 +88,8 @@ useEffect(() => {
             }
 
             catch (err) {
-                seterror(err)
+            seterror(err)
+            console.log(err)
             }
         setscroll(scroll)
         setpopout(prev => !prev)
@@ -119,13 +97,29 @@ useEffect(() => {
         setmenubar(false)
         }
 function opencollection() {
-   setscroll(scroll)
+        setscroll(scroll)
         setpopout(prev => !prev)
         setshowinput(false)
         setmenubar(false) 
 }
-function selectcartFunc(id) {
+const selectcartFunc = async(id)=> {
     setseletedcart(id)
+    const option = {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+            try {
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/select/${id}`, option);
+                const data = await response.json()
+               console.log(data)
+            }
+
+            catch (err) {
+            seterror(err) 
+            console.log(err)
+            }
 }
 
 
@@ -137,8 +131,8 @@ function selectcartFunc(id) {
     audiosound.current?.play().catch(error => {
     console.error('Auto-play prevented:', error.message);})
       
-          setTimeout(() => {
-        setloggedin(false);
+     setTimeout(() => {
+    setloggedin(false);
         }, 3000);
     localStorage.setItem('hasEffectRun', 'true');
         
@@ -148,7 +142,7 @@ function selectcartFunc(id) {
     
   }, [runEffect]);
 
-   console.log(loggedin) 
+    
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
 
@@ -208,7 +202,7 @@ function selectcartFunc(id) {
             </div>
             }</div>
           
-            <motion.div className={`fixed   w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96   rounded-xl border-t   ${popout ? 'block scale-100 ' : 'hidden'}  `}>
+            <motion.div className={`fixed   w-130 sm:w-25 md:w-22 bg-white popout lg:w-10    z-20 h-80 sm:h-96   rounded-xl border-t   ${popout ? 'block ' : 'hidden'}  `}>
                 <FaTimesCircle className='absolute right-0  text-yellow-900 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{ setscroll(scroll)
                 setpopout(prev => !prev)
                 setshowinput(false)
@@ -224,7 +218,7 @@ function selectcartFunc(id) {
                     {data?.items?.map(prev => {
                         return (<div className='flex justify-between py-3 border-b border-yellow-900 hover:cursor-pointer  '>
                         <NavLink to={`/cart/${prev._id}`}>  <p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></NavLink>
-                        <input type="radio" className='hover:cursor-pointer  lg:w-4' name='collection'  />
+                        <input type="radio" className='hover:cursor-pointer accent-yellow-900  lg:w-4' name='collection' checked={checked===prev.selected} onClick={()=>selectcartFunc(prev._id)}  />
                         </div>)
                     })}
                 </div>
@@ -232,7 +226,7 @@ function selectcartFunc(id) {
 
                 </div>
             </motion.div>
-           
+          
             <div className={` bg-yellow-800 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
                 <p>you're logged in</p>
             </div>

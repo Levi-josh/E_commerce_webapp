@@ -26,16 +26,21 @@ const Cart = () => {
     const [emptycart, setemptycart] = useState(false)
     const [cart,setcart] = useState({})
     const [error,setError] = useState({})
+    const [countries,setcountries] = useState([])
+ 
     const params =useParams()
     const [array, setarray] = useState(0)
+
+
     function showmenu() {
         setmenubar(prev => !prev)
     }
 
     const b = useRef()
 
-  useEffect(() => {
-   const myId=localStorage.getItem('mycart') 
+  useEffect(() => { 
+      const myId = localStorage.getItem('mycart')
+      
         const getcart = async () => {
                
             const option = {
@@ -54,27 +59,46 @@ const Cart = () => {
                 setError(err)
 
             }
-        }
-        getcart()
-    }, [cart]);
+      }
+    
+      getcart()
+      
+    const getcountry = async()=> {
+         const option = {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+        try {
+                const response = await fetch('https://backend-e-commerce-g7of.onrender.com/countrylist', option);
+                const data = await response.json()
+                setcountries(data)
+            }
+            catch (err) {
+                setError(err)
+            }
+    }
+      getcountry()
+      
+}, [cart]);
 
     useEffect(() => {
         if (paramId !=='') {
-            localStorage.setItem('mycart', paramId)
-            console.log('ran')
+        localStorage.setItem('mycart', paramId)
         }       
     }, [paramId]);
 
     useEffect(() => {
         if (params.id !==':id') {
-            setparamId(params.id)
-            console.log('ran')
+        setparamId(params.id)
         }           
     }, [params.id]);
 
-    function selectcountry() {
+    const getcountry = ()=> {
         setcountry(prev => !prev)
     }
+    
 
     function nextcart() {
         setchangecart(prev => !prev)
@@ -113,7 +137,6 @@ const Cart = () => {
         navigate('/cart/:id/complete')
     }
     function startshop() {
-
         navigate("/product")
     }
    
@@ -126,77 +149,23 @@ const Cart = () => {
 
                 </div>
                 <FaEllipsisV className='absolute right-3 sm:static' />
-                {/* <h1 className={`font-bold text-xl sm:text-2xl hidden   lg:inline xl:text-3xl  `}><span className=''>#</span>Glamour Grove</h1>
-                <NavLink to={'/'} className={'lg:hidden'}><FaAngleLeft className={`lg:hidden text-2xl font-bold ${menubar ? ' invisible lg:visible' : 'visble'}`} /></NavLink>
-                <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
-                    <NavLink to='/'>  <li className=''>Home</li></NavLink>
-
-                    <NavLink to='/product'><li>Product</li></NavLink>
-                    <NavLink to='/contact'><li>contact</li></NavLink>
-                    <NavLink to='/about'><li>About us</li></NavLink>
-
-                </ul>
-                <div className='flex gap-3 sm:gap-7 md:gap-8 lg:gap-4 xl:gap-12 items-center    '>
-                    <NavLink to={'/note'}>  <div className='text-lg sm:text-xl flex items-center md:text-2xl   outline outline-2 outline-yellow-800 justify-center  h-8 w-102 sm:h-10 md:w-101 sm:w-103 text-black rounded-full hover:cursor-pointer hover:bg-yellow-700'><FaBell className=' ' /></div></NavLink>
-                    <NavLink to='/cart/:id' className=' '><div className='flex text-lg sm:text-xl md:text-2xl  outline outline-2 outline-yellow-800 items-center justify-center  text-white bg-yellow-800 w-102 h-8 sm:w-103 md:w-101 sm:h-10 rounded-full'><p className='md:font-semibold text-xs sm:text-base md:text-lg'>Cart</p><FaShoppingCart className='text-base sm:text-xl md:text-2xl' /></div></NavLink>
-
-                    <div className='  outline outline-2 outline-yellow-800   flex justify-center items-center rounded-full h-8 w-102 sm:h-10 md:w-101 sm:w-103 lg:hidden hover:bg-yellow-700'><FaBars className='lg:hidden text-lg  sm:text-xl ' onClick={showmenu} /></div>
-                    <div className={`lg:flex items-center justify-center hidden  ${menubar ? ' bg-yellow-800 text-white' : 'hover:bg-yellow-700 text-black'} outline outline-2 outline-yellow-800 md:text-lg  h-8 w-102 sm:h-10 md:w-101 sm:w-103 rounded-full hover:cursor-pointer  `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
-                </div>*/}
             </header >
          
             <div  >
-                {emptycart ? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
+                {cart?.product?.length === 0? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
                     <section className='  pt-28 sm:pt-32 pb-10     lg:pt-32 '>
-
-                        <h1 className='text-center   font-semibold text-xl  sm:mb-5  mb-5   md:mb-5  lg:mb-7 xl:text-3xl sm:text-2xl lg:text-3xl'>December collection</h1>
+                        {cart.product ?<>
+                        <h1 className='text-center   font-semibold text-xl  sm:mb-5  mb-5   md:mb-5  lg:mb-7 xl:text-3xl sm:text-2xl lg:text-3xl'>{cart?.title}</h1>
                         <div className='flex bg-white  top-20 sm:top-24   sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
                             <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-yellow-900' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-yellow-900' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
                             <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${changecart2 ? ' bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{changecart2 ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${changecart2 ? ' text-yellow-900' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${changecart2 ? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
                             <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-yellow-900' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-900 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
                         </div>
 
-                        <Outlet context={{ nextcart, nextcart2, nextcart3, showcountry, selectcountry,cart }} />
+                        <Outlet context={{ nextcart, nextcart2, nextcart3, showcountry, getcountry,cart,countries }} />
+                       </> : <p>please wait...</p>}
                     </section>}
             </div>
-            {/*
-            <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 '>
-                <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
-                    <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>
-                        <div className='md:border-r-0.5 pb-5 sm:pb-7 md:pb-0 md:pr-5 lg:pr-7 xl:pr-10 flex items-center   '>
-                            <h1 className='font-bold text-lg sm:text-2xl md:text-2xl lg:text-3xl '>Glamour Grove</h1>
-                        </div>
-                        <div className='pb-6 sm:pb-8 md:pb-0 md:pl-5 xl:pl-10 lg:pl-7 font-semibold flex items-center '>
-
-                            <p className=' lg:text-lg'>Gift & decoration store</p>
-                        </div>
-                    </div>
-
-                    <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14'>
-                        <NavLink to='/'>  <li>Home</li></NavLink>
-
-                        <NavLink to='/product'><li>Product</li></NavLink>
-                        <NavLink to='/contact'><li>Contact</li></NavLink>
-                        <NavLink to='/about'><li>About us</li></NavLink>
-
-                    </ul>
-                </div>
-                <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
-                    <div className='flex justify-center gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
-                        <p className='whitespace-nowrap'>Copyright 2023 Glamour Grove.All rights reserved. </p>
-                        <div className='flex justify-center gap-6 md:gap-4 lg:gap-5 xl:gap-7 font-semibold'>
-                            <p className=' whitespace-nowrap'>Privacy policy</p>
-                            <p className=' whitespace-nowrap'>Terms of use</p>
-                        </div>
-                    </div>
-                    <div className='flex items-center gap-7 md:gap-4 lg:gap-10 text-lg lg:text-xl'>
-                        <FaInstagram />
-                        <FaFacebook />
-                        <FaYoutube />
-
-                    </div>
-                </div>
-            </footer>*/}
         </div >
     )
 }
