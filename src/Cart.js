@@ -38,9 +38,20 @@ const Cart = () => {
 
     const b = useRef()
 
-  useEffect(() => { 
+useEffect(() => { 
+    let currentid;
       const myId = localStorage.getItem('mycart')
-      
+    if (params.id !== myId) {
+        currentid = params.id 
+      }
+    if (params.id == myId) {
+        currentid = myId
+    }
+    if (params.id == ':id') {
+        currentid = myId
+    }
+    
+  
         const getcart = async () => {
                
             const option = {
@@ -50,7 +61,7 @@ const Cart = () => {
                 }
             }
             try {
-                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getcart/${myId}`, option);
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getcart/${currentid}`, option);
                 const data = await response.json()
                setcart(data)
             }
