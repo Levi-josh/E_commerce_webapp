@@ -128,26 +128,25 @@ const selectcartFunc = async(id)=> {
       // Check if the effect should run based on the boolean value
      
     if (runEffect) {
-     lognote.current.style.display='flex'
+    lognote.current.style.display='flex'
     audiosound.current?.play().catch(error => {
     console.error('Auto-play prevented:', error.message);})
       
-     setTimeout(() => {
+    setTimeout(() => {
     setloggedin(false);
         }, 3000);
     localStorage.setItem('hasEffectRun', 'true');
-        
-     
-        changeRunEffect1()
+    changeRunEffect1()
       }
     
   }, [runEffect]);
+    
     const handleChange = (e) => {
     setnewcartText(e.target.value)
 }
 const handleSubmit = async (e) => {
-    // e.preventDefault()
-    console.log('hi')
+e.preventDefault()
+console.log('hi')
    const option = {
                 method: 'POST',
                 headers: {
@@ -239,7 +238,7 @@ const handleSubmit = async (e) => {
                     {data.items ?
                         <div>
                     <div>
-                        {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></form>}
+                        {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
                     </div>
                     {data?.items?.map(prev => {
                         return (<div className='flex justify-between  py-3 border-b border-yellow-900 hover:cursor-pointer  '>

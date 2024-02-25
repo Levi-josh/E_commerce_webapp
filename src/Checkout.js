@@ -1,13 +1,13 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { FaArrowDown, FaChevronDown, FaTimes } from 'react-icons/fa'
-import { useOutletContext } from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 
 const Checkout = () => {
-    const { nextcart2, showcountry, getcountry, cart, countries } = useOutletContext()
+    const { nextcart2, showcountry, getcountry,checkitems, cart, countries } = useOutletContext()
     const [selectedcountry, setselectedcountry] = useState()
     const [error, setError] = useState('')
-    
+    const navigate = useNavigate()
     const selectcountry = async (id) => {
         console.log(id)
          const option = {
@@ -29,9 +29,13 @@ const Checkout = () => {
                 setError(err)
             }
     }
-
+useEffect(() => { 
+  if (checkitems?.progess===true) {
+      navigate('/cart/:id/complete')  
+    }
+}, [checkitems]);
     return (
-        <div className='pt-6 sm:pt-8  gap-5 sm:gap-7 lg:gap-0 flex flex-col lg:justify-between  lg:flex-row lg:items-start h-full'>
+        <div className='pt-6 sm:pt-8   gap-5 sm:gap-7 lg:gap-0 flex flex-col lg:justify-between  lg:flex-row lg:items-start h-full'>
             <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-40 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${showcountry ? 'block' : 'hidden'}  `}>
                 <div className=' h-full '>
                     {countries.map(prev => { return (<div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' onChange={()=> selectcountry(prev._id)} /><p>prev.country</p></div>)})}
@@ -145,22 +149,24 @@ const Checkout = () => {
 
             <div className='w-110 border sm:w-130 border-black px-5 py-3 md:px-7 md:py-5 m-auto md:w-140 mt-0 lg:w-10 rounded-lg'>
                 <h1 className='text-lg  font-bold sm:text-xl lg:text-2xl'>Order Summary</h1>
-                <div className='flex gap-5  border-b lg:w-full   border-gray-400  pb-5  mt-5    '>
-                    <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 sm:w-52  ' />
-                    <div className='grid grid-cols-2 place-content-between   '>
-                        <h1>watch</h1>
-                        <h1>$100</h1>
-                        <div className='w-16 h-8 border border-black text-center'>-3+</div>
-                        <FaTimes />
+                {cart?.product?.map(prev => {
+                    return (<div className='flex gap-5  border-b lg:w-full   border-gray-400  pb-5  mt-5    '>
+                        <img src={prev.image} className='w-40 sm:w-52  ' />
+                        <div className='grid grid-cols-2 place-content-between   '>
+                            <h1>{prev.itemname}</h1>
+                            <h1>{`$${prev.price}`}</h1>
+                            <div className='w-16 h-8 border border-black text-center'>-3+</div>
+                            <FaTimes />
 
-                        <h1>subtotal:</h1>
-                        <h1>$300</h1>
+                            <h1>subtotal:</h1>
+                            <h1>{`$${prev.subtotal}`}</h1>
 
-                    </div>
-                </div>
+                        </div>
+                    </div>)
+                })}
                 <div className='flex justify-between items-center border-gray-400 border-b  py-3 sm:py-4 '>
                     <h1 className='sm:text-lg lg:text-xl font-medium'>Shipping</h1>
-                    <h1 className='sm:text-lg lg:text-xl font-semibold'>free</h1>
+                    <h1 className='sm:text-lg lg:text-xl font-semibold'>{cart.shipvalue.name}</h1>
                 </div>
                 <div className='flex justify-between items-center border-gray-400 border-b  py-3 sm:py-4  '>
                     <h1 className='sm:text-lg lg:text-xl font-medium'>Items Purchased</h1>

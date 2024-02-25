@@ -1,8 +1,12 @@
 import React from 'react'
-import { useOutletContext } from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 
 const Complete = () => {
-    const { nextcart3 } = useOutletContext()
+    const { nextcart3, completeitems } = useOutletContext()
+    const navigate = useNavigate()
+    if (completeitems?.progess===true) {
+      navigate('/cart/:id/complete')  
+    }
     return (
         <div className='pt-6 sm:pt-8 pb-20 h-full'>
             <div className='m-auto px-5 w-110 md:w-150 lg:w-200 shadow-xl border-0.5 md:border border-slate-300 shadow-slate-300 py-6 sm:py-14 md:py-16  md:text-center   '>

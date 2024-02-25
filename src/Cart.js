@@ -25,9 +25,13 @@ const Cart = () => {
     const [paramId, setparamId] = useState('')
     const [emptycart, setemptycart] = useState(false)
     const [cart,setcart] = useState({})
+    const [myid,setmyId] = useState(null)
     const [error,setError] = useState({})
+    const [shopitems,setshopitems] = useState({})
+    const [checkitems,setcheckitems] = useState({})
+    const [completeitems,setcompleteitems] = useState({})
     const [countries,setcountries] = useState([])
- 
+
     const params =useParams()
     const [array, setarray] = useState(0)
 
@@ -35,26 +39,26 @@ const Cart = () => {
     function showmenu() {
         setmenubar(prev => !prev)
     }
-
-    const b = useRef()
-
+   
 useEffect(() => { 
     let currentid;
-      const myId = localStorage.getItem('mycart')
+    const myId = localStorage.getItem('mycart')
+    setmyId(myId)
     if (params.id !== myId) {
         currentid = params.id 
       }
-    if (params.id == myId) {
+    if (params.id === myId) {
         currentid = myId
     }
-    if (params.id == ':id') {
+    if (params.id === ':id') {
         currentid = myId
     }
-    
-  
-        const getcart = async () => {
+    if ( myId==null) {
+        currentid = params.id
+    }
+    const getcart = async () => {
                
-            const option = {
+        const option = {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',
@@ -63,7 +67,8 @@ useEffect(() => {
             try {
                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getcart/${currentid}`, option);
                 const data = await response.json()
-               setcart(data)
+                setcart(data)
+               
             }
 
             catch (err) {
@@ -72,7 +77,7 @@ useEffect(() => {
             }
       }
     
-      getcart()
+    getcart()
       
     const getcountry = async()=> {
          const option = {
@@ -90,7 +95,7 @@ useEffect(() => {
                 setError(err)
             }
     }
-      getcountry()
+    getcountry()
       
 }, [cart]);
 
@@ -106,12 +111,49 @@ useEffect(() => {
         }           
     }, [params.id]);
 
+    //opens the div that has list of countries
     const getcountry = ()=> {
         setcountry(prev => !prev)
     }
     
+useEffect(() => {  
+ if (cart) {
+        const shopcart = cart?.progressbar?.filter(prev => prev.proname === 'shopcart')
+        const checkout = cart?.progressbar?.filter(prev => prev.proname === 'checkout')
+        const complete = cart?.progressbar?.filter(prev => prev.proname === 'complete')
+        let funcshopitems = shopcart ? shopcart[0] : null
+        setshopitems(funcshopitems)
+      
+        let funccheckitems = checkout ? checkout[0] : null
+        setcheckitems(funccheckitems)
+        //const b = checkitems?.progess === true ? navigate('/cart/:id/complete') : null
+        let funccompleteitems = complete ? complete[0] : null
+        setcompleteitems(funccompleteitems)
+        //const c = completeitems?.progess === true ? navigate('/') : null
+      }
+    
+  }, [cart]);
 
-    function nextcart() {
+    
+const nextcart = async () => {
+         
+        const option = {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+            try {
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/shopcart/${cart._id}/${shopitems?._id}`, option);
+                const data = await response.json()
+               console.log(data)
+            }
+
+            catch (err) {
+            setError(err) 
+            console.log(err)
+        } 
+        
         setchangecart(prev => !prev)
 
         if (window.matchMedia('(max-width: 600px)').matches) {
@@ -127,8 +169,23 @@ useEffect(() => {
         }
         navigate('/cart/:id/checkout')
     }
-    function nextcart2() {
-        setchangecart2(prev => !prev)
+    const nextcart2 = async()=>{
+        const option = {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+            try {
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/checkcart/${cart._id}/${checkitems?._id}`, option);
+                const data = await response.json()
+               console.log(data)
+            }
+
+            catch (err) {
+            setError(err) 
+            console.log(err)
+        } 
         if (window.matchMedia('(max-width: 600px)').matches) {
 
             firstref.current.style.translate = '-205px'
@@ -141,14 +198,58 @@ useEffect(() => {
             thirdref.current.style.translate = '0px'
         }
 
-        navigate('/cart/:id/complete')
+       navigate('/cart/:id/complete')
     }
-    function nextcart3() {
-        setchangecart3(prev => !prev)
-        navigate('/cart/:id/complete')
+    const nextcart3 = async()=>{
+        const option = {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                }
+        }
+        const option2 = {
+                method: 'DElETE',
+                headers: {
+                    'content-type': 'application/json',
+                }
+        }
+        try {
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/checkout/${cart._id}/${completeitems?._id}`, option);
+                const data = await response.json()
+                const data2 =  data?await fetch(`https://backend-e-commerce-g7of.onrender.com/checkout/${cart._id}/${completeitems?._id}`, option2):null
+               console.log(data)
+               console.log(data2?await data2.json():null)
+            }
+
+            catch (err) {
+            setError(err) 
+            console.log(err)
+            }  
+        navigate('/')
+        localStorage.setItem('mycart', null)
     }
     function startshop() {
         navigate("/product")
+    }
+
+    const deleteitem = async (id) => {
+        const option = {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }
+            try {
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/delprod/${id}/${cart._id}`, option);
+                const data = await response.json()
+               console.log(data)
+            }
+
+            catch (err) {
+            setError(err) 
+            console.log(err)
+        } 
+        
     }
    
     return (
@@ -163,17 +264,17 @@ useEffect(() => {
             </header >
          
             <div  >
-                {cart?.product?.length === 0? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
+                {cart?.product?.length === 0 ||myid===null && params.id===':id'? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
                     <section className='  pt-28 sm:pt-32 pb-10     lg:pt-32 '>
-                        {cart.product ?<>
+                        {cart.product?<>
                         <h1 className='text-center   font-semibold text-xl  sm:mb-5  mb-5   md:mb-5  lg:mb-7 xl:text-3xl sm:text-2xl lg:text-3xl'>{cart?.title}</h1>
                         <div className='flex bg-white  top-20 sm:top-24   sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
-                            <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart ? 'bg-yellow-900' : 'bg-black'} flex justify-center items-center`}>{changecart ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${changecart ? ' text-yellow-900' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${changecart ? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
-                            <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${changecart2 ? ' bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{changecart2 ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${changecart2 ? ' text-yellow-900' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${changecart2 ? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
+                            <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${shopitems?.progess? 'bg-yellow-900' : 'bg-black'} flex justify-center items-center`}>{shopitems?.progess? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${shopitems?.progess? ' text-yellow-900' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${shopitems?.progess? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
+                            <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${checkitems?.progess? ' bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{checkitems?.progess? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${checkitems?.progess?  ' text-yellow-900' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${checkitems?.progess? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
                             <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-yellow-900' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-900 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
                         </div>
 
-                        <Outlet context={{ nextcart, nextcart2, nextcart3, showcountry, getcountry,cart,countries }} />
+                        <Outlet context={{ nextcart,completeitems, nextcart2, nextcart3,checkitems, showcountry, getcountry,cart,countries,shopitems,deleteitem }} />
                        </> : <p>please wait...</p>}
                     </section>}
             </div>
