@@ -74,9 +74,9 @@ const Home = () => {
         navigate('/note')
     }
 
-        const buyorder = async (id) => {
-            
-            const option = {
+    const buyorder = async (id) => {
+    console.log(id)      
+    const option = {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -96,13 +96,15 @@ const Home = () => {
         setpopout(prev => !prev)
         setshowinput(false)
         setmenubar(false)
-        }
+    }
 function opencollection() {
         setscroll(scroll)
         setpopout(prev => !prev)
         setshowinput(false)
         setmenubar(false) 
-}
+    }
+    console.log(selectedcart)
+    
 const selectcartFunc = async(id)=> {
     setseletedcart(id)
     const option = {
@@ -124,7 +126,7 @@ const selectcartFunc = async(id)=> {
 }
 
 
-  useEffect(() => {
+useEffect(() => {
       // Check if the effect should run based on the boolean value
      
     if (runEffect) {
@@ -139,15 +141,14 @@ const selectcartFunc = async(id)=> {
     changeRunEffect1()
       }
     
-  }, [runEffect]);
+}, [runEffect]);
     
-    const handleChange = (e) => {
+const handleChange = (e) => {
     setnewcartText(e.target.value)
 }
 const handleSubmit = async (e) => {
 e.preventDefault()
-console.log('hi')
-   const option = {
+const option = {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -165,7 +166,7 @@ console.log('hi')
             console.log(err)
             } 
 }
-  
+console.log(data)  
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
 
@@ -395,7 +396,7 @@ console.log('hi')
                     </div>
                     <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div      '>
 
-                        {items.map(prev => {
+                        {items?.map(prev => {
                             return (
                                 <div className='min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-900            '>
                                     <img src={prev.image} alt='' className='rounded-lg ' />
@@ -409,7 +410,7 @@ console.log('hi')
                                         </div>
                                         <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
                                         <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
-                                        <button className='w-full bg-yellow-900 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={() => { buyorder(prev.id) }}>Add to cart</button>
+                                        <button className='w-full bg-yellow-900 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={() => {buyorder(prev.id)}}>Add to cart</button>
                                     </div>
                                 </div>
                             )

@@ -36,7 +36,7 @@ useEffect(() => {
 }, [checkitems]);
     return (
         <div className='pt-6 sm:pt-8   gap-5 sm:gap-7 lg:gap-0 flex flex-col lg:justify-between  lg:flex-row lg:items-start h-full'>
-            <div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-40 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${showcountry ? 'block' : 'hidden'}  `}>
+           {checkitems?.progess === false && <><div className={`fixed w-130 sm:w-25 md:w-10 bg-white popout lg:w-12    z-40 h-80 sm:h-96 lg:h-72  rounded-xl border-t border-neutral-100 py-4  ${showcountry ? 'block' : 'hidden'}  `}>
                 <div className=' h-full '>
                     {countries.map(prev => { return (<div className='flex border-b-0.5 border-black py-2 sm:py-3 text-lg md:text-xl font-semibold items-center pl-3 md:pl-4 md:gap-4 gap-3'><input type='radio' className=' md:w-4 md:h-4' onChange={()=> selectcountry(prev._id)} /><p>prev.country</p></div>)})}
                 </div>
@@ -178,7 +178,7 @@ useEffect(() => {
                 </div>
             </div>
             <button className='lg:hidden block m-auto w-110 sm:w-130 md:w-140 py-3 font-semibold rounded-lg text-white  bg-yellow-900' onClick={nextcart2}>Place order</button>
-
+            </>  }
         </div>
     )
 }

@@ -68,11 +68,10 @@ useEffect(() => {
         navigate('/cart/:id/checkout') 
       
     }
-      console.log('ran')
 }, [shopitems]);
     return (
         <div className='pt-6 sm:pt-8  sm:gap-11 md:gap-14 lg:gap-15 h-full  '>
-            <div className='lg:flex items-start lg:w-120 xl:w-110 m-auto gap-10 lg:mt-10 '>
+            {shopitems?.progess===false && <div className='lg:flex items-start lg:w-120 xl:w-110 m-auto gap-10 lg:mt-10 '>
                 <div className=' lg:w-140 lg:flex lg:flex-col lg:justify-center items-center border w-110 sm:w-140 m-auto lg:m-0   '>
 
                     {/*} <ul className='border-b border-black pb-6 pl-3 sm:pl-5 sm:pb-7 sm:w-140 sm:m-auto  justify-between lg:m-0 lg:flex lg:pb-0 lg:pl-0  lg:w-full'>
@@ -84,25 +83,26 @@ useEffect(() => {
                         </div>
     <               /ul>*/}
 
-                   {cart?.product?.map(prev=>{return( <div className='flex gap-2 sm:gap-5 lg:gap-0 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   '>
-                        <img src={prev.image} className='w-40 sm:w-52  h-full  ' />
-                        <div className='flex flex-col  w-22 '>
-                            <div className='grid grid-cols-2 grid-rows-4   gap-x-18 gap-y-2 sm:gap-y-3 md:gap-y-4 lg:gap-y-7    '>
-                               <h1 className='md:font-bold whitespace-nowrap'>{prev.itemname}</h1>
-                                <div className=' pt-1 ' onClick={()=>deleteitem(prev._id)}><FaTimes /></div>
-                                <h1 className='font-bold'>Price:</h1>
-                               <p>{`$${prev.price}`}</p>
-                                <h1 className='font-bold'>Subtotal:</h1>
-                                <p>{`$${prev.subtotal}`}</p>
-                            </div>
-                            <div className='w-full h-8 border flex justify-between'>
-                                <button className='bg-neutral-100 font-bold text-lg text-black w-20'onClick={()=>reducequantity(prev._id)}>-</button>
-                               <div>{prev.quantity}</div>
-                                <button className='w-20 bg-gray-100 font-bold text-black text-lg' onClick={()=>increasequantity(prev._id)}>+</button>
-                            </div>
+                    {cart?.product?.map(prev => {
+                        return (<div className='flex gap-2 sm:gap-5 lg:gap-0 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   '>
+                            <img src={prev.image} className='w-40 sm:w-52  h-full  ' />
+                            <div className='flex flex-col  w-22 '>
+                                <div className='grid grid-cols-2 grid-rows-4   gap-x-18 gap-y-2 sm:gap-y-3 md:gap-y-4 lg:gap-y-7    '>
+                                    <h1 className='md:font-bold whitespace-nowrap'>{prev.itemname}</h1>
+                                    <div className=' pt-1 ' onClick={() => deleteitem(prev._id)}><FaTimes /></div>
+                                    <h1 className='font-bold'>Price:</h1>
+                                    <p>{`$${prev.price}`}</p>
+                                    <h1 className='font-bold'>Subtotal:</h1>
+                                    <p>{`$${prev.subtotal}`}</p>
+                                </div>
+                                <div className='w-full h-8 border flex justify-between'>
+                                    <button className='bg-neutral-100 font-bold text-lg text-black w-20' onClick={() => reducequantity(prev._id)}>-</button>
+                                    <div>{prev.quantity}</div>
+                                    <button className='w-20 bg-gray-100 font-bold text-black text-lg' onClick={() => increasequantity(prev._id)}>+</button>
+                                </div>
 
-                        </div>
-                        {/*<div className='hidden lg:flex  '>
+                            </div>
+                            {/*<div className='hidden lg:flex  '>
                             <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 hidden lg:block ' />
                             <div >
                                 <h1>watch</h1>
@@ -116,7 +116,8 @@ useEffect(() => {
                             <h1 className='hidden lg:block'>$300</h1>
                         </div>*/}
 
-                    </div>)})}
+                        </div>)
+                    })}
                 </div>
 
 
@@ -125,7 +126,7 @@ useEffect(() => {
                     {cart.shipping.map(prev => {
                         return (<div className='flex  border border-black mt-5 justify-between p-3 lg:mt-4 xl:mt-5 '>
                             <div className='flex gap-2'>
-                                <input type='radio' name='checkout' className='lg:w-4  accent-yellow-800 ' checked={prev.checked===true} onClick={()=>selectpayment(prev._id)} />
+                                <input type='radio' name='checkout' className='lg:w-4  accent-yellow-800 ' checked={prev.checked === true} onClick={() => selectpayment(prev._id)} />
                                 <p className='sm:text-lg lg:text-xl font-semibold'>{prev.name}</p>
                             </div>
                             <h1 className='sm:text-lg lg:text-xl font-semibold'>{`$${prev.price}.00`}</h1>
@@ -155,7 +156,7 @@ useEffect(() => {
                     </div>
                     <button className='w-full text-center bg-yellow-900 text-white py-3 sm:text-lg lg:text-xl  lg:py-4  ' onClick={nextcart}>Checkout</button>
                 </div>
-            </div>
+            </div>}
         </div >
     )
 }

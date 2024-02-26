@@ -1,6 +1,6 @@
 import React, { useRef,useEffect } from 'react'
 
-import { Navigate, useNavigate, Outlet, redirect, useParams } from 'react-router-dom'
+import { Navigate, useNavigate, Outlet, redirect, useParams, useOutletContext } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 import cartimg from './icons8-shopping-cart-48.png';
 
@@ -18,7 +18,6 @@ const Cart = () => {
     const thirdref = useRef()
     const navigate = useNavigate()
     const [showcountry, setcountry] = useState(false)
-
     const [menubar, setmenubar] = useState(false)
     const [popout, setpopout] = useState(false)
     const [popout2, setpopout2] = useState(false)
@@ -31,16 +30,19 @@ const Cart = () => {
     const [checkitems,setcheckitems] = useState({})
     const [completeitems,setcompleteitems] = useState({})
     const [countries,setcountries] = useState([])
-
+const {data}= useOutletContext()
     const params =useParams()
     const [array, setarray] = useState(0)
+     
 
 
     function showmenu() {
         setmenubar(prev => !prev)
+        
     }
-   
-useEffect(() => { 
+   console.log(myid)
+    useEffect(() => { 
+    
     let currentid;
     const myId = localStorage.getItem('mycart')
     setmyId(myId)
@@ -123,13 +125,10 @@ useEffect(() => {
         const complete = cart?.progressbar?.filter(prev => prev.proname === 'complete')
         let funcshopitems = shopcart ? shopcart[0] : null
         setshopitems(funcshopitems)
-      
         let funccheckitems = checkout ? checkout[0] : null
         setcheckitems(funccheckitems)
-        //const b = checkitems?.progess === true ? navigate('/cart/:id/complete') : null
         let funccompleteitems = complete ? complete[0] : null
         setcompleteitems(funccompleteitems)
-        //const c = completeitems?.progess === true ? navigate('/') : null
       }
     
   }, [cart]);
@@ -200,13 +199,25 @@ const nextcart = async () => {
 
        navigate('/cart/:id/complete')
     }
-    const nextcart3 = async()=>{
+    const nextcart3 = async () => {
+        let userId = data._id
         const option = {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
                 }
         }
+        try {
+            const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/complete/${cart._id}/${userId}`, option);
+            const data = await response.json()
+            console.log(data)
+        }
+             
+
+            catch (err) {
+            setError(err) 
+            console.log(err)
+        }  
         const option2 = {
                 method: 'DElETE',
                 headers: {
@@ -214,19 +225,18 @@ const nextcart = async () => {
                 }
         }
         try {
-                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/checkout/${cart._id}/${completeitems?._id}`, option);
-                const data = await response.json()
-                const data2 =  data?await fetch(`https://backend-e-commerce-g7of.onrender.com/checkout/${cart._id}/${completeitems?._id}`, option2):null
-               console.log(data)
-               console.log(data2?await data2.json():null)
-            }
+            const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/complete/${cart._id}/${userId}`, option2);
+            const data = await response.json()
+             console.log(data)
+        }
+             
 
-            catch (err) {
+        catch (err) {
             setError(err) 
             console.log(err)
-            }  
+        }  
         navigate('/')
-        localStorage.setItem('mycart', null)
+        localStorage.removeItem('mycart')
     }
     function startshop() {
         navigate("/product")
@@ -264,7 +274,7 @@ const nextcart = async () => {
             </header >
          
             <div  >
-                {cart?.product?.length === 0 ||myid===null && params.id===':id'? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
+                {cart?.product?.length === 0 || myid===null? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
                     <section className='  pt-28 sm:pt-32 pb-10     lg:pt-32 '>
                         {cart.product?<>
                         <h1 className='text-center   font-semibold text-xl  sm:mb-5  mb-5   md:mb-5  lg:mb-7 xl:text-3xl sm:text-2xl lg:text-3xl'>{cart?.title}</h1>
