@@ -2,11 +2,12 @@ import React from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 
 const Complete = () => {
-    const { nextcart3, completeitems } = useOutletContext()
+    const { nextcart3, completeitems,cart } = useOutletContext()
     const navigate = useNavigate()
     if (completeitems?.progess===true) {
       navigate('/cart/:id/complete')  
     }
+    console.log(cart)
     return (
         <div className='pt-6 sm:pt-8 pb-20 h-full'>
             <div className='m-auto px-5 w-110 md:w-150 lg:w-200 shadow-xl border-0.5 md:border border-slate-300 shadow-slate-300 py-6 sm:py-14 md:py-16  md:text-center   '>
@@ -21,11 +22,11 @@ const Complete = () => {
                 </div>
                 <div className='flex flex-col  gap-1 md:flex-row md:hidden border-b-0.5 border-gray-400 pb-4 mt-8'>
                     <p className='text-gray-600 font-medium'>Order code:</p>
-                    <p className='font-semibold'>#231_486e</p>
+                    <p className='font-semibold'>{`#${cart?.ordercode}`}</p>
                 </div>
                 <div className='flex flex-col gap-1 md:flex-row md:hidden border-b-0.5 border-gray-400 py-4'>
                     <p className='text-gray-600 font-medium'>Date:</p>
-                    <p className='font-semibold'>October 19,2023</p>
+                    <p className='font-semibold'>{cart?.date}</p>
                 </div>
                 <div className='flex flex-col  gap-1 md:flex-row md:hidden border-b-0.5 border-gray-400 py-4'>
                     <p className='text-gray-600 font-medium'>Total:</p>
@@ -33,7 +34,7 @@ const Complete = () => {
                 </div>
                 <div className='flex flex-col gap-1 md:flex-row md:hidden border-b-0.5 border-gray-400 py-4'>
                     <p className='text-gray-600 font-medium' >Payment method:</p>
-                    <p className='font-semibold'>Credit card</p>
+                    <p className='font-semibold'>{cart?.payment}</p>
                 </div>
                 <div className='md:flex text-left hidden md:flex-row md:justify-center gap-10 mt-8 items-center '>
                     <div className='lg:text-lg font-semibold text-gray-600 flex flex-col gap-3  '>
@@ -43,10 +44,10 @@ const Complete = () => {
                         <p>Payment method:</p>
                     </div>
                     <div className='flex flex-col gap-3 lg:text-lg font-bold'>
-                        <p>#231_486e</p>
-                        <p>October 19,2023</p>
+                        <p>{`#${cart?.ordercode}`}</p>
+                        <p>{cart?.date}</p>
                         <p>$250.000</p>
-                        <p>Credit card</p>
+                        <p>{cart?.Payment}</p>
                     </div>
                 </div>
 

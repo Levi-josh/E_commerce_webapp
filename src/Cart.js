@@ -40,7 +40,7 @@ const {data}= useOutletContext()
         setmenubar(prev => !prev)
         
     }
-   console.log(myid)
+   
     useEffect(() => { 
     
     let currentid;
@@ -91,7 +91,8 @@ const {data}= useOutletContext()
         try {
                 const response = await fetch('https://backend-e-commerce-g7of.onrender.com/countrylist', option);
                 const data = await response.json()
-                setcountries(data)
+            setcountries(data)
+           
             }
             catch (err) {
                 setError(err)
@@ -199,6 +200,7 @@ const nextcart = async () => {
 
        navigate('/cart/:id/complete')
     }
+    
     const nextcart3 = async () => {
         let userId = data._id
         const option = {
@@ -284,7 +286,7 @@ const nextcart = async () => {
                             <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-yellow-900' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-900 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
                         </div>
 
-                        <Outlet context={{ nextcart,completeitems, nextcart2, nextcart3,checkitems, showcountry, getcountry,cart,countries,shopitems,deleteitem }} />
+                        <Outlet context={{ nextcart,completeitems, nextcart2, nextcart3,checkitems, showcountry,data, getcountry,cart,countries,shopitems,deleteitem }} />
                        </> : <p>please wait...</p>}
                     </section>}
             </div>

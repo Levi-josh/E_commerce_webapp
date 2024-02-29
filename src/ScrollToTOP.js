@@ -13,9 +13,10 @@ const ScrollToTOP = () => {
      const [runEffect, setRunEffect] = useState(false);
   
     const accesstoken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N…4MTB9.6uPNKFjMZFwtnelOQ2_akSpeafLSeOAp6XyVRFbqkFE`
-  
+ 
     useEffect(() => {
         window.scrollTo(0, 0);
+        
     }, [location]);
     useEffect(() => {
 

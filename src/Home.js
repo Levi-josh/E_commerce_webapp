@@ -37,6 +37,7 @@ const Home = () => {
     const [items,setitems]=useState(myitems)
     const [error,seterror]=useState([])
     const [checked,setchecked]=useState(true)
+    const [added,setadded]=useState(false)
      const audiosound = useRef()
     const lognote = useRef()
      const [intervalId, setIntervalId] = useState(null);
@@ -49,7 +50,10 @@ const Home = () => {
         
     }, [menubar || popout])
    
-
+ useEffect(() => {
+     const selectedid = data?.items?.filter(prev => prev.selected === true)
+        setseletedcart(selectedid&&selectedid[0]._id)
+    })
     function showmenu() {
         setscroll(menubar ? scroll : window.scrollY)
         setmenubar(prev => !prev)
@@ -76,6 +80,7 @@ const Home = () => {
 
     const buyorder = async (id) => {
     console.log(id)      
+    console.log(selectedcart)      
     const option = {
                 method: 'POST',
                 headers: {
@@ -92,10 +97,11 @@ const Home = () => {
             seterror(err)
             console.log(err)
             }
-        setscroll(scroll)
-        setpopout(prev => !prev)
-        setshowinput(false)
-        setmenubar(false)
+        setadded(prev => !prev)
+        setTimeout(() => {
+        setadded(prev => !prev)  
+        }, 2000);
+        
     }
 function opencollection() {
         setscroll(scroll)
@@ -106,7 +112,7 @@ function opencollection() {
     console.log(selectedcart)
     
 const selectcartFunc = async(id)=> {
-    setseletedcart(id)
+   
     const option = {
                 method: 'PUT',
                 headers: {
@@ -165,8 +171,8 @@ const option = {
             seterror(err) 
             console.log(err)
             } 
-}
-console.log(data)  
+    }
+   
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
 
@@ -257,6 +263,9 @@ console.log(data)
           
             <div className={` bg-yellow-800 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
                 <p>you're logged in</p>
+            </div>
+            <div className={` bg-yellow-800 ${ added? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
+                <p>Added to cart</p>
             </div>
 
                 <div className=' hidden bg-white outline-yellow-700 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20  justify-center flex-col  fixed popout1 text-black  '>

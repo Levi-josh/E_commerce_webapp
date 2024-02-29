@@ -26,10 +26,10 @@ import Secondnote from './Secondnote.js';
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
 
-    <Route path='/' element={<ScrollToTOP />} >
-      <Route path='/*' element={<Missing />} />
-      <Route errorElement={<Error />} />
+    <Route path='/' element={<ScrollToTOP />}  >
       <Route index element={<Home />} />
+      <Route errorElement={<Error />} />
+       <Route path='/*' element={<Missing />} />
       <Route path='/weblify' element={<Weblify />} />
       <Route path='/contact' element={<Contact />} />
       <Route path='/about' element={<About />} />
@@ -47,7 +47,7 @@ function App() {
       <Route path='/demo' element={<Demo />} />
       <Route path='/cart/:id' element={<Cart />} >
         <Route index element={<Shopcart />} />
-        <Route path='/cart/:id/checkout' element={<Checkout />} />
+        <Route path='/cart/:id/checkout' element={<Checkout />}  />
         <Route path='/cart/:id/complete' element={<Complete />} />
 
 
