@@ -52,7 +52,7 @@ const Home = () => {
    
  useEffect(() => {
      const selectedid = data?.items?.filter(prev => prev.selected === true)
-        setseletedcart(selectedid&&selectedid[0]._id)
+        setseletedcart(selectedid && selectedid[0]._id)
     })
     function showmenu() {
         setscroll(menubar ? scroll : window.scrollY)
