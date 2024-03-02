@@ -132,20 +132,7 @@ useEffect(() => {
                             <h1 className='sm:text-lg lg:text-xl font-semibold'>{`$${prev.price}.00`}</h1>
                         </div>)
                     })}
-                    {/* <div className='flex   border border-black mt-5 justify-between p-3  '>
-                        <div className='flex gap-2'>
-                            <input type='radio' name='checkout' className='lg:w-4 accent-yellow-800  ' />
-                            <p className='sm:text-lg lg:text-xl font-semibold'>Express shipping</p>
-                        </div>
-                        <h1 className='sm:text-lg lg:text-xl font-semibold'>+$20.00</h1>
-                    </div>
-                    <div className='flex   border border-black mt-5 justify-between p-3 '>
-                        <div className='flex gap-2'>
-                            <input type='radio' name='checkout' className='lg:w-4 accent-yellow-800  ' />
-                            <p className='sm:text-lg lg:text-xl font-semibold'>Pick up</p>
-                        </div>
-                        <h1 className='sm:text-lg lg:text-xl font-semibold'>%21.00</h1>
-                    </div> */}
+                  
                     <div className='flex justify-between items-center border-gray-400 border-b  p-3 mt-3'>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>Items Purchased</h1>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>20</h1>
@@ -154,7 +141,7 @@ useEffect(() => {
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>Total Amount</h1>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>$2000</h1>
                     </div>
-                    <button className='w-full text-center bg-yellow-900 text-white py-3 sm:text-lg lg:text-xl  lg:py-4  ' onClick={nextcart}>Checkout</button>
+                    <button className='w-full text-center bg-yellow-900 text-white py-3 sm:text-lg lg:text-xl rounded-3xl   lg:py-4  ' onClick={nextcart}>Checkout</button>
                 </div>
             </div>}
         </div >

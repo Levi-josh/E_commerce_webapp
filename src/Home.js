@@ -264,7 +264,7 @@ const option = {
             <div className={` bg-yellow-800 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
                 <p>you're logged in</p>
             </div>
-            <div className={` bg-yellow-800 ${ added? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
+            <div className={` bg-yellow-800 ${ added? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
                 <p>Added to cart</p>
             </div>
 

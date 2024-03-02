@@ -16,7 +16,7 @@ const Firsthistory = () => {
                     <NavLink to={`/history/${prev._id}`}>
                         <div className='lg:px-3 md:px-6 sm:px-6 px-5 border-b  pt-4 pb-2 sm:pt-5 sm:pb-3 xl:px-4 flex flex-col'>
                             <div className='flex justify-between items-center'>
-                                <p> Hi welcome to glamour grove a tahk.</p>
+                                <p> History for your <span className='font-semibold'>{prev.title}</span> cart</p>
                                 <FaEllipsisV />
                             </div>
                             <p className='font-semibold'>2 minntes ago</p>
@@ -32,7 +32,7 @@ const Firsthistory = () => {
                     <NavLink to={`/history/${prev._id}`}>
                         <div className='lg:px-3 md:px-6 sm:px-6 px-5 border-b  pt-4 pb-2 sm:pt-5 sm:pb-3 xl:px-4 flex flex-col'>
                             <div className='flex justify-between items-center'>
-                                <p> Hi welcome to glamour grove a tahk.</p>
+                              <p> History for your <span className='font-semibold'>{prev.title}</span> cart</p>
                                 <FaEllipsisV />
                             </div>
                             <p className='font-semibold'>2 minntes ago</p>
