@@ -10,6 +10,7 @@ const ScrollToTOP = () => {
     const [error,setError]=useState('')
     const location = useLocation();
     const [data, setdata] = useState({})
+    const [note,setnote] = useState({})
      const [runEffect, setRunEffect] = useState(false);
   
     const accesstoken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N…4MTB9.6uPNKFjMZFwtnelOQ2_akSpeafLSeOAp6XyVRFbqkFE`
@@ -19,7 +20,7 @@ const ScrollToTOP = () => {
         
     }, [location]);
     useEffect(() => {
-
+    setnote(data?.Notification?.reverse())
         const getusersDocuments = async () => {
             
             const option = {
@@ -52,7 +53,7 @@ const ScrollToTOP = () => {
 
         <div className=''>
 
-            <Outlet context={{data,runEffect,changeRunEffect,changeRunEffect1}} />
+            <Outlet context={{data,note,runEffect,changeRunEffect,changeRunEffect1}} />
 
         </div>
     )

@@ -40,10 +40,12 @@ const Home = () => {
     const [added,setadded]=useState(false)
      const audiosound = useRef()
     const lognote = useRef()
+    const noteref = useRef()
      const [intervalId, setIntervalId] = useState(null);
-     const [newcartText, setnewcartText] = useState('');
-     const [selectedcart, setseletedcart] = useState('65ccb8c64abbc67ca9a90237');
-    const {data,runEffect,changeRunEffect1}= useOutletContext()
+    const [newcartText, setnewcartText] = useState('');
+    const [displaynote,setdisplaynote]= useState(false)
+     const [selectedcart, setseletedcart] = useState('');
+    const {data,note,runEffect,changeRunEffect1}= useOutletContext()
 
     useEffect(() => {
         window.scrollTo(0, scroll)
@@ -78,9 +80,7 @@ const Home = () => {
         navigate('/note')
     }
 
-    const buyorder = async (id) => {
-    console.log(id)      
-    console.log(selectedcart)      
+    const buyorder = async (id) => {    
     const option = {
                 method: 'POST',
                 headers: {
@@ -109,7 +109,6 @@ function opencollection() {
         setshowinput(false)
         setmenubar(false) 
     }
-    console.log(selectedcart)
     
 const selectcartFunc = async(id)=> {
    
@@ -148,12 +147,28 @@ useEffect(() => {
       }
     
 }, [runEffect]);
+
+useEffect(() => {
+    // Check if the effect should run based on the boolean value
+   
+    noteref.current.style.display = 'flex'
+     setdisplaynote(true)
+        audiosound.current?.play().catch(error => {
+            console.error('Auto-play prevented:', error.message);
+        })
+      
+        setTimeout(() => {
+        setdisplaynote(false)
+        }, 3000);
+    
+}, []);
     
 const handleChange = (e) => {
     setnewcartText(e.target.value)
 }
 const handleSubmit = async (e) => {
 e.preventDefault()
+
 const option = {
                 method: 'POST',
                 headers: {
@@ -170,9 +185,11 @@ const option = {
             catch (err) {
             seterror(err) 
             console.log(err)
-            } 
+    } 
+    setnewcartText('')
+    setshowinput(false)
     }
-   
+  
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
 
@@ -252,7 +269,7 @@ const option = {
                         <NavLink to={`/cart/${prev._id}`}>  <p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></NavLink>
                         <input type="radio" className='hover:cursor-pointer accent-yellow-900  lg:w-4' name='collection' checked={checked===prev.selected} onClick={()=>selectcartFunc(prev._id)}  />
                         </div>)
-                    })}</div> :
+                    }).reverse()}</div> :
                     <p>please wait...</p>
                     }
                 </div>
@@ -267,15 +284,14 @@ const option = {
             <div className={` bg-yellow-800 ${ added? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
                 <p>Added to cart</p>
             </div>
-
-                <div className=' hidden bg-white outline-yellow-700 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20  justify-center flex-col  fixed popout1 text-black  '>
-                    <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4' >
+            <div className={` hidden bg-white outline-yellow-700 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20  justify-center flex-col  fixed  ${ displaynote? 'popout1':'popout3'} text-black  `} ref={noteref} >
+                <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4' >
                         <FaBell className='text-yellow-900 text-lg sm:text-xl lg:text-2xl' />
-                        <p>Hi welcome josh to glamour... </p>
-                    </div>
-                    <div className='flex justify-center items-center gap-3'>
-                        <button className='bg-yellow-900 text-white w-15 font-semibold' onClick={read}>Read</button>
-                        <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
+                        <p>{(note&&note[0]?.note)?.length>30?`${(note&&note[0]?.note).slice(0,30)}...`:note&&note[0]?.note}</p>
+                </div>
+                <div className='flex justify-center items-center gap-3'>
+                    <button className='bg-yellow-900 text-white w-15 font-semibold' onClick={read}>Read</button>
+                    <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
                 </div>
             </div>
             <div className='  sm:h-auto h-121   sm:pb-0 gap-5  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
@@ -408,7 +424,7 @@ const option = {
                         {items?.map(prev => {
                             return (
                                 <div className='min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-900            '>
-                                    <img src={prev.image} alt='' className='rounded-lg ' />
+                                    <img src={prev.image} alt='' className='rounded-lg w-full ' />
                                     <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
                                         <div className='flex text-yellow-900 sm:text-lg lg:text-xl '>
                                             <FaStar />

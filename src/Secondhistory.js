@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useParams, useOutletContext } from 'react-router-dom'
 import { appcontext } from './History'
 import { useContext } from 'react'
+import { FaHistory } from 'react-icons/fa'
 const Secondhistory = () => {
 const params = useParams()
 const data1 = useOutletContext()
@@ -140,7 +141,7 @@ useEffect(() => {
 
 
                         </div>
-                    </div> : <p>please wait...</p>:<p>your history will appear here</p>}</div>
+                    </div> : <p>please wait...</p>:<div className='w-full gap-3 flex lg:pt-40  justify-center items-center'><FaHistory className='text-2xl text-yellow-900 '/><p className='text-lg font-bold'>your history will appear here</p></div>}</div>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams, useOutletContext } from 'react-router-dom'
 import { useContext, useEffect,useState } from 'react'
 import { appcontext } from './Note'
+import { FaBell } from 'react-icons/fa'
 const Secondnote = () => {
 const params = useParams()
 const data1 = useOutletContext()
@@ -57,12 +58,12 @@ useEffect(() => {
         <div className='lg:fixed flex items-center flex-col lg:w-126 w-full lg:ml-0 h-full right-0 pt-28 sm:pt-36 md:pt-40 lg:pt-40 '>
             <div className='lg:hidden'>
                 {data?.note ?<>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center gap-3 sm:gap-5'>
 
                 <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-yellow-900  rounded-full  bg-no-repeat bg-cover bg-center    ' />
                 <h1 className='text-xl sm:text-2xl lg:text-3xl font-bold text-yellow-900 '>Glamour Grove</h1>
             </div>
-            <p className=''>{data?.note}</p></>
+            <div className='w-110 m-auto sm:w-130 mt-3 sm:mt-5'><p className=''>{data?.note}</p></div></>
             :<p>please wait...</p>
             }
             </div>
@@ -70,14 +71,14 @@ useEffect(() => {
             <div className='lg:block hidden'>
                 {params.id ?
                     laptopdata?.note ? <>
-                        <div className='flex flex-col items-center'>
+                        <div className='flex flex-col items-center gap-3'>
 
                             <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-yellow-900  rounded-full  bg-no-repeat bg-cover bg-center    ' />
                             <h1 className='text-xl sm:text-2xl lg:text-3xl font-bold text-yellow-900 '>Glamour Grove</h1>
                         </div>
-                        <p className=''>{laptopdata?.note}</p></>
+                        <div className='w-130 mt-3 m-auto'><p className=''>{laptopdata?.note}</p></div></>
                     : <p>please wait...</p>
-                : <p>your Notifications will appear here</p>}
+                :<div className='flex items-center gap-3 pt-20'><FaBell className='text-2xl text-yellow-900'/> <p className='font-bold text-lg'>Your notifications will appear here</p></div>}
             </div>
         </div>
     )

@@ -141,7 +141,7 @@ useEffect(() => {
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>Total Amount</h1>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>$2000</h1>
                     </div>
-                    <button className='w-full text-center bg-yellow-900 text-white py-3 sm:text-lg lg:text-xl rounded-3xl   lg:py-4  ' onClick={nextcart}>Checkout</button>
+                    <button className='w-full text-center bg-yellow-900 text-white py-3 sm:text-lg lg:text-xl rounded-full   lg:py-4  ' onClick={nextcart}>Checkout</button>
                 </div>
             </div>}
         </div >
