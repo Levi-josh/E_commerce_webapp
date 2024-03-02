@@ -46,12 +46,10 @@ useEffect(() => {
                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/gethistory/65ccb7984abbc67ca9a90231/${params.id}`, option);
                 const data = await response.json()
                 setdata2(data)
-                console.log(data)
             }
 
             catch (err) {
                 setError2(err)
-                console.log(err.message)
 
             }
         }
@@ -111,7 +109,7 @@ useEffect(() => {
             {params.id?
             laptopdata?.product ?
                     <div className=''>
-                        <div className='m-auto px-5 w-110 md:w-150 xl:w-250 lg:w-200 shadow-xl border-0.5 md:border border-slate-300 shadow-slate-300 py-6 sm:py-14 md:py-16  md:text-center   '>
+                        <div className='m-auto px-5 w-110 md:w-150 xl:w-250 lg:w-200 shadow-xl border-0.5 md:border border-slate-300 lg:shadow-none shadow-slate-300 lg:border-none py-6 sm:py-14 md:py-16  md:text-center   '>
                             <p className='md:text-lg lg:text-xl font-medium text-yellow-800'>Thank you!</p>
                             <div className='flex flex-col md:gap-1 mt-3 mb-5 sm:my-4 md:mb-7 md:mt-2 lg:mt-3 lg:mb-10 '>
                                 <h1 className='font-semibold text-xl md:text-3xl lg:text-4xl '>Your order has been</h1> <h1 className='font-semibold text-xl md:text-3xl lg:text-4xl'>received</h1>
