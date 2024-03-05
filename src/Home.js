@@ -35,7 +35,8 @@ const Home = () => {
     const [ring, setring] = useState(false)
     const [notedisplay, setnotedisplay] = useState('none')
     const [items,setitems]=useState(myitems)
-    const [error,seterror]=useState([])
+    const [error,seterror]=useState({})
+    const [showerror,setshowerror]=useState(false)
     const [checked,setchecked]=useState(true)
     const [added,setadded]=useState(false)
      const audiosound = useRef()
@@ -45,7 +46,7 @@ const Home = () => {
     const [newcartText, setnewcartText] = useState('');
     const [displaynote,setdisplaynote]= useState(false)
      const [selectedcart, setseletedcart] = useState('');
-    const {data,note,runEffect,changeRunEffect1}= useOutletContext()
+    const {data,note,runEffect,changeRunEffect1,Error}= useOutletContext()
 
     useEffect(() => {
         window.scrollTo(0, scroll)
@@ -281,14 +282,23 @@ const option = {
                 </div>  */}
                 
             </motion.div>
-            <div className=' w-107 sm:w-108 md:w-109 min-h-min fixed popout z-30 bg-yellow-900'>{error}</div>
+            
+            {Error&& <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+                <div className='flex md:items-center flex-col md:flex-row  gap-3 md:gap-5'>
+                    <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
+                    <div className='flex flex-col justify-center gap-1'>
+                        <h1 className='font-bold sm:text-xl '>{Error?.message}</h1>
+                        <p className='md:text-lg'>Check your internet connection</p>
+                    </div>
+                </div>
+            </div>}
             <div className={` bg-yellow-800 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
                 <p>you're logged in</p>
             </div>
             <div className={` bg-yellow-800 ${ added? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
                 <p>Added to cart</p>
             </div>
-            <motion.div animate={{y:displaynote?130:0}} transition={{ type: 'tween', duration: 1 }}     className={` hidden bg-white allpopout outline-yellow-700 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20  justify-center flex-col  fixed  text-black  `} ref={noteref} >
+            <motion.div animate={{y:displaynote?130:0,x:'50%',x:'-50%'}} initial={{x:'50%',x:'-50%'}} transition={{ type: 'tween', duration: 1 }}     className={` hidden bg-white allpopout outline-yellow-900 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20 fixed  justify-center flex-col   text-black  `} ref={noteref} >
                 <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4' >
                         <FaBell className='text-yellow-900 text-lg sm:text-xl lg:text-2xl' />
                         <p>{(note&&note[0]?.note)?.length>30?`${(note&&note[0]?.note).slice(0,30)}...`:note&&note[0]?.note}</p>

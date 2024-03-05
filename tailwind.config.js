@@ -99,7 +99,9 @@ module.exports = {
         80: '80%'
       },
       minHeight: {
-        100:'95%'
+        100: '95%',
+        101: '150px',
+        102:'170px'
       },
       
       padding: {
