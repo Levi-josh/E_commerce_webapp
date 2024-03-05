@@ -56,6 +56,38 @@ const Home = () => {
      const selectedid = data?.items?.filter(prev => prev.selected === true)
         setseletedcart(selectedid && selectedid[0]._id)
     })
+  useEffect(() => {
+      // Check if the effect should run based on the boolean value
+     
+    if (runEffect) {
+    lognote.current.style.display='flex'
+    audiosound.current?.play().catch(error => {
+    console.error('Auto-play prevented:', error.message);})
+      
+    setTimeout(() => {
+    setloggedin(false);
+        }, 3000);
+    localStorage.setItem('hasEffectRun', 'true');
+    changeRunEffect1()
+      }
+    
+}, [runEffect]);
+
+useEffect(() => {
+    // Check if the effect should run based on the boolean value
+   
+    noteref.current.style.display = 'flex'
+     setdisplaynote(true)
+        audiosound.current?.play().catch(error => {
+            console.error('Auto-play prevented:', error.message);
+        })
+      
+        setTimeout(() => {
+        setdisplaynote(false)
+        }, 3000);
+
+    
+}, []);
     function showmenu() {
         setscroll(menubar ? scroll : window.scrollY)
         setmenubar(prev => !prev)
@@ -91,6 +123,7 @@ const Home = () => {
                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/addcart/${selectedcart}/${id}`, option);
                 const data = await response.json()
                console.log(data)
+               
             }
 
             catch (err) {
@@ -131,37 +164,7 @@ const selectcartFunc = async(id)=> {
 }
 
 
-useEffect(() => {
-      // Check if the effect should run based on the boolean value
-     
-    if (runEffect) {
-    lognote.current.style.display='flex'
-    audiosound.current?.play().catch(error => {
-    console.error('Auto-play prevented:', error.message);})
-      
-    setTimeout(() => {
-    setloggedin(false);
-        }, 3000);
-    localStorage.setItem('hasEffectRun', 'true');
-    changeRunEffect1()
-      }
-    
-}, [runEffect]);
 
-useEffect(() => {
-    // Check if the effect should run based on the boolean value
-   
-    noteref.current.style.display = 'flex'
-     setdisplaynote(true)
-        audiosound.current?.play().catch(error => {
-            console.error('Auto-play prevented:', error.message);
-        })
-      
-        setTimeout(() => {
-        setdisplaynote(false)
-        }, 3000);
-    
-}, []);
     
 const handleChange = (e) => {
     setnewcartText(e.target.value)
@@ -273,18 +276,19 @@ const option = {
                     <p>please wait...</p>
                     }
                 </div>
-                {/* <div className='fixed w-full bottom-0 bg-yellow-900 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
+                 {/* <div className='fixed w-full bottom-0 bg-yellow-900 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
 
-                </div> */}
+                </div>  */}
+                
             </motion.div>
-          
+            <div className=' w-107 sm:w-108 md:w-109 min-h-min fixed popout z-30 bg-yellow-900'>{error}</div>
             <div className={` bg-yellow-800 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
                 <p>you're logged in</p>
             </div>
             <div className={` bg-yellow-800 ${ added? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
                 <p>Added to cart</p>
             </div>
-            <div className={` hidden bg-white outline-yellow-700 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20  justify-center flex-col  fixed  ${ displaynote? 'popout1':'popout3'} text-black  `} ref={noteref} >
+            <motion.div animate={{y:displaynote?130:0}} transition={{ type: 'tween', duration: 1 }}     className={` hidden bg-white allpopout outline-yellow-700 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20  justify-center flex-col  fixed  text-black  `} ref={noteref} >
                 <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4' >
                         <FaBell className='text-yellow-900 text-lg sm:text-xl lg:text-2xl' />
                         <p>{(note&&note[0]?.note)?.length>30?`${(note&&note[0]?.note).slice(0,30)}...`:note&&note[0]?.note}</p>
@@ -293,7 +297,7 @@ const option = {
                     <button className='bg-yellow-900 text-white w-15 font-semibold' onClick={read}>Read</button>
                     <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
                 </div>
-            </div>
+            </motion.div >
             <div className='  sm:h-auto h-121   sm:pb-0 gap-5  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
                 <div className='h-192 sm:h-auto'>
 

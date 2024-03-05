@@ -26,9 +26,8 @@ import Secondnote from './Secondnote.js';
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
 
-    <Route path='/' element={<ScrollToTOP />}  >
+    <Route path='/' element={<ScrollToTOP />} errorElement={<Error />}   >
       <Route index element={<Home />} />
-      <Route errorElement={<Error />} />
        <Route path='/*' element={<Missing />} />
       <Route path='/weblify' element={<Weblify />} />
       <Route path='/contact' element={<Contact />} />
