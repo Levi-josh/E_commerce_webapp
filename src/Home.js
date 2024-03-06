@@ -129,7 +129,7 @@ useEffect(() => {
             }
 
             catch (err) {
-            seterror(err)
+            seterror(err.message === 'Failed to fetch' ? { 'message': 'Failed to add cart' }:err)
             console.log(err)
             }
         setadded(prev => !prev)
