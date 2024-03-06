@@ -111,7 +111,8 @@ const Cart = () => {
     useEffect(() => {
         if (params.id !==':id') {
         setparamId(params.id)
-        }           
+        }       
+        
     }, [params.id]);
 
     //opens the div that has list of countries
@@ -274,20 +275,38 @@ const nextcart = async () => {
                 </div>
                 <FaEllipsisV className='absolute right-3 sm:static' />
             </header >
-         
+            {/* {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+                <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
+                    <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
+                    <div className='flex flex-col justify-center gap-1'>
+                        <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
+                        <p className='md:text-lg'>Check your internet connection</p>
+                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>window.location.reload()}>Reload</button></div>
+                    </div>
+                </div>
+            </div>} */}
             <div  >
-                {cart?.product?.length === 0 || myid===null? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
+                {cart?.product?.length === 0 || myid === null ? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
                     <section className='  pt-28 sm:pt-32 pb-10     lg:pt-32 '>
-                        {cart.product?<>
-                        <h1 className='text-center   font-semibold text-xl  sm:mb-5  mb-5   md:mb-5  lg:mb-7 xl:text-3xl sm:text-2xl lg:text-3xl'>{cart?.title}</h1>
-                        <div className='flex bg-white  top-20 sm:top-24   sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
-                            <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${shopitems?.progess? 'bg-yellow-900' : 'bg-black'} flex justify-center items-center`}>{shopitems?.progess? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${shopitems?.progess? ' text-yellow-900' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${shopitems?.progess? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
-                            <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${checkitems?.progess? ' bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{checkitems?.progess? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${checkitems?.progess?  ' text-yellow-900' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${checkitems?.progess? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
-                            <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-yellow-900' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-900 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
-                        </div>
+                        {cart.product ? <>
+                            <h1 className='text-center   font-semibold text-xl  sm:mb-5  mb-5   md:mb-5  lg:mb-7 xl:text-3xl sm:text-2xl lg:text-3xl'>{cart?.title}</h1>
+                            <div className='flex bg-white  top-20 sm:top-24   sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
+                                <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${shopitems?.progess ? 'bg-yellow-900' : 'bg-black'} flex justify-center items-center`}>{shopitems?.progess ? <FaCheck className='text-sm' /> : 1}</div><div className={`flex ${shopitems?.progess ? ' text-yellow-900' : 'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${shopitems?.progess ? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
+                                <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${checkitems?.progess ? ' bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{checkitems?.progess ? <FaCheck className='text-sm' /> : 2}</div><div className={`flex ${checkitems?.progess ? ' text-yellow-900' : 'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${checkitems?.progess ? 'border-yellow-900' : 'border-black'} w-full border mt-4`}></div></div>
+                                <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-900 ' : 'bg-black  '} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : 3}</div><div className={`flex ${changecart3 ? 'text-yellow-900' : 'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-900 w-full border mt-4 ` : `border-black w-full border mt-4`}></div></div>
+                            </div>
 
-                        <Outlet context={{ nextcart,completeitems, nextcart2, nextcart3,checkitems, showcountry,data, getcountry,cart,countries,shopitems,deleteitem }} />
-                       </> : <p>please wait...</p>}
+                            <Outlet context={{ nextcart, completeitems, nextcart2, nextcart3, checkitems, showcountry, data, getcountry, cart, countries, shopitems, deleteitem }} />
+                        </>: !error.message ? < p > please wait...</p>: <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+                        <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
+                        <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
+                        <div className='flex flex-col justify-center gap-1'>
+                        <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
+                        <p className='md:text-lg'>Check your internet connection</p>
+                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>window.location.reload()}>Reload</button></div>
+                        </div>
+                        </div>
+                        </div>}
                     </section>}
             </div>
         </div >

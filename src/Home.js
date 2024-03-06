@@ -93,6 +93,7 @@ useEffect(() => {
         setscroll(menubar ? scroll : window.scrollY)
         setmenubar(prev => !prev)
         
+        
         /*
                 Notification.requestPermission().then(perm => {
                     if (perm === 'granted') {
@@ -253,11 +254,13 @@ const option = {
             </div>
             }</div>
           
-            <motion.div className={`fixed   w-130 sm:w-25 md:w-22   bg-white popout lg:w-10    z-20 h-80 sm:h-96 lg:h-80    rounded-xl border-t   ${popout ? 'block ' : 'hidden'}  `}>
-                <FaTimesCircle className='absolute right-0  text-yellow-900 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{ setscroll(scroll)
-                setpopout(prev => !prev)
-                setshowinput(false)
-                setmenubar(false)}} />
+            <motion.div className={`fixed   w-130 sm:w-25 md:w-22   bg-white popout lg:w-10    z-20 h-80 sm:h-96 lg:h-80    rounded-xl border-t   ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
+                <FaTimesCircle className='absolute right-0  text-yellow-900 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={() => {
+                    setscroll(scroll)
+                    setpopout(prev => !prev)
+                    setshowinput(false)
+                    setmenubar(false)
+                }} />
                 <div className='flex fixed rounded-t-xl top-0   bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
                     <button className='w-10 p-1 lg:w-350  xl:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
@@ -265,37 +268,38 @@ const option = {
                 <div className='px-4 pt-16 sm:pt-16 lg:pt-16 h-80 sm:h-96 overflow-y-auto lg:h-80 overflow-div     '>
                     {data.items ?
                         <div>
-                    <div>
-                        {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
-                    </div>
-                    {data?.items?.map(prev => {
-                        return (<div className='flex justify-between  py-3 border-b border-yellow-900 hover:cursor-pointer  '>
-                        <NavLink to={`/cart/${prev._id}`}>  <p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></NavLink>
-                        <input type="radio" className='hover:cursor-pointer accent-yellow-900  lg:w-4' name='collection' checked={checked===prev.selected} onClick={()=>selectcartFunc(prev._id)}  />
-                        </div>)
-                    }).reverse()}</div> :
-                    <p>please wait...</p>
+                            <div>
+                                {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
+                            </div>
+                            {data?.items?.map(prev => {
+                                return (<div className='flex justify-between  py-3 border-b border-yellow-900 hover:cursor-pointer  '>
+                                    <NavLink to={`/cart/${prev._id}`}>  <p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></NavLink>
+                                    <input type="radio" className='hover:cursor-pointer accent-yellow-900  lg:w-4' name='collection' checked={checked === prev.selected} onClick={() => selectcartFunc(prev._id)} />
+                                </div>)
+                            }).reverse()}</div> :
+                        <p>please wait...</p>
                     }
                 </div>
-                 {/* <div className='fixed w-full bottom-0 bg-yellow-900 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
+                {/* <div className='fixed w-full bottom-0 bg-yellow-900 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
 
                 </div>  */}
                 
             </motion.div>
             
-            {Error&& <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
-                <div className='flex md:items-center flex-col md:flex-row  gap-3 md:gap-5'>
+            {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+                <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>
-                        <h1 className='font-bold sm:text-xl '>{Error?.message}</h1>
+                        <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
                         <p className='md:text-lg'>Check your internet connection</p>
+                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>seterror(null)}>Ok</button></div>
                     </div>
                 </div>
             </div>}
             <div className={` bg-yellow-800 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
                 <p>you're logged in</p>
             </div>
-            <div className={` bg-yellow-800 ${ added? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
+            <div className={` bg-yellow-800 ${ added && !error?.message? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
                 <p>Added to cart</p>
             </div>
             <motion.div animate={{y:displaynote?130:0,x:'50%',x:'-50%'}} initial={{x:'50%',x:'-50%'}} transition={{ type: 'tween', duration: 1 }}     className={` hidden bg-white allpopout outline-yellow-900 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20 fixed  justify-center flex-col   text-black  `} ref={noteref} >
