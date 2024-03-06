@@ -259,12 +259,12 @@ const nextcart = async () => {
             }
 
             catch (err) {
-            setError(err) 
-            console.log(err)
+            setError(err.message === 'Failed to fetch' ? { 'message': 'Failed to delete' }:err) 
+            console.log(err.message)
         } 
         
     }
-   
+   console.log(error?.message)
     return (
         <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} h-full  `}>
             <header className={`fixed flex sm:justify-between gap-4 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
@@ -275,16 +275,16 @@ const nextcart = async () => {
                 </div>
                 <FaEllipsisV className='absolute right-3 sm:static' />
             </header >
-            {/* {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+            {error?.message !=='Failed to fetch' && error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
                 <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>
                         <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
                         <p className='md:text-lg'>Check your internet connection</p>
-                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>window.location.reload()}>Reload</button></div>
+                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={() =>setError(null)}> Try again</button></div>
                     </div>
                 </div>
-            </div>} */}
+            </div>} 
             <div  >
                 {cart?.product?.length === 0 || myid === null ? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> <img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> <p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
                     <section className='  pt-28 sm:pt-32 pb-10     lg:pt-32 '>
@@ -297,14 +297,15 @@ const nextcart = async () => {
                             </div>
 
                             <Outlet context={{ nextcart, completeitems, nextcart2, nextcart3, checkitems, showcountry, data, getcountry, cart, countries, shopitems, deleteitem }} />
-                        </>: !error.message ? < p > please wait...</p>: <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+                        </> : !error.message ?
+                        < p > please wait...</p> : <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
                         <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
-                        <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
-                        <div className='flex flex-col justify-center gap-1'>
-                        <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
-                        <p className='md:text-lg'>Check your internet connection</p>
-                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>window.location.reload()}>Reload</button></div>
-                        </div>
+                            <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
+                            <div className='flex flex-col justify-center gap-1'>
+                                <h1 className='font-bold sm:text-xl '>{error?.message?.other}</h1>
+                                <p className='md:text-lg'>Check your internet connection</p>
+                                < div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>window.location.reload()}>Reload</button></div>
+                            </div>
                         </div>
                         </div>}
                     </section>}

@@ -54,7 +54,6 @@ const ScrollToTOP = () => {
     function changeRunEffect1() {
         setRunEffect(false)
     }
-   console.log(Object.keys(data).length === 0)
     return (
 
         <div className=''>

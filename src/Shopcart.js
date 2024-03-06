@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes,FaExclamationCircle } from 'react-icons/fa'
 import { Navigate, useNavigate, useOutletContext } from 'react-router-dom'
 
 const Shopcart = () => {
@@ -20,7 +20,7 @@ const Shopcart = () => {
             }
 
             catch (err) {
-           // seterror(err) 
+            seterror(err.message === 'Failed to fetch' ? { 'message': 'Failed to increase' }:err) 
             console.log(err)
             }
     }
@@ -38,18 +38,16 @@ const Shopcart = () => {
             }
 
             catch (err) {
-            //seterror(err) 
+            seterror(err.message === 'Failed to fetch' ? { 'message': 'Failed to reduce' }:err) 
             console.log(err)
         }
-        console.log(id)
-        console.log(cart._id)
     }
     const selectpayment = async (id) => {
     
         const option = {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json',
+            'content-type': 'application/json',
             }
         }
         try {
@@ -59,30 +57,29 @@ const Shopcart = () => {
         }
 
         catch (err) {
-            seterror(err)
-            console.log(err)
+            seterror(err.message === 'Failed to fetch' ? { 'message': 'Failed to select' }:err)
+            console.log(err.message === 'Failed to fetch' ? { 'message': 'failed to select a cart' }:err)
         }
     }
 useEffect(() => { 
     if (shopitems?.progess===true) {
-        navigate('/cart/:id/checkout') 
-      
+        navigate('/cart/:id/checkout')   
     }
 }, [shopitems]);
     return (
         <div className='pt-6 sm:pt-8  sm:gap-11 md:gap-14 lg:gap-15 h-full  '>
+            {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+                <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
+                    <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
+                    <div className='flex flex-col justify-center gap-1'>
+                        <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
+                        <p className='md:text-lg'>Check your internet connection</p>
+                        < div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={() => seterror(null)}>Try again</button></div>
+                    </div>
+                </div>
+            </div>}
             {shopitems?.progess===false && <div className='lg:flex items-start lg:w-120 xl:w-110 m-auto gap-10 lg:mt-10 '>
                 <div className=' lg:w-140 lg:flex lg:flex-col lg:justify-center items-center border w-110 sm:w-140 m-auto lg:m-0   '>
-
-                    {/*} <ul className='border-b border-black pb-6 pl-3 sm:pl-5 sm:pb-7 sm:w-140 sm:m-auto  justify-between lg:m-0 lg:flex lg:pb-0 lg:pl-0  lg:w-full'>
-                        <li className='sm:text-lg lg:col-span-3'>Product</li>
-                        <div className=' hidden  '>
-                            <li className='hidden lg:grid lg:col-span-1'>Quatity</li>
-                            <li className='hidden lg:grid lg:col-span-1'>Price</li>
-                            <li className='hidden lg:grid lg:col-span-1'>Subtotal</li>
-                        </div>
-    <               /ul>*/}
-
                     {cart?.product?.map(prev => {
                         return (<div className='flex gap-2 sm:gap-5 lg:gap-0 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   '>
                             <img src={prev.image} className='w-40 sm:w-52  h-full  ' />
@@ -100,22 +97,7 @@ useEffect(() => {
                                     <div>{prev.quantity}</div>
                                     <button className='w-20 bg-gray-100 font-bold text-black text-lg' onClick={() => increasequantity(prev._id)}>+</button>
                                 </div>
-
                             </div>
-                            {/*<div className='hidden lg:flex  '>
-                            <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-40 hidden lg:block ' />
-                            <div >
-                                <h1>watch</h1>
-                                <FaTimes />
-                            </div>
-                        </div>
-
-                        <div className='flex justify-between items-center'>
-                            <div className='hidden lg:flex w-16 h-8 lg:h-10 lg:w-28 border border-black  justify-center items-center '>-3+</div>
-                            <h1 className='hidden lg:block '>$100</h1>
-                            <h1 className='hidden lg:block'>$300</h1>
-                        </div>*/}
-
                         </div>)
                     })}
                 </div>
