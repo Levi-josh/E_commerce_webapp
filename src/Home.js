@@ -312,6 +312,9 @@ const option = {
                     <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
                 </div>
             </motion.div >
+            <motion.div animate={{rotate:360}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='fixed popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 w-11 h-11 rounded-full  '>
+                <div className='w-8 h-8 bg-white popout rounded-full absolute'></div>
+            </motion.div>
             <div className='  sm:h-auto h-121   sm:pb-0 gap-5  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
                 <div className='h-192 sm:h-auto'>
 

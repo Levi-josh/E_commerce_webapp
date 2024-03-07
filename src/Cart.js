@@ -3,7 +3,7 @@ import React, { useRef,useEffect } from 'react'
 import { Navigate, useNavigate, Outlet, redirect, useParams, useOutletContext } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 import cartimg from './icons8-shopping-cart-48.png';
-
+import { motion } from 'framer-motion'
 //import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown } from 'react-icons/fa'
 
 import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaExclamationCircle, FaLock, FaHistory, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck, FaChevronLeft, FaUserCircle, FaArrowLeft, FaShopify, FaStarHalf, FaStarHalfAlt, FaTimesCircle, FaHome, FaShoppingBag, FaStar, FaShoppingBasket, FaArrowRight, FaAngleLeft, FaArrowDown, FaAngleDown, FaEllipsisV } from 'react-icons/fa'
@@ -298,7 +298,9 @@ const nextcart = async () => {
 
                             <Outlet context={{ nextcart, completeitems, nextcart2, nextcart3, checkitems, showcountry, data, getcountry, cart, countries, shopitems, deleteitem }} />
                         </> : !error.message ?
-                        < p > please wait...</p> : <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+                        <motion.div animate={{rotate:360}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='fixed popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 w-11 h-11 rounded-full  '>
+                        <div className='w-8 h-8 bg-white popout rounded-full absolute'></div>
+                        </motion.div> : <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
                         <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                             <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                             <div className='flex flex-col justify-center gap-1'>
