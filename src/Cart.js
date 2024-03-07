@@ -298,8 +298,8 @@ const nextcart = async () => {
 
                             <Outlet context={{ nextcart, completeitems, nextcart2, nextcart3, checkitems, showcountry, data, getcountry, cart, countries, shopitems, deleteitem }} />
                         </> : !error.message ?
-                        <motion.div animate={{rotate:360}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='fixed popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 w-11 h-11 rounded-full  '>
-                        <div className='w-8 h-8 bg-white popout rounded-full absolute'></div>
+                        <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='fixed popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 w-9 h-9 lg:w-11 lg:h-11 rounded-full  '>
+                        <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
                         </motion.div> : <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
                         <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                             <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
