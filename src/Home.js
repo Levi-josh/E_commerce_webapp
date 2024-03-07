@@ -272,12 +272,13 @@ const option = {
                                 {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
                             </div>
                             {data?.items?.map(prev => {
-                                return (<div className='flex justify-between  py-3 border-b border-yellow-900 hover:cursor-pointer  '>
+                            return (<div className='flex justify-between  py-3 border-b border-yellow-900 hover:cursor-pointer  '>
                                     <NavLink to={`/cart/${prev._id}`}>  <p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></NavLink>
                                     <input type="radio" className='hover:cursor-pointer accent-yellow-900  lg:w-4' name='collection' checked={checked === prev.selected} onClick={() => selectcartFunc(prev._id)} />
                                 </div>)
-                            }).reverse()}</div> :
-                        <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='fixed popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
+                            }).reverse()}
+                        </div> :
+                        <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
                         <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
                         </motion.div>
                     }
