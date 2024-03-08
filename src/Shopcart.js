@@ -43,7 +43,7 @@ const Shopcart = () => {
         }
     }
     const selectpayment = async (id) => {
-    
+
         const option = {
             method: 'PUT',
             headers: {

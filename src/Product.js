@@ -1,6 +1,7 @@
 import React, { useLayoutEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useState,useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaAngleLeft, FaTimesCircle } from 'react-icons/fa'
 function Product() {
     const [menubar, setmenubar] = useState(false)
@@ -154,7 +155,9 @@ useLayoutEffect(() => {
 
                         </div>
                     </div>
-                </footer></> : <p className='pt-40'>please wait...</p>}
+                </footer></> : <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
+            <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
+            </motion.div>}
         </div>
     )
 }

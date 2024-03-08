@@ -12,6 +12,7 @@ const ScrollToTOP = () => {
     const [data, setdata] = useState({})
     const [note, setnote] = useState({})
     const [runEffect, setRunEffect] = useState(false);
+    const [runEffect2, setRunEffect2] = useState(false);
     const [access, setaccess] = useState('');
     const [id, setId] = useState('');
     const [search, setsearch] = useSearchParams()
@@ -95,7 +96,7 @@ const ScrollToTOP = () => {
                     </div>
                 </div>
             </div>:
-            <Outlet context={{data,note,runEffect,id,changeRunEffect,changeRunEffect1,signout}} />
+            <Outlet context={{data,note,runEffect,runEffect2,id,changeRunEffect,changeRunEffect1,signout}} />
              }
             {/* //  <Outlet context={{data,note,runEffect,changeRunEffect,changeRunEffect1,Error}} /> */}
         </div>

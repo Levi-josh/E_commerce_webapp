@@ -147,7 +147,7 @@ useEffect(() => {
                             <motion.div animate={{ rotate: 360 }} initial={{ x: '50%', x: '-50%' }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
                                 <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
                             </motion.div> :
-                        <div className='w-full gap-3 flex lg:pt-40  justify-center items-center'><FaHistory className='text-2xl text-yellow-900 ' /><p className='text-lg font-bold'>your history will appear here</p></div>}
+                        <div className='w-full gap-3 flex lg:pt-40  justify-center items-center'><FaHistory className='text-2xl text-yellow-900 ' /><p className='text-lg font-bold'>your order history will appear here</p></div>}
                     </div>
         </div>
     )

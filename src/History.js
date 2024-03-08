@@ -23,7 +23,7 @@ const History = () => {
             <div className='h-full hidden lg:flex w-full  '>
             {id?
             data?.history? data?.history.length<1?
-            <p className='popout fixed font-semibold text-xl'>your cart history is empty</p>:
+            <p className='popout fixed font-semibold text-xl'>your order history is empty</p>:
             <appcontext.Provider value={data}>
                 <Firsthistory />
                 <Secondhistory />
@@ -32,18 +32,18 @@ const History = () => {
             <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
             </motion.div>
             :
-            <p className='popout  fixed font-semibold text-xl'>log in to see your cart history</p>}
+            <p className='popout  fixed font-semibold text-xl'>log in to see your order history</p>}
             </div>
             <div className='h-full  w-full lg:hidden  '>
             {id?
             data?.history? data?.history.length<1?
-            <p className='popout fixed whitespace-nowrap font-semibold sm:text-lg'>your cart history is empty</p>:
+            <p className='popout fixed whitespace-nowrap font-semibold sm:text-lg'>your order history is empty</p>:
             <Outlet context={data} />:
             <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
             <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
             </motion.div>
             :
-            <p className='popout  fixed whitespace-nowrap font-semibold sm:text-lg' >log in to see your cart history</p>}
+            <p className='popout  fixed whitespace-nowrap font-semibold sm:text-lg' >log in to see your order history</p>}
             </div>
 
         </div>

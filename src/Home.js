@@ -46,7 +46,7 @@ const Home = () => {
     const [newcartText, setnewcartText] = useState('');
     const [displaynote,setdisplaynote]= useState(false)
     const [selectedcart, setseletedcart] = useState('');
-    const {data,note,runEffect,changeRunEffect1,Error,id,signout}= useOutletContext()
+    const {data,note,runEffect,changeRunEffect1,Error,id,signout,runEffect2}= useOutletContext()
 
     useEffect(() => {
         window.scrollTo(0, scroll)
@@ -74,6 +74,8 @@ const Home = () => {
 }, [runEffect]);
 
 useEffect(() => {
+
+    if (runEffect2) {
     noteref.current.style.display = 'flex'
      setdisplaynote(true)
         audiosound.current?.play().catch(error => {
@@ -81,7 +83,8 @@ useEffect(() => {
         })
         setTimeout(() => {
         setdisplaynote(false)
-        }, 3000);
+        }, 3000);}
+
 }, []);
 
     function showmenu() {
@@ -262,7 +265,8 @@ const option = {
                     <button className='w-10 p-1 lg:w-350  xl:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
                 <div className='px-4 pt-16 sm:pt-16 lg:pt-16 h-80 sm:h-96 overflow-y-auto lg:h-80 overflow-div     '>
-                    {data.items ?
+                {id?
+                    data.items ?
                         <div>
                             <div>
                                 {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
@@ -273,7 +277,7 @@ const option = {
                                     <input type="radio" className='hover:cursor-pointer accent-yellow-900  lg:w-4' name='collection' checked={checked === prev.selected} onClick={() => selectcartFunc(prev._id)} />
                                 </div>)
                             }).reverse()}
-                        </div> :  id?
+                        </div> : 
                         <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
                         <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
                         </motion.div>:
