@@ -83,21 +83,28 @@ useEffect(() => {
                     {cart?.product?.map(prev => {
                         return (<div className='flex gap-2 sm:gap-5 lg:gap-0 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   '>
                             <img src={prev.image} className='w-40 sm:w-52  h-full  ' />
-                            <div className='flex flex-col  w-22 '>
-                                <div className='grid grid-cols-2 grid-rows-4   gap-x-18 gap-y-2 sm:gap-y-3 md:gap-y-4 lg:gap-y-7    '>
-                                    <h1 className='md:font-bold whitespace-nowrap'>{prev.itemname}</h1>
-                                    <div className=' pt-1 ' onClick={() => deleteitem(prev._id)}><FaTimes /></div>
+
+                                <div className='flex flex-col justify-between w-22   '>
+                                    <div className='flex items-center justify-between'>
+                                    <h1 className='font-bold whitespace-nowrap'>{prev.itemname}</h1>
+                                    <div className='sm:w-7 sm:h-7 h-6 w-6 flex items-center justify-center hover:cursor-pointer bg-gray-100  rounded-full  ' onClick={() => deleteitem(prev._id)}><FaTimes /></div>
+                                    </div>
+                                    <div className='flex justify-between'>
                                     <h1 className='font-bold'>Price:</h1>
                                     <p>{`$${prev.price}`}</p>
+                                    </div>
+                                    <div className='flex justify-between'>
                                     <h1 className='font-bold'>Subtotal:</h1>
                                     <p>{`$${prev.subtotal}`}</p>
-                                </div>
-                                <div className='w-full h-8 border flex justify-between'>
+                                    </div>
+                                
+                                    <div className='w-full h-8 border flex justify-between'>
                                     <button className='bg-neutral-100 font-bold text-lg text-black w-20' onClick={() => reducequantity(prev._id)}>-</button>
                                     <div>{prev.quantity}</div>
                                     <button className='w-20 bg-gray-100 font-bold text-black text-lg' onClick={() => increasequantity(prev._id)}>+</button>
+                                    </div>
                                 </div>
-                            </div>
+                           
                         </div>)
                     })}
                 </div>
