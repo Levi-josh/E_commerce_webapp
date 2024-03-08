@@ -4,11 +4,46 @@ import { FaArrowDown, FaChevronDown, FaTimes } from 'react-icons/fa'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 
 const Checkout = () => {
-    const { nextcart2, showcountry, getcountry,checkitems,data, cart, countries } = useOutletContext()
+    const { nextcart2, showcountry, getcountry,checkitems,data, cart, countries,deleteitem  } = useOutletContext()
     const [selectedcountry, setselectedcountry] = useState()
-    const [error, setError] = useState('')
+    const [error,setError]=useState()
     const navigate = useNavigate()
-
+    const increasequantity = async(id) => {
+        const option = {
+                   method: 'PUT',
+                   headers: {
+                       'content-type': 'application/json',
+                   }
+               }
+               try {
+                   const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/addquan/${id}/${cart?._id}`, option);
+                   const data = await response.json()
+                  console.log(data)
+               }
+   
+               catch (err) {
+               setError(err.message === 'Failed to fetch' ? { 'message': 'Failed to increase' }:err) 
+               console.log(err)
+               }
+       }
+       const reducequantity = async(id) => {
+        const option = {
+                   method: 'PUT',
+                   headers: {
+                       'content-type': 'application/json',
+                   }
+               }
+               try {
+                   const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/redquan/${id}/${cart?._id}`, option);
+                   const data = await response.json()
+                  console.log(data)
+               }
+   
+               catch (err) {
+               setError(err.message === 'Failed to fetch' ? { 'message': 'Failed to reduce' }:err) 
+               console.log(err)
+           }
+       }
     const selectcountry = async (id) => {
         getcountry()
          const option = {
@@ -172,15 +207,25 @@ useEffect(() => {
                 {cart?.product?.map(prev => {
                     return (<div className='flex gap-5  border-b lg:w-full   border-gray-400  pb-5  mt-5    '>
                         <img src={prev.image} className='w-40 sm:w-52  ' />
-                        <div className='grid grid-cols-2 place-content-between   '>
-                            <h1>{prev.itemname}</h1>
-                            <h1>{`$${prev.price}`}</h1>
-                            <div className='w-16 h-8 border border-black text-center'>-3+</div>
-                            <FaTimes />
-
-                            <h1>subtotal:</h1>
-                            <h1>{`$${prev.subtotal}`}</h1>
-
+                        <div className='flex flex-col justify-between w-22   '>
+                                <div className='flex items-center justify-start'>
+                                    <h1 className='font-bold whitespace-nowrap'>{prev.itemname}</h1>
+                                  
+                                </div>
+                                <div className='flex justify-between'>
+                                    <h1 className='font-bold'>Price:</h1>
+                                    <p>{`$${prev.price}`}</p>
+                                </div>
+                                <div className='flex justify-between'>
+                                    <h1 className='font-bold'>Subtotal:</h1>
+                                    <p>{`$${prev.subtotal}`}</p>
+                                </div>
+                                
+                                <div className='w-full h-8 border flex justify-between'>
+                                    <button className='bg-neutral-100 font-bold text-lg text-black w-20' onClick={() => reducequantity(prev._id)}>-</button>
+                                    <div>{prev.quantity}</div>
+                                    <button className='w-20 bg-gray-100 font-bold text-black text-lg' onClick={() => increasequantity(prev._id)}>+</button>
+                                </div>
                         </div>
                     </div>)
                 })}

@@ -7,7 +7,7 @@ const Complete = () => {
     if (completeitems?.progess===true) {
       navigate('/cart/:id/complete')  
     }
-    console.log(cart)
+   
     return (
         <div className='pt-6 sm:pt-8 pb-20 h-full'>
             <div className='m-auto px-5 w-110 md:w-150 lg:w-200 shadow-xl border-0.5 md:border border-slate-300 shadow-slate-300 py-6 sm:py-14 md:py-16  md:text-center   '>
@@ -16,9 +16,9 @@ const Complete = () => {
                     <h1 className='font-semibold text-xl md:text-3xl lg:text-4xl '>Your order has been</h1> <h1 className='font-semibold text-xl md:text-3xl lg:text-4xl'>received</h1>
                 </div>
                 <div className='flex md:justify-center gap-1 md:gap-2 lg:gap-3 overflow-auto '>
-                    <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-16  sm:w-24 lg:w-32 ' />
-                    <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className=' w-16  sm:w-24 lg:w-32 ' />
-                    <img src='https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg' className='w-16  sm:w-24 lg:w-32 ' />
+                {cart?.product?.map(prev => {return(
+                    <img src={prev.image} className='w-16  sm:w-24 lg:w-32 ' />
+                )})}
                 </div>
                 <div className='flex flex-col  gap-1 md:flex-row md:hidden border-b-0.5 border-gray-400 pb-4 mt-8'>
                     <p className='text-gray-600 font-medium'>Order code:</p>
