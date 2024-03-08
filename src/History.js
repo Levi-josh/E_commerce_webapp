@@ -4,12 +4,13 @@ import homeimage from './hotdog image.jpg'
 import { Link, NavLink, Outlet, useLocation,useOutletContext } from 'react-router-dom'
 import { useState,createContext } from 'react'
 import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 import Firsthistory from './Firsthistory'
 import Secondhistory from './Secondhistory'
 
 export let appcontext = createContext(null)
 const History = () => {
-    const { data } = useOutletContext()
+    const { data,id } = useOutletContext()
     
     return (
         <div className={`  h-full `}>
@@ -17,19 +18,32 @@ const History = () => {
                 <NavLink to='../' relative='path' className={'sm:absolute lg:hidden '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <NavLink to='../'  className={'sm:absolute hidden lg:block '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <h1 className='sm:m-auto font-semibold text-xl sm:text-2xl lg:text-3xl'> History</h1>
-
-
             </header >
 
             <div className='h-full hidden lg:flex w-full  '>
+            {id?
+            data?.history? data?.history.length<1?
+            <p className='popout fixed font-semibold text-xl'>your cart history is empty</p>:
             <appcontext.Provider value={data}>
                 <Firsthistory />
                 <Secondhistory />
-            </appcontext.Provider>
+            </appcontext.Provider>:
+            <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
+            <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
+            </motion.div>
+            :
+            <p className='popout  fixed font-semibold text-xl'>log in to see your cart history</p>}
             </div>
             <div className='h-full  w-full lg:hidden  '>
-                <Outlet context={data} />
-
+            {id?
+            data?.history? data?.history.length<1?
+            <p className='popout fixed whitespace-nowrap font-semibold sm:text-lg'>your cart history is empty</p>:
+            <Outlet context={data} />:
+            <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
+            <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
+            </motion.div>
+            :
+            <p className='popout  fixed whitespace-nowrap font-semibold sm:text-lg' >log in to see your cart history</p>}
             </div>
 
         </div>

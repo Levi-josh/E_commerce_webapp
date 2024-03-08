@@ -30,7 +30,7 @@ const Cart = () => {
     const [checkitems,setcheckitems] = useState({})
     const [completeitems,setcompleteitems] = useState({})
     const [countries,setcountries] = useState([])
-    const {data}= useOutletContext()
+    const {data,id}= useOutletContext()
     const params =useParams()
     const [array, setarray] = useState(0)
      
@@ -79,7 +79,7 @@ const Cart = () => {
             }
       }
     
-    getcart()
+    id&&getcart()
       
     const getcountry = async()=> {
          const option = {
@@ -98,7 +98,7 @@ const Cart = () => {
                 setError(err)
             }
     }
-    getcountry()
+    id&&getcountry()
       
 }, [cart]);
 

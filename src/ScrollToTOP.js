@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation,useSearchParams } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaRegArrowAltCircleDown, FaExclamationCircle } from 'react-icons/fa'
 
@@ -12,7 +12,9 @@ const ScrollToTOP = () => {
     const [data, setdata] = useState({})
     const [note, setnote] = useState({})
     const [runEffect, setRunEffect] = useState(false);
-  
+    const [access, setaccess] = useState('');
+    const [id, setId] = useState('');
+    const [search, setsearch] = useSearchParams()
     const accesstoken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N…4MTB9.6uPNKFjMZFwtnelOQ2_akSpeafLSeOAp6XyVRFbqkFE`
  
     useEffect(() => {
@@ -20,7 +22,15 @@ const ScrollToTOP = () => {
         
     }, [location]);
  
+    useEffect(() => {
 
+    const myid = localStorage.getItem('myid')
+  
+    setId(myid)
+    console.log(myid)  
+    },[location])
+
+   
     useEffect(() => {
         
         setnote(data?.Notification?.reverse())
@@ -33,9 +43,10 @@ const ScrollToTOP = () => {
                 }
             }
             try {
-                const response = await fetch('https://backend-e-commerce-g7of.onrender.com/getuser/65ccb7984abbc67ca9a90231', option);
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getuser/${id}`, option);
                 const data = await response.json()
                 setdata(data)
+                console.log(data)
             }
 
             catch (err) {
@@ -43,16 +54,24 @@ const ScrollToTOP = () => {
                 console.log(err.message)
 
             }
+            console.log(id)
         }
-        getusersDocuments()
-    }, [data]);
+        console.log(id)  
+    id&&getusersDocuments()
+    }, [data,id]);
   
-    
+
+    console.log(id) 
     function changeRunEffect() {
         setRunEffect(prev => !prev)
     }
     function changeRunEffect1() {
         setRunEffect(false)
+    }
+    function signout () {
+        localStorage.removeItem('mycart')  
+        localStorage.removeItem('myid') 
+        setdata({}) 
     }
     return (
 
@@ -66,7 +85,7 @@ const ScrollToTOP = () => {
                 </div>
             </div>
         </div>} */}
-            {Error.message&&Object.keys(data).length === 0? <div className='w-full bg-white'>
+            {Error.message === 'Failed to fetch'&&Object.keys(data).length === 0? <div className='w-full bg-white'>
                 <div className='popout fixed flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='text-5xl md:text-6xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>
@@ -76,7 +95,7 @@ const ScrollToTOP = () => {
                     </div>
                 </div>
             </div>:
-            <Outlet context={{data,note,runEffect,changeRunEffect,changeRunEffect1}} />
+            <Outlet context={{data,note,runEffect,id,changeRunEffect,changeRunEffect1,signout}} />
              }
             {/* //  <Outlet context={{data,note,runEffect,changeRunEffect,changeRunEffect1,Error}} /> */}
         </div>

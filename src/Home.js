@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { FaBars, FaSearch, FaBell, FaAddressBook,FaSun, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown, FaToggleOn, FaToggleOff, FaSubscript, FaUser, FaQuestion, FaVest, FaShare, FaMoneyBill, FaLightbulb, FaSearchPlus, FaPlusSquare, FaMoon, } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
-import { Link, NavLink, json, useLocation, useNavigate, useOutletContext } from 'react-router-dom'
+import { Link, NavLink, json, useLocation, useNavigate,useSearchParams, useOutletContext } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
@@ -39,14 +39,14 @@ const Home = () => {
     const [showerror,setshowerror]=useState(false)
     const [checked,setchecked]=useState(true)
     const [added,setadded]=useState(false)
-     const audiosound = useRef()
+    const audiosound = useRef()
     const lognote = useRef()
     const noteref = useRef()
-     const [intervalId, setIntervalId] = useState(null);
+    const [intervalId, setIntervalId] = useState(null);
     const [newcartText, setnewcartText] = useState('');
     const [displaynote,setdisplaynote]= useState(false)
-     const [selectedcart, setseletedcart] = useState('');
-    const {data,note,runEffect,changeRunEffect1,Error}= useOutletContext()
+    const [selectedcart, setseletedcart] = useState('');
+    const {data,note,runEffect,changeRunEffect1,Error,id,signout}= useOutletContext()
 
     useEffect(() => {
         window.scrollTo(0, scroll)
@@ -55,8 +55,9 @@ const Home = () => {
    
  useEffect(() => {
      const selectedid = data?.items?.filter(prev => prev.selected === true)
-        setseletedcart(selectedid && selectedid[0]._id)
+        setseletedcart(selectedid && selectedid[0]?._id)
     })
+
   useEffect(() => {
       // Check if the effect should run based on the boolean value
      
@@ -65,9 +66,7 @@ const Home = () => {
     audiosound.current?.play().catch(error => {
     console.error('Auto-play prevented:', error.message);})
       
-    setTimeout(() => {
-    setloggedin(false);
-        }, 3000);
+    setTimeout(() => {setloggedin(false);}, 3000);
     localStorage.setItem('hasEffectRun', 'true');
     changeRunEffect1()
       }
@@ -75,20 +74,16 @@ const Home = () => {
 }, [runEffect]);
 
 useEffect(() => {
-    // Check if the effect should run based on the boolean value
-   
     noteref.current.style.display = 'flex'
      setdisplaynote(true)
         audiosound.current?.play().catch(error => {
             console.error('Auto-play prevented:', error.message);
         })
-      
         setTimeout(() => {
         setdisplaynote(false)
         }, 3000);
-
-    
 }, []);
+
     function showmenu() {
         setscroll(menubar ? scroll : window.scrollY)
         setmenubar(prev => !prev)
@@ -194,6 +189,7 @@ const option = {
     setnewcartText('')
     setshowinput(false)
     }
+ 
   
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
@@ -248,7 +244,7 @@ const option = {
                         </div>
                     </div>
                     <div className=' flex justify-end  lg:mt-0 lg:items-center '>
-                        <NavLink to={'/login'}> <p className='font-bold   sm:text-xl text-yellow-900 text-right  mb-7 mr-7 '>Sign In</p></NavLink>
+                        <NavLink to={'/login'}> <p className='font-bold   sm:text-xl text-yellow-900 text-right  mb-7 mr-7 ' onClick={signout} >{`Sign ${id?'Out':'In'}`} </p></NavLink>
                     </div>
                 </div>
             </div>
@@ -277,10 +273,11 @@ const option = {
                                     <input type="radio" className='hover:cursor-pointer accent-yellow-900  lg:w-4' name='collection' checked={checked === prev.selected} onClick={() => selectcartFunc(prev._id)} />
                                 </div>)
                             }).reverse()}
-                        </div> :
+                        </div> :  id?
                         <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
                         <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
-                        </motion.div>
+                        </motion.div>:
+                        <p className='font-semibold sm:text-lg lg:text-xl popout fixed'>Empty!</p>
                     }
                 </div>
                 {/* <div className='fixed w-full bottom-0 bg-yellow-900 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
