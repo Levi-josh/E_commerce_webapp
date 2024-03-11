@@ -124,7 +124,7 @@ const selectcartFunc = async(id)=> {
             <header className='fixed flex sm:justify-between gap-4 sm:gap-0 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-2 sm:px-5 md:px-2 lg:px-4 w-full m-0 bg-white z-10 shadow-lg '>
                 {!showinput1 ? <NavLink to='../' relative='path' className={' sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc} className='font-bold sm:absolute  text-xl md:text-2xl ' ></FaAngleLeft>}
                 {showinput1 ? <input className='outline-none  border rounded-xl w-130 sm:w-140 border-black lg:w-25 sm:m-auto h-9  pl-2 placeholder:pl-2 ' placeholder='Search products' />
-                    : <h1 className=' sm:m-auto  text-xl sm:text-2xl font-semibold'>Product</h1>}
+                    : <h1 className=' sm:m-auto  text-xl sm:text-2xl font-semibold'>Products</h1>}
                 <FaSearch onClick={searchfunc} className={`${showinput1 ? 'hidden' : 'block'} right-2  sm:right-5 md:right-2 absolute`} />
             </header >
 
@@ -186,7 +186,7 @@ const selectcartFunc = async(id)=> {
                     <div className='grid grid-cols-2 gap-1 md:gap-2 lg:px-6 xl:gap-12 xl:px-12 sm:gap-5 sm:px-5 lg:gap-6 md:px-2 px-1 md:grid-cols-3 mt-5 sm:mt-8 lg:mt-12            '>
 
                         {items.map(prev => {
-                            return (<div className=' p-2 md:p-3 lg:p-4  rounded-lg border-2 shadow-lg           '>
+                            return (<div className=' p-2 md:p-3 lg:p-7  rounded-lg border-2 shadow-lg           '>
                                 <img src={prev.image} alt='' className='rounded-lg w-full lg:h-52 ' />
                                 <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
                                     <div className='flex text-yellow-800 sm:text-lg lg:text-xl '>

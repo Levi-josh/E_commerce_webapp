@@ -22,6 +22,7 @@ import Firsthistory from './Firsthistory.js';
 import Secondhistory from './Secondhistory.js';
 import Firstnote from './Firstnote.js';
 import Secondnote from './Secondnote.js';
+import Signup from './Signup.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -54,6 +55,7 @@ function App() {
 
       </Route>
       <Route path='/login' element={<Login />} />
+      <Route path='/signup' element={<Signup />} />
       <Route path='/signin' element={<Logout />} />
     </Route>
 

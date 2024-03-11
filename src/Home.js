@@ -206,7 +206,7 @@ const option = {
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
                     <NavLink to='/product'><li>Product</li></NavLink>
-                    <NavLink to='/contact'><li>contact</li></NavLink>
+                    <NavLink to='/signin'><li>contact</li></NavLink>
                     <NavLink to='/about'><li>About us</li></NavLink>
 
                 </ul>
@@ -270,6 +270,7 @@ const option = {
                 <div className='px-4 pt-16 sm:pt-16 lg:pt-16 h-80 sm:h-96 overflow-y-auto lg:h-80 overflow-div     '>
                 {id?
                     data.items ?
+                    data.items<1?<div className='absolute flex flex-col popout'><h1 className='font-bold'>Empty cart</h1><p>Your cart is empty, click on the button above to create a cart.</p></div>:
                         <div>
                             <div>
                                 {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
