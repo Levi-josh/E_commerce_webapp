@@ -112,7 +112,10 @@ useEffect(() => {
         navigate('/note')
     }
 
-    const buyorder = async (id) => {    
+    const buyorder = async (id) => {   
+       if (data.items.length<1) {
+        throw Error({'message':'Empty cart'})
+       } 
     const option = {
                 method: 'POST',
                 headers: {

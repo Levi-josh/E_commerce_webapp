@@ -67,7 +67,7 @@ const Login = () => {
 
             <div className='w-130 sm:w-140  lg:w-130  xl:w-140 lg:h-96 outline outline-2 rounded-xl outline-yellow-900  justify-center lg:items-center   items-start flex flex-col lg:flex-row shadow-xl gap-3 sm:gap-6  lg:gap-12 '>
                 <div className='w-full md:h-full'>
-                    <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='h-full w-full lg:rounded-l-xl rounded-t-xl lg:rounded-t-none        bg-no-repeat bg-cover bg-center object-cover   ' />
+                  <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='h-full w-full lg:rounded-l-xl rounded-t-xl lg:rounded-t-none        bg-no-repeat bg-cover bg-center object-cover   ' />
                 </div>
                 <form  onSubmit={handleSubmit}className='flex flex-col gap-3 sm:gap-4 lg:gap-5 pb-3 sm:pb-6  w-full  lg:pr-12 lg:pl-0 px-3 sm:px-7 lg:px-6   '>
                     <h1 className='font-bold text-xl sm:text-2xl lg:text-3xl '>Sign In</h1>

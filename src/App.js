@@ -22,6 +22,8 @@ import Firsthistory from './Firsthistory.js';
 import Secondhistory from './Secondhistory.js';
 import Firstnote from './Firstnote.js';
 import Secondnote from './Secondnote.js';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
@@ -52,14 +54,16 @@ function App() {
 
       </Route>
       <Route path='/login' element={<Login />} />
-      <Route path='/logout' element={<Logout />} />
+      <Route path='/signin' element={<Logout />} />
     </Route>
 
   ));
 
 
-  return (
+  return (<>
     <RouterProvider router={router} />
+    <ToastContainer />
+    </>
   )
 }
 
