@@ -3,7 +3,8 @@ import React,{useState} from 'react'
 const Logout = () => {
    
     const [userId, setUserId] = useState('65ccb7984abbc67ca9a90231');
-  
+    const [response, setresponse] = useState({});
+  console.log(response?.ok)
     const subscribeToPush = async () => {
       
       try {
@@ -22,6 +23,7 @@ const Logout = () => {
         // Send subscription and user ID to the server
        const res= await fetch(`https://backend-e-commerce-g7of.onrender.com/subscribe`, options);
   console.log(res)
+  setresponse(res)
     
       } catch (error) {
         console.error('Error subscribing to push notifications:', error);
@@ -39,6 +41,7 @@ const Logout = () => {
           },
         });
         console.log(res)
+        setresponse(res)
       } catch (error) {
         console.error('Error sending push notification:', error);
       
@@ -48,6 +51,7 @@ const Logout = () => {
         <div>
             <button onClick={subscribeToPush}>subscribe</button><br></br>
             <button onClick={sendPushNotification} className='mt-20'>send</button>
+            <p>{response?.ok?'true':'false'}</p>
         </div>
     )
 }
