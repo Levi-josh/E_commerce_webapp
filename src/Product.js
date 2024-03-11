@@ -125,7 +125,7 @@ const selectcartFunc = async(id)=> {
                 {!showinput1 ? <NavLink to='../' relative='path' className={' sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc} className='font-bold sm:absolute  text-xl md:text-2xl ' ></FaAngleLeft>}
                 {showinput1 ? <input className='outline-none  border rounded-xl w-130 sm:w-140 border-black lg:w-25 sm:m-auto h-9  pl-2 placeholder:pl-2 ' placeholder='Search products' />
                     : <h1 className=' sm:m-auto  text-xl sm:text-2xl font-semibold'>Products</h1>}
-                <FaSearch onClick={searchfunc} className={`${showinput1 ? 'hidden' : 'block'} right-2  sm:right-5 md:right-2 absolute`} />
+                <FaSearch onClick={searchfunc} className={`${showinput1 ? 'hidden' : 'block'} right-2  sm:right-5 md:right-2 lg:right-4 absolute`} />
             </header >
 
 

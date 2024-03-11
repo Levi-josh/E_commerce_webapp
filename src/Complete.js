@@ -47,7 +47,7 @@ const Complete = () => {
                         <p>{`#${cart?.ordercode}`}</p>
                         <p>{cart?.date}</p>
                         <p>$250.000</p>
-                        <p>{cart?.Payment}</p>
+                        <p>{cart?.payment}</p>
                     </div>
                 </div>
 
