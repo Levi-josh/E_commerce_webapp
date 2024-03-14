@@ -69,7 +69,7 @@ const Login = () => {
                 <form  onSubmit={handleSubmit}className='flex flex-col gap-3 sm:gap-4 lg:gap-5 pb-3 sm:pb-6  w-full  lg:pr-12 lg:pl-0 px-3 sm:px-7 lg:px-6   '>
                     <h1 className='font-bold text-xl sm:text-2xl lg:text-3xl '>Sign In</h1>
                     <div>
-                    <p className=''>Don't have an accout yet?<NavLink to={'/signup'}><span className='text-yellow-900 font-semibold text-lg '>Sign Up</span></NavLink> </p>
+                    <p className=''>Don't have an accout yet?<NavLink to={'/signup'}><span className='text-yellow-900 font-medium '>Sign Up</span></NavLink> </p>
                     <div className='w-full relative h-14 flex items-end'>
                     {user.username&&<p className=' text-red-500 absolute top-0  text-sm sm:text-base'>{user.username}</p>}
                     <input type='text' placeholder='Username'  value={formData.input1} name="input1" onChange={handlechange} className='   outline-none  border border-yellow-900 py-1 pl-2    text-black placeholder:text-neutral-300 placeholder:font-semibold  w-full' />

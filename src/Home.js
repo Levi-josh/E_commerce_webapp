@@ -50,7 +50,6 @@ const Home = () => {
 
     useEffect(() => {
         window.scrollTo(0, scroll)
-        
     }, [menubar || popout])
 
   
