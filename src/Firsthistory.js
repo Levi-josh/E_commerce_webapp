@@ -23,7 +23,7 @@ const Firsthistory = () => {
                         </div>
                     </NavLink>
                     </>
-                )})}
+                )}).reverse()}
                 
 
             </div>
@@ -39,7 +39,7 @@ const Firsthistory = () => {
                         </div>
                     </NavLink>
                     </>
-                )})}
+                )}).reverse()}
                 
 
             </div>

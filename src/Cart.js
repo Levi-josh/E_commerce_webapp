@@ -33,6 +33,7 @@ const Cart = () => {
     const {data,id}= useOutletContext()
     const params =useParams()
     const [array, setarray] = useState(0)
+    const [nextcart3data,setnextcart3data]=useState({})
      
 
 
@@ -42,7 +43,6 @@ const Cart = () => {
     }
    
     useEffect(() => { 
-    
     let currentid;
     const myId = localStorage.getItem('mycart')
     setmyId(myId)
@@ -210,36 +210,31 @@ const nextcart = async () => {
                     'content-type': 'application/json',
                 }
         }
+        const option2 = {
+            method: 'DElETE',
+            headers: {
+                'content-type': 'application/json',
+            }
+    }
         try {
             const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/complete/${cart._id}/${userId}`, option);
             const data = await response.json()
-            console.log(data)
-        }
-             
-
+            const response2  = data &&await fetch(`https://backend-e-commerce-g7of.onrender.com/complete/${cart._id}/${userId}`, option2);
+            const data2 = await response2.json()
+            const res = data2 && await fetch(`https://backend-e-commerce-g7of.onrender.com/send-notification2/${userId}`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+              setnextcart3data(res)
+            }
             catch (err) {
             setError(err) 
             console.log(err)
-        }  
-        const option2 = {
-                method: 'DElETE',
-                headers: {
-                    'content-type': 'application/json',
-                }
-        }
-        try {
-            const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/complete/${cart._id}/${userId}`, option2);
-            const data = await response.json()
-             console.log(data)
-        }
-             
-
-        catch (err) {
-            setError(err) 
-            console.log(err)
-        }  
-        navigate('/')
-        localStorage.removeItem('mycart')
+        }   
+        nextcart3data&&navigate('/')
+        nextcart3data&&localStorage.removeItem('mycart')
     }
     function startshop() {
         navigate("/product")

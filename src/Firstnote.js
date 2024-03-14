@@ -25,7 +25,7 @@ const Firstnote = () => {
                                 </div>
                             </NavLink>
                         </>)
-                    })}
+                    }).reverse()}
             </div>
             <div className='lg:hidden h-full '>
                 {/* {data1?.Notification ? */}
@@ -40,7 +40,7 @@ const Firstnote = () => {
                     </div>
                 </NavLink>
                  </>)
-                 })}
+                 }).reverse()}
                 
 
             </div>

@@ -2,9 +2,9 @@ import React,{useState} from 'react'
 
 const Logout = () => {
    
-    const [userId, setUserId] = useState('65ccb7984abbc67ca9a90231');
+    const [userId, setUserId] = useState('65f1e52926d26051eee35377');
     const [response, setresponse] = useState({});
-  console.log(response?.ok)
+    console.log(response?.ok)
     const subscribeToPush = async () => {
       
       try {
@@ -26,7 +26,7 @@ const Logout = () => {
   setresponse(res)
     
       } catch (error) {
-        console.error('Error subscribing to push notifications:', error);
+        console.error('Error subscribing to push notifications:', error.message);
         
       }
     };
@@ -43,7 +43,7 @@ const Logout = () => {
         console.log(res)
         setresponse(res)
       } catch (error) {
-        console.error('Error sending push notification:', error);
+        console.error('Error sending push notification:', error.message);
       
       }
     };

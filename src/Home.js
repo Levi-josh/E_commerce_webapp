@@ -52,7 +52,9 @@ const Home = () => {
         window.scrollTo(0, scroll)
         
     }, [menubar || popout])
-   
+
+  
+
  useEffect(() => {
      const selectedid = data?.items?.filter(prev => prev.selected === true)
         setseletedcart(selectedid && selectedid[0]?._id)
@@ -195,8 +197,7 @@ const option = {
     setnewcartText('')
     setshowinput(false)
     }
- 
-  
+
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
 
@@ -270,7 +271,11 @@ const option = {
                 <div className='px-4 pt-16 sm:pt-16 lg:pt-16 h-80 sm:h-96 overflow-y-auto lg:h-80 overflow-div     '>
                 {id?
                     data.items ?
-                    data.items<1?<div className='absolute flex flex-col popout'><h1 className='font-bold'>Empty cart</h1><p>Your cart is empty, click on the button above to create a cart.</p></div>:
+                    data.items<1?
+                    <div>
+                    {showinput? <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>:
+                    <div className='absolute flex flex-col popout'><h1 className='font-bold'>Empty cart</h1><p>Your cart is empty, click on the button above to create a cart.</p></div>}
+                    </div>:
                         <div>
                             <div>
                                 {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
@@ -340,13 +345,10 @@ const option = {
 
                     //onSwiper={(swiper) => console.log(swiper)}
                     /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-130 lg:w-130 m-auto h-full sm:h-auto    '>
-
                         <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full sm:h-72 h-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
-
                         <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXTxreOJSjKV3Rr6tYE-2XYcPlaHcuBs4nUg&usqp=CAU' className='min-w-full sm:h-72      md:h-96 bg-no-repeat bg-cover bg-center h-full     ' />
                         </SwiperSlide>
-
                         <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2o09ztmF7LPpqO-80mbCFlOvnDlkF0CwI7w&usqp=CAU' className='min-w-full sm:h-72      md:h-96 bg-no-repeat bg-cover bg-center object-cover h-full    ' />
                         </SwiperSlide>
                         <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full sm:h-72       md:h-96 bg-no-repeat bg-cover bg-center h-full    ' />
@@ -355,8 +357,6 @@ const option = {
                         </SwiperSlide>
                         <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full sm:h-72 h-full       md:h-96 bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
-
-
                     </Swiper>
                 </div >
             

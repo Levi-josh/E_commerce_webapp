@@ -24,17 +24,13 @@ const ScrollToTOP = () => {
     }, [location]);
  
     useEffect(() => {
-
     const myid = localStorage.getItem('myid')
-  
     setId(myid)
-    console.log(myid)  
     },[location])
 
-   
     useEffect(() => {
         
-        setnote(data?.Notification?.reverse())
+        
         const getusersDocuments = async () => {
             
             const option = {
