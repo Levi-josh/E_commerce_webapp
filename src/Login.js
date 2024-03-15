@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { FaAngleLeft, FaArrowLeft } from 'react-icons/fa'
+import { FaAngleLeft, FaArrowLeft, FaSpinner } from 'react-icons/fa'
 import { NavLink, useNavigate, useOutletContext } from 'react-router-dom'
 import image from './hotdog image.jpg'
+import { motion } from 'framer-motion'
 
 const Login = () => {
  const [error,setError]=useState('')
@@ -10,11 +11,17 @@ const Login = () => {
   const [formData, setFormData] = useState({input1:'',input2:''});
   const [disabled,setdisabled]=useState(true)
   const [user,setuser]=useState({})
+  const [showtext,setshowtext]=useState(false)
 
   useEffect(()=>{
     setdisabled(formData.input1 ==='' || formData.input2 ===''?true:false)
    
   },[formData])
+
+  useEffect(()=>{
+  setshowtext(false)
+  
+  },[user])
 
   const handlechange = (event)=>{
     const { name, value } = event.target;
@@ -22,10 +29,12 @@ const Login = () => {
       ...formData,
       [name]: value,
     })
-   
+    setshowtext(false)
+    setuser({})
   }  
  const handleSubmit = async (e) => {
   e.preventDefault();
+  setshowtext(true)
   setError(null)
   setuser('')
       
@@ -83,7 +92,7 @@ const Login = () => {
                         <input type='checkbox' className=' accent-yellow-900 sm:w-4 sm:h-4 hover:cursor-pointer lg:w-5 lg:h-5' />
                         <p className='whitespace-nowrap  lg:font-semibold'>I agree to the terms and condition</p>
                     </div>
-                    <button className={`w-full py-2 md:py-3 rounded-xl smtext-lg lg:text-xl font-semibold  bg-yellow-900 text-white  ${disabled ? 'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}>Sign In</button>
+                    <button className={`w-full relative py-2 md:py-3 rounded-xl smtext-lg lg:text-xl font-semibold  bg-yellow-900 text-white  ${disabled ? 'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}><p className={`${showtext?'invisible':'visible'}`}>Sign In</p>{(showtext) && <FaSpinner className='absolute popout'/>}</button>
                 </form>
             </div>
         </div>

@@ -221,13 +221,28 @@ const nextcart = async () => {
             const data = await response.json()
             const response2  = data &&await fetch(`https://backend-e-commerce-g7of.onrender.com/complete/${cart._id}/${userId}`, option2);
             const data2 = await response2.json()
-            const res = data2 && await fetch(`https://backend-e-commerce-g7of.onrender.com/send-notification2/${userId}`, {
+            const registration = await navigator.serviceWorker.register('/service-worker.js');
+            const subscription = await registration.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: 'BK3JoQ6S3KgLGwUfe3fyr3lH2fXb6kihvuHsLeDaObR1qG8VtRhBcRd_r-8-wMd4KTV79XtfPu83Vjq3bFEmqyo',
+            });
+            const options =  {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId, subscription }),
+              }
+            // Send subscription and user ID to the server
+           const res= data2 &&  await fetch(`https://backend-e-commerce-g7of.onrender.com/subscribe`, options);
+            console.log(res)
+            const res2 =res?.ok && await fetch(`https://backend-e-commerce-g7of.onrender.com/send-notification2/${userId}`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
                 },
               });
-              setnextcart3data(res)
+              setnextcart3data(res2)
             }
             catch (err) {
             setError(err) 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaAngleLeft, FaArrowLeft } from 'react-icons/fa'
+import { FaAngleLeft, FaArrowLeft, FaSpinner } from 'react-icons/fa'
 import { NavLink, useNavigate, useOutletContext } from 'react-router-dom'
 
 const Signup = () => {
@@ -11,7 +11,7 @@ const Signup = () => {
     const [disabled,setdisabled]=useState(true)
     const [user,setuser]=useState({})
     const [response, setresponse] = useState({});
-    
+    const [showtext,setshowtext]=useState(false)
 
     // useEffect(()=>{
     //  user?.UserId && subscribeToPush(data?.UserId)
@@ -22,12 +22,18 @@ const Signup = () => {
       setdisabled(formData.input1 ==='' || formData.input2 ===''?true:false)
     },[formData])
   
+    useEffect(()=>{
+      setshowtext(false)
+      
+      },[user])
     const handlechange = (event)=>{
       const { name, value } = event.target;
       setFormData({
         ...formData,
         [name]: value,
       })
+      setshowtext(false)
+      setuser({})
     }
       
     const sendPushNotification = async (userId) => {
@@ -75,6 +81,7 @@ const Signup = () => {
    const handleSubmit = async (e) => {
     e.preventDefault();
     setresponse(null)
+    setshowtext(true)
     setError("")
     setuser('')
         
@@ -129,7 +136,7 @@ const Signup = () => {
                 <input type='checkbox' className=' accent-yellow-900 sm:w-4 sm:h-4 hover:cursor-pointer lg:w-5 lg:h-5' />
                 <p className='whitespace-nowrap  lg:font-semibold'>I agree to the terms and condition</p>
             </div>
-            <button className={`w-full py-2 md:py-3 rounded-xl smtext-lg lg:text-xl font-semibold  bg-yellow-900 text-white  ${disabled ? 'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}>Sign Up</button>
+            <button className={`w-full py-2 md:py-3 rounded-xl smtext-lg lg:text-xl font-semibold  bg-yellow-900 text-white  ${disabled ? 'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}><p className={`${showtext?'invisible':'visible'}`}>Sign In</p>{(showtext) && <FaSpinner className='absolute popout'/>}</button>
         </form>
     </div>
 </div>

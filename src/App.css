@@ -6,6 +6,22 @@
 
 
 }
+.spin {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all;
+    animation: spin 2s ease-out 0.2s infinite normal forwards;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+transform: rotate(360deg);
+    }
+}
 
 .added{
         top: 100px;
