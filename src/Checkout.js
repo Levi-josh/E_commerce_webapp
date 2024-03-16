@@ -209,15 +209,15 @@ useEffect(() => {
                         <img src={prev.image} className='w-40 sm:w-52  ' />
                         <div className='flex flex-col justify-between w-22   '>
                                 <div className='flex items-center justify-start'>
-                                    <h1 className='font-bold whitespace-nowrap'>{prev.itemname}</h1>
+                                    <h1 className='sm:font-bold font-semibold whitespace-nowrap'>{prev.itemname}</h1>
                                   
                                 </div>
                                 <div className='flex justify-between'>
-                                    <h1 className='font-bold'>Price:</h1>
+                                    <h1 className='sm:font-bold font-semibold '>Price:</h1>
                                     <p>{`$${prev.price}`}</p>
                                 </div>
                                 <div className='flex justify-between'>
-                                    <h1 className='font-bold'>Subtotal:</h1>
+                                    <h1 className='sm:font-bold font-semibold '>Subtotal:</h1>
                                     <p>{`$${prev.subtotal}`}</p>
                                 </div>
                                 

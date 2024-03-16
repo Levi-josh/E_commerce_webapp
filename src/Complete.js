@@ -17,7 +17,7 @@ const Complete = () => {
                 </div>
                 <div className='flex md:justify-center gap-1 md:gap-2 lg:gap-3 overflow-auto '>
                 {cart?.product?.map(prev => {return(
-                    <img src={prev.image} className='w-16  sm:w-24 lg:w-32 ' />
+                    <img src={prev.image} className='w-16s sm:w-24 lg:w-32 ' />
                 )})}
                 </div>
                 <div className='flex flex-col  gap-1 md:flex-row md:hidden border-b-0.5 border-gray-400 pb-4 mt-8'>

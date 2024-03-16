@@ -120,12 +120,12 @@ const selectcartFunc = async(id)=> {
 }
 
     return (
-        <div className={` ${popout ? 'p-home' : ''}h-full`}>
+        <div className={` ${popout ? 'p-home' : ''}h-full pb-10`}>
             <header className='fixed flex sm:justify-between gap-4 sm:gap-0 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-2 sm:px-5 md:px-2 lg:px-4 w-full m-0 bg-white z-10 shadow-lg '>
                 {!showinput1 ? <NavLink to='../' relative='path' className={' sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc} className='font-bold sm:absolute  text-xl md:text-2xl ' ></FaAngleLeft>}
                 {showinput1 ? <input className='outline-none  border rounded-xl w-130 sm:w-140 border-black lg:w-25 sm:m-auto h-9  pl-2 placeholder:pl-2 ' placeholder='Search products' />
                     : <h1 className=' sm:m-auto  text-xl sm:text-2xl font-semibold'>Products</h1>}
-                <FaSearch onClick={searchfunc} className={`${showinput1 ? 'hidden' : 'block'} right-2  sm:right-5 md:right-2 lg:right-4 absolute`} />
+                <FaSearch onClick={searchfunc} className={`${showinput1 ? 'hidden' : 'block'} right-4  sm:right-6 md:right-4 lg:right-6 absolute`} />
             </header >
 
 
@@ -161,29 +161,29 @@ const selectcartFunc = async(id)=> {
                 </div>
             </motion.div>
             
-            {error?.message && !items && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+            {error?.message  && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
                 <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>
                         <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
                         <p className='md:text-lg'>Check your internet connection</p>
-                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>seterror(null)}>Ok</button></div>
+                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>window.location.reload()}>Reload</button></div>
                     </div>
                 </div>
             </div>}
             {items.length >= 1  ? <>
-                <div className='sm:pt-28 pt-24 lg:pt-32    '>
+                <div className='sm:pt-28 pt-24    '>
 
-                    <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white   justify-center mb-3 sticky top-20 sm:top-24 lg:top-20 py-3 sm:py-4 lg:py-5'>
+                    <div className='flex flex-col gap-3 lg:gap-4  w-full bg-white   justify-center mb-3 sticky top-20 sm:top-24  py-3  sm:py-4 '>
                         <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-2xl pl-4 placeholder:pl-4  ' placeholder='Search products' />
-                        <div className='flex px-3 sm:justify-center justify-between gap-2 md:gap-12 lg:gap-4 sm:gap-10'>
-                            <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-yellow-900 hover:text-white focus:bg-yellow-900 focus:text-white border-yellow-900 rounded-full '>Clothes</button>
-                            <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white  border py-1 lg:py-2 text-black hover:bg-yellow-900 hover:text-white focus:bg-yellow-900 focus:text-white border-yellow-900 rounded-full'>Shoes</button>
-                            <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border hover:bg-yellow-900 hover:text-white focus:bg-yellow-900 focus:text-white border-yellow-900 rounded-full'>Glasses</button>
-                            <button className='w-14 font-semibold sm:w-13 lg:w-13 bg-white py-1 lg:py-2 text-black border  hover:bg-yellow-900 hover:text-white focus:bg-yellow-900 focus:text-white border-yellow-900 rounded-full '>Watches</button>
+                        <div className='flex px-3 sm:justify-center justify-between gap-2 md:gap-12 lg:gap-20 sm:gap-10'>
+                            <button className='w-full font-semibold sm:w-16 lg:w-13 bg-white py-1 md:py-2 text-black border hover:bg-yellow-900 hover:text-white focus:bg-yellow-900 focus:text-white border-yellow-900 rounded-full '>Clothes</button>
+                            <button className='w-full font-semibold sm:w-16 lg:w-13 bg-white  border py-1 md:py-2 text-black hover:bg-yellow-900 hover:text-white focus:bg-yellow-900 focus:text-white border-yellow-900 rounded-full'>Shoes</button>
+                            <button className='w-full font-semibold sm:w-16 lg:w-13 bg-white py-1 md:py-2 text-black border hover:bg-yellow-900 hover:text-white focus:bg-yellow-900 focus:text-white border-yellow-900 rounded-full'>Glasses</button>
+                            <button className='w-full font-semibold sm:w-16 lg:w-13 bg-white py-1 md:py-2 text-black border  hover:bg-yellow-900 hover:text-white focus:bg-yellow-900 focus:text-white border-yellow-900 rounded-full '>Watches</button>
                         </div>
                     </div>
-                    <div className='grid grid-cols-2 gap-1 md:gap-2 lg:px-6 xl:gap-12 xl:px-12 sm:gap-5 sm:px-5 lg:gap-6 md:px-2 px-1 md:grid-cols-3 mt-5 sm:mt-8 lg:mt-12            '>
+                    <div className='grid grid-cols-2 gap-1 md:gap-2 lg:px-8 xl:gap-16 xl:px-16 sm:gap-5 sm:px-5 lg:gap-8 md:px-2 px-1 md:grid-cols-3 mt-5 sm:mt-8            '>
 
                         {items.map(prev => {
                             return (<div className=' p-2 md:p-3 lg:p-7  rounded-lg border-2 shadow-lg           '>
