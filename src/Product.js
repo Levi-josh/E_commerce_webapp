@@ -196,7 +196,7 @@ const selectcartFunc = async(id)=> {
                                         <FaStar />
                                         <FaStarHalfAlt />
                                     </div>
-                                    <h1 className='text-lg sm:font-bold font-semibold lg:text-xl'>{prev.itemname}</h1>
+                                    <h1 className='text-lg sm:font-bold lg:text-xl'>{prev.itemname}</h1>
                                     <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
                                     <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' >Add to cart</button>
                                 </div>
