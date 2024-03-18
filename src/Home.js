@@ -205,7 +205,7 @@ console.log(mode?.colormode)
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
 
-            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 ${mode.colormode&&'outline outline-0.5 outline-yellow-950'}   w-full m-0 ${bgcolor} ${textcolor} z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
+            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 ${mode.colormode&&' shadow-yellow-950  shadow-sm'}   w-full m-0 ${bgcolor} ${textcolor} z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <motion.h1 animate={{ x: -2 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`font-bold text-lg sm:text-2xl  xl:text-3xl    ${menubar ? 'invisible lg:visible' : 'visble'}`} >Glamour Grove</motion.h1>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
@@ -477,7 +477,7 @@ console.log(mode?.colormode)
                     {/*ends*/}
 
                     {/*about starts*/}
-                    <div className={`md:flex md:p-10 shadow-lg w-110 m-auto  mt-10 ${mode.colormode&&'outline outline-2 outline-yellow-950'}    p-5 sm:p-10 sm:px-20 `}>
+                    <div className={`md:flex md:p-10 shadow-lg w-110 m-auto  mt-10 ${mode.colormode&&'bg-opacity-50 bg-black  shadow-stone-700  shadow-sm'}    p-5 sm:p-10 sm:px-20 `}>
 
                         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64 ' />
                         <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>

@@ -7,14 +7,18 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Firsthistory from './Firsthistory'
 import Secondhistory from './Secondhistory'
+import { useSelector } from 'react-redux'
 
 export let appcontext = createContext(null)
 const History = () => {
     const { data,id } = useOutletContext()
+    const mode = useSelector((state)=>state.changemode.value)
+    const bgcolor = mode?.colorBgtext
+    const textcolor = mode?.colortext
     
     return (
-        <div className={`  h-full `}>
-            <header className={`fixed flex  items-center h-20 gap-4 sm:gap-0 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4  w-full m-0 bg-white z-10  shadow-lg `}>
+        <div className={`  ${bgcolor} ${textcolor} h-screen  `}>
+            <header className={`fixed flex  items-center ${mode.colormode&&' outline outline-0.5 outline-yellow-950'} h-20 gap-4 sm:gap-0 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4  w-full m-0  z-10  shadow-lg `}>
                 <NavLink to='../' relative='path' className={'sm:absolute lg:hidden '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <NavLink to='../'  className={'sm:absolute hidden lg:block '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <h1 className='sm:m-auto font-semibold text-xl sm:text-2xl lg:text-3xl'> History</h1>
