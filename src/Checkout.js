@@ -206,18 +206,18 @@ useEffect(() => {
                 <h1 className='text-lg  font-bold sm:text-xl lg:text-2xl'>Order Summary</h1>
                 {cart?.product?.map(prev => {
                     return (<div className='flex gap-5  border-b lg:w-full   border-gray-400  pb-5  mt-5    '>
-                        <img src={prev.image} className='w-40 sm:w-52  ' />
+                        <img src={prev.image} className='w-24  sm:w-52  ' />
                         <div className='flex flex-col justify-between w-22   '>
                                 <div className='flex items-center justify-start'>
-                                    <h1 className='sm:font-bold font-semibold whitespace-nowrap'>{prev.itemname}</h1>
+                                    <h1 className='sm:font-bold font-medium whitespace-nowrap'>{prev.itemname}</h1>
                                   
                                 </div>
                                 <div className='flex justify-between'>
-                                    <h1 className='sm:font-bold font-semibold '>Price:</h1>
+                                    <h1 className='sm:font-bold font-medium '>Price:</h1>
                                     <p>{`$${prev.price}`}</p>
                                 </div>
                                 <div className='flex justify-between'>
-                                    <h1 className='sm:font-bold font-semibold '>Subtotal:</h1>
+                                    <h1 className='sm:font-bold font-medium'>Subtotal:</h1>
                                     <p>{`$${prev.subtotal}`}</p>
                                 </div>
                                 

@@ -5,12 +5,13 @@ import { Link, NavLink, json, useLocation, useNavigate,useSearchParams, useOutle
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
-
+import { changemode } from './features/redux'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import notify from './short-success-sound-glockenspiel-treasure-video-game-6346.mp3'
-import { motion } from 'framer-motion'
+import { color, motion } from 'framer-motion'
 import cartimg from './icons8-shopping-cart-48.png';
-
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import 'swiper/css/pagination';
 
 import './swiper.css'
@@ -47,7 +48,10 @@ const Home = () => {
     const [displaynote,setdisplaynote]= useState(false)
     const [selectedcart, setseletedcart] = useState('');
     const {data,note,runEffect,changeRunEffect1,Error,id,signout,runEffect2}= useOutletContext()
-
+    const mode = useSelector((state)=>state.changemode.value)
+    const dispatch = useDispatch()
+    const bgcolor = mode?.colorBgtext
+    const textcolor = mode?.colortext
     useEffect(() => {
         window.scrollTo(0, scroll)
     }, [menubar || popout])
@@ -196,11 +200,12 @@ const option = {
     setnewcartText('')
     setshowinput(false)
     }
-
+console.log(mode?.colorBgtext)
+console.log(mode?.colormode)
     return (
-        <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-screen  `}  onScroll={(e) => { console.log(e) }} >
+        <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
 
-            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
+            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 ${mode.colormode&&'outline outline-0.5 outline-yellow-950'}   w-full m-0 ${bgcolor} ${textcolor} z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <motion.h1 animate={{ x: -2 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`font-bold text-lg sm:text-2xl  xl:text-3xl    ${menubar ? 'invisible lg:visible' : 'visble'}`} >Glamour Grove</motion.h1>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
@@ -211,19 +216,19 @@ const option = {
 
                 </ul>
                 <div className='flex gap-3 sm:gap-7 md:gap-8 lg:gap-4 xl:gap-12 items-center    '>
-                    <NavLink to={'/note'}>   <div className=' text-lg sm:text-xl md:text-2xl outline outline-2 outline-yellow-900   flex justify-center sm:h-10 md:w-101 h-8 items-center w-102 sm:w-103 text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-800'><FaBell className=' ' /></div></NavLink>
-                    <NavLink to='/cart/:id' className=' '><div className='flex  outline outline-2 outline-yellow-900 h-8 items-center text-lg sm:text-xl  sm:w-103 md:text-2xl justify-center text-black hover:text-white w-102  md:w-101 rounded-full sm:h-10 hover:cursor-pointer hover:bg-yellow-800'><p className='hidden'>Cart</p><FaShoppingCart /></div></NavLink>
+                    <NavLink to={'/note'}>   <div className={` text-lg sm:text-xl ${bgcolor} ${textcolor} md:text-2xl outline outline-2 outline-yellow-900   flex justify-center sm:h-10 md:w-101 h-8 items-center w-102 sm:w-103 text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-800`}><FaBell className=' ' /></div></NavLink>
+                    <NavLink to='/cart/:id' className=' '><div className={`flex ${bgcolor} ${textcolor} outline outline-2 outline-yellow-900 h-8 items-center text-lg sm:text-xl  sm:w-103 md:text-2xl justify-center text-black hover:text-white w-102  md:w-101 rounded-full sm:h-10 hover:cursor-pointer hover:bg-yellow-800`}><p className='hidden'>Cart</p><FaShoppingCart /></div></NavLink>
 
-                    <div onClick={showmenu} className='text-lg sm:text-xl lg:hidden outline outline-2 outline-yellow-800   flex justify-center h-8 w-102 sm:h-10 md:w-101 sm:w-103 items-center text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-900'><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' /></div>
-                    <div className={`lg:flex items-center  outline outline-2 outline-yellow-900 justify-center ${menubar ? 'bg-yellow-800 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-900  hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
+                    <div onClick={showmenu} className={`text-lg sm:text-xl lg:hidden ${bgcolor} ${textcolor} outline outline-2 outline-yellow-800   flex justify-center h-8 w-102 sm:h-10 md:w-101 sm:w-103 items-center text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-900`}><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' /></div>
+                    <div className={`lg:flex items-center  outline outline-2 ${bgcolor} ${textcolor} outline-yellow-900 justify-center ${menubar ? 'bg-yellow-800 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-900  hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
                 </div>
             </header >
 
-            <div>{menubar && <div className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full    bg-white   lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120  `}>
+            <div>{menubar && <div className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full ${textcolor}    ${bgcolor}  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120  `}>
 
                 <div className=' h-190 md:h-140 bg-yellow-900 lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center'>
                     <FaTimesCircle className='absolute lg:hidden left-4 top-4  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
-                    <FaSun className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' />
+                    {mode.colormode?<FaMoon className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{dispatch(changemode());console.log('ran')}}/>:<FaSun className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{dispatch(changemode());console.log('ran')}} />}
                     <div className='flex items-center flex-col gap-2'>
 
                         <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-white   rounded-full  bg-no-repeat bg-cover bg-center    ' />
@@ -250,20 +255,20 @@ const option = {
                         </div>
                     </div>
                     <div className=' flex justify-end  lg:mt-0 lg:items-center '>
-                        <NavLink to={'/login'}> <p className='font-bold   sm:text-xl text-yellow-900 text-right  mb-7 mr-7 ' onClick={signout} >{`Sign ${id?'Out':'In'}`} </p></NavLink>
+                        <NavLink to={'/login'}> <p className={`font-bold   sm:text-xl ${mode.colormode?'text-white':'text-yellow-900'} text-right  mb-7 mr-7 `} onClick={signout} >{`Sign ${id?'Out':'In'}`} </p></NavLink>
                     </div>
                 </div>
             </div>
             }</div>
           
-            <motion.div className={`fixed   w-130 sm:w-25 md:w-22   bg-white popout lg:w-10    z-20 h-80 sm:h-96 lg:h-80    rounded-xl border-t   ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
-                <FaTimesCircle className='absolute right-0  text-yellow-900 z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={() => {
+            <motion.div className={`fixed   w-130 sm:w-25 md:w-22 ${bgcolor} ${textcolor} popout lg:w-10    z-20 h-80 sm:h-96 lg:h-80    rounded-xl border-t   ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
+                <FaTimesCircle className='absolute right-0  text-yellow-900  z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={() => {
                     setscroll(scroll)
                     setpopout(prev => !prev)
                     setshowinput(false)
                     setmenubar(false)
                 }} />
-                <div className='flex fixed rounded-t-xl top-0   bg-white w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg'>
+                <div className={`flex fixed rounded-t-xl top-0 ${mode.colormode&&'outline outline-0.5  outline-yellow-950'}    w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg`}>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
                     <button className='w-10 p-1 lg:w-350  xl:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
@@ -272,12 +277,12 @@ const option = {
                     data.items ?
                     data.items<1?
                     <div>
-                    {showinput? <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>:
+                    {showinput? <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ${mode.colormode?'border-yellow-950 bg-stone-900 placeholder-white':'border-black'} `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>:
                     <div className='absolute flex flex-col popout'><h1 className='font-bold'>Empty cart</h1><p>Your cart is empty, click on the button above to create a cart.</p></div>}
                     </div>:
                         <div>
                             <div>
-                                {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className='w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ' value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
+                                {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 ${mode.colormode?'border-yellow-950 bg-stone-950 placeholder-white':'border-black'} border  outline-none `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
                             </div>
                             {data?.items?.map(prev => {
                             return (<div className='flex justify-between  py-3 border-b border-yellow-900 hover:cursor-pointer  '>
@@ -325,7 +330,7 @@ const option = {
                 </div>
             </motion.div >
             
-            <div className='  sm:h-auto h-121   sm:pb-0 gap-5  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
+            <div className='  sm:h-auto h-screen   sm:pb-0 gap-5  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
                 <div className='h-192 sm:h-auto'>
 
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -472,7 +477,7 @@ const option = {
                     {/*ends*/}
 
                     {/*about starts*/}
-                    <div className='md:flex md:p-10 shadow-lg w-110 m-auto  mt-10    p-5 sm:p-10 sm:px-20 '>
+                    <div className={`md:flex md:p-10 shadow-lg w-110 m-auto  mt-10 ${mode.colormode&&'outline outline-2 outline-yellow-950'}    p-5 sm:p-10 sm:px-20 `}>
 
                         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64 ' />
                         <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
@@ -484,7 +489,7 @@ const option = {
 
                             </p>
                             <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
-                                <h1 className='w-30 border border-dashed  border-black mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  ' onClick={showmenu1}>30% OFF</h1>
+                                <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  `} onClick={showmenu1}>30% OFF</h1>
                                 <NavLink to={'/product'}> <button className='w-40 bg-yellow-900 mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 md:text-lg'>Shop Now</button></NavLink>
                             </div>
                         </div>
@@ -514,7 +519,7 @@ const option = {
                     </div>
                 </section>
            
-            <footer className=' bg-black  text-white px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 bottom-0 '>
+            <footer className={` bg-black  text-white ${mode.colormode&&'outline outline-0.5 outline-yellow-950'} px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 bottom-0 `}>
                 <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
                     <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>
                         <div className='md:border-r-0.5 pb-5 sm:pb-7 md:pb-0 md:pr-5 lg:pr-7 xl:pr-10 flex items-center   '>

@@ -86,15 +86,15 @@ useEffect(() => {
 
                                 <div className='flex flex-col justify-between w-22   '>
                                     <div className='flex items-center justify-between'>
-                                    <h1 className='sm:font-bold font-semibold whitespace-nowrap'>{prev.itemname}</h1>
+                                    <h1 className='sm:font-bold font-medium whitespace-nowrap'>{prev.itemname}</h1>
                                     <div className='sm:w-7 sm:h-7 h-6 w-6 flex items-center justify-center hover:cursor-pointer bg-gray-100  rounded-full  ' onClick={() => deleteitem(prev._id)}><FaTimes /></div>
                                     </div>
                                     <div className='flex justify-between'>
-                                    <h1 className='sm:font-bold font-semibold '>Price:</h1>
+                                    <h1 className='sm:font-bold font-medium '>Price:</h1>
                                     <p>{`$${prev.price}`}</p>
                                     </div>
                                     <div className='flex justify-between'>
-                                    <h1 className='sm:font-bold font-semibold '>Subtotal:</h1>
+                                    <h1 className='sm:font-bold font-medium '>Subtotal:</h1>
                                     <p>{`$${prev.subtotal}`}</p>
                                     </div>
                                 

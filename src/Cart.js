@@ -4,6 +4,7 @@ import { Navigate, useNavigate, Outlet, redirect, useParams, useOutletContext } 
 import { Link, NavLink } from 'react-router-dom'
 import cartimg from './icons8-shopping-cart-48.png';
 import { motion } from 'framer-motion'
+import { useSelector } from 'react-redux'
 //import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown } from 'react-icons/fa'
 
 import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaExclamationCircle, FaLock, FaHistory, FaPhone, FaShoppingCart, FaInstagram, FaFacebook, FaYoutube, FaCheck, FaChevronLeft, FaUserCircle, FaArrowLeft, FaShopify, FaStarHalf, FaStarHalfAlt, FaTimesCircle, FaHome, FaShoppingBag, FaStar, FaShoppingBasket, FaArrowRight, FaAngleLeft, FaArrowDown, FaAngleDown, FaEllipsisV } from 'react-icons/fa'
@@ -34,6 +35,9 @@ const Cart = () => {
     const params =useParams()
     const [array, setarray] = useState(0)
     const [nextcart3data,setnextcart3data]=useState({})
+    const mode = useSelector((state)=>state.changemode.value)
+    const bgcolor = mode?.colorBgtext
+    const textcolor = mode?.colortext
      
 
 
@@ -276,8 +280,8 @@ const nextcart = async () => {
     }
    console.log(error?.message)
     return (
-        <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} h-full  `}>
-            <header className={`fixed flex sm:justify-between gap-4 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0 bg-white z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
+        <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} h-full ${bgcolor} ${textcolor}  `}>
+            <header className={`fixed flex sm:justify-between gap-4 ${bgcolor} ${textcolor} ${mode.colormode&&'outline outline-0.5 outline-yellow-950'} items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0  z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <NavLink to='../' className={'sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <div className='sm:m-auto flex items-center text-xl sm:text-2xl lg:text-3xl font-semibold'>
                     <h1 className=''>Cart</h1>
