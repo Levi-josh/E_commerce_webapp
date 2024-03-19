@@ -4,6 +4,7 @@ import { useContext, useEffect,useState } from 'react'
 import { appcontext } from './Note'
 import { motion } from 'framer-motion'
 import { FaBell,FaExclamationCircle } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
 const Secondnote = () => {
 const params = useParams()
 const data1 = useOutletContext()
@@ -12,7 +13,9 @@ const [laptopdata,setdata2]=useState()
 const [error, setError] = useState()
 const [error2, setError2] = useState()
 const data2 = useContext(appcontext)
-   
+const mode = useSelector((state)=>state.changemode.value)
+const bgcolor = mode?.colorBgtext
+const textcolor = mode?.colortext   
 useEffect(() => {
     const getnote = async () => {
             
@@ -74,7 +77,7 @@ useEffect(() => {
             <div className='flex flex-col items-center gap-3 sm:gap-5'>
 
                 <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-yellow-900  rounded-full  bg-no-repeat bg-cover bg-center    ' />
-                <h1 className='text-xl sm:text-2xl lg:text-3xl font-bold text-yellow-900 '>Glamour Grove</h1>
+                <h1 className={`text-xl sm:text-2xl lg:text-3xl font-bold ${mode.colormode?'text-white':'text-yellow-900'} `}>Glamour Grove</h1>
             </div>
             <div className='w-110 m-auto sm:w-130 mt-3 sm:mt-5'><p className=''>{data?.note}</p></div></>
             : !error?.message&&<motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='fixed popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>

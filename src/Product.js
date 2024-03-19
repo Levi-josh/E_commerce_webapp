@@ -125,7 +125,7 @@ const selectcartFunc = async(id)=> {
 
     return (
         <div className={` ${items.length >= 1 ?'h-full pb-10':'h-screen'}  ${bgcolor} `}>
-            <header className={`fixed flex sm:justify-between gap-4 ${bgcolor} ${textcolor} ${mode.colormode&&'outline outline-0.5 outline-yellow-950'}  sm:gap-0 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-2 sm:px-5 md:px-2 lg:px-4 w-full m-0  z-10 shadow-lg `}>
+            <header className={`fixed flex sm:justify-between gap-4 ${bgcolor} ${textcolor}  ${mode.colormode&&' shadow-stone-700  shadow-md'}  sm:gap-0 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-2 sm:px-5 md:px-2 lg:px-4 w-full m-0  z-10 shadow-lg `}>
                 {!showinput1 ? <NavLink to='../' relative='path' className={' sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc} className='font-bold sm:absolute  text-xl md:text-2xl ' ></FaAngleLeft>}
                 {showinput1 ? <input className={`outline-none  border  rounded-xl w-130 sm:w-140 ${mode.colormode?'border-yellow-950 bg-stone-900 placeholder-white':'border-black'} lg:w-25 sm:m-auto h-9  pl-2 placeholder:pl-2 `} placeholder='Search products' autoFocus />
                     : <h1 className=' sm:m-auto  text-xl sm:text-2xl font-semibold'>Products</h1>}
@@ -158,7 +158,7 @@ const selectcartFunc = async(id)=> {
                     <div className='grid grid-cols-2 gap-1 md:gap-2 lg:px-8 xl:gap-16 xl:px-16 sm:gap-5 sm:px-5 lg:gap-8 md:px-2 px-1 md:grid-cols-3 mt-5 sm:mt-8            '>
 
                         {items.map(prev => {
-                            return (<div className={`p-2 md:p-3 lg:p-7 ${bgcolor} ${textcolor}  rounded-lg border-2 ${mode.colormode&&'bg-opacity-50 bg-black border-none shadow-stone-700  shadow-md'} shadow-lg  `}>
+                            return (<div className={`p-2 md:p-3 lg:p-7 ${bgcolor} ${textcolor}  rounded-lg border-2 ${mode.colormode&&'bg-opacity-50 bg-black border-none shadow-stone-800  shadow-md'} shadow-lg  `}>
                                 <img src={prev.image} alt='' className='rounded-lg w-full lg:h-52 ' />
                                 <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
                                     <div className='flex text-yellow-800 sm:text-lg lg:text-xl '>

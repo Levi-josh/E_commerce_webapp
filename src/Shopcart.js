@@ -1,11 +1,14 @@
 import React, { useState,useEffect } from 'react'
 import { FaTimes,FaExclamationCircle } from 'react-icons/fa'
 import { Navigate, useNavigate, useOutletContext } from 'react-router-dom'
-
+import { useSelector } from 'react-redux'
 const Shopcart = () => {
     const { nextcart, cart, shopitems,deleteitem } = useOutletContext()
     const navigate = useNavigate()
     const [error,seterror]=useState()
+    const mode = useSelector((state)=>state.changemode.value)
+    const bgcolor = mode?.colorBgtext
+    const textcolor = mode?.colortext
     const increasequantity = async(id) => {
      const option = {
                 method: 'PUT',
@@ -79,15 +82,15 @@ useEffect(() => {
                 </div>
             </div>}
             {shopitems?.progess===false && <div className='lg:flex items-start lg:w-120 xl:w-110 m-auto gap-10 lg:mt-10 '>
-                <div className=' lg:w-140 lg:flex lg:flex-col lg:justify-center items-center border w-110 sm:w-140 m-auto lg:m-0   '>
+                <div className={` lg:w-140 lg:flex lg:flex-col lg:justify-center items-center border ${mode.colormode?'border-yellow-950':''} w-110 sm:w-140 m-auto lg:m-0   `}>
                     {cart?.product?.map(prev => {
-                        return (<div className='flex gap-2 sm:gap-5 lg:gap-0 justify-center border-b w-full    border-gray-400 mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   '>
+                        return (<div className={`flex gap-2 sm:gap-5 lg:gap-0 justify-center  w-full  ${mode.colormode?'border-yellow-950':'border-gray-400 '} border-b mt-5 sm:mt-8  sm:pb-8   sm:m-auto pb-5 lg:justify-evenly   `}>
                             <img src={prev.image} className='w-40 sm:w-52  h-full  ' />
 
                                 <div className='flex flex-col justify-between w-22   '>
                                     <div className='flex items-center justify-between'>
                                     <h1 className='sm:font-bold font-medium whitespace-nowrap'>{prev.itemname}</h1>
-                                    <div className='sm:w-7 sm:h-7 h-6 w-6 flex items-center justify-center hover:cursor-pointer bg-gray-100  rounded-full  ' onClick={() => deleteitem(prev._id)}><FaTimes /></div>
+                                    <div className={`sm:w-7 sm:h-7 h-6 w-6 flex items-center justify-center hover:cursor-pointer ${mode.colormode?'bg-black border':'bg-gray-100'}   rounded-full  `} onClick={() => deleteitem(prev._id)}><FaTimes /></div>
                                     </div>
                                     <div className='flex justify-between'>
                                     <h1 className='sm:font-bold font-medium '>Price:</h1>
@@ -99,9 +102,9 @@ useEffect(() => {
                                     </div>
                                 
                                     <div className='w-full h-8 border flex justify-between'>
-                                    <button className='bg-neutral-100 font-bold text-lg text-black w-20' onClick={() => reducequantity(prev._id)}>-</button>
+                                    <button className={` ${mode.colormode?'bg-black text-white border-r':'bg-neutral-100'} font-bold text-lg text-black w-20`} onClick={() => reducequantity(prev._id)}>-</button>
                                     <div>{prev.quantity}</div>
-                                    <button className='w-20 bg-gray-100 font-bold text-black text-lg' onClick={() => increasequantity(prev._id)}>+</button>
+                                    <button className={`w-20 ${mode.colormode?'bg-black text-white border-l':'bg-neutral-100'} font-bold text-black text-lg`} onClick={() => increasequantity(prev._id)}>+</button>
                                     </div>
                                 </div>
                            
@@ -110,19 +113,19 @@ useEffect(() => {
                 </div>
 
 
-                <div className='w-110 border sm:w-140 md:w-140 border-black m-auto px-5 mt-10 sm:mt-14 md:px-10 sm:px-10  py-3 sm:py-7 lg:px-3 xl:px-8 lg:py-2 xl:py-6 lg:mt-0 lg:w-25'>
+                <div className={`w-110 border sm:w-140 md:w-140 ${mode.colormode?'border-white':'border-black'} m-auto px-5 mt-10 sm:mt-14 md:px-10 sm:px-10  py-3 sm:py-7 lg:px-3 xl:px-8 lg:py-2 xl:py-6 lg:mt-0 lg:w-25`}>
                     <h1 className='font-bold sm:text-lg md:text-xl lg:text-2xl '>Cart summary</h1>
                     {cart.shipping.map(prev => {
-                        return (<div className='flex  border border-black mt-5 justify-between p-3 lg:mt-4 xl:mt-5 '>
+                        return (<div className={`flex  border ${mode.colormode?'border-white':'border-black'} mt-5 justify-between p-3 lg:mt-4 xl:mt-5 `}>
                             <div className='flex gap-2'>
-                                <input type='radio' name='checkout' className='lg:w-4  accent-yellow-800 ' checked={prev.checked === true} onClick={() => selectpayment(prev._id)} />
+                                <input type='radio' name='checkout' className='lg:w-4 text-black bg-black  accent-yellow-800 ' checked={prev.checked === true} onClick={() => selectpayment(prev._id)} />
                                 <p className='sm:text-lg lg:text-xl font-semibold'>{prev.name}</p>
                             </div>
                             <h1 className='sm:text-lg lg:text-xl font-semibold'>{`$${prev.price}.00`}</h1>
                         </div>)
                     })}
                   
-                    <div className='flex justify-between items-center border-gray-400 border-b  p-3 mt-3'>
+                    <div className={`flex justify-between items-center ${mode.colormode?'border-white':'border-gray-400'}  border-b  p-3 mt-3`}>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>Items Purchased</h1>
                         <h1 className='sm:text-lg lg:text-xl font-semibold'>20</h1>
                     </div>

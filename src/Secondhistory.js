@@ -4,6 +4,7 @@ import { useParams, useOutletContext } from 'react-router-dom'
 import { appcontext } from './History'
 import { useContext } from 'react'
 import { FaHistory } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
 import { motion } from 'framer-motion'
 const Secondhistory = () => {
 const params = useParams()

@@ -3,11 +3,14 @@ import { FaEllipsisV } from 'react-icons/fa'
 import { NavLink, useOutletContext } from 'react-router-dom'
 import { useContext } from 'react'
 import { appcontext } from './History'
-
+import { useSelector } from 'react-redux'
 const Firsthistory = () => {
     const data = useContext(appcontext)
     const data1 = useOutletContext()
-    console.log(data1)
+    const mode = useSelector((state)=>state.changemode.value)
+    const bgcolor = mode?.colorBgtext
+    const textcolor = mode?.colortext
+    
     return (
         <div className='lg:w-12 w-full    lg:fixed pt-20 sm:pt-24 md:pt-24 lg:pt-24   h-full'>
 
