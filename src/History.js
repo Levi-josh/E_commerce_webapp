@@ -17,14 +17,14 @@ const History = () => {
     const textcolor = mode?.colortext
     
     return (
-        <div className={`  ${bgcolor} ${textcolor} h-screen  `}>
-            <header className={`fixed flex  items-center ${mode.colormode&&' outline outline-0.5 outline-yellow-950'} h-20 gap-4 sm:gap-0 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4  w-full m-0  z-10  shadow-lg `}>
+        <div className={`  ${bgcolor} ${textcolor} h-screen `}>
+            <header className={`fixed flex  items-center ${mode.colormode&&' shadow-stone-700  shadow-lg'} h-20 gap-4 sm:gap-0 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4  w-full m-0  z-10  shadow-lg `}>
                 <NavLink to='../' relative='path' className={'sm:absolute lg:hidden '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <NavLink to='../'  className={'sm:absolute hidden lg:block '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <h1 className='sm:m-auto font-semibold text-xl sm:text-2xl lg:text-3xl'> History</h1>
             </header >
 
-            <div className='h-full hidden lg:flex w-full  '>
+            <div className='h-screen hidden lg:flex w-full  '>
             {id?
             data?.history? data?.history.length<1?
             <p className='popout fixed font-semibold text-xl'>your order history is empty</p>:
