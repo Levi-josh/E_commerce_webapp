@@ -25,7 +25,7 @@ const Firstnote = () => {
                                         <p> {(prev.note).length > 35 ? `${(prev.note).slice(0, 35)}...` : prev.note}</p>
                                         <FaEllipsisV />
                                     </div>
-                                    <p className='font-semibold'>2 minntes ago</p>
+                                    <p className='font-semibold'>Just now</p>
                                 </div>
                             </NavLink>
                         </>)
@@ -40,7 +40,7 @@ const Firstnote = () => {
                                  <p> {(prev.note).length>35?`${(prev.note).slice(0,35)}...`:prev.note}</p>
                             <FaEllipsisV />
                         </div>
-                        <p className='font-semibold'>2 minntes ago</p>
+                        <p className='font-semibold'>Just now</p>
                     </div>
                 </NavLink>
                  </>)

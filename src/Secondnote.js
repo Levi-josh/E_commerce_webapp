@@ -63,7 +63,7 @@ useEffect(() => {
     return (
     <div className='lg:fixed flex items-center flex-col lg:w-126 w-full lg:ml-0 h-full right-0 pt-28 sm:pt-36 md:pt-40 lg:pt-40 '>
         <div className='lg:hidden'>
-                {error?.message&&<div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+                {error?.message&&<div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900 ${bgcolor}  outline outline-2  fixed popout z-30  min-h-101 sm:min-h-102 lg:min-h-101 `}>
                         <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                             <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                             <div className='flex flex-col justify-center gap-1'>
@@ -87,7 +87,7 @@ useEffect(() => {
             </div>
 
             <div className='lg:block hidden'>
-                {error2?.message === 'Failed to fetch' && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  absolute popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+                {error2?.message === 'Failed to fetch' && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  absolute popout z-30 ${bgcolor}  min-h-101 sm:min-h-102 lg:min-h-101 `}>
                     <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                         <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                         <div className='flex flex-col justify-center gap-1'>

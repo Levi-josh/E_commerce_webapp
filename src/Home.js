@@ -260,14 +260,14 @@ console.log(mode?.colormode)
             </div>
             }</div>
           
-            <motion.div className={`fixed   w-130 sm:w-25 md:w-22 ${bgcolor} ${textcolor} popout lg:w-10  ${mode.colormode&&' shadow-stone-700  shadow-md'}    z-20 h-80 sm:h-96 lg:h-80    rounded-xl  ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
+            <motion.div className={`fixed   w-130 sm:w-25 md:w-22 ${bgcolor} ${textcolor} popout lg:w-10  ${mode.colormode&&' shadow-gray-600  border border-gray-600 shadow-md'}    z-20 h-80 sm:h-96 lg:h-80    rounded-xl  ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
                 <FaTimesCircle className='absolute right-0  text-yellow-900  z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={() => {
                     setscroll(scroll)
                     setpopout(prev => !prev)
                     setshowinput(false)
                     setmenubar(false)
                 }} />
-                <div className={`flex fixed rounded-t-xl top-0  ${mode.colormode&&' shadow-stone-700  shadow-sm'}   w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg`}>
+                <div className={`flex fixed rounded-t-xl top-0  ${mode.colormode&&' border border-stone-700 '}   w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg`}>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
                     <button className='w-10 p-1 lg:w-350  xl:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
@@ -301,7 +301,7 @@ console.log(mode?.colormode)
                 
             </motion.div>
             
-            {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+            {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 ${bgcolor}  min-h-101 sm:min-h-102 lg:min-h-101 `}>
                 <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>

@@ -22,7 +22,7 @@ const Firsthistory = () => {
                                 <p> History for your <span className='font-semibold'>{prev.title}</span> cart</p>
                                 <FaEllipsisV />
                             </div>
-                            <p className='font-semibold'>2 minntes ago</p>
+                            <p className='font-semibold'>Just now</p>
                         </div>
                     </NavLink>
                     </>
@@ -38,7 +38,7 @@ const Firsthistory = () => {
                               <p> History for your <span className='font-semibold'>{prev.title}</span> cart</p>
                                 <FaEllipsisV />
                             </div>
-                            <p className='font-semibold'>2 minntes ago</p>
+                            <p className='font-semibold'>Just now</p>
                         </div>
                     </NavLink>
                     </>
