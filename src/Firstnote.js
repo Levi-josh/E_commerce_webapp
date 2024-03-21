@@ -20,7 +20,7 @@ const Firstnote = () => {
                    { data?.Notification?.map(prev => {
                         return (<>
                             <NavLink to={`/note/${prev._id}`}>
-                                <div className='lg:px-3 md:px-6 sm:px-5 px-5 border-b-0.5 border-gray-400  pt-5 pb-3 xl:px-4 flex flex-col'>
+                                <div className='lg:px-3 md:px-6 sm:px-5 px-5 border-b-0.5 border-stone-700  pt-5 pb-3 xl:px-4 flex flex-col'>
                                     <div className='flex justify-between items-center'>
                                         <p> {(prev.note).length > 35 ? `${(prev.note).slice(0, 35)}...` : prev.note}</p>
                                         <FaEllipsisV />
@@ -35,7 +35,7 @@ const Firstnote = () => {
                 {/* {data1?.Notification ? */}
                  {data1?.Notification?.map(prev => {return (<>
                 <NavLink to={`/note/${prev._id}`}>
-                    <div className='lg:px-3 md:px-6 sm:px-5 px-5 border-b-0.5 border-gray-400  pt-5 pb-3 xl:px-4 flex flex-col'>
+                    <div className='lg:px-3 md:px-6 sm:px-5 px-5 border-b-0.5 border-stone-700  pt-5 pb-3 xl:px-4 flex flex-col'>
                         <div className='flex justify-between items-center'>
                                  <p> {(prev.note).length>35?`${(prev.note).slice(0,35)}...`:prev.note}</p>
                             <FaEllipsisV />

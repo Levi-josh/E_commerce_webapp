@@ -17,7 +17,7 @@ const Firsthistory = () => {
             <div className='lg:overflow-y-scroll h-full hidden lg:block '>
                 {data?.history?.map(prev => {return(<>
                     <NavLink to={`/history/${prev._id}`}>
-                        <div className='lg:px-3 md:px-6 sm:px-6 px-5 border-b border-gray-400  pt-4 pb-2 sm:pt-5 sm:pb-3 xl:px-4 flex flex-col'>
+                        <div className='lg:px-3 md:px-6 sm:px-6 px-5 border-b border-stone-700  pt-4 pb-2 sm:pt-5 sm:pb-3 xl:px-4 flex flex-col'>
                             <div className='flex justify-between items-center'>
                                 <p> History for your <span className='font-semibold'>{prev.title}</span> cart</p>
                                 <FaEllipsisV />
@@ -33,7 +33,7 @@ const Firsthistory = () => {
             <div className='lg:hidden h-full '>
                 {data1?.history?.map(prev => {return(<>
                     <NavLink to={`/history/${prev._id}`}>
-                        <div className='lg:px-3 md:px-6 sm:px-6 px-5 border-b border-gray-400  pt-4 pb-2 sm:pt-5 sm:pb-3 xl:px-4 flex flex-col'>
+                        <div className='lg:px-3 md:px-6 sm:px-6 px-5 border-b border-stone-700 pt-4 pb-2 sm:pt-5 sm:pb-3 xl:px-4 flex flex-col'>
                             <div className='flex justify-between items-center'>
                               <p> History for your <span className='font-semibold'>{prev.title}</span> cart</p>
                                 <FaEllipsisV />

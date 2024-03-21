@@ -267,7 +267,7 @@ console.log(mode?.colormode)
                     setshowinput(false)
                     setmenubar(false)
                 }} />
-                <div className={`flex fixed rounded-t-xl top-0  ${mode.colormode&&' border border-stone-700 '}   w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg`}>
+                <div className={`flex fixed rounded-t-xl top-0  ${mode.colormode&&'  shadow-stone-700 shadow-md '}   w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg`}>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
                     <button className='w-10 p-1 lg:w-350  xl:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
@@ -276,15 +276,15 @@ console.log(mode?.colormode)
                     data.items ?
                     data.items<1?
                     <div>
-                    {showinput? <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ${mode.colormode?'border-yellow-950 bg-stone-900 placeholder-white':'border-black'} `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>:
+                    {showinput? <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ${mode.colormode?'border-yellow-900 bg-stone-700 placeholder-white':'border-black'} `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>:
                     <div className='absolute flex flex-col popout'><h1 className='font-bold'>Empty cart</h1><p>Your cart is empty, click on the button above to create a cart.</p></div>}
                     </div>:
                         <div>
                             <div>
-                                {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 ${mode.colormode?'border-gray-400 bg-stone-950 placeholder-white':'border-black'} border  outline-none `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
+                                {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 ${mode.colormode?'border-stone-700 bg-stone-800 placeholder-white':'border-black'} border  outline-none `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
                             </div>
                             {data?.items?.map(prev => {
-                            return (<div className={`flex justify-between  py-3 border-b ${mode.colormode?'border-gray-400':'border-yellow-900'} hover:cursor-pointer  `}>
+                            return (<div className={`flex justify-between  py-3 border-b ${mode.colormode?'border-stone-600':'border-yellow-900'} hover:cursor-pointer  `}>
                                     <NavLink to={`/cart/${prev._id}`}>  <p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></NavLink>
                                     <input type="radio" className='hover:cursor-pointer accent-yellow-900  lg:w-4' name='collection' checked={checked === prev.selected} onClick={() => selectcartFunc(prev._id)} />
                                 </div>)}).reverse()}
@@ -477,7 +477,7 @@ console.log(mode?.colormode)
                     {/*about starts*/}
                     <div className={`md:flex md:p-10 shadow-lg w-110 m-auto  mt-10 ${mode.colormode&&'bg-opacity-50 bg-black  shadow-stone-700  shadow-md'}    p-5 sm:p-10 sm:px-20 `}>
 
-                        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XwgxBgBRVxNaZM2ZGtxV8Jy8YSEKG8_Vrw&usqp=CAU' className='w-full md:h-72 h-64 ' />
+                        <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' />
                         <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
                             <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif    '>
                                 Special Fashon sales
@@ -517,7 +517,7 @@ console.log(mode?.colormode)
                     </div>
                 </section>
            
-            <footer className={` bg-black  text-white ${mode.colormode&&'outline outline-0.5 outline-gray-400'} px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 bottom-0 `}>
+            <footer className={` bg-black  text-white ${mode.colormode&&' shadow-inner shadow-stone-700'} px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 bottom-0 `}>
                 <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
                     <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>
                         <div className='md:border-r-0.5 pb-5 sm:pb-7 md:pb-0 md:pr-5 lg:pr-7 xl:pr-10 flex items-center   '>
