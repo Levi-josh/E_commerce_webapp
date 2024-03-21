@@ -203,7 +203,7 @@ const option = {
 console.log(mode?.colorBgtext)
 console.log(mode?.colormode)
     return (
-        <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} m-0 h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
+        <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
 
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 ${mode.colormode&&' shadow-stone-700  shadow-md'}   w-full m-0 ${bgcolor} ${textcolor} z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <motion.h1 animate={{ x: -2 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`font-bold text-lg sm:text-2xl  xl:text-3xl    ${menubar ? 'invisible lg:visible' : 'visble'}`} >Glamour Grove</motion.h1>
@@ -260,7 +260,7 @@ console.log(mode?.colormode)
             </div>
             }</div>
           
-            <motion.div className={`fixed   w-130 sm:w-25 md:w-22 ${bgcolor} ${textcolor} popout lg:w-10  ${mode.colormode&&' shadow-gray-600  border border-gray-600 shadow-md'}    z-20 h-80 sm:h-96 lg:h-80    rounded-xl  ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
+            <motion.div className={`fixed   w-130 sm:w-25 md:w-22 ${bgcolor} ${textcolor} popout lg:w-10     z-20 h-80 sm:h-96 lg:h-80    rounded-xl  ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
                 <FaTimesCircle className='absolute right-0  text-yellow-900  z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={() => {
                     setscroll(scroll)
                     setpopout(prev => !prev)
@@ -281,10 +281,10 @@ console.log(mode?.colormode)
                     </div>:
                         <div>
                             <div>
-                                {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 ${mode.colormode?'border-yellow-950 bg-stone-950 placeholder-white':'border-black'} border  outline-none `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
+                                {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 ${mode.colormode?'border-gray-400 bg-stone-950 placeholder-white':'border-black'} border  outline-none `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
                             </div>
                             {data?.items?.map(prev => {
-                            return (<div className='flex justify-between  py-3 border-b border-yellow-900 hover:cursor-pointer  '>
+                            return (<div className={`flex justify-between  py-3 border-b ${mode.colormode?'border-gray-400':'border-yellow-900'} hover:cursor-pointer  `}>
                                     <NavLink to={`/cart/${prev._id}`}>  <p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></NavLink>
                                     <input type="radio" className='hover:cursor-pointer accent-yellow-900  lg:w-4' name='collection' checked={checked === prev.selected} onClick={() => selectcartFunc(prev._id)} />
                                 </div>)}).reverse()}

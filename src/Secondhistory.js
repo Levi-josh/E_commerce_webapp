@@ -65,7 +65,7 @@ useEffect(() => {
             <div className='lg:hidden '>
             {data?.product?
             <div className='lg:overflow-y-scroll h-full '>
-                <div className={`m-auto px-5 w-110 md:w-150 xl:w-250 lg:w-200 shadow-xl border-0.5 md:border border-slate-300 ${!mode.colormode&&'shadow-slate-300'}  py-6 sm:py-14 md:py-16  md:text-center   `}>
+                <div className={`m-auto px-5 w-110 md:w-150 xl:w-250 lg:w-200 shadow-xl border-0.5 md:border border-gray-400 ${!mode.colormode&&'shadow-slate-300'}  py-6 sm:py-14 md:py-16  md:text-center   `}>
                     <p className={`md:text-lg lg:text-xl font-medium ${mode.colormode?'text-yellow-800':'text-yellow-900'} `}>Thank you!</p>
                     <div className='flex flex-col md:gap-1 mt-3 mb-5 sm:my-4 md:mb-7 md:mt-2 lg:mt-3 lg:mb-10 '>
                         <h1 className='font-semibold text-xl md:text-3xl lg:text-4xl '>Your order has been</h1> <h1 className='font-semibold text-xl md:text-3xl lg:text-4xl'>received</h1>

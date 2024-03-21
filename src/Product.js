@@ -127,7 +127,7 @@ const selectcartFunc = async(id)=> {
         <div className={` ${items.length >= 1 ?'h-full pb-10':'h-screen'}  ${bgcolor} `}>
             <header className={`fixed flex sm:justify-between gap-4 ${bgcolor} ${textcolor}  ${mode.colormode&&' shadow-stone-700  shadow-md'}  sm:gap-0 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-2 sm:px-5 md:px-2 lg:px-4 w-full m-0  z-10 shadow-lg `}>
                 {!showinput1 ? <NavLink to='../' relative='path' className={' sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc} className='font-bold sm:absolute  text-xl md:text-2xl ' ></FaAngleLeft>}
-                {showinput1 ? <input className={`outline-none  border  rounded-xl w-130 sm:w-140 ${mode.colormode?'border-yellow-950 bg-stone-900 placeholder-white':'border-black'} lg:w-25 sm:m-auto h-9  pl-2 placeholder:pl-2 `} placeholder='Search products' autoFocus />
+                {showinput1 ? <input className={`outline-none  border  rounded-xl w-130 sm:w-140 ${mode.colormode?'border-yellow-900 bg-stone-900 placeholder-white':'border-black'} lg:w-25 sm:m-auto h-9  pl-2 placeholder:pl-2 `} placeholder='Search products' autoFocus />
                     : <h1 className=' sm:m-auto  text-xl sm:text-2xl font-semibold'>Products</h1>}
                 <FaSearch onClick={searchfunc} className={`${showinput1 ? 'hidden' : 'block'} right-4  sm:right-6 md:right-4 lg:right-6 absolute`} />
             </header >
