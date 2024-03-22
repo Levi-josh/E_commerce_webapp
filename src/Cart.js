@@ -281,7 +281,7 @@ console.log(cart._id)
     }
    console.log(bgcolor)
     return (
-        <div className={`  ${showcountry ? 'background' : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} ${bgcolor} ${textcolor} ${cart?.product?'h-full':'h-screen'}  `}>
+        <div className={`  ${showcountry ? `background ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} ${bgcolor} ${textcolor} ${cart?.product?'h-full':'h-screen'}  `}>
             <header className={`fixed flex sm:justify-between gap-4 ${bgcolor} ${textcolor} ${mode.colormode&&' shadow-stone-800  shadow-md'} items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0  z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <NavLink to='../' className={'sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <div className='sm:m-auto flex items-center text-xl sm:text-2xl lg:text-3xl font-semibold'>

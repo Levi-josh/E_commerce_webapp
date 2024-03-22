@@ -8,7 +8,7 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/module
 import { changemode } from './features/redux'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import notify from './short-success-sound-glockenspiel-treasure-video-game-6346.mp3'
-import { color, motion } from 'framer-motion'
+import { color, delay, motion } from 'framer-motion'
 import cartimg from './icons8-shopping-cart-48.png';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
@@ -47,7 +47,7 @@ const Home = () => {
     const [newcartText, setnewcartText] = useState('');
     const [displaynote,setdisplaynote]= useState(false)
     const [selectedcart, setseletedcart] = useState('');
-    const {data,note,runEffect,changeRunEffect1,Error,id,signout,runEffect2}= useOutletContext()
+    const {data,note,runEffect,changeRunEffect1,Error1,id,signout,runEffect2}= useOutletContext()
     const mode = useSelector((state)=>state.changemode.value)
     const dispatch = useDispatch()
     const bgcolor = mode?.colorBgtext
@@ -117,10 +117,8 @@ useEffect(() => {
         navigate('/note')
     }
 
-    const buyorder = async (id) => {   
-       if (data.items.length<1) {
-        throw Error({'message':'Empty cart'})
-       } 
+    const buyorder = async (id) => {  
+        console.log(selectedcart) 
     const option = {
                 method: 'POST',
                 headers: {
@@ -128,15 +126,21 @@ useEffect(() => {
                 }
             }
             try {
+                if(!selectedcart && data?.items?.length<1){
+                    throw new Error('you dont have a cart')
+                }if(!selectedcart && data?.items.length>0){
+                    throw new Error('select a cart')  
+                }
                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/addcart/${selectedcart}/${id}`, option);
-                const data = await response.json()
-               console.log(data)
+                const data1 = await response.json()
+               console.log(data1)
                
             }
 
             catch (err) {
             seterror(err.message === 'Failed to fetch' ? { 'message': 'Failed to add cart' }:err)
             console.log(err)
+           
             }
         setadded(prev => !prev)
         setTimeout(() => {
@@ -144,6 +148,18 @@ useEffect(() => {
         }, 2000);
         
     }
+    let errormessage; 
+    if (error?.message === 'Failed to add cart'){
+        errormessage = 'check your internet connection'
+    }if (error?.message === 'you dont have a cart') {
+        errormessage = 'create a cart to continue'
+     }if (error?.message === 'select a cart') {
+        errormessage = 'check the radio button close to your cart'
+     } 
+    if (error?.message === null) {
+        errormessage = ''
+    } 
+    console.log(error?.message)
 function opencollection() {
         setscroll(scroll)
         setpopout(prev => !prev)
@@ -200,8 +216,7 @@ const option = {
     setnewcartText('')
     setshowinput(false)
     }
-console.log(mode?.colorBgtext)
-console.log(mode?.colormode)
+
     return (
         <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
 
@@ -224,11 +239,11 @@ console.log(mode?.colormode)
                 </div>
             </header >
 
-            <div>{<motion.div  initial={{x:'100%'}} animate={{x:menubar?window.matchMedia('(max-width: 768px)').matches?0:-12 :'100%'}} transition={{type:'tween'}} className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full ${textcolor}    ${bgcolor}  lg:top-24 shadow-lg shadow-black rounded-lg right-0    z-30  lg:h-120  `}>
+            <div>{<motion.div  initial={{x:'100%'}} animate={{x:menubar?window.matchMedia('(max-width: 768px)').matches?0:-12 :'100%'}} transition={{type:'tween',duration: 0.5, delay: 0.05}} className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full ${textcolor}    ${bgcolor}  lg:top-24 shadow-lg shadow-black rounded-lg right-0    z-30  lg:h-120  `}>
 
-                <div className=' h-190 md:h-140 bg-yellow-900 lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center'>
+                <div className={` h-190 md:h-140 bg-yellow-900 lg:border-b ${mode.colormode&&'lg:border-stone-700'} lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center`}>
                     <FaTimesCircle className='absolute lg:hidden left-4 top-4  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
-                    {mode.colormode?<FaMoon className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{dispatch(changemode());console.log('ran')}}/>:<FaSun className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{dispatch(changemode());console.log('ran')}} />}
+                    {mode.colormode?<FaMoon className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{dispatch(changemode())}}/>:<FaSun className='absolute lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{dispatch(changemode());console.log('ran')}} />}
                     <div className='flex items-center flex-col gap-2'>
 
                         <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='  w-105 h-105 sm:w-106 sm:h-106 outline-2 outline outline-white   rounded-full  bg-no-repeat bg-cover bg-center    ' />
@@ -245,12 +260,12 @@ console.log(mode?.colormode)
                             <NavLink to={'/about'}> <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
                         </div>
                         <div className='flex flex-col lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  '>
-                            <div className='hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b px-6 hover:lg:bg-neutral-200'>
-                                <p className='text-xl font-semibold py-4'>Light </p>
-                                <FaToggleOff className='text-2xl' />
+                            <div className={`hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b  px-6 ${mode.colormode?'hover:lg:bg-yellow-900 border-stone-700':'hover:lg:bg-neutral-200'}`}>
+                                <p className='text-xl font-semibold py-4'>{mode.colormode?'Dark':'Light'} </p>
+                                {mode.colormode?<FaToggleOff className='text-2xl ' onClick={()=>{dispatch(changemode())}}/>:<FaToggleOn  className='text-2xl ' onClick={()=>{dispatch(changemode())}}/>}
                             </div>
-                            <div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-200 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b '> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={opencollection}>Carts</p></div>
-                            <NavLink to={'/history'}><div className='flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 hover:lg:bg-neutral-200 gap-2 sm:gap-3 lg:cursor-pointer lg:border-b'><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div></NavLink>
+                            <div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-yellow-900 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b `}> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={opencollection}>Carts</p></div>
+                            <NavLink to={'/history'}><div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-yellow-900 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b`}><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div></NavLink>
                         </div>
                     </div>
                     <div className=' flex justify-end  lg:mt-0 lg:items-center '>
@@ -306,8 +321,9 @@ console.log(mode?.colormode)
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>
                         <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
-                        <p className='md:text-lg'>Check your internet connection</p>
-                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>seterror(null)}>Ok</button></div>
+                        <p className=' sm:text-base text-sm'>{errormessage}</p>
+                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' 
+                        onClick={()=>{setpopout(prev=>error?.message === 'you dont have a cart'?!prev:error?.message === 'select a cart'?!prev:prev);seterror({'message':undefined});}}>Ok</button></div>
                     </div>
                 </div>
             </div>}

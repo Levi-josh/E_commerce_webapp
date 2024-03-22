@@ -193,7 +193,7 @@ transform: rotate(360deg);
 }
 
 .background::before {
-    background-color: rgba(0, 0, 0, 0.5);
+   
     z-index: 30;
     content: "";
     backdrop-filter: blur(3px);

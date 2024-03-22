@@ -14,6 +14,7 @@ function Product() {
     const [newcartText, setnewcartText] = useState('');
     const [displaynote,setdisplaynote]= useState(false)
     const [scroll, setscroll] = useState(0)
+    const [added,setadded]=useState(false)
     const [selectedcart, setseletedcart] = useState('');
     const mode = useSelector((state)=>state.changemode.value)
     const bgcolor = mode?.colorBgtext
@@ -44,10 +45,10 @@ function Product() {
              seterror(err.message === 'Failed to fetch' ? { 'message': 'Failed to add cart' }:err)
              console.log(err)
              }
-        //  setadded(prev => !prev)
-        //  setTimeout(() => {
-        //  setadded(prev => !prev)  
-        //  }, 2000);
+             setadded(prev => !prev)
+             setTimeout(() => {
+             setadded(prev => !prev)  
+             }, 2000);
          
      }
     useEffect(() => {
@@ -142,7 +143,9 @@ const selectcartFunc = async(id)=> {
                     </div>
                 </div>
             </div>}
-            
+            <div className={` bg-yellow-900 ${ added && !error?.message? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
+                <p>Added to cart</p>
+            </div>
             {items.length >= 1  ? <div>
                 <div className={`sm:pt-28 pt-24     `}>
 
@@ -170,7 +173,7 @@ const selectcartFunc = async(id)=> {
                                     </div>
                                     <h1 className='text-lg sm:font-bold lg:text-xl'>{prev.itemname}</h1>
                                     <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
-                                    <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' >Add to cart</button>
+                                    <button className='w-full bg-yellow-800 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={()=>buyorder(prev._id)} >Add to cart</button>
                                 </div>
                             </div>)
                         })}
