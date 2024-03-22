@@ -220,11 +220,11 @@ console.log(mode?.colormode)
                     <NavLink to='/cart/:id' className=' '><div className={`flex ${bgcolor} ${textcolor} outline outline-2 outline-yellow-900 h-8 items-center text-lg sm:text-xl  sm:w-103 md:text-2xl justify-center text-black hover:text-white w-102  md:w-101 rounded-full sm:h-10 hover:cursor-pointer hover:bg-yellow-800`}><p className='hidden'>Cart</p><FaShoppingCart /></div></NavLink>
 
                     <div onClick={showmenu} className={`text-lg sm:text-xl lg:hidden ${bgcolor} ${textcolor} outline outline-2 outline-yellow-900   flex justify-center h-8 w-102 sm:h-10 md:w-101 sm:w-103 items-center text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-900`}><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' /></div>
-                    <div className={`lg:flex items-center  outline outline-2 ${bgcolor} ${textcolor} outline-yellow-900 justify-center ${menubar ? 'bg-yellow-900 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-900  hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p> <FaAngleDown className='text-lg pt-1' /></div>
+                    <div className={`lg:flex items-center  outline outline-2 ${bgcolor} ${textcolor} outline-yellow-900 justify-center ${menubar ? 'bg-yellow-900 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-900  hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p></div>
                 </div>
             </header >
 
-            <div>{menubar && <div className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full ${textcolor}    ${bgcolor}  lg:top-24 shadow-lg shadow-black rounded-lg right-0  lg:right-3  z-30  lg:h-120  `}>
+            <div>{<motion.div  initial={{x:'100%'}} animate={{x:menubar?window.matchMedia('(max-width: 768px)').matches?0:-12 :'100%'}} transition={{type:'tween'}} className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full ${textcolor}    ${bgcolor}  lg:top-24 shadow-lg shadow-black rounded-lg right-0    z-30  lg:h-120  `}>
 
                 <div className=' h-190 md:h-140 bg-yellow-900 lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center'>
                     <FaTimesCircle className='absolute lg:hidden left-4 top-4  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
@@ -257,7 +257,7 @@ console.log(mode?.colormode)
                         <NavLink to={'/login'}> <p className={`font-bold   sm:text-xl ${mode.colormode?'text-white':'text-yellow-900'} text-right  mb-7 mr-7 `} onClick={signout} >{`Sign ${id?'Out':'In'}`} </p></NavLink>
                     </div>
                 </div>
-            </div>
+            </motion.div>
             }</div>
           
             <motion.div className={`fixed   w-130 sm:w-25 md:w-22 ${bgcolor} ${textcolor} popout lg:w-10     z-20 h-80 sm:h-96 lg:h-80    rounded-xl  ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
