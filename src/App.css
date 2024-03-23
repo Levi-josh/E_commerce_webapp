@@ -26,6 +26,19 @@
 transform: rotate(360deg);
     }
 }
+.spin2 {
+    transition: all;
+    animation: spin2 2s ease-out 0.2s 1 normal forwards;
+}
+
+@keyframes spin2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+transform: rotate(360deg);
+    }
+}
 
 .added{
         top: 100px;
