@@ -69,8 +69,7 @@ const Home = () => {
     if (runEffect) {
     lognote.current.style.display='flex'
     audiosound.current?.play().catch(error => {
-    console.error('Auto-play prevented:', error.message);})
-      
+    console.error('Auto-play prevented:', error.message);}) 
     setTimeout(() => {setloggedin(false);}, 3000);
     localStorage.setItem('hasEffectRun', 'true');
     changeRunEffect1()
@@ -79,7 +78,6 @@ const Home = () => {
 }, [runEffect]);
 
 useEffect(() => {
-
     if (runEffect2) {
     noteref.current.style.display = 'flex'
      setdisplaynote(true)
@@ -110,11 +108,8 @@ useEffect(() => {
                 })*/
     }
     function showmenu1() {
-         setcheck(prev => !prev)
+    setcheck(prev => !prev)
        
-    }
-    function read() {
-        navigate('/note')
     }
 
     const buyorder = async (id) => {  
@@ -158,6 +153,9 @@ useEffect(() => {
      } 
     if (error?.message === null) {
         errormessage = ''
+    } 
+    if (error?.message === 'Failed to fetch') {
+        errormessage = 'check your internet connection'
     } 
     console.log(error?.message)
 function opencollection() {
@@ -226,8 +224,8 @@ const option = {
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
                     <NavLink to='/product'><li>Product</li></NavLink>
-                    <NavLink to='/signin'><li>contact</li></NavLink>
-                    <NavLink to='/about'><li>About us</li></NavLink>
+                    <NavLink ><li>contact</li></NavLink>
+                    <NavLink ><li>About us</li></NavLink>
 
                 </ul>
                 <div className='flex gap-3 sm:gap-7 md:gap-8 lg:gap-4 xl:gap-12 items-center    '>
@@ -256,8 +254,8 @@ const option = {
 
                             <NavLink to={'/'} ><div className='flex hover:lg:bg-neutral-100  gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaHome className='text-lg sm:text-xl md:text-2xl' /> <p className='    py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
                             <NavLink to={'/product'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaShopify className='text-lg sm:text-xl md:text-2xl' /><p className='  py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden'>Products</p></div></NavLink>
-                            <NavLink to={'/signin'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3 sm:py-4  sm:text-lg md:text-xl font-semibold  lg:hidden'>Contact</p></div></NavLink>
-                            <NavLink to={'/about'}> <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
+                            <NavLink ><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3 sm:py-4  sm:text-lg md:text-xl font-semibold  lg:hidden'>Contact</p></div></NavLink>
+                            <NavLink > <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:lg:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
                         </div>
                         <div className='flex flex-col lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  '>
                             <div className={`hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b  px-6 ${mode.colormode?'hover:lg:bg-yellow-900 border-stone-700':'hover:lg:bg-neutral-200'}`}>

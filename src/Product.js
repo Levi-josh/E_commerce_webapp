@@ -19,15 +19,18 @@ function Product() {
     const mode = useSelector((state)=>state.changemode.value)
     const bgcolor = mode?.colorBgtext
     const textcolor = mode?.colortext
-    const {data,note,runEffect,changeRunEffect1,Error,id,signout,runEffect2}= useOutletContext()
+    const {data,note,runEffect,changeRunEffect1,Error1,id,signout,runEffect2}= useOutletContext()
+
+    useEffect(() => {
+        const selectedid = data?.items?.filter(prev => prev.selected === true)
+           setseletedcart(selectedid && selectedid[0]?._id)
+       })
+
     function searchfunc() {
         setshowinput1(prev => !prev)
         setshowinput(false)
     }
     const buyorder = async (id) => {   
-        if (data.items.length<1) {
-         throw Error({'message':'Empty cart'})
-        } 
      const option = {
                  method: 'POST',
                  headers: {
@@ -35,9 +38,14 @@ function Product() {
                  }
              }
              try {
+                if(!selectedcart && data?.items?.length<1){
+                    throw new Error('you dont have a cart')
+                }if(!selectedcart && data?.items.length>0){
+                    throw new Error('select a cart')  
+                }
                  const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/addcart/${selectedcart}/${id}`, option);
-                 const data = await response.json()
-                console.log(data)
+                 const data1 = await response.json()
+                console.log(data1)
                 
              }
  
@@ -51,6 +59,21 @@ function Product() {
              }, 2000);
          
      }
+     let errormessage; 
+     if (error?.message === 'Failed to add cart'){
+         errormessage = 'check your internet connection'
+     }if (error?.message === 'you dont have a cart') {
+         errormessage = 'create a cart to continue'
+      }if (error?.message === 'select a cart') {
+         errormessage = 'check the radio button close to your cart'
+      } 
+     if (error?.message === null) {
+         errormessage = ''
+     }
+     if (error?.message === 'Failed to fetch') {
+        errormessage = 'check your internet connection'
+    }  
+     console.log(error?.message)
     useEffect(() => {
         window.scrollTo(0, scroll)
         
@@ -77,54 +100,8 @@ useLayoutEffect(() => {
         }
         getusersDocuments()
 }, [items]);
-const handleChange = (e) => {
-    setnewcartText(e.target.value)
-}
-const handleSubmit = async (e) => {
-e.preventDefault()
 
-const option = {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                },
-                body:JSON.stringify({"id":data._id,"title":newcartText})
-            }
-            try {
-                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/newcart`, option);
-                const data = await response.json()
-               console.log(data)
-            }
-
-            catch (err) {
-            seterror(err) 
-            console.log(err)
-    } 
-    setnewcartText('')
-    setshowinput(false)
-    }
- 
-const selectcartFunc = async(id)=> {
-   
-    const option = {
-                method: 'PUT',
-                headers: {
-                    'content-type': 'application/json',
-                }
-            }
-            try {
-                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/select/${id}`, option);
-                const data = await response.json()
-               console.log(data)
-            }
-
-            catch (err) {
-            seterror(err) 
-            console.log(err)
-     }
-}
-
-    return (
+return (
         <div className={` ${items.length >= 1 ?'h-full pb-10':'h-screen'}  ${bgcolor} `}>
             <header className={`fixed flex sm:justify-between gap-4 ${bgcolor} ${textcolor}  ${mode.colormode&&' shadow-stone-700  shadow-md'}  sm:gap-0 items-center h-20 sm:h-24 md:h-24 lg:h-24 px-2 sm:px-5 md:px-2 lg:px-4 w-full m-0  z-10 shadow-lg `}>
                 {!showinput1 ? <NavLink to='../' relative='path' className={' sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc} className='font-bold sm:absolute  text-xl md:text-2xl ' ></FaAngleLeft>}
@@ -133,13 +110,13 @@ const selectcartFunc = async(id)=> {
                 <FaSearch onClick={searchfunc} className={`${showinput1 ? 'hidden' : 'block'} right-4  sm:right-6 md:right-4 lg:right-6 absolute`} />
             </header >
             
-            {error?.message  && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
+            {error?.message  && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 ${bgcolor} ${textcolor} min-h-101 sm:min-h-102 lg:min-h-101 `}>
                 <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>
                         <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
-                        <p className='md:text-lg'>Check your internet connection</p>
-                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>window.location.reload()}>Reload</button></div>
+                        <p className='sm:text-base text-sm'>{errormessage}</p>
+                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>{error.message === 'Failed to add cart'||'Failed to fetch'?window.location.reload():seterror({'message':undefined})}}>{error.message === 'Failed to add cart'||'Failed to fetch'?'Reload':'Ok'}</button></div>
                     </div>
                 </div>
             </div>}
