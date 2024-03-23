@@ -90,7 +90,7 @@ useEffect(() => {
                                 <div className='flex flex-col justify-between w-22   '>
                                     <div className='flex items-center justify-between'>
                                     <h1 className='sm:font-bold font-medium whitespace-nowrap'>{prev.itemname}</h1>
-                                    <div className={`sm:w-7 sm:h-7 h-6 w-6 flex items-center justify-center hover:cursor-pointer ${mode.colormode?'bg-black border border-stone-700':'bg-gray-100'}   rounded-full  `} onClick={() => deleteitem(prev?._id)}><FaTimes /></div>
+                                    <div className={`sm:w-7 sm:h-7 h-6 w-6 flex items-center justify-center hover:cursor-pointer ${mode.colormode?'bg-black border border-stone-700':'bg-black text-white'}   rounded-full  `} onClick={() => deleteitem(prev?._id)}><FaTimes /></div>
                                     </div>
                                     <div className='flex justify-between'>
                                     <h1 className='sm:font-bold font-medium '>Price:</h1>
@@ -102,9 +102,9 @@ useEffect(() => {
                                     </div>
                                 
                                     <div className='w-full h-8 border border-stone-700 flex justify-between'>
-                                    <button className={` ${mode.colormode?'bg-black text-white border-r border-stone-700':'border-stone-700 bg-stone-700'} font-bold text-lg text-black w-20`} onClick={() => reducequantity(prev._id)}>-</button>
+                                    <button className={` ${mode.colormode?'bg-black text-white border-r border-stone-700':'border-black bg-black text-white'} font-bold text-lg w-20`} onClick={() => reducequantity(prev._id)}>-</button>
                                     <div>{prev.quantity}</div>
-                                    <button className={`w-20 ${mode.colormode?'bg-black text-white border-l border-stone-700':'border-stone-700 bg-stone-700'} font-bold text-black text-lg`} onClick={() => increasequantity(prev._id)}>+</button>
+                                    <button className={`w-20 ${mode.colormode?'bg-black text-white border-l border-stone-700':'border-black bg-black text-white'} font-bold  text-lg`} onClick={() => increasequantity(prev._id)}>+</button>
                                     </div>
                                 </div>
                            
