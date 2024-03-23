@@ -28,7 +28,7 @@ transform: rotate(360deg);
 }
 .spin2 {
     transition: all;
-    animation: spin2 1s ease-out 0.2s 1 normal forwards;
+    animation: spin2 0.5s ease-out 0.2s 1 normal forwards;
 }
 
 @keyframes spin2 {

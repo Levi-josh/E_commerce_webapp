@@ -154,9 +154,7 @@ useEffect(() => {
     if (error?.message === null) {
         errormessage = ''
     } 
-    if (error?.message === 'Failed to fetch') {
-        errormessage = 'check your internet connection'
-    } 
+    
     console.log(error?.message)
 function opencollection() {
         setscroll(scroll)

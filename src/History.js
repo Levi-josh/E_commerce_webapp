@@ -38,7 +38,7 @@ const History = () => {
             :
             <p className='popout  fixed font-semibold text-xl'>log in to see your order history</p>}
             </div>
-            <div className='h-full  w-full lg:hidden  '>
+            <div className='h-screen w-full lg:hidden  '>
             {id?
             data?.history? data?.history.length<1?
             <p className='popout fixed whitespace-nowrap font-semibold sm:text-lg'>your order history is empty</p>:
