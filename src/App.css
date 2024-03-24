@@ -21,9 +21,11 @@
 @keyframes spin {
     0% {
         transform: rotate(0deg);
+        transform: translate(-50%, -50%)
     }
     100% {
 transform: rotate(360deg);
+transform: translate(-50%, -50%)
     }
 }
 .spin2 {
@@ -41,7 +43,7 @@ transform: rotate(360deg);
 }
 
 .added{
-        top: 100px;
+        top: 150px;
         left: 50%;
         transform: translate(-50%);
         z-index: 8;
@@ -308,7 +310,7 @@ transform: rotate(360deg);
         }
     }
     .added{
-        top: 100px;
+        top: 150px;
         left: 50%;
         transform: translate(-50%);
         z-index: 8;

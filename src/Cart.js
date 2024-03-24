@@ -33,6 +33,7 @@ const Cart = () => {
     const [countries,setcountries] = useState([])
     const {data,id}= useOutletContext()
     const params =useParams()
+    const [showerror,setshowerror]= useState({payment:'',shipping:'',country:''})
     const [array, setarray] = useState(0)
     const [nextcart3data,setnextcart3data]=useState({})
     const mode = useSelector((state)=>state.changemode.value)
@@ -139,9 +140,12 @@ useEffect(() => {
     
   }, [cart]);
 
-    
+console.log(showerror.shipping)
 const nextcart = async () => {
-         
+        const isSelected = cart.shipping.filter(prev=>prev.checked===true)
+        if(isSelected.length===0){
+        setshowerror(prev=>({...prev,shipping:'choose a shipping method'}))
+        }
         const option = {
                 method: 'PUT',
                 headers: {
@@ -258,7 +262,7 @@ const nextcart = async () => {
     function startshop() {
         navigate("/product")
     }
-console.log(cart._id)
+
     const deleteitem = async (id) => {
         console.log(id)
         const option = {
@@ -279,7 +283,7 @@ console.log(cart._id)
         } 
         
     }
-   console.log(bgcolor)
+  
     return (
         <div className={`  ${showcountry ? `background ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} ${bgcolor} ${textcolor} ${cart?.product?'h-full':'h-screen'}  `}>
             <header className={`fixed flex sm:justify-between gap-4 ${bgcolor} ${textcolor} ${mode.colormode&&' shadow-stone-800  shadow-md'} items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0  z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
@@ -310,7 +314,7 @@ console.log(cart._id)
                                 <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-900 ' :  mode.colormode?'bg-white':'bg-black'} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : <p className={`${mode.colormode?'text-black':'text-white'}`}>3</p>}</div><div className={`flex ${changecart3 ? 'text-yellow-900' : mode.colormode?'text-white':'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-900 w-full border mt-4 ` : `${mode.colormode?'border-white':'border-black'} w-full border mt-4`}></div></div>
                             </div>
 
-                            <Outlet context={{ nextcart, completeitems, nextcart2, nextcart3, checkitems, showcountry, data, getcountry, cart, countries, shopitems, deleteitem }} />
+                            <Outlet context={{ nextcart,showerror, completeitems, nextcart2, nextcart3, checkitems, showcountry, data, getcountry, cart, countries, shopitems, deleteitem }} />
                         </> : !error.message ?
                         <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='fixed popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 w-9 h-9 lg:w-11 lg:h-11 rounded-full  '>
                         <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>

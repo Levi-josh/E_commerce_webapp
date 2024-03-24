@@ -256,12 +256,12 @@ const option = {
                             <NavLink > <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:lg:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
                         </div>
                         <div className='flex flex-col lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  '>
-                            <div className={`hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b  px-6 ${mode.colormode?'hover:lg:bg-yellow-900 border-stone-700':'hover:lg:bg-neutral-200'}`}>
+                            <div className={`hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b  px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'}`}>
                                 <p className='text-xl font-semibold py-4'>{mode.colormode?'Dark':'Light'} </p>
                                 {mode.colormode?<FaToggleOff className='text-2xl ' onClick={()=>{dispatch(changemode())}}/>:<FaToggleOn  className='text-2xl ' onClick={()=>{dispatch(changemode())}}/>}
                             </div>
-                            <div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-yellow-900 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b `}> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={opencollection}>Carts</p></div>
-                            <NavLink to={'/history'}><div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-yellow-900 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b`}><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div></NavLink>
+                            <div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b `}> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={opencollection}>Carts</p></div>
+                            <NavLink to={'/history'}><div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b`}><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div></NavLink>
                         </div>
                     </div>
                     <div className=' flex justify-end  lg:mt-0 lg:items-center '>

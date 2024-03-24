@@ -3,7 +3,7 @@ import { FaTimes,FaExclamationCircle } from 'react-icons/fa'
 import { Navigate, useNavigate, useOutletContext } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 const Shopcart = () => {
-    const { nextcart, cart, shopitems,deleteitem } = useOutletContext()
+    const { nextcart, cart, shopitems,deleteitem,showerror } = useOutletContext()
     const navigate = useNavigate()
     const [error,seterror]=useState()
     const mode = useSelector((state)=>state.changemode.value)
@@ -115,6 +115,7 @@ useEffect(() => {
 
                 <div className={`w-110 border sm:w-140 md:w-140 ${mode.colormode?'border-stone-700':'border-black'} m-auto px-5 mt-10 sm:mt-14 md:px-10 sm:px-10  py-3 sm:py-7 lg:px-3 xl:px-8 lg:py-2 xl:py-6 lg:mt-0 lg:w-25`}>
                     <h1 className='font-bold sm:text-lg md:text-xl lg:text-2xl '>Cart summary</h1>
+                    {showerror.shipping&&<h1 className='mt-2 text-red-700 font-semibold'>{showerror.shipping}</h1>}
                     {cart.shipping.map(prev => {
                         return (<div className={`flex  border ${mode.colormode?'border-stone-700':'border-black'} mt-5 justify-between p-3 lg:mt-4 xl:mt-5 `}>
                             <div className='flex gap-2'>

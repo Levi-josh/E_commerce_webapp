@@ -83,12 +83,12 @@ const Login = () => {
                     <h1 className='font-bold text-xl sm:text-2xl lg:text-3xl '>Sign In</h1>
                     <div>
                     <p className=''>Don't have an accout yet? <NavLink to={'/signup'}><span className={`${mode.colormode?'text-yellow-700':'text-yellow-900'} font-medium `}>Sign Up</span></NavLink> </p>
-                    <div className='w-full relative h-14 flex items-end'>
-                    {user.username&&<p className=' text-red-500 absolute top-0  text-sm sm:text-base'>{user.username}</p>}
+                    <div className='w-full relative h-14 lg:h-16 flex items-end'>
+                    {user.username&&<p className=' text-red-600 absolute top-0  text-sm sm:text-base'>{user.username}</p>}
                     <input type='text' placeholder='Username'  value={formData.input1} name="input1" onChange={handlechange} className={`outline-none  ${mode.colormode?'bg-stone-800 border-stone-700 ':'bg-white border-yellow-900 '}  border py-1 pl-2 lg:py-2   ${mode.colormode?'text-white':'text-black'} placeholder:text-neutral-300 placeholder:font-semibold  w-full`} />
                     </div>
                     <div className='w-full relative h-14 flex items-end '>
-                    {user.password&&<p className=' text-red-500 absolute top-0 text-sm sm:text-base'>{user.password}</p>}
+                    {user.password&&<p className=' text-red-600 absolute top-0 text-sm sm:text-base'>{user.password}</p>}
                     <input type='password' placeholder='Password'  value={formData.input2} name="input2" onChange={handlechange}  className={`outline-none  border ${mode.colormode?'bg-stone-800 border-stone-700 ':'bg-white border-yellow-900 '} py-1 lg:py-2 pl-2  ${mode.colormode?'text-white':'text-black'} placeholder:font-semibold placeholder:text-neutral-200 w-full  `} />
                     </div>
                     </div>

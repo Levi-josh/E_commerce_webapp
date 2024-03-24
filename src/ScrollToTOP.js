@@ -26,6 +26,7 @@ const ScrollToTOP = () => {
     useEffect(() => {
     const myid = localStorage.getItem('myid')
     setId(myid)
+    
     },[location])
 
     useEffect(() => {
