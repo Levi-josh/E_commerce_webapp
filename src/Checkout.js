@@ -4,7 +4,7 @@ import { FaArrowDown, FaChevronDown, FaTimes } from 'react-icons/fa'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 const Checkout = () => {
-    const { nextcart2, showcountry, getcountry,checkitems,data, cart, countries,deleteitem  } = useOutletContext()
+    const { nextcart2,showerror, showcountry, getcountry,checkitems,data, cart, countries,deleteitem  } = useOutletContext()
     const [selectedcountry, setselectedcountry] = useState()
     const [error,setError]=useState()
     const navigate = useNavigate()
@@ -132,8 +132,10 @@ useEffect(() => {
                             <label className={`font-semibold ${mode.colormode?'text-white':' text-gray-600'} lg:text-lg`}>STREET ADDRESS *</label>
                             <input type='text' className={`outline-none border ${mode.colormode?'border-stone-700 bg-stone-800':'border-black bg-white'}  w-full rounded-md py-1 px-2`} placeholder='Street address' />
                         </div>
+                        
                         <div className='flex flex-col gap-2'>
                             <label className={`${mode.colormode?'text-white':' text-gray-600'} font-semibold lg:text-lg`}>COUNTRY *</label>
+                            {showerror.country&&<p className='text-red-600 mt font-semibold'>{showerror.country}</p>}
                             <div className=' '>
                                 <div className={`flex w-full border ${mode.colormode?'border-stone-700':'border-black'} p-2 rounded-md justify-between items-center`}>
 
@@ -171,6 +173,7 @@ useEffect(() => {
                 </div>
                 <div className={`flex flex-col gap-4 border ${mode.colormode?'border-stone-700':'border-black'} px-5 md:px-7 py-6 rounded-lg`}>
                     <h1 className='font-bold sm:text-lg lg:text-xl '>Payment Method</h1>
+                    {showerror.payment&&<h1 className='text-red-600 mt font-semibold'>{showerror.payment}</h1>}
                     <div className='flex flex-col gap-6'>
                         {cart?.Paymethod?.map(prev => {return( <>   
                         <div key={prev._id} className={`flex gap-2 w-full border ${mode.colormode?'border-stone-700':'border-black'} p-2 rounded-md`}>

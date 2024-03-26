@@ -140,12 +140,12 @@ useEffect(() => {
     
   }, [cart]);
 
-console.log(showerror.shipping)
+console.log(showerror.country)
 const nextcart = async () => {
         const isSelected = cart.shipping.filter(prev=>prev.checked===true)
-        if(isSelected.length===0){
-        setshowerror(prev=>({...prev,shipping:'choose a shipping method'}))
-        }
+        if(isSelected.length===0 ){
+        setshowerror(prev=>({...prev,shipping:isSelected.length===0 ?'choose a shipping method':''}))
+        }else{
         const option = {
                 method: 'PUT',
                 headers: {
@@ -176,9 +176,14 @@ const nextcart = async () => {
             secondref.current.style.translate = '0px'
             thirdref.current.style.translate = '0px'
         }
-        navigate('/cart/:id/checkout')
+        navigate('/cart/:id/checkout')}
     }
+    console.log(cart.Paymethod)
     const nextcart2 = async()=>{
+        const choosepayment = cart.Paymethod.filter(prev=>prev.checked===true)
+        if(choosepayment.length===0 && cart.country==''){
+        setshowerror(prev=>({...prev,payment:choosepayment.length===0?'select a payment method':'',country:cart.country==''?'select a country':''}))
+        }else{
         const option = {
                 method: 'PUT',
                 headers: {
@@ -207,7 +212,7 @@ const nextcart = async () => {
             thirdref.current.style.translate = '0px'
         }
 
-       navigate('/cart/:id/complete')
+       navigate('/cart/:id/complete')}
     }
     
     const nextcart3 = async () => {
