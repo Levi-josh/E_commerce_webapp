@@ -295,8 +295,8 @@ const option = {
                                 {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 ${mode.colormode?'border-stone-700 bg-stone-800 placeholder-white':'border-black'} border  outline-none `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
                             </div>
                             {data?.items?.map(prev => {
-                            return (<div className={`     relative flex w-full     border-b ${mode.colormode?'border-stone-600':'border-yellow-900'} hover:cursor-pointer  `}>
-                                    <NavLink to={`/cart/${prev._id}`} className={'w-full'}> <div className={` py-3 ${mode.colormode?'hover:bg-stone-700':'hover:bg-neutral-100'}   `}><p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></div></NavLink> 
+                            return (<div className={`     relative flex w-full     border-b ${mode.colormode?'hover:bg-stone-700 border-stone-600':'border-yellow-900 hover:bg-neutral-100'} hover:cursor-pointer  `}>
+                                    <NavLink to={`/cart/${prev._id}`} className={'w-full'}> <div className={` py-3    `}><p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></div></NavLink> 
                                     <div className=' bg-inherit  pl-3 flex items-center justify-end'><input type="radio" className='hover:cursor-pointer  accent-yellow-900  lg:w-4' name='collection' checked={checked === prev.selected} onClick={() => selectcartFunc(prev._id)} /></div>
                                 </div>)}).reverse()}
                                 <p className='font-semibold mt-3 text-center sm:text-lg'>Click on the cart you created to see your items</p>
@@ -362,15 +362,15 @@ const option = {
                     /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-130 lg:w-130 m-auto h-full sm:h-auto    '>
                         <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full sm:h-72 h-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXTxreOJSjKV3Rr6tYE-2XYcPlaHcuBs4nUg&usqp=CAU' className='min-w-full sm:h-72      md:h-96 bg-no-repeat bg-cover bg-center h-full     ' />
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz6odanAlur6EPzOrDU6Nj2oofspV-bsYG9M7w--oO0y1gvvIy_Fl9Tgk1hFyTsuhxJnU&usqp=CAU' className='min-w-full sm:h-72      md:h-96 bg-no-repeat bg-cover bg-center h-full     ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2o09ztmF7LPpqO-80mbCFlOvnDlkF0CwI7w&usqp=CAU' className='min-w-full sm:h-72      md:h-96 bg-no-repeat bg-cover bg-center object-cover h-full    ' />
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqecwmhypUjuCqjdpZ_6lTj1W7BbxWkXdlb746j0SJwTs3fJHq3bnlAHirmsMei5xP8ro&usqp=CAU' className='min-w-full sm:h-72      md:h-96 bg-no-repeat bg-cover bg-center object-cover h-full    ' />
                         </SwiperSlide>
                         <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full sm:h-72       md:h-96 bg-no-repeat bg-cover bg-center h-full    ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full sm:h-72 h-full       md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-vector/flat-design-minimal-boutique-sale-background_23-2149337460.jpg' className='min-w-full sm:h-72 h-full       md:h-96 bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full sm:h-72 h-full       md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://marketplace.canva.com/EAFKwirl3N8/1/0/1600w/canva-brown-minimalist-fashion-product-banner-iRHpbHTqh-A.jpg' className='min-w-full sm:h-72 h-full       md:h-96 bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
                     </Swiper>
                 </div >

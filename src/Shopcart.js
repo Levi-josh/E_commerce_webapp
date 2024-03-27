@@ -3,7 +3,7 @@ import { FaTimes,FaExclamationCircle } from 'react-icons/fa'
 import { Navigate, useNavigate, useOutletContext } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 const Shopcart = () => {
-    const { nextcart, cart, shopitems,deleteitem,showerror } = useOutletContext()
+    const { nextcart, cart, shopitems,deleteitem,showerror,clearError } = useOutletContext()
     const navigate = useNavigate()
     const [error,seterror]=useState()
     const mode = useSelector((state)=>state.changemode.value)
@@ -46,7 +46,7 @@ const Shopcart = () => {
         }
     }
     const selectpayment = async (id) => {
-
+        clearError()
         const option = {
             method: 'PUT',
             headers: {
@@ -70,7 +70,7 @@ useEffect(() => {
     }
 }, [shopitems]);
     return (
-        <div className='pt-6 sm:pt-8  sm:gap-11 md:gap-14 lg:gap-15 h-full  '>
+        <div className={`pt-6 sm:pt-8  sm:gap-11 md:gap-14 ${bgcolor} ${textcolor} pb-10 lg:gap-15 h-full  `}>
             {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 bg-white min-h-101 sm:min-h-102 lg:min-h-101 `}>
                 <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />

@@ -264,6 +264,9 @@ const nextcart = async () => {
         nextcart3data&&navigate('/')
         nextcart3data&&localStorage.removeItem('mycart')
     }
+    function clearError(){
+        setshowerror({shipping:'',payment:'',country:''})
+    }
     function startshop() {
         navigate("/product")
     }
@@ -290,7 +293,7 @@ const nextcart = async () => {
     }
   
     return (
-        <div className={`  ${showcountry ? `background ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} ${bgcolor} ${textcolor} ${cart?.product?'h-full':'h-screen'}  `}>
+        <div className={`  ${showcountry ? `background ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} ${bgcolor} ${textcolor} ${cart?.product?'h-screen':'h-screen'}  `}>
             <header className={`fixed flex sm:justify-between gap-4 ${bgcolor} ${textcolor} ${mode.colormode&&' shadow-stone-800  shadow-md'} items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0  z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <NavLink to='../' className={'sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
                 <div className='sm:m-auto flex items-center text-xl sm:text-2xl lg:text-3xl font-semibold'>
@@ -310,7 +313,7 @@ const nextcart = async () => {
             </div>} 
             <div  >
                 {cart?.product?.length === 0 || myid === null ? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> {!mode.colormode?<img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> :<img src='https://img.freepik.com/premium-photo/shopping-cart-black-background-shopping-trolley-grocery-push-cart-3d-render-illustration_989822-1813.jpg?size=626&ext=jpg&ga=GA1.1.732548087.1710974042&semt=ais' alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 '/>}<p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
-                    <section className='  pt-28 sm:pt-32 pb-10     lg:pt-32 '>
+                    <section className='  pt-28 sm:pt-32     lg:pt-32 '>
                         {cart.product ? <>
                             <h1 className='text-center   font-semibold text-xl  sm:mb-5  mb-5   md:mb-5  lg:mb-7 xl:text-3xl sm:text-2xl lg:text-3xl'>{cart?.title}</h1>
                             <div className='flex   top-20 sm:top-24   sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
@@ -319,7 +322,7 @@ const nextcart = async () => {
                                 <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-900 ' :  mode.colormode?'bg-white':'bg-black'} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : <p className={`${mode.colormode?'text-black':'text-white'}`}>3</p>}</div><div className={`flex ${changecart3 ? 'text-yellow-900' : mode.colormode?'text-white':'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-900 w-full border mt-4 ` : `${mode.colormode?'border-white':'border-black'} w-full border mt-4`}></div></div>
                             </div>
 
-                            <Outlet context={{ nextcart,showerror, completeitems, nextcart2, nextcart3, checkitems, showcountry, data, getcountry, cart, countries, shopitems, deleteitem }} />
+                            <Outlet context={{ nextcart,showerror,clearError, completeitems, nextcart2, nextcart3, checkitems, showcountry, data, getcountry, cart, countries, shopitems, deleteitem }} />
                         </> : !error.message ?
                         <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='fixed popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 w-9 h-9 lg:w-11 lg:h-11 rounded-full  '>
                         <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
