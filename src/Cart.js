@@ -181,7 +181,7 @@ const nextcart = async () => {
     console.log(cart.Paymethod)
     const nextcart2 = async()=>{
         const choosepayment = cart.Paymethod.filter(prev=>prev.checked===true)
-        if(choosepayment.length===0 && cart.country==''){
+        if(choosepayment.length===0 || cart.country==''){
         setshowerror(prev=>({...prev,payment:choosepayment.length===0?'select a payment method':'',country:cart.country==''?'select a country':''}))
         }else{
         const option = {

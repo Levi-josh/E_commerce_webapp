@@ -179,7 +179,7 @@ useEffect(() => {
                     <div className='flex flex-col gap-6'>
                         {cart?.Paymethod?.map(prev => {return( <>   
                         <div key={prev._id} className={`flex gap-2 w-full border ${mode.colormode?'border-stone-700':'border-black'} p-2 rounded-md`}>
-                            <input type='radio' name='payment' className='lg:w-4 accent-yellow-800 ' onChange={()=>selectpayment(prev._id)} />
+                            <input type='radio' name='payment' className='lg:w-4 accent-yellow-800 ' checked={prev.checked === true} onChange={()=>selectpayment(prev._id)} />
                                     <p className='font-bold lg:text-lg'>{prev.payname}</p>
                         </div>
                            </> )})}                   

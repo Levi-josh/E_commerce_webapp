@@ -278,7 +278,7 @@ const option = {
                     setshowinput(false)
                     setmenubar(false)
                 }} />
-                <div className={`flex fixed rounded-t-xl top-0  ${mode.colormode&&'  shadow-stone-700 shadow-md '}   w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg`}>
+                <div className={`flex fixed rounded-t-xl top-0  ${mode.colormode&&'  shadow-stone-700 shadow-md '}  ${bgcolor} ${textcolor}  w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg`}>
                     <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
                     <button className='w-10 p-1 lg:w-350  xl:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
                 </div>
