@@ -28,36 +28,35 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
-
-    <Route path='/' element={<ScrollToTOP />} errorElement={<Error />}   >
-      <Route index element={<Home />} />
-       <Route path='/*' element={<Missing />} />
-      <Route path='/weblify' element={<Weblify />} />
-      <Route path='/contact' element={<Contact />} />
-      <Route path='/about' element={<About />} />
-      <Route path='/product' element={<Product />} />
-      <Route path='/note' element={<Note />} >
-        <Route index element={<Firstnote />} />
-        <Route path='/note/:id' element={<Secondnote />} />
-      </Route>
-      <Route path='/history' element={<History />} >
-        <Route index element={<Firsthistory />} />
-        <Route path='/history/:id' element={<Secondhistory />} />
-
-      </Route>
-
-      <Route path='/demo' element={<Demo />} />
-      <Route path='/cart/:id' element={<Cart />} >
-        <Route index element={<Shopcart />} />
-        <Route path='/cart/:id/checkout' element={<Checkout />}  />
-        <Route path='/cart/:id/complete' element={<Complete />} />
-
-
-      </Route>
-      <Route path='/login' element={<Login />} />
-      <Route path='/signup' element={<Signup />} />
-      <Route path='/signin' element={<Logout />} />
+  <Route path='/' element={<ScrollToTOP />} errorElement={<Error />}   >
+    <Route index element={<Home />} />
+    <Route path='/*' element={<Missing />} />
+    <Route path='/weblify' element={<Weblify />} />
+    <Route path='/contact' element={<Contact />} />
+    <Route path='/about' element={<About />} />
+    <Route path='/product' element={<Product />} />
+    <Route path='/note' element={<Note />} >
+      <Route index element={<Firstnote />} />
+      <Route path='/note/:id' element={<Secondnote />} />
     </Route>
+    <Route path='/history' element={<History />} >
+      <Route index element={<Firsthistory />} />
+      <Route path='/history/:id' element={<Secondhistory />} />
+
+    </Route>
+
+    <Route path='/demo' element={<Demo />} />
+    <Route path='/cart/:id' element={<Cart />} >
+      <Route index element={<Shopcart />} />
+      <Route path='/cart/:id/checkout' element={<Checkout />}  />
+      <Route path='/cart/:id/complete' element={<Complete />} />
+
+
+    </Route>
+    <Route path='/login' element={<Login />} />
+    <Route path='/signup' element={<Signup />} />
+    <Route path='/signin' element={<Logout />} />
+  </Route>
 
   ));
 

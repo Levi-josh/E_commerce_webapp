@@ -2,11 +2,10 @@
     width: 0px;
     background-color: gainsboro;
     height: 5px;
-    display: none;
-    
-
+    cursor: pointer;
 
 }
+
 .test{
     background-color:black;
 }
@@ -50,8 +49,9 @@ transform: rotate(360deg);
 }
 
 .overflow-div::-webkit-scrollbar-thumb {
-    background-color: black;
+    background-color: gray;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 /* Add your desired color to the background property */
@@ -103,32 +103,31 @@ transform: rotate(360deg);
 
 .blurr {
     position: relative;
+    border: 3px solid rgba(133, 77, 13);
+    text-shadow: 3px 3px 1px gray;
 }
 
 .blurr:hover {
-    outline: 3px solid rgba(133, 77, 13, 1);
 
     cursor: pointer;
 }
 
-.blurr::before:active {
+.blurr::before {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
     position: absolute;
     content: '';
     z-index: 7;
-
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    
 }
 
 .blurr1 {
     position: relative;
+    border: 3px solid rgba(133, 77, 13);
 }
 
 .blurr1:hover {
-    outline: 3px solid rgba(133, 77, 13, 1);
 
     cursor: pointer;
 }
@@ -147,11 +146,11 @@ transform: rotate(360deg);
 
 .blurr2 {
     position: relative;
+    border: 3px solid rgba(133, 77, 13);
 
 }
 
 .blurr2:hover {
-    outline: 3px solid rgba(133, 77, 13, 1);
     cursor: pointer;
 }
 
@@ -169,10 +168,10 @@ transform: rotate(360deg);
 
 .blurr3 {
     position: relative;
+    border: 3px solid rgba(133, 77, 13);
 }
 
 .blurr3:hover {
-    outline: 3px solid rgba(133, 77, 13);
     cursor: pointer;
 }
 

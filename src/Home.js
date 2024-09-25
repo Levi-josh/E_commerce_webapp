@@ -57,7 +57,6 @@ const Home = () => {
     }, [menubar || popout])
 
   
-
  useEffect(() => {
      const selectedid = data?.items?.filter(prev => prev.selected === true)
         setseletedcart(selectedid && selectedid[0]?._id)
@@ -94,18 +93,17 @@ useEffect(() => {
         setscroll(menubar ? scroll : window.scrollY)
         setmenubar(prev => !prev)
         
+
+                // Notification.requestPermission().then(perm => {
+                //     if (perm === 'granted') {
+                //         new Notification('new note', {
+                //             body: 'hello',
+                //             icon: 'https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph',
+                //             image: 'https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph'
+                //         })
         
-        /*
-                Notification.requestPermission().then(perm => {
-                    if (perm === 'granted') {
-                        new Notification('new note', {
-                            body: 'hello',
-                            icon: 'https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph',
-                            image: 'https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph'
-                        })
-        
-                    }
-                })*/
+                //     }
+                // })
     }
     function showmenu1() {
     setcheck(prev => !prev)
@@ -135,7 +133,6 @@ useEffect(() => {
             catch (err) {
             seterror(err.message === 'Failed to fetch' ? { 'message': 'Failed to add cart' }:err)
             console.log(err)
-           
             }
         setadded(prev => !prev)
         setTimeout(() => {
@@ -216,8 +213,16 @@ const option = {
     return (
         <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
 
-            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 ${mode.colormode&&' shadow-stone-700  shadow-md'}   w-full m-0 ${bgcolor} ${textcolor} z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
-                <motion.h1 animate={{ x: -2 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`font-bold text-lg sm:text-2xl  xl:text-3xl    ${menubar ? 'invisible lg:visible' : 'visble'}`} >Glamour Grove</motion.h1>
+            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-4 sm:px-8 md:px-12 lg:px-3 ${mode.colormode&&' shadow-stone-700  shadow-md'}   w-full m-0 ${bgcolor} ${textcolor} z-20 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
+                <motion.div animate={{ x: 0 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`    ${menubar ? 'invisible lg:visible' : 'visble'}`} >
+                    {id?
+                    <div className='flex gap-2 items-center '>
+                        <FaUserCircle className={`${bgcolor}${textcolor} text-2xl sm:text-3xl`} />
+                        <p className='text-lg font-semibold sm:text-2xl'>Josh kelly</p>
+                    </div>:
+                    <p className="font-bold text-lg sm:text-2xl  xl:text-3xl">Glamour Grove</p>
+                    }
+                </motion.div>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
 
@@ -226,14 +231,14 @@ const option = {
                     <NavLink ><li>About us</li></NavLink>
 
                 </ul>
-                <div className='flex gap-3 sm:gap-7 md:gap-8 lg:gap-4 xl:gap-12 items-center    '>
-                    <NavLink to={'/note'}>   <div className={` text-lg sm:text-xl ${bgcolor} ${textcolor} md:text-2xl outline outline-2 outline-yellow-900   flex justify-center sm:h-10 md:w-101 h-8 items-center w-102 sm:w-103 text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-900`}><FaBell className=' ' /></div></NavLink>
-                    <NavLink to='/cart/:id' className=' '><div className={`flex ${bgcolor} ${textcolor} outline outline-2 outline-yellow-900 h-8 items-center text-lg sm:text-xl  sm:w-103 md:text-2xl justify-center text-black hover:text-white w-102  md:w-101 rounded-full sm:h-10 hover:cursor-pointer hover:bg-yellow-800`}><p className='hidden'>Cart</p><FaShoppingCart /></div></NavLink>
+                <div className='flex gap-14 sm:gap-20 md:gap-24 lg:gap-4 xl:gap-12 items-center     '>
+                    <NavLink to={'/note'}>   <div className={` text-lg sm:text-xl ${bgcolor} ${textcolor} md:text-2xl    flex justify-center lg:h-10 lg:w-101  items-center  text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-900`}><FaBell className=' ' /></div></NavLink>
+                    <NavLink to='/cart/:id' className=' '><div className={`flex ${bgcolor} ${textcolor}  items-center text-lg sm:text-xl   md:text-2xl justify-center text-black hover:text-white lg:h-10 lg:w-101 rounded-full  hover:cursor-pointer hover:bg-yellow-800`}><p className='hidden'>Cart</p><FaShoppingCart /></div></NavLink>
 
-                    <div onClick={showmenu} className={`text-lg sm:text-xl lg:hidden ${bgcolor} ${textcolor} outline outline-2 outline-yellow-900   flex justify-center h-8 w-102 sm:h-10 md:w-101 sm:w-103 items-center text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-900`}><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' /></div>
-                    <div className={`lg:flex items-center  outline outline-2 ${bgcolor} ${textcolor} outline-yellow-900 justify-center ${menubar ? 'bg-yellow-900 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-900  hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p></div>
+                    <div onClick={showmenu} className={`text-lg sm:text-xl lg:hidden ${bgcolor} ${textcolor}    flex justify-center lg:h-10 lg:w-101  items-center text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-900`}><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' /></div>
+                    <div className={`lg:flex items-center   ${bgcolor} ${textcolor} justify-center ${menubar ? 'bg-yellow-900 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-900  hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p></div>
                 </div>
-            </header >
+            </header>
 
             <div>{<motion.div  initial={{x:'100%'}} animate={{x:menubar?window.matchMedia('(max-width: 768px)').matches?0:-12 :'100%'}} transition={{type:'tween',duration: 0.1, delay: 0}} className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full ${textcolor}    ${bgcolor}  lg:top-24 shadow-lg shadow-black rounded-lg right-0    z-30  lg:h-120  `}>
 
@@ -270,7 +275,6 @@ const option = {
                 </div>
             </motion.div>
             }</div>
-          
             <motion.div className={`fixed   w-130 sm:w-25 md:w-22 ${bgcolor} ${textcolor} popout lg:w-10     z-20 h-80 sm:h-96 lg:h-80    rounded-xl  ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
                 <FaTimesCircle className='absolute right-0  text-yellow-900  z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={() => {
                     setscroll(scroll)
@@ -312,7 +316,6 @@ const option = {
                 </div>  */}
                 
             </motion.div>
-            
             {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 ${bgcolor}  min-h-101 sm:min-h-102 lg:min-h-101 `}>
                 <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
@@ -341,134 +344,100 @@ const option = {
                 </div>
             </motion.div > */}
             
-            <div className='  sm:h-auto h-122   sm:pb-0 gap-5  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  sm:gap-0 sm:block'>
-                <div className='h-192 sm:h-auto'>
-
+            <div className='  md:h-auto h-122   md:pb-0 gap-5 sm:gap-10  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  md:gap-0 md:block'>
+                <div className='h-192 md:h-auto'>
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-
-
                         spaceBetween={20}
                         slidesPerView={1}
-
                         pagination={{ clickable: true }}
                         loop={true}
                         autoplay={{
                             delay: 3000, // Autoplay delay in milliseconds
                             disableOnInteraction: false, // Allow manual navigation to stop autoplay
                         }}
-
-
                     //onSwiper={(swiper) => console.log(swiper)}
-                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-130 lg:w-130 m-auto h-full sm:h-auto    '>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full sm:h-72 h-full      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-110 lg:w-130 m-auto h-full md:h-auto rounded-xl    '>
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-full rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz6odanAlur6EPzOrDU6Nj2oofspV-bsYG9M7w--oO0y1gvvIy_Fl9Tgk1hFyTsuhxJnU&usqp=CAU' className='min-w-full sm:h-72      md:h-96 bg-no-repeat bg-cover bg-center h-full     ' />
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz6odanAlur6EPzOrDU6Nj2oofspV-bsYG9M7w--oO0y1gvvIy_Fl9Tgk1hFyTsuhxJnU&usqp=CAU' className='min-w-full  rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center h-full     ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqecwmhypUjuCqjdpZ_6lTj1W7BbxWkXdlb746j0SJwTs3fJHq3bnlAHirmsMei5xP8ro&usqp=CAU' className='min-w-full sm:h-72      md:h-96 bg-no-repeat bg-cover bg-center object-cover h-full    ' />
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqecwmhypUjuCqjdpZ_6lTj1W7BbxWkXdlb746j0SJwTs3fJHq3bnlAHirmsMei5xP8ro&usqp=CAU' className='min-w-full  rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center object-cover h-full    ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full sm:h-72       md:h-96 bg-no-repeat bg-cover bg-center h-full    ' />
+                        <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full   rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center h-full    ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-vector/flat-design-minimal-boutique-sale-background_23-2149337460.jpg' className='min-w-full sm:h-72 h-full       md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-vector/flat-design-minimal-boutique-sale-background_23-2149337460.jpg' className='min-w-full h-full   rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://marketplace.canva.com/EAFKwirl3N8/1/0/1600w/canva-brown-minimalist-fashion-product-banner-iRHpbHTqh-A.jpg' className='min-w-full sm:h-72 h-full       md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://marketplace.canva.com/EAFKwirl3N8/1/0/1600w/canva-brown-minimalist-fashion-product-banner-iRHpbHTqh-A.jpg' className='min-w-full h-full   rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
                     </Swiper>
                 </div >
-            
-            
-                <div className='flex justify-center h-191 sm:h-auto sm:mb-0'>
-                    <div className=' sm:mt-12 lg:mt-20   sm:mb-9 grid gap-y-8  sm:gap-y-11 md:gap-y-12 lg:gap-y-10 grid-cols-4 lg:justify-center px-3 py-8  sm:py-11 md:py-12 lg:py-10  w-120  sm:w-130 lg:w-130 shadow-xl bg-yellow-900   rounded-xl  '>
-                        <div className='flex flex-col items-center   justify-center rounded-full'>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
-                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Premium</p>
-                        </div>
-                        <div className='flex flex-col items-center  justify-center  rounded-full'>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaMoneyBill /></div>
-                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Buy shares</p>
+                <div className='flex justify-center h-191 md:h-auto md:mb-0'>
+                    <div className={` md:mt-12 lg:mt-20   md:mb-9 grid gap-8  sm:gap-11 md:gap-12 lg:gap-10 grid-cols-3  px-3 py-8  sm:py-11 md:py-12 lg:py-16   w-120  sm:w-110 lg:w-130 shadow-xl bg-yellow-900   rounded-xl  `}>
+                        <div className='flex flex-col items-center flex-shrink-0    justify-center rounded-full'>
+                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaSubscript className=''/></div>
+                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>Premium</p>
                         </div>
                         <div className='flex flex-col items-center  justify-center rounded-full'>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaCar /></div>
-                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Delivery</p>
+                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaCar className=''/></div>
+                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>Delivery</p>
                         </div>
                         <div className='flex flex-col items-center  justify-center rounded-full'>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaUser /></div>
-                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Account</p>
+                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaUser className='' /></div>
+                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>Account</p>
                         </div>
                         <div className='flex flex-col items-center  justify-center rounded-full'>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
-                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold'>Services</p>
-                        </div>
-                        <div className='flex flex-col items-center  justify-center rounded-full'>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaSubscript /></div>
-                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold' >Privacy policy</p>
+                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaSubscript className=''/></div>
+                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>Services</p>
                         </div>
                         <div className='flex flex-col items-center  justify-center rounded-full   '>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white rotate-180 items-center'> <FaPhone /></div>
-                            <p className='text-center text-xs text-white sm:text-sm lg:text-base font-semibold whitespace-nowrap'>Support</p>
+                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaPhone className=''/></div>
+                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>Support</p>
                         </div>
                         <div className='flex flex-col items-center  justify-center rounded-full'>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'> <FaQuestion /></div>
-                            <p className='text-center text-white text-xs sm:text-sm lg:text-base font-semibold'>FAQ</p>
+                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaQuestion className=''/></div>
+                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>FAQ</p>
                         </div>
-
                     </div>
                 </div>
-                <h1 className='font-bold  sm:mb-9 text-center text-2xl sm:text-3xl lg:text-4xl '>Our services</h1>
-                </div>
-               
-                <section className='mt-7 sm:mt-0'>
+                <h1 className='font-bold  md:mb-9 text-center text-2xl sm:text-3xl lg:text-4xl '>Our services</h1>
+                </div> 
+                <section className='mt-7 md:mt-0'>
                     <audio controls className='hidden' ref={audiosound}>
                         <source src={notify} type="audio/mp3" />
-
                     </audio>
-
-                    <div className='flex flex-col md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center md:w-130 m-auto lg:w-130   justify-center items-center'>
-                        <div className='md:w-full blurr3'>
-                            <div className='absolute hidden  bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
-                                <h1 className='font-bold md:text-lg lg:text-xl'>clothes</h1>
-                                <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
-                            </div>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full sm:w-96 xl:h-100 sm:h-56 object-cover' />
+                    <div className='flex flex-col w-120 sm:w-110  md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center  m-auto lg:w-130   justify-center items-center'>
+                        <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden'>
+                            <h1 className='font-bold text-3xl sm:text-4xl lg:text-4xl absolute text-white z-10 '>Clothes</h1>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-full h-60  sm:h-72  xl:h-100  ' />
                         </div>
-                        <div className='md:w-full blurr2'>
-                            <div className='absolute hidden bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
-                                <h1 className='font-bold md:text-lg lg:text-xl'>Glasses</h1>
-                                <p className=' hover:cursor-pointer md:text-lg '>see more...</p>
-                            </div>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 object-cover' />
+                        <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden '>
+                            <h1 className='font-bold text-3xl sm:text-4xl lg:text-4xl absolute text-white z-10'>Glasses</h1>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
                         </div>
-                        <div className='md:w-full blurr1 '>
-                            <div className='absolute hidden bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
-                                <h1 className='font-bold md:text-lg lg:text-xl'>Watches</h1>
-                                <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 object-cover' />
+                        <div className='w-full blurr rounded-xl flex items-center justify-center  overflow-hidden'>
+                            <h1 className='font-bold text-3xl sm:text-4xl lg:text-4xl absolute text-white z-10'>Watches</h1>
+                            <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
                         </div>
-                        <div className='md:w-full blurr'>
-                            <div className='absolute hidden bg-yellow-900 w-36 mt-3 md:w-40 lg:w-44 xl:w-48 pl-3 md:pl-4 lg:pl-5 lg:mt-5 lg:py-1 ml-2 lg:ml-4 text-white'>
-                                <h1 className='font-bold md:text-lg lg:text-xl'>Shoes</h1>
-                                <p className=' hover:cursor-pointer md:text-lg'>see more...</p>
-                            </div>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-72 h-48 lg:w-full lg:h-72 md:w-full xl:h-100 sm:w-96 sm:h-56 ' />
+                        <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden  '>
+                            <h1 className='font-bold   text-3xl sm:text-4xl lg:text-4xl absolute text-white z-10'>Shoes</h1>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-full h-60  sm:h-72 xl:h-100   ' />
                         </div>
 
                     </div>
                     {/*overflow hidden divs*/}
-
 
                     {/* <div >*/}
                     <div className='flex justify-between items-center'>
                         <h1 className=' font-extrabold my-3 ml-3 sm:ml-4 md:ml-5  text-xl sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
                         <NavLink to={'/product'}>   <div className='hidden font-semibold md:flex items-center  lg:pt-10 md:pr-5 lg:pr-7 md:pt-8 md:text-lg '> <p className=' lg:text-lg'>{`see more`}</p><div className='pt-1'><FaAngleRight className='text-lg' /></div></div></NavLink>
                     </div>
-                    <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div      '>
-
+                    <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div   '>
                         {items?.map(prev => {
                             return (
                                 <div className='min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-900            '>
                                     <img src={prev.image} alt='' className='rounded-lg w-full ' />
                                     <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
-                                        <div className='flex text-yellow-900 sm:text-lg lg:text-xl '>
+                                        <div className={`flex ${mode.colormode?'text-white':'text-black'} sm:text-lg lg:text-xl `}>
                                             <FaStar />
                                             <FaStar />
                                             <FaStar />
@@ -477,7 +446,7 @@ const option = {
                                         </div>
                                         <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
                                         <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
-                                        <button className='w-full bg-yellow-900 font-semibold py-1 sm:py-2 sm:text-lg lg:text-xl text-white' onClick={() => {buyorder(prev.id)}}>Add to cart</button>
+                                        <button className={`w-full bg-yellow-900 font-bold py-1 sm:py-2 sm:text-lg lg:text-xl ${!mode.colormode?'text-white':'text-black'}`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
                                     </div>
                                 </div>
                             )
@@ -497,35 +466,34 @@ const option = {
                             </h1>
                             <p className='mt-3 md:mt-4 lg:mt-8 md:text-lg'>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eum illum quam numquam impedit quo? Facere, optio! Voluptatum, possimus? Voluptatum corrupti error.
-
                             </p>
                             <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
                                 <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  `} onClick={showmenu1}>30% OFF</h1>
-                                <NavLink to={'/product'}> <button className='w-40 bg-yellow-900 mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 md:text-lg'>Shop Now</button></NavLink>
+                                <NavLink to={'/product'}> <button className={`w-40 bg-yellow-900 mt-4 ${!mode.colormode?'text-white':'text-black'} md:w-24 md:mt-0  md:h-10 md:rounded-lg font-bold h-8 md:text-lg`}>Shop Now</button></NavLink>
                             </div>
                         </div>
                     </div>
                     {/*about ends*/}
-                    <div className='grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5 text-white'>
-                        <div className=' bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl '>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>   <FaCar className='text-xl font-bold sm:text-2xl ' /></div>
+                    <div className={`grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5  `}>
+                        <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
+                            <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>   <FaCar className='text-xl font-bold sm:text-2xl ' /></div>
                             <h2 className='text-lg font-bold sm:text-xl '>Free shipping</h2>
-                            <p className='font-semibold md:text-lg '>Order above $200. </p>
+                            <p className={` font-semibold sm:text-lg `}>Order above $200. </p>
                         </div>
-                        <div className='bg-yellow-900   w-full h-40 md:h-44   pt-4 pl-2  lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>    <FaWallet className='text-xl font-bold sm:text-2xl ' /></div>
+                        <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
+                            <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>    <FaWallet className='text-xl font-bold sm:text-2xl ' /></div>
                             <h2 className='text-lg font-bold sm:text-xl '>Money back</h2>
-                            <p className='font-semibold md:text-lg '>30 days guarantee.</p>
+                            <p className='font-semibold sm:text-lg '>30 days guarantee.</p>
                         </div>
-                        <div className=' bg-yellow-900  w-full h-40 md:h-44  pt-4 px-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>   <FaLock className='text-xl font-bold sm:text-2xl ' /></div>
+                        <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
+                            <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>   <FaLock className='text-xl font-bold sm:text-2xl ' /></div>
                             <h2 className='text-lg font-bold sm:text-xl whitespace-nowrap '>Secure payments</h2>
-                            <p className='font-semibold md:text-lg '>Secure by stripe.</p>
+                            <p className='font-semibold sm:text-lg '>Secure by stripe.</p>
                         </div>
-                        <div className='bg-yellow-900  w-full h-40 md:h-44  pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5 sm:pt-6 md:pl-6 md:pt-6 rounded-xl'>
-                            <div className='w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center bg-yellow-700 text-white items-center'>  <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' /></div>
+                        <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
+                            <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>  <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' /></div>
                             <h2 className='text-lg font-bold sm:text-xl '>24/7 support</h2>
-                            <p className='font-semibold md:text-lg '>Phone and email support.</p>
+                            <p className='font-semibold sm:text-lg '>Phone and email support.</p>
                         </div>
                     </div>
                 </section>
@@ -544,11 +512,9 @@ const option = {
 
                     <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14'>
                         <NavLink to='/'>  <li>Home</li></NavLink>
-
                         <NavLink to='product'><li>Product</li></NavLink>
                         <NavLink to='contact'><li>Contact</li></NavLink>
                         <NavLink to='about'><li>About us</li></NavLink>
-
                     </ul>
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
@@ -563,7 +529,6 @@ const option = {
                         <FaInstagram />
                         <FaFacebook />
                         <FaYoutube />
-
                     </div>
                 </div>
                 </footer>
