@@ -61,10 +61,8 @@ const Home = () => {
      const selectedid = data?.items?.filter(prev => prev.selected === true)
         setseletedcart(selectedid && selectedid[0]?._id)
     })
-
+console.log(items)
   useEffect(() => {
-      // Check if the effect should run based on the boolean value
-     
     if (runEffect) {
     lognote.current.style.display='flex'
     audiosound.current?.play().catch(error => {
@@ -77,6 +75,7 @@ const Home = () => {
 }, [runEffect]);
 
 useEffect(() => {
+
     if (runEffect2) {
     noteref.current.style.display = 'flex'
      setdisplaynote(true)
@@ -137,8 +136,7 @@ useEffect(() => {
         setadded(prev => !prev)
         setTimeout(() => {
         setadded(prev => !prev)  
-        }, 2000);
-        
+        }, 2000);    
     }
     let errormessage; 
     if (error?.message === 'Failed to add cart'){
@@ -152,16 +150,14 @@ useEffect(() => {
         errormessage = ''
     } 
     
-    console.log(error?.message)
+console.log(error?.message)
 function opencollection() {
         setscroll(scroll)
         setpopout(prev => !prev)
         setshowinput(false)
         setmenubar(false) 
-    }
-    
+}
 const selectcartFunc = async(id)=> {
-   
     const option = {
                 method: 'PUT',
                 headers: {
@@ -173,22 +169,17 @@ const selectcartFunc = async(id)=> {
                 const data = await response.json()
                console.log(data)
             }
-
             catch (err) {
             seterror(err) 
             console.log(err)
-            }
+    }
 }
-
-
-
-    
+  
 const handleChange = (e) => {
     setnewcartText(e.target.value)
 }
 const handleSubmit = async (e) => {
 e.preventDefault()
-
 const option = {
                 method: 'POST',
                 headers: {
@@ -212,7 +203,6 @@ const option = {
 
     return (
         <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
-
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-4 sm:px-8 md:px-12 lg:px-3 ${mode.colormode&&' shadow-stone-700  shadow-md'}   w-full m-0 ${bgcolor} ${textcolor} z-20 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
                 <motion.div animate={{ x: 0 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`    ${menubar ? 'invisible lg:visible' : 'visble'}`} >
                     {id?

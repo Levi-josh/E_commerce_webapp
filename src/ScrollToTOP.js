@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Outlet, useLocation,useSearchParams } from 'react-router-dom'
+import { Outlet, useLocation,useSearchParams,useNavigate } from 'react-router-dom'
 import { Link, NavLink } from 'react-router-dom'
 import { FaBars, FaSearch, FaBell, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaRegArrowAltCircleDown, FaExclamationCircle } from 'react-icons/fa'
 
 const ScrollToTOP = () => {
 
-
+    const navigate = useNavigate()
     const b = useRef()
     const [Error, setError] = useState({})
     const location = useLocation();
@@ -25,9 +25,16 @@ const ScrollToTOP = () => {
  
     useEffect(() => {
     const myid = localStorage.getItem('myid')
-    setId(myid)
+    console.log(`Mid:${myid}`)
+    if(!myid){
+      if (location.pathname !== '/landing') {
+        navigate('/landing');
+      }else{
+        setId(myid)
+      }
     
-    },[location])
+    
+    }},[location,id])
 
     useEffect(() => {
         

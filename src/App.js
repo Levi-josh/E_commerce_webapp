@@ -23,6 +23,7 @@ import Secondhistory from './Secondhistory.js';
 import Firstnote from './Firstnote.js';
 import Secondnote from './Secondnote.js';
 import Signup from './Signup.js';
+import Landing from './Landing.js'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -42,16 +43,13 @@ function App() {
     <Route path='/history' element={<History />} >
       <Route index element={<Firsthistory />} />
       <Route path='/history/:id' element={<Secondhistory />} />
-
     </Route>
-
     <Route path='/demo' element={<Demo />} />
+    <Route path='/landing' element={<Landing/>} />
     <Route path='/cart/:id' element={<Cart />} >
       <Route index element={<Shopcart />} />
       <Route path='/cart/:id/checkout' element={<Checkout />}  />
       <Route path='/cart/:id/complete' element={<Complete />} />
-
-
     </Route>
     <Route path='/login' element={<Login />} />
     <Route path='/signup' element={<Signup />} />
