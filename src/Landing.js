@@ -20,7 +20,7 @@ const Landing = () => {
 
   return (
     <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white fixed before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
-    <div className='w-full  h-screen px-2 sm:px-5 pb-5   '>
+    {/* <div className='w-full  h-screen px-2 sm:px-5 pb-5   '>
         <div className='w-full h-full flex flex-col    '>
            <header className={` flex justify-between items-center  h-107  ${mode.colormode&&' shadow-stone-700  shadow-md'}   w-full m-0 ${bgcolor} ${textcolor}  `}>
                 <motion.div animate={{ x: 0 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`    ${menubar ? 'invisible lg:visible' : 'visble'}`} >
@@ -46,7 +46,60 @@ const Landing = () => {
                 <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full h-full object-cover  bg-no-repeat bg-cover bg-center   ' />
             </div>
         </div>
+    </div> */}
+<div className='w-full h-screen px-2 sm:px-5 pb-5'>
+  <div className='w-full h-full flex flex-col '>
+    {/* Small Header */}
+    <header className={`flex justify-between items-center h-14 sm:h-16 lg:h-20 xl:h-24 ${mode.colormode && 'shadow-stone-700 shadow-md'} w-full  ${bgcolor} ${textcolor}`}>
+      <motion.div 
+        animate={{ x: 0 }} 
+        transition={{ type: 'tween', duration: 1 }} 
+        initial={{ x: -100 }} 
+        className={`${menubar ? 'invisible lg:visible' : 'visible'}`}
+      >
+        <p className="font-bold text-lg sm:text-2xl xl:text-3xl">Glamour Grove</p>
+      </motion.div>
+      <ul className='hidden lg:flex lg:gap-18 xl:gap-20 md:text-lg'>
+        <NavLink to='/'>
+          <li>Home</li>
+        </NavLink>
+        <NavLink to='/product'>
+          <li>Product</li>
+        </NavLink>
+        <NavLink>
+          <li>Contact</li>
+        </NavLink>
+        <NavLink>
+          <li>About Us</li>
+        </NavLink>
+      </ul>
+      <div className='flex gap-4 items-center'>
+        <button>Sign in</button>
+        <button className='bg-yellow-900 px-3 py-1 sm:px-5 sm:py-2 rounded-xl text-white'>Sign up</button>
+      </div>
+    </header>
+
+    {/* Hero section filling remaining space */}
+    <div className='flex-grow relative hero rounded-xl overflow-hidden before:bg-gradient-to-r  before:from-blurblack  before:via-blurblack   before:to-blurblack2'>
+      {/* Hero text container */}
+      <div className='absolute flex flex-col text-white justify-center gap-5 z-10 h-full pl-5 w-130 sm:w-140 xl:w-22'>
+        <h1 className='font-bold text-5xl sm:text-6xl lg:text-7xl font-serif leading11'>More than just a shopping app</h1>
+        <p className='font-serif text-sm sm:text-base leading-7 sm:leading-10'>
+          Glamour Grove is your one-stop shop for your clothes, shoes, jewelry, and more. We weren't just given the title "the best shopping app," we earned it.
+        </p>
+        <button className='px-3 w-32 py-1 bg-yellow-900 text-white rounded-xl'>Shop Now</button>
+      </div>
+
+      {/* Hero image */}
+      <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' 
+        className='w-full h-full object-cover bg-no-repeat bg-cover bg-center' 
+        alt="Shopping banner"
+      />
     </div>
+  </div>
+</div>
+
+
     <div className='    md:pb-0 gap-5 sm:gap-10  flex flex-col px-5  md:gap-0 md:block'>
    
         <h1 className='font-bold  md:mb-9 text-center text-2xl sm:text-3xl lg:text-4xl '>Our services</h1>
