@@ -26,14 +26,9 @@ const ScrollToTOP = () => {
     useEffect(() => {
     const myid = localStorage.getItem('myid')
     console.log(`Mid:${myid}`)
-    if(!myid){
-      if (location.pathname !== '/landing') {
+    if(!myid&&location.pathname =='/'){
+
         navigate('/landing');
-      }else{
-        setId(myid)
-      }
-    
-    
     }},[location,id])
 
     useEffect(() => {

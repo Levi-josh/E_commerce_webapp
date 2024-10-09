@@ -72,8 +72,8 @@ const Login = () => {
   };
  
     return (
-        <div className={`flex justify-center ${bgcolor} ${textcolor}  items-center w-full  h-screen `}>
-            <NavLink to='../' path='relative'> <FaAngleLeft className='font-bold absolute top-5 left-3  sm:top-10 sm:left-5  text-2xl sm:text-3xl ' ></FaAngleLeft></NavLink>
+        <div className={`flex justify-center ${bgcolor} ${textcolor} fixed items-center w-full  h-screen `}>
+            <NavLink to='/landing'> <FaAngleLeft className='font-bold absolute top-5 left-3  sm:top-10 sm:left-5  text-2xl sm:text-3xl ' ></FaAngleLeft></NavLink>
 
             <div className={`w-130 sm:w-140  lg:w-130  xl:w-140 lg:h-96  rounded-xl ${mode.colormode?'shadow-stone-700 shadow-lg ':'shadow-2xl'}   justify-center lg:items-center   items-start flex flex-col lg:flex-row  gap-3 sm:gap-6  lg:gap-12 `}>
                 <div className='w-full md:h-full'>
@@ -96,7 +96,7 @@ const Login = () => {
                         <input type='checkbox' className=' accent-yellow-900 sm:w-4 sm:h-4 hover:cursor-pointer lg:w-5 lg:h-5' />
                         <p className='whitespace-nowrap  lg:font-semibold'>I agree to the terms and condition</p>
                     </div>
-                    <button className={`w-full relative py-2 md:py-3 rounded-xl smtext-lg lg:text-xl font-semibold  bg-yellow-900 text-white  ${disabled ? mode.colormode?'opacity-50 cursor-not-allowed':'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}><p className={`${showtext?'invisible':'visible'}`}>Sign In</p>{(showtext) && <FaSpinner className='absolute popout'/>}</button>
+                    <button className={`w-full relative py-2 md:py-3  sm:text-lg lg:text-xl font-semibold  bg-yellow-900 text-white  ${disabled ? mode.colormode?'opacity-50 cursor-not-allowed':'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}><p className={`${showtext?'invisible':'visible'}`}>Sign In</p>{(showtext) && <FaSpinner className='absolute popout'/>}</button>
                 </form>
             </div>
         </div>

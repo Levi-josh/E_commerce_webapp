@@ -122,7 +122,7 @@ module.exports = {
         blurblack2:'rgba(0, 0, 0, 0.3)'
       },
       lineHeight:{
-        leading11:'50px'
+        leading11:'60px'
       }
 
     },
