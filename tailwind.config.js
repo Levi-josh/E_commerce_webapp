@@ -38,7 +38,9 @@ module.exports = {
         250: "700px",
         300: "850px",
         400: "1050px",
-        410: '40px'
+        410: '40px',
+        418:'48px',
+        426:'56px'
 
       },
       margin: {
@@ -119,7 +121,8 @@ module.exports = {
       },
       colors:{
         blurblack:'rgba(0, 0, 0, 0.7)',
-        blurblack2:'rgba(0, 0, 0, 0.3)'
+        blurblack2:'rgba(0, 0, 0, 0.3)',
+        bluryellow:'rgba(113, 63, 18, 0.7)'
       },
       lineHeight:{
         leading11:'60px'

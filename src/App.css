@@ -3,7 +3,24 @@
     background-color: gainsboro;
     height: 5px;
     cursor: pointer;
+    border-radius: 20px;
 
+}
+.overflow-div2::-webkit-scrollbar {
+    width: 0px;
+    background-color: #44403c;
+    height: 5px;
+    cursor: pointer;
+    border-radius: 20px;
+
+}
+.addShadow{
+    box-shadow: 1px 1px 8px rgb(212, 210, 210);
+  
+}
+.addShadow2{
+    box-shadow: 1px 1px 8px #292524;
+  
 }
 
 .test{
@@ -49,7 +66,12 @@ transform: rotate(360deg);
 }
 
 .overflow-div::-webkit-scrollbar-thumb {
-    background-color: gray;
+    background-color: rgba(113, 63, 18, 1);
+    border-radius: 20px;
+    cursor: pointer;
+}
+.overflow-div2::-webkit-scrollbar-thumb {
+    background-color: rgba(113, 63, 18, 1);
     border-radius: 20px;
     cursor: pointer;
 }
@@ -70,7 +92,7 @@ transform: rotate(360deg);
         backdrop-filter: blur(5px);
         width: 100%;
         height: 100%;
-        /* background-color: rgba(0, 0, 0, 0.3); */
+        /* background-color: rgba(113 63 18 0.3); */
         position: fixed;
         content: '';
         z-index: 11;
@@ -113,9 +135,10 @@ transform: rotate(360deg);
 
 .blurr {
     position: relative;
-    border: 3px solid rgba(133, 77, 13);
-    text-shadow: 3px 3px 1px gray;
+    /* border: 3px solid rgba(133, 77, 13); */
+    /* text-shadow: 3px 3px 1px gray; */
 }
+
 
 .blurr:hover {
 
@@ -394,4 +417,16 @@ transform: rotate(360deg);
         z-index: 8;
         opacity: 0.9;
 }
+}
+@media screen and (max-width: 1020px) {
+    .hero2{
+        position: relative;  
+    }
+    .hero2::before{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        content: '';
+        z-index: 7;
+    }
 }

@@ -24,12 +24,13 @@ const ScrollToTOP = () => {
     }, [location]);
  
     useEffect(() => {
-    const myid = localStorage.getItem('myid')
-    console.log(`Mid:${myid}`)
-    if(!myid&&location.pathname =='/'){
+    // const myid = localStorage.getItem('myid')
+    // console.log(`Mid:${myid}`)
+    // if(!myid&&location.pathname =='/'){
 
-        navigate('/landing');
-    }},[location,id])
+    //     navigate('/landing');
+    // }
+  },[location,id])
 
     useEffect(() => {
         

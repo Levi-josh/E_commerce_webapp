@@ -52,6 +52,7 @@ const Home = () => {
     const dispatch = useDispatch()
     const bgcolor = mode?.colorBgtext
     const textcolor = mode?.colortext
+    const contactRef = useRef(null);
     useEffect(() => {
         window.scrollTo(0, scroll)
     }, [menubar || popout])
@@ -87,7 +88,13 @@ useEffect(() => {
         }, 3000);}
 
 }, []);
-
+const navSignIn = ()=>{
+    navigate('/product')  
+}
+const scrolltoPage1 = (currentRef)=> {
+    setmenubar(false)
+    currentRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
     function showmenu() {
         setscroll(menubar ? scroll : window.scrollY)
         setmenubar(prev => !prev)
@@ -108,7 +115,6 @@ useEffect(() => {
     setcheck(prev => !prev)
        
     }
-
     const buyorder = async (id) => {  
         console.log(selectedcart) 
     const option = {
@@ -202,8 +208,8 @@ const option = {
     }
 
     return (
-        <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
-            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-4 sm:px-8 md:px-12 lg:px-3 ${mode.colormode&&' shadow-stone-700  shadow-md'}   w-full m-0 ${bgcolor} ${textcolor} z-20 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
+        <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full flex-col flex ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
+            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-4 sm:px-8 md:px-12 lg:px-3   w-full m-0 ${bgcolor} ${textcolor} z-20  `}>
                 <motion.div animate={{ x: 0 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`    ${menubar ? 'invisible lg:visible' : 'visble'}`} >
                     {id?
                     <div className='flex gap-2 items-center '>
@@ -215,18 +221,24 @@ const option = {
                 </motion.div>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
-
                     <NavLink to='/product'><li>Product</li></NavLink>
-                    <NavLink ><li>contact</li></NavLink>
+                    <li className='hover:cursor-pointer' onClick={()=>scrolltoPage1(contactRef)}>contact</li>
                     <NavLink ><li>About us</li></NavLink>
-
                 </ul>
-                <div className='flex gap-14 sm:gap-20 md:gap-24 lg:gap-4 xl:gap-12 items-center     '>
-                    <NavLink to={'/note'}>   <div className={` text-lg sm:text-xl ${bgcolor} ${textcolor} md:text-2xl    flex justify-center lg:h-10 lg:w-101  items-center  text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-900`}><FaBell className=' ' /></div></NavLink>
-                    <NavLink to='/cart/:id' className=' '><div className={`flex ${bgcolor} ${textcolor}  items-center text-lg sm:text-xl   md:text-2xl justify-center text-black hover:text-white lg:h-10 lg:w-101 rounded-full  hover:cursor-pointer hover:bg-yellow-800`}><p className='hidden'>Cart</p><FaShoppingCart /></div></NavLink>
+                <div className='flex gap-10 sm:gap-20 md:gap-24 lg:gap-4 xl:gap-12 items-center     '>
+                <NavLink to='/note' className=' '><div className={`flex ${bgcolor} ${textcolor}  items-center text-lg sm:text-xl   md:text-2xl justify-center text-black lg:hover:text-white lg:h-10 lg:w-101 rounded-full  hover:cursor-pointer lg:hover:bg-yellow-800`}><p className='hidden'>Cart</p><FaBell/></div></NavLink>
+                    <NavLink to={'/listcols'}>   <div className={` text-lg sm:text-xl ${bgcolor} ${textcolor} md:text-2xl    flex justify-center lg:h-10 lg:w-101  items-center  text-black  lg:hover:text-white rounded-full hover:cursor-pointer lg:hover:bg-yellow-900`}> 
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3H5L6.68 14.39C6.81865 15.3682 7.63005 16 8.615 16H19.385C20.37 16 21.1814 15.3682 21.32 14.39L23 3H5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <circle cx="9" cy="20" r="1" stroke="currentColor" strokeWidth="2"/>
+                        <circle cx="19" cy="20" r="1" stroke="currentColor" strokeWidth="2"/>
+                    </svg>
+                    </div>
+                    </NavLink>
+                   
 
-                    <div onClick={showmenu} className={`text-lg sm:text-xl lg:hidden ${bgcolor} ${textcolor}    flex justify-center lg:h-10 lg:w-101  items-center text-black  hover:text-white rounded-full hover:cursor-pointer hover:bg-yellow-900`}><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' /></div>
-                    <div className={`lg:flex items-center   ${bgcolor} ${textcolor} justify-center ${menubar ? 'bg-yellow-900 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'hover: hover:bg-yellow-900  hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p></div>
+                    <div onClick={showmenu} className={`text-lg sm:text-xl lg:hidden ${bgcolor} ${textcolor}    flex justify-center lg:h-10 lg:w-101  items-center text-black  lg:hover:text-white rounded-full hover:cursor-pointer lg:hover:bg-yellow-900`}><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' /></div>
+                    <div className={`lg:flex items-center   ${bgcolor} ${textcolor} justify-center ${menubar ? 'bg-yellow-900 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'lg:hover:bg-yellow-900  lg:hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p></div>
                 </div>
             </header>
 
@@ -247,7 +259,7 @@ const option = {
 
                             <NavLink to={'/'} ><div className='flex hover:lg:bg-neutral-100  gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaHome className='text-lg sm:text-xl md:text-2xl' /> <p className='    py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
                             <NavLink to={'/product'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaShopify className='text-lg sm:text-xl md:text-2xl' /><p className='  py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden'>Products</p></div></NavLink>
-                            <NavLink ><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3 sm:py-4  sm:text-lg md:text-xl font-semibold  lg:hidden'>Contact</p></div></NavLink>
+                            <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl ' /><p className=' py-3 sm:py-4  sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={()=>scrolltoPage1(contactRef)}>Contact</p></div>
                             <NavLink > <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:lg:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
                         </div>
                         <div className='flex flex-col lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  '>
@@ -320,9 +332,6 @@ const option = {
             <div className={` bg-yellow-900 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
                 <p>you're logged in</p>
             </div>
-            <div className={` bg-yellow-900 ${ added && !error?.message? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
-                <p>Added to cart</p>
-            </div>
             {/* <motion.div animate={{y:displaynote?130:0,x:'50%',x:'-50%'}} initial={{x:'50%',x:'-50%'}} transition={{ type: 'tween', duration: 1 }}     className={` hidden bg-white allpopout outline-yellow-900 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20 fixed  justify-center flex-col   text-black  `} ref={noteref} >
                 <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4' >
                         <FaBell className='text-yellow-900 text-lg sm:text-xl lg:text-2xl' />
@@ -334,8 +343,8 @@ const option = {
                 </div>
             </motion.div > */}
             
-            <div className='  md:h-auto h-122   md:pb-0 gap-5 sm:gap-10  pt-24 sm:pt-36 md:pt-40 lg:pt-40 flex flex-col  md:gap-0 md:block'>
-                <div className='h-192 md:h-auto'>
+            <div className='   h-122 lg:h-full    gap-5 sm:gap-10  pt-24 sm:pt-32 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
+                <div className='h-192 lg:h-screen  lg:pb-10 lg:pt-32'>
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                         spaceBetween={20}
                         slidesPerView={1}
@@ -346,85 +355,95 @@ const option = {
                             disableOnInteraction: false, // Allow manual navigation to stop autoplay
                         }}
                     //onSwiper={(swiper) => console.log(swiper)}
-                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120 sm:w-110 lg:w-130 m-auto h-full md:h-auto rounded-xl    '>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-full rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120  lg:w-110 m-auto h-full   rounded-xl    '>
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-full rounded-xl       bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz6odanAlur6EPzOrDU6Nj2oofspV-bsYG9M7w--oO0y1gvvIy_Fl9Tgk1hFyTsuhxJnU&usqp=CAU' className='min-w-full  rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center h-full     ' />
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz6odanAlur6EPzOrDU6Nj2oofspV-bsYG9M7w--oO0y1gvvIy_Fl9Tgk1hFyTsuhxJnU&usqp=CAU' className='min-w-full  rounded-xl       bg-no-repeat bg-cover bg-center h-full     ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqecwmhypUjuCqjdpZ_6lTj1W7BbxWkXdlb746j0SJwTs3fJHq3bnlAHirmsMei5xP8ro&usqp=CAU' className='min-w-full  rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center object-cover h-full    ' />
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqecwmhypUjuCqjdpZ_6lTj1W7BbxWkXdlb746j0SJwTs3fJHq3bnlAHirmsMei5xP8ro&usqp=CAU' className='min-w-full  rounded-xl       bg-no-repeat bg-cover bg-center object-cover h-full    ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full   rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center h-full    ' />
+                        <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full   rounded-xl       bg-no-repeat bg-cover bg-center h-full    ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-vector/flat-design-minimal-boutique-sale-background_23-2149337460.jpg' className='min-w-full h-full   rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-vector/flat-design-minimal-boutique-sale-background_23-2149337460.jpg' className='min-w-full h-full   rounded-xl       bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://marketplace.canva.com/EAFKwirl3N8/1/0/1600w/canva-brown-minimalist-fashion-product-banner-iRHpbHTqh-A.jpg' className='min-w-full h-full   rounded-xl      md:h-96 bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://marketplace.canva.com/EAFKwirl3N8/1/0/1600w/canva-brown-minimalist-fashion-product-banner-iRHpbHTqh-A.jpg' className='min-w-full h-full   rounded-xl       bg-no-repeat bg-cover bg-center   ' />
                         </SwiperSlide>
                     </Swiper>
                 </div >
-                <div className='flex justify-center h-191 md:h-auto md:mb-0'>
-                    <div className={` md:mt-12 lg:mt-20   md:mb-9 grid gap-8  sm:gap-11 md:gap-12 lg:gap-10 grid-cols-3  px-3 py-8  sm:py-11 md:py-12 lg:py-16   w-120  sm:w-110 lg:w-130 shadow-xl bg-yellow-900   rounded-xl  `}>
-                        <div className='flex flex-col items-center flex-shrink-0    justify-center rounded-full'>
-                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaSubscript className=''/></div>
-                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>Premium</p>
-                        </div>
-                        <div className='flex flex-col items-center  justify-center rounded-full'>
-                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaCar className=''/></div>
-                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>Delivery</p>
-                        </div>
-                        <div className='flex flex-col items-center  justify-center rounded-full'>
-                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaUser className='' /></div>
-                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>Account</p>
-                        </div>
-                        <div className='flex flex-col items-center  justify-center rounded-full'>
-                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaSubscript className=''/></div>
-                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>Services</p>
-                        </div>
-                        <div className='flex flex-col items-center  justify-center rounded-full   '>
-                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaPhone className=''/></div>
-                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>Support</p>
-                        </div>
-                        <div className='flex flex-col items-center  justify-center rounded-full'>
-                            <div className={`w-9 h-9 sm:w-11 sm:h-11   rounded-full flex flex-shrink-0 hover:cursor-pointer  justify-center  items-center ${textcolor} ${bgcolor}`}> <FaQuestion className=''/></div>
-                            <p className={`text-center text-sm sm:text-base font-bold ${!mode.colormode?'text-white':'text-black'}`}>FAQ</p>
+                <div className='flex justify-center h-191 w-full items-center '>
+                    <div className={`flex  w-120  ${bgcolor} ${mode.colormode?'addShadow2':'addShadow'}  h-full hero2 overflow-hidden rounded-xl  before:bg-gradient-to-r   before:from-blurblack  before:via-blurblack   before:to-blurblack2`}>
+                        <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full h-full   bg-no-repeat bg-cover bg-center   ' />
+                        <div className={`flex   flex-col z-10 lg:z-0 w-full p-2 sm:p-5 absolute  lg:static gap-3 sm:gap-6 justify-between  h-full `}>
+                            <div className='flex w-full items-center justify-between '>
+                                <p className='text-base bg-yellow-900 px-3 lg:px-6 lg:py-2 rounded-md sm:text-lg text-white font-semibold'>LIMITED EDITION</p>
+                                <h1 className='text-base sm:text-lg lg:text-xl font-semibold'>Hurry up! 30% OFF</h1>
+                            </div>
+                            <p className='text-sm sm:text-base'>Find clothes that fits your lifestyle</p>
+                            <div className='flex flex-col gap-2 sm:gap-3'>
+                                <p className='text-sm sm:text-base'>Offer expires in:</p>
+                                <div className='flex gap-5 items-center w-full font-bold text-black'>
+                                    <div className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10  ${mode.colormode?'lg:bg-white ':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>02</div>
+                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'lg:bg-white ':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>12</div>
+                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'lg:bg-white ':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>45</div>
+                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'lg:bg-white ':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>05</div>
+                                </div>
+                            </div>
+                            <div><button className='bg-yellow-900 px-3 text-white lg:px-8 lg:py-2 py-1 rounded-lg'>Shop Now</button></div> 
                         </div>
                     </div>
+                    {/* <div className={` md:mt-12 lg:mt-20   md:mb-9  gap-3 p-3 h-full   w-120  sm:w-110 flex flex-col md:flex-row   bg-yellow-900   rounded-xl  `}>
+                        <div className={`${bgcolor} rounded-xl w-full flex lg:flex-col h-full items-center pl-3 gap-5`}>
+                            <div className='bg-yellow-900 rounded-xl lg:rounded-full w-8 h-8'>  </div>
+                            <p className={``}>Secured transaction</p>
+                        </div>
+                        <div className={`${bgcolor} rounded-xl flex lg:flex-col  w-full h-full items-center pl-3 gap-5`}>
+                            <div className='bg-yellow-900 rounded-xl lg:rounded-full w-8 h-8'>  </div>
+                            <p className={``}>24/7 support</p>
+                        </div>
+                        <div className={`${bgcolor} rounded-xl flex lg:flex-col  w-full h-full  items-center pl-3 gap-5`}>
+                            <div className='bg-yellow-900 rounded-xl lg:rounded-full w-8 h-8 overflow-hidden'><img className='w-full h-full ' src={!mode.colormode?'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpNUVmFzVC6x-hpP0fHTr1hOvQKg4VwWbopg&s':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLGqGinjbyBoX1AEvGGa6Nht-pUTwBsE5joQ&s'}/>  </div>
+                            <p className={``}>Fast delivery</p>
+                        </div>
+                    </div> */}
                 </div>
-                <h1 className='font-bold  md:mb-9 text-center text-2xl sm:text-3xl lg:text-4xl '>Our services</h1>
+
                 </div> 
-                <section className='mt-7 md:mt-0'>
+                <div className='w-120 m-auto lg:pt-6 pb-3  '>
+                <h1 className='font-bold      text-2xl sm:text-3xl '>Our services</h1>
+                </div> 
+                <section className=''>
                     <audio controls className='hidden' ref={audiosound}>
                         <source src={notify} type="audio/mp3" />
                     </audio>
-                    <div className='flex flex-col w-120 sm:w-110  md:grid md:grid-cols-2   gap-8 md:gap-5  lg:gap-x-5 xl:gap-x-5 xl:gap-y-5 md:justify-items-center  m-auto lg:w-130   justify-center items-center'>
-                        <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden'>
-                            <h1 className='font-bold text-3xl sm:text-4xl lg:text-4xl absolute text-white z-10 '>Clothes</h1>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-full h-60  sm:h-72  xl:h-100  ' />
-                        </div>
-                        <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden '>
-                            <h1 className='font-bold text-3xl sm:text-4xl lg:text-4xl absolute text-white z-10'>Glasses</h1>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
-                        </div>
-                        <div className='w-full blurr rounded-xl flex items-center justify-center  overflow-hidden'>
-                            <h1 className='font-bold text-3xl sm:text-4xl lg:text-4xl absolute text-white z-10'>Watches</h1>
-                            <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
-                        </div>
-                        <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden  '>
-                            <h1 className='font-bold   text-3xl sm:text-4xl lg:text-4xl absolute text-white z-10'>Shoes</h1>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-full h-60  sm:h-72 xl:h-100   ' />
-                        </div>
-
-                    </div>
+                <div className='flex flex-col w-120   sm:grid sm:grid-cols-2 lg:flex  lg:flex-row   gap-8 sm:gap-4 md:gap-5 lg:gap-3   m-auto    justify-center  items-center'>
+                <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden'>
+                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-3xl sm:text-4xl  '>Clothes</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-full h-60  sm:h-72  xl:h-100  ' />
+                </div>
+                <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden '>
+                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-3xl sm:text-4xl  '>Glasses</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
+                </div>
+                <div className='w-full blurr rounded-xl flex items-center justify-center  overflow-hidden'>
+                    <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b '><h1 className='font-bold text-3xl sm:text-4xl  '>Watches</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                    <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
+                </div>
+                <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden  '>
+                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-3xl sm:text-4xl  '>Shoes</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-full h-60  sm:h-72 xl:h-100   ' />
+                </div>
+            </div>
                     {/*overflow hidden divs*/}
 
                     {/* <div >*/}
-                    <div className='flex justify-between items-center'>
-                        <h1 className=' font-extrabold my-3 ml-3 sm:ml-4 md:ml-5  text-xl sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
-                        <NavLink to={'/product'}>   <div className='hidden font-semibold md:flex items-center  lg:pt-10 md:pr-5 lg:pr-7 md:pt-8 md:text-lg '> <p className=' lg:text-lg'>{`see more`}</p><div className='pt-1'><FaAngleRight className='text-lg' /></div></div></NavLink>
+                    <div className='flex justify-between items-end w-120 m-auto pt-6'>
+                        <h1 className=' font-bold  text-2xl sm:text-3xl'>New Arrivals</h1>
+                        <NavLink to={'/product'}>   <div className=' font-semibold flex items-center   md:text-lg gap-2 flex-nowrap '> <p className=' lg:text-lg'>{`see more`}</p><div className='pt-1 '><FaArrowRight className='text-base' /></div></div></NavLink>
                     </div>
-                    <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div   '>
+                    <div className={` m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto ${mode.colormode?'overflow-div2':'overflow-div'} py-3   `}>
                         {items?.map(prev => {
                             return (
-                                <div className='min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-900            '>
+                                <div className={`min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 addShadow lg:min-w-30 rounded-lg  ${mode.colormode?'addShadow2':'addShadow'}          `}>
                                     <img src={prev.image} alt='' className='rounded-lg w-full ' />
                                     <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
                                         <div className={`flex ${mode.colormode?'text-white':'text-black'} sm:text-lg lg:text-xl `}>
@@ -442,12 +461,11 @@ const option = {
                             )
                         })}
                     </div>
-                    <NavLink to={'/product'}><div className='flex md:hidden  pt-4 pl-3 sm:pl-4 '><p className='font-semibold  '>See all</p><div className='pt-1'><FaAngleRight className='text-lg ' /></div></div></NavLink>
                     {/*</div>*/}
                     {/*ends*/}
 
                     {/*about starts*/}
-                    <div className={`md:flex md:p-10 shadow-lg w-110 m-auto  mt-10 ${mode.colormode&&'bg-opacity-50 bg-black  shadow-stone-700  shadow-md'}    p-5 sm:p-10 sm:px-20 `}>
+                    <div className={`md:flex md:p-10 shadow-lg w-120  m-auto  mt-10 ${mode.colormode&&' bg-black  shadow-stone-800 border-0.5 border-stone-800  shadow-md'}    p-5 sm:p-10 sm:px-20 `}>
 
                         <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' />
                         <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
@@ -464,28 +482,79 @@ const option = {
                         </div>
                     </div>
                     {/*about ends*/}
-                    <div className={`grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5  `}>
-                        <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
-                            <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>   <FaCar className='text-xl font-bold sm:text-2xl ' /></div>
-                            <h2 className='text-lg font-bold sm:text-xl '>Free shipping</h2>
-                            <p className={` font-semibold sm:text-lg `}>Order above $200. </p>
-                        </div>
-                        <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
-                            <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>    <FaWallet className='text-xl font-bold sm:text-2xl ' /></div>
-                            <h2 className='text-lg font-bold sm:text-xl '>Money back</h2>
-                            <p className='font-semibold sm:text-lg '>30 days guarantee.</p>
-                        </div>
-                        <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
-                            <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>   <FaLock className='text-xl font-bold sm:text-2xl ' /></div>
-                            <h2 className='text-lg font-bold sm:text-xl whitespace-nowrap '>Secure payments</h2>
-                            <p className='font-semibold sm:text-lg '>Secure by stripe.</p>
-                        </div>
-                        <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
-                            <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>  <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' /></div>
-                            <h2 className='text-lg font-bold sm:text-xl '>24/7 support</h2>
-                            <p className='font-semibold sm:text-lg '>Phone and email support.</p>
-                        </div>
+                    <div className='w-120 m-auto mt-6 pb-3  '>
+                        <h1 className='font-bold  text-2xl sm:text-3xl '>Contact Us</h1>
                     </div>
+                    
+                    <motion.div ref={contactRef} className={`py-4 sm:p-4   ${mode.colormode?'addShadow2':'addShadow'}  md:p-5 m-auto px-2 w-120 ${bgcolor} ${textcolor}  rounded-xl flex flex-col gap-3`}  initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+                        <div className="w-full flex gap-5   flex-col md:flex-row items-center ">
+                            <motion.div  className={`w-full flex border ${mode.colormode && 'border-0.5 border-stone-800'}  flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52   hover:cursor-pointer  rounded-xl `}>
+                                <div className="bg-yellow-900 text-white w-11 h-11 sm:w-426 sm:h-14  flex-shrink-0 rounded-full flex items-center justify-center">
+                                <svg 
+                                className="sm:w-5 sm:h-5 w-4 h-4" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path 
+                                    d="M22 16.92V20C22 20.5523 21.5523 21 21 21C10.0589 21 3 13.9411 3 3C3 2.44772 3.44772 2 4 2H7.08C7.58936 2 8.02452 2.38604 8.11674 2.8894L8.99923 7.47029C9.08529 7.93927 8.86167 8.41359 8.43605 8.62757L6.113 9.78294C7.5403 13.0365 10.9635 16.4597 14.217 17.887L15.3724 15.564C15.5864 15.1383 16.0607 14.9147 16.5297 15.0008L21.1106 15.8833C21.614 15.9755 22 16.4106 22 16.92Z" 
+                                    stroke="currentColor" 
+                                    stroke-width="2" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round"/>
+                                </svg>
+
+                                </div>
+                                <div className="w-full flex flex-col  md:gap-2 md:items-center ">
+                                <p className="text-base sm:text-lg font-semibold">Phone Number</p>
+                                <p className="text-sm sm:text-base font-sans">+125-639-075-355</p> 
+                                </div>
+                            </motion.div>
+                            <motion.div  className={`w-full flex border ${mode.colormode && 'border-0.5 border-stone-800'} flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52   hover:cursor-pointer  rounded-xl `}>
+                                <div className="bg-yellow-900 text-white w-11 h-11 sm:w-426 sm:h-14   flex-shrink-0 rounded-full flex items-center justify-center">
+                                <svg 
+                                    className="sm:w-5 sm:h-5 w-4 h-4 " 
+                                    viewBox="0 0 24 24" 
+                                    fill="none" 
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path 
+                                    d="M3 8L12 13L21 8M5 5H19C20.1046 5 21 5.89543 21 7V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7C3 5.89543 3.89543 5 5 5Z" 
+                                    stroke="currentColor" 
+                                    stroke-width="2" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round"/>
+                                </svg>
+
+                                </div>  
+                                <div className="w-full flex flex-col  md:gap-2 md:items-center md:h-full ">  
+                                    <p className="text-base sm:text-lg font-semibold">Support Team</p>
+                                    <div className="flex w-full justify-between md:h-full md:flex-col">
+                                    <p className="text-sm sm:text-base font-sans md:text-center">Tap to chat support team</p> 
+                                    </div>
+                                </div>
+                            </motion.div>
+                            <motion.div  className={`w-full flex border flex-row md:flex-col  ${mode.colormode && 'border-0.5 border-stone-800'} items-center gap-3 md:gap-2 p-3 h-20 sm:h-24 md:h-52   hover:cursor-pointer rounded-xl `}>
+                                <div className="bg-yellow-900 w-11 h-11 sm:w-426 sm:h-14 flex-shrink-0 rounded-full flex items-center justify-center text-white">
+                                <svg 
+                                className="sm:w-5 sm:h-5 w-4 h-4" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path 
+                                    d="M21 15C21 16.1046 20.1046 17 19 17H7L3 21V7C3 5.89543 3.89543 5 5 5H19C20.1046 5 21 5.89543 21 7V15Z" 
+                                    stroke="currentColor" 
+                                    stroke-width="2" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round"/>
+                                </svg>
+
+                                </div>
+                                <div className="w-full flex flex-col md:gap-2 md:items-center ">
+                                <p className="text-base sm:text-lg font-semibold">Send Mail</p>
+                                <p className="text-sm sm:text-base font-sans">Tap to send mail</p>
+                                </div> 
+                            </motion.div>
+                        </div>
+                    </motion.div>
                 </section>
            
             <footer className={` bg-black  text-white ${mode.colormode&&' shadow-inner shadow-stone-700'} px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 bottom-0 `}>

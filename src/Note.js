@@ -29,8 +29,7 @@ const Note = () => {
             </header >
 
             <div className='h-full hidden lg:flex w-full  '>
-                {id?
-                data?.Notification ?  data?.Notification.length<1?
+                {data?.Notification ?  data?.Notification.length<1?
                 <p className='popout fixed font-semibold text-xl'>your cart history is empty</p>:
                 <appcontext.Provider value={data}>
                 <Firstnote />
@@ -38,22 +37,15 @@ const Note = () => {
                 </appcontext.Provider>:
                 <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
                 <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
-                </motion.div>
-                :
-                <p  className='popout  fixed font-semibold text-xl'>Log in to see your notifications</p>
-                }
+                </motion.div>}
             </div>
             <div className='h-full  w-full lg:hidden  '>
-                {id?
-                data?.Notification ? data?.Notification.length<1?
+               { data?.Notification ? data?.Notification.length<1?
                 <p className='popout fixed whitespace-nowrap font-semibold sm:text-lg'>your cart history is empty</p>:
                 <Outlet context={data}/>:
                 <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
                 <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
-                </motion.div>
-                :
-                <p className='popout  fixed whitespace-nowrap font-semibold sm:text-lg'>Log in to see your notifications</p>
-                }
+                </motion.div>}
             </div>
 
         </div>

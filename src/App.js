@@ -24,6 +24,7 @@ import Firstnote from './Firstnote.js';
 import Secondnote from './Secondnote.js';
 import Signup from './Signup.js';
 import Landing from './Landing.js'
+import ListCols from './ListCols.js'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -36,6 +37,7 @@ function App() {
     <Route path='/contact' element={<Contact />} />
     <Route path='/about' element={<About />} />
     <Route path='/product' element={<Product />} />
+    <Route path='/listcols' element={<ListCols/>} />
     <Route path='/note' element={<Note />} >
       <Route index element={<Firstnote />} />
       <Route path='/note/:id' element={<Secondnote />} />

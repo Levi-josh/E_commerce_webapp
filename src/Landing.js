@@ -109,7 +109,6 @@ const textRevealVariants2 = {
                     <button className='bg-yellow-900 font-semibold px-3 py-1 sm:py-2 sm:px-5  rounded-xl text-white ' onClick={navSignUp}>Sign up</button>
                 </div>
                 </header>
-
                 {/* Hero section filling remaining space */}
                 <div className='flex-grow relative hero rounded-xl overflow-hidden before:bg-gradient-to-r  before:from-blurblack  before:via-blurblack   before:to-blurblack2'>
                 {/* Hero text container */}
@@ -118,7 +117,7 @@ const textRevealVariants2 = {
                     <motion.p variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} className='font-serif text-sm sm:text-base leading-6 sm:leading-8'>
                     Glamour Grove is your one-stop shop for your clothes, shoes, jewelry, and more. We weren't just given the title "the best shopping app," we earned it.
                     </motion.p>
-                    <motion.button variants={textRevealVariants2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}  onClick={navSignIn} className='px-3 w-32 py-2 sm:w-52 bg-yellow-900 text-white rounded-xl'>Shop Now</motion.button>
+                    <motion.button variants={textRevealVariants2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}  onClick={navSignIn} className='px-3 w-32 py-2 lg:py-3 sm:w-52 bg-yellow-900 text-white rounded-xl'>Shop Now</motion.button>
                 </motion.div>
 
                 {/* Hero image */}
@@ -129,64 +128,61 @@ const textRevealVariants2 = {
                 </div>
             </div>
             </div>
-        <div className='    md:pb-0 gap-5 sm:gap-10  flex flex-col  md:gap-0 md:block'>
-   
-        <h1 className='font-bold  md:mb-9 text-center text-2xl sm:text-3xl lg:text-4xl '>Our services</h1>
-        </div> 
-        <section className='mt-7 md:mt-0'>
-            <div className='flex flex-col w-120  sm:grid sm:grid-cols-2 lg:flex lg:grid-cols-none lg:flex-row   gap-8 sm:gap-4 md:gap-5 lg:gap-3   m-auto sm:w-full sm:px-5 md:m-0    justify-center md:justify-normal items-center'>
+                <div className='w-120 m-auto lg:pt-6 pb-3  '>
+                <h1 className='font-bold      text-2xl sm:text-3xl '>Our services</h1>
+                </div> 
+                <section className=''>
+                <div className='flex flex-col w-120   sm:grid sm:grid-cols-2 lg:flex  lg:flex-row   gap-8 sm:gap-4 md:gap-5 lg:gap-3   m-auto    justify-center  items-center'>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden'>
-                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center'><h1 className='font-bold text-3xl sm:text-4xl  '>Clothes</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-3xl sm:text-4xl  '>Clothes</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-full h-60  sm:h-72  xl:h-100  ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden '>
-                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center'><h1 className='font-bold text-3xl sm:text-4xl  '>Glasses</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-3xl sm:text-4xl  '>Glasses</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center  overflow-hidden'>
-                    <div onClick={navSignIn} className='absolute text-white z-10 flex items-center'><h1 className='font-bold text-3xl sm:text-4xl  '>Watches</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                    <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b '><h1 className='font-bold text-3xl sm:text-4xl  '>Watches</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
                     <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden  '>
-                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center'><h1 className='font-bold text-3xl sm:text-4xl  '>Shoes</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-3xl sm:text-4xl  '>Shoes</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-full h-60  sm:h-72 xl:h-100   ' />
                 </div>
-
             </div>
             {/*overflow hidden divs*/}
 
             {/* <div >*/}
-            <div className='flex justify-between items-center'>
-                <h1 className=' font-extrabold my-3 ml-3 sm:ml-4 md:ml-5  text-xl sm:my-4  md:my-5 lg:my-6 lg:text-2xl lg:ml-6 md:text-xl'>New<span className='flex flex-wrap'> Arrivals</span></h1>
-                <NavLink to='/login'>   <div className='hidden font-semibold md:flex items-center  lg:pt-10 md:pr-5 lg:pr-7 md:pt-8 md:text-lg '> <p className=' lg:text-lg'>{`see more`}</p><div className='pt-1'><FaAngleRight className='text-lg' /></div></div></NavLink>
-            </div>
-            <div className=' m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto overflow-div   '>
-                {items?.map(prev => {
-                    return (
-                        <div className='min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 lg:min-w-30 rounded-lg border-2 border-yellow-900            '>
-                            <img src={prev.image} alt='' className='rounded-lg w-full ' />
-                            <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
-                                <div className={`flex ${mode.colormode?'text-white':'text-black'} sm:text-lg lg:text-xl `}>
-                                    <FaStar />
-                                    <FaStar />
-                                    <FaStar />
-                                    <FaStar />
-                                    <FaStarHalfAlt />
+            <div className='flex justify-between items-end w-120 m-auto pt-6'>
+                        <h1 className=' font-bold  text-2xl sm:text-3xl'>New Arrivals</h1>
+                        <NavLink to={'/login'}>   <div className=' font-semibold flex items-center   md:text-lg gap-2 flex-nowrap '> <p className=' lg:text-lg'>{`see more`}</p><div className='pt-1 '><FaArrowRight className='text-base' /></div></div></NavLink>
+                    </div>
+                    <div className={` m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto ${mode.colormode?'overflow-div2':'overflow-div'} py-3   `}>
+                        {items?.map(prev => {
+                            return (
+                                <div className={`min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 addShadow lg:min-w-30 rounded-lg  ${mode.colormode?'addShadow2':'addShadow'}          `}>
+                                    <img src={prev.image} alt='' className='rounded-lg w-full ' />
+                                    <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
+                                        <div className={`flex ${mode.colormode?'text-white':'text-black'} sm:text-lg lg:text-xl `}>
+                                            <FaStar />
+                                            <FaStar />
+                                            <FaStar />
+                                            <FaStar />
+                                            <FaStarHalfAlt />
+                                        </div>
+                                        <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
+                                        <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
+                                        <button className={`w-full bg-yellow-900 font-bold py-1 sm:py-2 sm:text-lg lg:text-xl ${!mode.colormode?'text-white':'text-black'}`} onClick={navSignIn}>Add to cart</button>
+                                    </div>
                                 </div>
-                                <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
-                                <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
-                                <button className={`w-full bg-yellow-900 font-bold py-1 sm:py-2 sm:text-lg lg:text-xl ${!mode.colormode?'text-white':'text-black'}`} onClick={navSignIn}>Add to cart</button>
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-            <NavLink to={'/login'}><div className='flex md:hidden  pt-4 pl-3 sm:pl-4 '><p className='font-semibold  '>See all</p><div className='pt-1'><FaAngleRight className='text-lg ' /></div></div></NavLink>
+                            )
+                        })}
+                    </div>
             {/*</div>*/}
             {/*ends*/}
 
             {/*about starts*/}
-            <div className={`md:flex md:p-10 shadow-lg w-110 m-auto  mt-10 ${mode.colormode&&'bg-opacity-50 bg-black  shadow-stone-700  shadow-md'}    p-5 sm:p-10 sm:px-20 `}>
+            <div className={`md:flex md:p-10 shadow-lg w-120 m-auto  mt-10 ${mode.colormode&&'bg-opacity-50 bg-black  shadow-stone-700  shadow-md'}    p-5 sm:p-10 sm:px-20 `}>
 
                 <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' />
                 <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
@@ -203,28 +199,79 @@ const textRevealVariants2 = {
                 </div>
             </div>
             {/*about ends*/}
-            <div className={`grid grid-cols-2 w-110 gap-4 justify-items-center m-auto lg:flex mt-7 sm:mt-8 md:mt-10 md:gap-5  `}>
-                <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
-                    <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>   <FaCar className='text-xl font-bold sm:text-2xl ' /></div>
-                    <h2 className='text-lg font-bold sm:text-xl '>Free shipping</h2>
-                    <p className={` font-semibold sm:text-lg `}>Order above $200. </p>
-                </div>
-                <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
-                    <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>    <FaWallet className='text-xl font-bold sm:text-2xl ' /></div>
-                    <h2 className='text-lg font-bold sm:text-xl '>Money back</h2>
-                    <p className='font-semibold sm:text-lg '>30 days guarantee.</p>
-                </div>
-                <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
-                    <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>   <FaLock className='text-xl font-bold sm:text-2xl ' /></div>
-                    <h2 className='text-lg font-bold sm:text-xl whitespace-nowrap '>Secure payments</h2>
-                    <p className='font-semibold sm:text-lg '>Secure by stripe.</p>
-                </div>
-                <div className={` bg-yellow-900  w-full h-40 md:h-44 pt-4 pl-2 lg:h-48 flex flex-col gap-1 lg:gap-3 lg:pt-5 lg:pl-5  sm:pt-6 md:pl-6 md:pt-6 rounded-xl ${!mode.colormode?'text-white':'text-black'} `}>
-                    <div className={` ${textcolor} ${bgcolor} w-9 h-9 sm:w-410 sm:h-10 lg:w-11 lg:h-11 rounded-full flex justify-center  items-center`}>  <FaPhone className='text-xl font-bold sm:text-2xl rotate-180 ' /></div>
-                    <h2 className='text-lg font-bold sm:text-xl '>24/7 support</h2>
-                    <p className='font-semibold sm:text-lg '>Phone and email support.</p>
-                </div>
-            </div>
+            <div className='w-120 m-auto mt-6 pb-3  '>
+                        <h1 className='font-bold  text-2xl sm:text-3xl '>Contact Us</h1>
+                    </div>
+                    
+                    <motion.div  className={`py-4 sm:p-4   ${mode.colormode?'addShadow2':'addShadow'}  md:p-5 m-auto px-2 w-120 ${bgcolor} ${textcolor}  rounded-xl flex flex-col gap-3`}  initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+                        <div className="w-full flex gap-5   flex-col md:flex-row items-center ">
+                            <motion.div  className={`w-full flex border ${mode.colormode && 'border-0.5 border-stone-800'}  flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52   hover:cursor-pointer  rounded-xl `}>
+                                <div className="bg-yellow-900 text-white w-11 h-11 sm:w-426 sm:h-14  flex-shrink-0 rounded-full flex items-center justify-center">
+                                <svg 
+                                className="sm:w-5 sm:h-5 w-4 h-4" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path 
+                                    d="M22 16.92V20C22 20.5523 21.5523 21 21 21C10.0589 21 3 13.9411 3 3C3 2.44772 3.44772 2 4 2H7.08C7.58936 2 8.02452 2.38604 8.11674 2.8894L8.99923 7.47029C9.08529 7.93927 8.86167 8.41359 8.43605 8.62757L6.113 9.78294C7.5403 13.0365 10.9635 16.4597 14.217 17.887L15.3724 15.564C15.5864 15.1383 16.0607 14.9147 16.5297 15.0008L21.1106 15.8833C21.614 15.9755 22 16.4106 22 16.92Z" 
+                                    stroke="currentColor" 
+                                    stroke-width="2" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round"/>
+                                </svg>
+
+                                </div>
+                                <div className="w-full flex flex-col  md:gap-2 md:items-center ">
+                                <p className="text-base sm:text-lg font-semibold">Phone Number</p>
+                                <p className="text-sm sm:text-base font-sans">+125-639-075-355</p> 
+                                </div>
+                            </motion.div>
+                            <motion.div  className={`w-full flex border ${mode.colormode && 'border-0.5 border-stone-800'} flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52   hover:cursor-pointer  rounded-xl `}>
+                                <div className="bg-yellow-900 text-white w-11 h-11 sm:w-426 sm:h-14   flex-shrink-0 rounded-full flex items-center justify-center">
+                                <svg 
+                                    className="sm:w-5 sm:h-5 w-4 h-4 " 
+                                    viewBox="0 0 24 24" 
+                                    fill="none" 
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path 
+                                    d="M3 8L12 13L21 8M5 5H19C20.1046 5 21 5.89543 21 7V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7C3 5.89543 3.89543 5 5 5Z" 
+                                    stroke="currentColor" 
+                                    stroke-width="2" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round"/>
+                                </svg>
+
+                                </div>  
+                                <div className="w-full flex flex-col  md:gap-2 md:items-center md:h-full ">  
+                                <p className="text-base sm:text-lg font-semibold">Send Mail</p>
+                                <p className="text-sm sm:text-base font-sans">Tap to send mail</p>
+                                </div>
+                            </motion.div>
+                            <motion.div  className={`w-full flex border flex-row md:flex-col  ${mode.colormode && 'border-0.5 border-stone-800'} items-center gap-3 md:gap-2 p-3 h-20 sm:h-24 md:h-52   hover:cursor-pointer rounded-xl `}>
+                                <div className="bg-yellow-900 w-11 h-11 sm:w-426 sm:h-14 flex-shrink-0 rounded-full flex items-center justify-center text-white">
+                                <svg 
+                                className="sm:w-5 sm:h-5 w-4 h-4" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path 
+                                    d="M21 15C21 16.1046 20.1046 17 19 17H7L3 21V7C3 5.89543 3.89543 5 5 5H19C20.1046 5 21 5.89543 21 7V15Z" 
+                                    stroke="currentColor" 
+                                    stroke-width="2" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round"/>
+                                </svg>
+
+                                </div>
+                                <div className="w-full flex flex-col md:gap-2 md:items-center ">
+                                    <p className="text-base sm:text-lg font-semibold">Support Team</p>
+                                    <div className="flex w-full justify-between md:h-full md:flex-col">
+                                    <p className="text-sm sm:text-base font-sans md:text-center">Tap to chat support team</p> 
+                                    </div>
+                                </div> 
+                            </motion.div>
+                        </div>
+                    </motion.div>
         </section>
    
     <footer className={` bg-black  text-white ${mode.colormode&&' shadow-inner shadow-stone-700'} px-5 sm:px-14 md:px-10 lg:px-20 xl:px-36 mt-7 sm:mt-8 md:mt-10 py-10 sm:py-14 md:pt-16 lg:pt-20 xl:pt-24 bottom-0 `}>
