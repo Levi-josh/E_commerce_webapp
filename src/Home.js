@@ -220,7 +220,32 @@ console.log(error)
                     <li className='hover:cursor-pointer' onClick={()=>scrolltoPage1(aboutRef)} >About us</li>
                 </ul>
                 <div className='flex gap-10 sm:gap-20 md:gap-24 lg:gap-4 xl:gap-12 items-center     '>
-                <NavLink to='/note' className=' '><div className={`flex ${bgcolor} ${textcolor}  items-center text-lg sm:text-xl   md:text-2xl justify-center text-black lg:hover:text-white lg:h-10 lg:w-101 rounded-full  hover:cursor-pointer lg:hover:bg-yellow-800`}><p className='hidden'>Cart</p><FaBell/></div></NavLink>
+                <NavLink to='/note' className=' '><div className={`flex ${bgcolor} ${textcolor}  items-center text-lg sm:text-xl   md:text-2xl justify-center text-black lg:hover:text-white lg:h-10 lg:w-101 rounded-full  hover:cursor-pointer lg:hover:bg-yellow-800`}><p className='hidden'>Cart</p><svg
+  className="w-6 h-6 sm:w-6 sm:h-6"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M12 22C13.1046 22 14 21.1046 14 20H10C10 21.1046 10.8954 22 12 22Z"
+    fill="currentColor"
+  />
+  <path
+    d="M18 16H6V10C6 6.68629 8.68629 4 12 4C15.3137 4 18 6.68629 18 10V16Z"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M4 16H20"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
+</div></NavLink>
                     <NavLink to={'/listcols'}>   <div className={` text-lg sm:text-xl ${bgcolor} ${textcolor} md:text-2xl    flex justify-center lg:h-10 lg:w-101  items-center  text-black  lg:hover:text-white rounded-full hover:cursor-pointer lg:hover:bg-yellow-900`}> 
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 3H5L6.68 14.39C6.81865 15.3682 7.63005 16 8.615 16H19.385C20.37 16 21.1814 15.3682 21.32 14.39L23 3H5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
