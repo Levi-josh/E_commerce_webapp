@@ -53,9 +53,10 @@ const Home = () => {
     const bgcolor = mode?.colorBgtext
     const textcolor = mode?.colortext
     const contactRef = useRef(null);
-    useEffect(() => {
-        window.scrollTo(0, scroll)
-    }, [menubar || popout])
+    const aboutRef = useRef(null);
+    // useEffect(() => {
+    //     window.scrollTo(0, scroll)
+    // }, [menubar || popout])
 
   
  useEffect(() => {
@@ -93,10 +94,14 @@ const navSignIn = ()=>{
 }
 const scrolltoPage1 = (currentRef)=> {
     setmenubar(false)
-    currentRef.current?.scrollIntoView({ behavior: "smooth" });
+    console.log(currentRef.current)
+    setTimeout(() => {
+        currentRef.current?.scrollIntoView({ behavior: "smooth" });  
+    }, 500);
+    
   }
     function showmenu() {
-        setscroll(menubar ? scroll : window.scrollY)
+        // setscroll(menubar ? scroll : window.scrollY)
         setmenubar(prev => !prev)
         
 
@@ -125,9 +130,9 @@ const scrolltoPage1 = (currentRef)=> {
             }
             try {
                 if(!selectedcart && data?.items?.length<1){
-                    throw new Error('you dont have a cart')
+                   navigate('/listcols')
                 }if(!selectedcart && data?.items.length>0){
-                    throw new Error('select a cart')  
+                    navigate('/listcols')
                 }
                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/addcart/${selectedcart}/${id}`, option);
                 const data1 = await response.json()
@@ -136,7 +141,7 @@ const scrolltoPage1 = (currentRef)=> {
             }
 
             catch (err) {
-            seterror(err.message === 'Failed to fetch' ? { 'message': 'Failed to add cart' }:err)
+            seterror(err)
             console.log(err)
             }
         setadded(prev => !prev)
@@ -144,68 +149,57 @@ const scrolltoPage1 = (currentRef)=> {
         setadded(prev => !prev)  
         }, 2000);    
     }
-    let errormessage; 
-    if (error?.message === 'Failed to add cart'){
-        errormessage = 'check your internet connection'
-    }if (error?.message === 'you dont have a cart') {
-        errormessage = 'create a cart to continue'
-     }if (error?.message === 'select a cart') {
-        errormessage = 'check the radio button close to your cart'
-     } 
-    if (error?.message === null) {
-        errormessage = ''
-    } 
     
-console.log(error?.message)
-function opencollection() {
-        setscroll(scroll)
-        setpopout(prev => !prev)
-        setshowinput(false)
-        setmenubar(false) 
-}
-const selectcartFunc = async(id)=> {
-    const option = {
-                method: 'PUT',
-                headers: {
-                    'content-type': 'application/json',
-                }
-            }
-            try {
-                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/select/${id}`, option);
-                const data = await response.json()
-               console.log(data)
-            }
-            catch (err) {
-            seterror(err) 
-            console.log(err)
-    }
-}
+console.log(error)
+// function opencollection() {
+//         setscroll(scroll)
+//         setpopout(prev => !prev)
+//         setshowinput(false)
+//         setmenubar(false) 
+// }
+// const selectcartFunc = async(id)=> {
+//     const option = {
+//                 method: 'PUT',
+//                 headers: {
+//                     'content-type': 'application/json',
+//                 }
+//             }
+//             try {
+//                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/select/${id}`, option);
+//                 const data = await response.json()
+//                console.log(data)
+//             }
+//             catch (err) {
+//             seterror(err) 
+//             console.log(err)
+//     }
+// }
   
-const handleChange = (e) => {
-    setnewcartText(e.target.value)
-}
-const handleSubmit = async (e) => {
-e.preventDefault()
-const option = {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                },
-                body:JSON.stringify({"id":data._id,"title":newcartText})
-            }
-            try {
-                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/newcart`, option);
-                const data = await response.json()
-               console.log(data)
-            }
+// const handleChange = (e) => {
+//     setnewcartText(e.target.value)
+// }
+// const handleSubmit = async (e) => {
+// e.preventDefault()
+// const option = {
+//                 method: 'POST',
+//                 headers: {
+//                     'content-type': 'application/json',
+//                 },
+//                 body:JSON.stringify({"id":data._id,"title":newcartText})
+//             }
+//             try {
+//                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/newcart`, option);
+//                 const data = await response.json()
+//                console.log(data)
+//             }
 
-            catch (err) {
-            seterror(err) 
-            console.log(err)
-    } 
-    setnewcartText('')
-    setshowinput(false)
-    }
+//             catch (err) {
+//             seterror(err) 
+//             console.log(err)
+//     } 
+//     setnewcartText('')
+//     setshowinput(false)
+//     }
 
     return (
         <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full flex-col flex ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
@@ -214,16 +208,16 @@ const option = {
                     {id?
                     <div className='flex gap-2 items-center '>
                         <FaUserCircle className={`${bgcolor}${textcolor} text-2xl sm:text-3xl`} />
-                        <p className='text-lg font-semibold sm:text-2xl'>Josh kelly</p>
+                        <p className='text-lg font-semibold sm:text-2xl'onClick={()=>scrolltoPage1(contactRef)}>Josh kelly</p>
                     </div>:
-                    <p className="font-bold text-lg sm:text-2xl  xl:text-3xl">Glamour Grove</p>
+                    <p className="font-bold text-lg sm:text-2xl  xl:text-3xl" onClick={()=>scrolltoPage1(contactRef)}>Glamour Grove</p>
                     }
                 </motion.div>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
                     <NavLink to='/product'><li>Product</li></NavLink>
                     <li className='hover:cursor-pointer' onClick={()=>scrolltoPage1(contactRef)}>contact</li>
-                    <NavLink ><li>About us</li></NavLink>
+                    <li className='hover:cursor-pointer' onClick={()=>scrolltoPage1(aboutRef)} >About us</li>
                 </ul>
                 <div className='flex gap-10 sm:gap-20 md:gap-24 lg:gap-4 xl:gap-12 items-center     '>
                 <NavLink to='/note' className=' '><div className={`flex ${bgcolor} ${textcolor}  items-center text-lg sm:text-xl   md:text-2xl justify-center text-black lg:hover:text-white lg:h-10 lg:w-101 rounded-full  hover:cursor-pointer lg:hover:bg-yellow-800`}><p className='hidden'>Cart</p><FaBell/></div></NavLink>
@@ -235,10 +229,8 @@ const option = {
                     </svg>
                     </div>
                     </NavLink>
-                   
-
                     <div onClick={showmenu} className={`text-lg sm:text-xl lg:hidden ${bgcolor} ${textcolor}    flex justify-center lg:h-10 lg:w-101  items-center text-black  lg:hover:text-white rounded-full hover:cursor-pointer lg:hover:bg-yellow-900`}><FaBars className='lg:hidden text-lg sm:text-xl hover:scale-125 ' /></div>
-                    <div className={`lg:flex items-center   ${bgcolor} ${textcolor} justify-center ${menubar ? 'bg-yellow-900 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'lg:hover:bg-yellow-900  lg:hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 `} onClick={showmenu}><p className=''>Menu</p></div>
+                    <div className={`lg:flex items-center   ${bgcolor} ${textcolor} justify-center ${menubar ? 'bg-yellow-900 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'lg:hover:bg-yellow-900  lg:hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 font-bold hover:font-normal `} onClick={showmenu}><p className=''>Menu</p></div>
                 </div>
             </header>
 
@@ -260,24 +252,24 @@ const option = {
                             <NavLink to={'/'} ><div className='flex hover:lg:bg-neutral-100  gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaHome className='text-lg sm:text-xl md:text-2xl' /> <p className='    py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
                             <NavLink to={'/product'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaShopify className='text-lg sm:text-xl md:text-2xl' /><p className='  py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden'>Products</p></div></NavLink>
                             <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl ' /><p className=' py-3 sm:py-4  sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={()=>scrolltoPage1(contactRef)}>Contact</p></div>
-                            <NavLink > <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:lg:bg-neutral-100 lg:hidden'>About</p></div></NavLink>
+                            <NavLink > <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:lg:bg-neutral-100 lg:hidden' onClick={()=>scrolltoPage1(aboutRef)}>About</p></div></NavLink>
                         </div>
                         <div className='flex flex-col lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  '>
                             <div className={`hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b  px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'}`}>
                                 <p className='text-xl font-semibold py-4'>{mode.colormode?'Dark':'Light'} </p>
                                 {mode.colormode?<FaToggleOff className='text-2xl ' onClick={()=>{dispatch(changemode())}}/>:<FaToggleOn  className='text-2xl ' onClick={()=>{dispatch(changemode())}}/>}
                             </div>
-                            <div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b `}> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' onClick={opencollection}>Carts</p></div>
+                            <div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b `}> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' >Carts</p></div>
                             <NavLink to={'/history'}><div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b`}><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div></NavLink>
                         </div>
                     </div>
                     <div className=' flex justify-end  lg:mt-0 lg:items-center '>
-                        <NavLink to={'/login'}> <p className={`font-bold   sm:text-xl ${mode.colormode?'text-white':'text-yellow-900'} text-right  mb-7 mr-7 `} onClick={signout} >{`Sign ${id?'Out':'In'}`} </p></NavLink>
+                        <NavLink to={'/login'}> <p className={`font-bold   sm:text-xl ${mode.colormode?'text-white':'text-yellow-900'} text-right  mb-7 mr-7 `} onClick={signout} >Sign Out</p></NavLink>
                     </div>
                 </div>
             </motion.div>
             }</div>
-            <motion.div className={`fixed   w-130 sm:w-25 md:w-22 ${bgcolor} ${textcolor} popout lg:w-10     z-20 h-80 sm:h-96 lg:h-80    rounded-xl  ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
+            {/* <motion.div className={`fixed   w-130 sm:w-25 md:w-22 ${bgcolor} ${textcolor} popout lg:w-10     z-20 h-80 sm:h-96 lg:h-80    rounded-xl  ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
                 <FaTimesCircle className='absolute right-0  text-yellow-900  z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={() => {
                     setscroll(scroll)
                     setpopout(prev => !prev)
@@ -313,19 +305,16 @@ const option = {
                         <p className='font-semibold sm:text-lg lg:text-xl popout fixed'>Empty!</p>
                     }
                 </div>
-                {/* <div className='fixed w-full bottom-0 bg-yellow-900 shadow-xl flex justify-center items-center rounded-b-xl   h-14 sm:h-16 lg:h-16'>
 
-                </div>  */}
                 
-            </motion.div>
+            </motion.div> */}
             {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 ${bgcolor}  min-h-101 sm:min-h-102 lg:min-h-101 `}>
                 <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>
                         <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
-                        <p className=' sm:text-base text-sm'>{errormessage}</p>
                         <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' 
-                        onClick={()=>{setpopout(prev=>error?.message === 'you dont have a cart'?!prev:error?.message === 'select a cart'?!prev:prev);seterror({'message':undefined});}}>Ok</button></div>
+                        onClick={()=>{seterror({'message':undefined})}}>Ok</button></div>
                     </div>
                 </div>
             </div>}
@@ -376,16 +365,16 @@ const option = {
                         <div className={`flex   flex-col z-10 lg:z-0 w-full p-2 sm:p-5 absolute  lg:static gap-3 sm:gap-6 justify-between  h-full `}>
                             <div className='flex w-full items-center justify-between '>
                                 <p className='text-base bg-yellow-900 px-3 lg:px-6 lg:py-2 rounded-md sm:text-lg text-white font-semibold'>LIMITED EDITION</p>
-                                <h1 className='text-base sm:text-lg lg:text-xl font-semibold'>Hurry up! 30% OFF</h1>
+                                <h1 className='text-base sm:text-lg lg:text-xl font-semibold text-white lg:text-current'>Hurry up! 30% OFF</h1>
                             </div>
-                            <p className='text-sm sm:text-base'>Find clothes that fits your lifestyle</p>
+                            <p className='text-sm sm:text-base text-white lg:text-current'>Find clothes that fits your lifestyle</p>
                             <div className='flex flex-col gap-2 sm:gap-3'>
-                                <p className='text-sm sm:text-base'>Offer expires in:</p>
+                                <p className='text-sm sm:text-base text-white lg:text-current'>Offer expires in:</p>
                                 <div className='flex gap-5 items-center w-full font-bold text-black'>
-                                    <div className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10  ${mode.colormode?'lg:bg-white ':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>02</div>
-                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'lg:bg-white ':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>12</div>
-                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'lg:bg-white ':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>45</div>
-                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'lg:bg-white ':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>05</div>
+                                    <div className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10  ${mode.colormode?'lg:bg-stone-800 lg:text-white ':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>02</div>
+                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'lg:bg-stone-800 lg:text-white':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>12</div>
+                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'lg:bg-stone-800 lg:text-white':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>45</div>
+                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'lg:bg-stone-800 lg:text-white':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>05</div>
                                 </div>
                             </div>
                             <div><button className='bg-yellow-900 px-3 text-white lg:px-8 lg:py-2 py-1 rounded-lg'>Shop Now</button></div> 
@@ -455,7 +444,7 @@ const option = {
                                         </div>
                                         <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
                                         <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
-                                        <button className={`w-full bg-yellow-900 font-bold py-1 sm:py-2 sm:text-lg lg:text-xl ${!mode.colormode?'text-white':'text-black'}`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
+                                        <button className={`w-full bg-yellow-900 font-bold py-1 sm:py-2 sm:text-lg lg:text-xl text-white`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
                                     </div>
                                 </div>
                             )
@@ -465,19 +454,19 @@ const option = {
                     {/*ends*/}
 
                     {/*about starts*/}
-                    <div className={`md:flex md:p-10 shadow-lg w-120  m-auto  mt-10 ${mode.colormode&&' bg-black  shadow-stone-800 border-0.5 border-stone-800  shadow-md'}    p-5 sm:p-10 sm:px-20 `}>
+                    <div className={`md:flex md:p-10 shadow-lg w-120  m-auto  mt-10 ${mode.colormode&&' bg-black  shadow-stone-800 border-0.5 border-stone-800  shadow-md'}    p-5 sm:p-10 sm:px-20 `} ref={aboutRef}>
 
                         <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' />
                         <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
                             <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif    '>
-                                Special Fashon sales
+                               About Us
                             </h1>
-                            <p className='mt-3 md:mt-4 lg:mt-8 md:text-lg'>
+                            <p className='mt-3 md:mt-4 lg:mt-8 text-sm sm:text-base'>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eum illum quam numquam impedit quo? Facere, optio! Voluptatum, possimus? Voluptatum corrupti error.
                             </p>
                             <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
                                 <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  `} onClick={showmenu1}>30% OFF</h1>
-                                <NavLink to={'/product'}> <button className={`w-40 bg-yellow-900 mt-4 ${!mode.colormode?'text-white':'text-black'} md:w-24 md:mt-0  md:h-10 md:rounded-lg font-bold h-8 md:text-lg`}>Shop Now</button></NavLink>
+                                <NavLink to={'/product'}> <button className={`w-40 bg-yellow-900 mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg font-bold h-8 md:text-lg`}>Shop Now</button></NavLink>
                             </div>
                         </div>
                     </div>
@@ -572,8 +561,8 @@ const option = {
                     <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14'>
                         <NavLink to='/'>  <li>Home</li></NavLink>
                         <NavLink to='product'><li>Product</li></NavLink>
-                        <NavLink to='contact'><li>Contact</li></NavLink>
-                        <NavLink to='about'><li>About us</li></NavLink>
+                        <li onClick={()=>scrolltoPage1(contactRef)} className='hover:cursor-pointer'>Contact</li>
+                        <li onClick={()=>scrolltoPage1(aboutRef)} className='hover:cursor-pointer'>About us</li>
                     </ul>
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
