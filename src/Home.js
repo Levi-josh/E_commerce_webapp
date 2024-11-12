@@ -221,32 +221,32 @@ console.log(error)
                 </ul>
                 <div className='flex gap-10 sm:gap-20 md:gap-24 lg:gap-4 xl:gap-12 items-center     '>
                 <NavLink to='/note' className=' '><div className={`flex ${bgcolor} ${textcolor}  items-center text-lg sm:text-xl   md:text-2xl justify-center text-black lg:hover:text-white lg:h-10 lg:w-101 rounded-full  hover:cursor-pointer lg:hover:bg-yellow-800`}><p className='hidden'>Cart</p><svg
-  className="w-6 h-6 sm:w-6 sm:h-6"
-  viewBox="0 0 24 24"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M12 22C13.1046 22 14 21.1046 14 20H10C10 21.1046 10.8954 22 12 22Z"
-    fill="currentColor"
-  />
-  <path
-    d="M18 16H6V10C6 6.68629 8.68629 4 12 4C15.3137 4 18 6.68629 18 10V16Z"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-  <path
-    d="M4 16H20"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-</svg>
-</div></NavLink>
-                    <NavLink to={'/listcols'}>   <div className={` text-lg sm:text-xl ${bgcolor} ${textcolor} md:text-2xl    flex justify-center lg:h-10 lg:w-101  items-center  text-black  lg:hover:text-white rounded-full hover:cursor-pointer lg:hover:bg-yellow-900`}> 
+                    className="w-6 h-6 sm:w-7    sm:h-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    >
+                    <path
+                        d="M12 22C13.1046 22 14 21.1046 14 20H10C10 21.1046 10.8954 22 12 22Z"
+                        fill="currentColor"
+                    />
+                <path
+                    d="M18 16H6V10C6 6.68629 8.68629 4 12 4C15.3137 4 18 6.68629 18 10V16Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+                <path
+                    d="M4 16H20"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+                </svg>
+                </div></NavLink>
+                <NavLink to={'/listcols'}>   <div className={` text-lg sm:text-xl ${bgcolor} ${textcolor} md:text-2xl    flex justify-center lg:h-10 lg:w-101  items-center  text-black  lg:hover:text-white rounded-full hover:cursor-pointer lg:hover:bg-yellow-900`}> 
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 3H5L6.68 14.39C6.81865 15.3682 7.63005 16 8.615 16H19.385C20.37 16 21.1814 15.3682 21.32 14.39L23 3H5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         <circle cx="9" cy="20" r="1" stroke="currentColor" strokeWidth="2"/>
@@ -258,7 +258,6 @@ console.log(error)
                     <div className={`lg:flex items-center   ${bgcolor} ${textcolor} justify-center ${menubar ? 'bg-yellow-900 text-white hover:transition-all hover:duration-200 hover:ease-in-out' : 'lg:hover:bg-yellow-900  lg:hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 font-bold hover:font-normal `} onClick={showmenu}><p className=''>Menu</p></div>
                 </div>
             </header>
-
             <div>{<motion.div  initial={{x:'100%'}} animate={{x:menubar?window.matchMedia('(max-width: 768px)').matches?0:-12 :'100%'}} transition={{type:'tween',duration: 0.1, delay: 0}} className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full ${textcolor}    ${bgcolor}  lg:top-24 shadow-lg shadow-black rounded-lg right-0    z-30  lg:h-120  `}>
 
                 <div className={` h-190 md:h-140 bg-yellow-900 lg:border-b ${mode.colormode&&'lg:border-stone-700'} lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center`}>
@@ -284,7 +283,7 @@ console.log(error)
                                 <p className='text-xl font-semibold py-4'>{mode.colormode?'Dark':'Light'} </p>
                                 {mode.colormode?<FaToggleOff className='text-2xl ' onClick={()=>{dispatch(changemode())}}/>:<FaToggleOn  className='text-2xl ' onClick={()=>{dispatch(changemode())}}/>}
                             </div>
-                            <div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b `}> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' >Carts</p></div>
+                            <NavLink to={'/listcols'}><div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b `}> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' >Carts</p></div></NavLink>
                             <NavLink to={'/history'}><div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b`}><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div></NavLink>
                         </div>
                     </div>
@@ -357,7 +356,7 @@ console.log(error)
                 </div>
             </motion.div > */}
             
-            <div className='   h-122 lg:h-full    gap-5 sm:gap-10  pt-24 sm:pt-32 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
+            <div className='   h-screen lg:h-full   gap-5 sm:gap-10  pt-24 sm:pt-32 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
                 <div className='h-192 lg:h-screen  lg:pb-10 lg:pt-32'>
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                         spaceBetween={20}
@@ -386,7 +385,7 @@ console.log(error)
                 </div >
                 <div className='flex justify-center h-191 w-full items-center '>
                     <div className={`flex  w-120  ${bgcolor} ${mode.colormode?'addShadow2':'addShadow'}  h-full hero2 overflow-hidden rounded-xl  before:bg-gradient-to-r   before:from-blurblack  before:via-blurblack   before:to-blurblack2`}>
-                        <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full h-full   bg-no-repeat bg-cover bg-center   ' />
+                        <div className='lg:before:bg-gradient-to-r   lg:before:from-blurblack  lg:before:via-blurblack   lg:before:to-blurblack2 hero  w-full h-full'><img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full h-full    bg-no-repeat bg-cover bg-center   ' /></div>
                         <div className={`flex   flex-col z-10 lg:z-0 w-full p-2 sm:p-5 absolute  lg:static gap-3 sm:gap-6 justify-between  h-full `}>
                             <div className='flex w-full items-center justify-between '>
                                 <p className='text-base bg-yellow-900 px-3 lg:px-6 lg:py-2 rounded-md sm:text-lg text-white font-semibold'>LIMITED EDITION</p>
@@ -423,7 +422,7 @@ console.log(error)
 
                 </div> 
                 <div className='w-120 m-auto lg:pt-6 pb-3  '>
-                <h1 className='font-bold      text-2xl sm:text-3xl '>Our services</h1>
+                <h1 className='font-bold      text-2xl sm:text-3xl '>Our Services</h1>
                 </div> 
                 <section className=''>
                     <audio controls className='hidden' ref={audiosound}>
@@ -457,7 +456,7 @@ console.log(error)
                     <div className={` m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto ${mode.colormode?'overflow-div2':'overflow-div'} py-3   `}>
                         {items?.map(prev => {
                             return (
-                                <div className={`min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40 addShadow lg:min-w-30 rounded-lg  ${mode.colormode?'addShadow2':'addShadow'}          `}>
+                                <div className={`min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40  lg:min-w-30 rounded-lg  ${mode.colormode?'addShadow2':'addShadow'}          `}>
                                     <img src={prev.image} alt='' className='rounded-lg w-full ' />
                                     <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
                                         <div className={`flex ${mode.colormode?'text-white':'text-black'} sm:text-lg lg:text-xl `}>
@@ -468,8 +467,8 @@ console.log(error)
                                             <FaStarHalfAlt />
                                         </div>
                                         <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
-                                        <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
-                                        <button className={`w-full bg-yellow-900 font-bold py-1 sm:py-2 sm:text-lg lg:text-xl text-white`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
+                                        <p className=' text-sm sm:text-base '>{`$${prev.price}`}</p>
+                                        <button className={`w-full bg-yellow-900 font-semibold py-2 text-sm sm:text-base text-white`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
                                     </div>
                                 </div>
                             )
@@ -479,7 +478,7 @@ console.log(error)
                     {/*ends*/}
 
                     {/*about starts*/}
-                    <div className={`md:flex md:p-10 shadow-lg w-120  m-auto  mt-10 ${mode.colormode&&' bg-black  shadow-stone-800 border-0.5 border-stone-800  shadow-md'}    p-5 sm:p-10 sm:px-20 `} ref={aboutRef}>
+                    <div className={`md:flex md:p-10 shadow-lg w-120  m-auto  mt-10  ${mode.colormode?'addShadow2':'addShadow'}       p-5 sm:p-10 sm:px-20 `} ref={aboutRef}>
 
                         <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' />
                         <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
@@ -491,7 +490,7 @@ console.log(error)
                             </p>
                             <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
                                 <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  `} onClick={showmenu1}>30% OFF</h1>
-                                <NavLink to={'/product'}> <button className={`w-40 bg-yellow-900 mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg font-bold h-8 md:text-lg`}>Shop Now</button></NavLink>
+                                <NavLink to={'/product'}> <button className={`w-40 bg-yellow-900 mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 text-sm sm:text-base `}>Shop Now</button></NavLink>
                             </div>
                         </div>
                     </div>

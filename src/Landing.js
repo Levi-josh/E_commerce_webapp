@@ -129,7 +129,7 @@ const textRevealVariants2 = {
             </div>
             </div>
                 <div className='w-120 m-auto lg:pt-6 pb-3  '>
-                <h1 className='font-bold      text-2xl sm:text-3xl '>Our services</h1>
+                <h1 className='font-bold      text-2xl sm:text-3xl '>Our Services</h1>
                 </div> 
                 <section className=''>
                 <div className='flex flex-col w-120   sm:grid sm:grid-cols-2 lg:flex  lg:flex-row   gap-8 sm:gap-4 md:gap-5 lg:gap-3   m-auto    justify-center  items-center'>
@@ -171,8 +171,8 @@ const textRevealVariants2 = {
                                             <FaStarHalfAlt />
                                         </div>
                                         <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
-                                        <p className='font-semibold md:text-lg lg:text-xl'>{`$${prev.price}`}</p>
-                                        <button className={`w-full bg-yellow-900 font-bold py-1 sm:py-2 sm:text-lg lg:text-xl ${!mode.colormode?'text-white':'text-black'}`} onClick={navSignIn}>Add to cart</button>
+                                        <p className='text-sm sm:text-base'>{`$${prev.price}`}</p>
+                                        <button className={`w-full bg-yellow-900 font-semibold py-2 text-sm sm:text-base ${!mode.colormode?'text-white':'text-black'}`} onClick={navSignIn}>Add to cart</button>
                                     </div>
                                 </div>
                             )
@@ -182,19 +182,19 @@ const textRevealVariants2 = {
             {/*ends*/}
 
             {/*about starts*/}
-            <div className={`md:flex md:p-10 shadow-lg w-120 m-auto  mt-10 ${mode.colormode&&'bg-opacity-50 bg-black  shadow-stone-700  shadow-md'}    p-5 sm:p-10 sm:px-20 `}>
+            <div className={`md:flex md:p-10 shadow-lg w-120 m-auto  mt-10 ${mode.colormode?'addShadow2':'addShadow'}      p-5 sm:p-10 sm:px-20 `}>
 
                 <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' />
                 <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
                     <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif    '>
-                        Special Fashon sales
+                        About Us
                     </h1>
                     <p className='mt-3 md:mt-4 lg:mt-8 md:text-lg'>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eum illum quam numquam impedit quo? Facere, optio! Voluptatum, possimus? Voluptatum corrupti error.
                     </p>
                     <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
                         <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  `} >30% OFF</h1>
-                        <NavLink to={'/login'}> <button className={`w-40 bg-yellow-900 mt-4 ${!mode.colormode?'text-white':'text-black'} md:w-24 md:mt-0  md:h-10 md:rounded-lg font-bold h-8 md:text-lg`}>Shop Now</button></NavLink>
+                        <NavLink to={'/login'}> <button className={`w-40 bg-yellow-900 mt-4 ${!mode.colormode?'text-white':'text-black'} md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 text-sm sm:text-base`}>Shop Now</button></NavLink>
                     </div>
                 </div>
             </div>
