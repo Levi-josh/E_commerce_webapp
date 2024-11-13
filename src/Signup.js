@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaAngleLeft, FaArrowLeft, FaSpinner } from 'react-icons/fa'
 import { NavLink, useNavigate, useOutletContext } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { motion } from 'framer-motion';
 const Signup = () => {
 
     const [error,setError]=useState('')
@@ -15,6 +16,7 @@ const Signup = () => {
     const mode = useSelector((state)=>state.changemode.value)
     const bgcolor = mode?.colorBgtext
     const textcolor = mode?.colortext
+    const [ran,setRan]=useState(false)
 
     // useEffect(()=>{
     //  user?.UserId && subscribeToPush(data?.UserId)
@@ -87,6 +89,7 @@ const Signup = () => {
     setshowtext(true)
     setError("")
     setuser('')
+    setRan(true)
         
       const option = {
         method: 'POST',
@@ -105,10 +108,14 @@ const Signup = () => {
         data?.UserId &&changeRunEffect()
         data?.UserId && localStorage.setItem('myid',data?.UserId)
         data?.UserId && navigate(`/`)
+        if(!response.ok){
+          setRan(false) 
+        }
         setuser(data)
       }
       catch (err) {
         setError(err)
+        setRan(false);
         console.log(err.message)
       }
       setFormData({input1:'',input2:''})   
@@ -121,7 +128,7 @@ const Signup = () => {
     <div className={`w-130 sm:w-140  lg:w-130  xl:w-140 lg:h-96  rounded-xl  justify-center lg:items-center   items-start flex flex-col lg:flex-row  ${mode.colormode?'shadow-stone-700 shadow-lg ':'shadow-2xl'}  gap-3 sm:gap-6  lg:gap-12 `}>
         <div className='w-full md:h-full flex items-center justify-center hero before:bg-blurblack'>
           <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='h-full w-full lg:rounded-bl-xl lg:rounded-tl-xl rounded-t-xl lg:rounded-t-none        bg-no-repeat bg-cover bg-center object-cover   ' />
-          <div className=' text-white yellowblur absolute px-10 py-3 z-30 font-semibold text-lg sm:text-xl rounded-lg '><p>Glamour Grove</p></div>
+          <div className=' text-white  absolute px-10 py-3 z-30 font-semibold text-lg sm:text-xl rounded-lg '><p>Glamour Grove</p></div>
         </div>
         <form  onSubmit={handleSubmit}className='flex flex-col gap-3 sm:gap-4 lg:gap-5 pb-3 sm:pb-6  w-full  lg:pr-12 lg:pl-0 px-3 sm:px-7 lg:px-6   '>
             <h1 className='font-bold text-xl sm:text-2xl lg:text-3xl '>Sign Up</h1>
@@ -140,7 +147,19 @@ const Signup = () => {
                 <input type='checkbox' className=' accent-yellow-900 sm:w-4 sm:h-4 hover:cursor-pointer lg:w-5 lg:h-5' />
                 <p className='whitespace-nowrap  lg:font-semibold'>I agree to the terms and condition</p>
             </div>
-            <button className={`w-full py-2 md:py-3  sm:text-lg lg:text-xl font-semibold  bg-yellow-900 text-white  ${disabled ? mode.colormode?'opacity-50 cursor-not-allowed':'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}><p className={`${showtext?'invisible':'visible'}`}>Sign In</p>{(showtext) && <FaSpinner className='absolute popout'/>}</button>
+            <button className={`w-full py-2 md:py-3  sm:text-lg lg:text-xl flex justify-center items-center font-semibold  bg-yellow-900 text-white  ${disabled ? mode.colormode?'opacity-50 cursor-not-allowed':'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}>{!ran?`Sign Up`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4.929 4.929L7.757 7.757" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M16.243 16.243L19.071 19.071" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 12H6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M18 12H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4.929 19.071L7.757 16.243" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M16.243 7.757L19.071 4.929" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </motion.div>}
+            </button>
         </form>
     </div>
 </div>
