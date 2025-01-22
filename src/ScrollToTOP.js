@@ -24,14 +24,16 @@ const ScrollToTOP = () => {
     }, [location]);
  
     useEffect(() => {
-    // const myid = localStorage.getItem('myid')
-    // console.log(`Mid:${myid}`)
-    // if(!myid&&location.pathname =='/'){
+    const myid = localStorage.getItem('myid')
+    console.log(`Mid:${myid}`)
+    
+    if(!myid&&location.pathname =='/'){
 
-    //     navigate('/landing');
-    // }
+        navigate('/landing');
+    }
+    setId(myid)
   },[location,id])
-
+console.log(id)
     useEffect(() => {
         
         
@@ -46,19 +48,17 @@ const ScrollToTOP = () => {
             try {
                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getuser/${id}`, option);
                 const data = await response.json()
+                console.log(data)
                 setdata(data)
-                // console.log(data)
             }
-
             catch (err) {
                 setError(err)
                 console.log(err.message)
-
             }
         } 
     id&&getusersDocuments()
     }, [data,id]);
-   
+    console.log(data)
     function changeRunEffect() {
         setRunEffect(prev => !prev)
     }

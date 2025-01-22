@@ -223,7 +223,7 @@ const textRevealVariants2 = {
                                 </div>
                                 <div className="w-full flex flex-col  md:gap-2 md:items-center ">
                                 <p className="text-base sm:text-lg font-semibold">Phone Number</p>
-                                <p className="text-sm sm:text-base font-sans">+125-639-075-355</p> 
+                                <p className="text-sm sm:text-base font-sans">+125-639-075-3555</p> 
                                 </div>
                             </motion.div>
                             <motion.div  className={`w-full flex border ${mode.colormode && 'border-0.5 border-stone-800'} flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52   hover:cursor-pointer  rounded-xl `}>

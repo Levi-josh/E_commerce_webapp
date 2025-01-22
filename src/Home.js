@@ -129,9 +129,9 @@ const scrolltoPage1 = (currentRef)=> {
                 }
             }
             try {
-                if(!selectedcart && data?.items?.length<1){
+                if( data||data?.items?.length<1 && selectedcart===undefined){
                    navigate('/listcols')
-                }if(!selectedcart && data?.items.length>0){
+                }if( data||data?.items.length>0&&selectedcart===undefined){
                     navigate('/listcols')
                 }
                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/addcart/${selectedcart}/${id}`, option);
@@ -150,7 +150,7 @@ const scrolltoPage1 = (currentRef)=> {
         }, 2000);    
     }
     
-console.log(error)
+console.log(error.message)
 // function opencollection() {
 //         setscroll(scroll)
 //         setpopout(prev => !prev)
@@ -200,18 +200,15 @@ console.log(error)
 //     setnewcartText('')
 //     setshowinput(false)
 //     }
-
+console.log(data)
     return (
         <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full flex-col flex ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-4 sm:px-8 md:px-12 lg:px-3   w-full m-0 ${bgcolor} ${textcolor} z-20  `}>
                 <motion.div animate={{ x: 0 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`    ${menubar ? 'invisible lg:visible' : 'visble'}`} >
-                    {id?
                     <div className='flex gap-2 items-center '>
                         <FaUserCircle className={`${bgcolor}${textcolor} text-2xl sm:text-3xl`} />
                         <p className='text-lg font-semibold sm:text-2xl'onClick={()=>scrolltoPage1(contactRef)}>Josh kelly</p>
-                    </div>:
-                    <p className="font-bold text-lg sm:text-2xl  xl:text-3xl" onClick={()=>scrolltoPage1(contactRef)}>Glamour Grove</p>
-                    }
+                    </div>
                 </motion.div>
                 <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
@@ -276,7 +273,7 @@ console.log(error)
                             <NavLink to={'/'} ><div className='flex hover:lg:bg-neutral-100  gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaHome className='text-lg sm:text-xl md:text-2xl' /> <p className='    py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
                             <NavLink to={'/product'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaShopify className='text-lg sm:text-xl md:text-2xl' /><p className='  py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden'>Products</p></div></NavLink>
                             <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl ' /><p className=' py-3 sm:py-4  sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={()=>scrolltoPage1(contactRef)}>Contact</p></div>
-                            <NavLink > <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:lg:bg-neutral-100 lg:hidden' onClick={()=>scrolltoPage1(aboutRef)}>About</p></div></NavLink>
+                            <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:lg:bg-neutral-100 lg:hidden' onClick={()=>scrolltoPage1(aboutRef)}>About</p></div>
                         </div>
                         <div className='flex flex-col lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  '>
                             <div className={`hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b  px-6 ${mode.colormode?'hover:lg:bg-stone-700 border-stone-700':'hover:lg:bg-neutral-200'}`}>
@@ -401,7 +398,7 @@ console.log(error)
                                     <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'lg:bg-stone-800 lg:text-white':'lg:bg-gray-200 '} bg-white flex justify-center items-center`}>05</div>
                                 </div>
                             </div>
-                            <div><button className='bg-yellow-900 px-3 text-white lg:px-8 lg:py-2 py-1 rounded-lg'>Shop Now</button></div> 
+                            <div><button className='bg-yellow-900 px-3 text-white lg:px-8 lg:py-2 py-1 rounded-lg' onClick={navSignIn}>Shop Now</button></div> 
                         </div>
                     </div>
                     {/* <div className={` md:mt-12 lg:mt-20   md:mb-9  gap-3 p-3 h-full   w-120  sm:w-110 flex flex-col md:flex-row   bg-yellow-900   rounded-xl  `}>

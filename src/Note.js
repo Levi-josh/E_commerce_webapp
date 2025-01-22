@@ -19,7 +19,7 @@ const Note = () => {
     const [array, setarray] = useState(0)
 
     const { data,id } = useOutletContext()
-    
+    console.log(data)
     return (
         <div className={`  ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} ${bgcolor} ${textcolor} h-screen `}>
             <header className={`fixed flex  items-center  h-20 gap-4 sm:gap-0 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4  w-full m-0  z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
@@ -30,7 +30,7 @@ const Note = () => {
 
             <div className='h-full hidden lg:flex w-full  '>
                 {data?.Notification ?  data?.Notification.length<1?
-                <p className='popout fixed font-semibold text-xl'>your cart history is empty</p>:
+                <p className='popout fixed font-semibold text-xl'>No notification yet!</p>:
                 <appcontext.Provider value={data}>
                 <Firstnote />
                 <Secondnote />
