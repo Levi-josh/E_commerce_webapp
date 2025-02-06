@@ -88,11 +88,11 @@ const ListCols = () => {
           </div>
         
           <div className='w-full lg:w-140 gap-7   lg:pl-5 overflow-auto    h-auto  items-center mt-5 sm:mt-10 lg:mt-0 lg:pt-44 pb-10  flex flex-col'>
-            {data.items<1?
+            {data&&data.items<1?
             <div className=' h-full pt-10 lg:pt-0 lg:pb-80'><p className='font-blod text-2xl sm:text-3xl lg:text-4xl  font-serif'>No carts yet!</p><p className=' text-sm sm:text-base'>Create a cart first before adding any item</p></div>:
-            (data?.items?.map(prev => { return <div className={`flex items-center lg:items-end gap-10 p-2 sm:p-5 rounded-xl w-full      h-40 sm:h-44 shadow-lg  ${mode.colormode?'addShadow2':'addShadow'}  `}> 
+            (data && data?.items?.map(prev => { return <div className={`flex items-center lg:items-end gap-10 p-2 sm:p-5 rounded-xl w-full      h-40 sm:h-44 shadow-lg  ${mode.colormode?'addShadow2':'addShadow'}  `}> 
               <div className='flex items-center gap-2 sm:gap-5 w-full h-full '>
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-32 sm:w-56 md:w-64 h-full rounded-xl       bg-no-repeat bg-cover bg-center   ' />
+                {mode.colormode?<img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-32 sm:w-56 md:w-64 h-full rounded-xl       bg-no-repeat bg-cover bg-center  ' /> :<img src='https://img.freepik.com/premium-photo/shopping-cart-black-background-shopping-trolley-grocery-push-cart-3d-render-illustration_989822-1813.jpg?size=626&ext=jpg&ga=GA1.1.732548087.1710974042&semt=ais' alt="" className='w-32 sm:w-56 md:w-64 h-full rounded-xl  bg-no-repeat bg-cover bg-center  '/>}
                 <div className='flex flex-col justify-between h-full w-full '>
                   <p className={'text-sm sm:text-base'}>{prev.title}</p>
                   <p className={'text-sm sm:text-base'}>added items : {prev.total}</p>

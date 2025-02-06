@@ -102,7 +102,7 @@ return (
                 <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>
-                        <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
+                        {/* <h1 className='font-bold sm:text-xl '>{error?.message}</h1> */}
                         <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>{seterror({'message':undefined})}}>Ok</button></div>
                     </div>
                 </div>

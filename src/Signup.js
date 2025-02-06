@@ -122,25 +122,25 @@ const Signup = () => {
       user?.UserId &&changeRunEffect()
     };
   return (
-    <div className={`flex justify-center ${bgcolor} ${textcolor} items-center w-full  h-screen `}>
-    <NavLink to='/landing' > <FaAngleLeft className='font-bold absolute top-5 left-3  sm:top-10 sm:left-5  text-2xl sm:text-3xl ' ></FaAngleLeft></NavLink>
+    <div className={`flex justify-center ${bgcolor} ${textcolor} items-start lg:items-center w-full  h-screen `}>
+    <NavLink to='/landing' > <FaAngleLeft className='font-bold absolute z-20 text-white lg:text-black top-5 left-3  sm:top-10 sm:left-5  text-2xl sm:text-3xl ' ></FaAngleLeft></NavLink>
 
-    <div className={`w-130 sm:w-140  lg:w-130  xl:w-140 lg:h-96  rounded-xl overflow-hidden  justify-center lg:items-center   items-start flex flex-col lg:flex-row  ${mode.colormode?'addShadow2':'addShadow'}  gap-3 sm:gap-6  lg:gap-12 `}>
+    <div className={`w-full sm:w-140  lg:w-130  xl:w-140 lg:h-96  lg:rounded-xl overflow-hidden  justify-center lg:items-center   items-start flex flex-col lg:flex-row  ${window.matchMedia('(max-width: 600px)').matches?'':mode.colormode?'addShadow2':'addShadow'}  gap-10  lg:gap-12 `}>
         <div className='w-full md:h-full flex items-center justify-center hero '>
-          <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='h-full w-full lg:rounded-bl-xl lg:rounded-tl-xl rounded-t-xl lg:rounded-t-none        bg-no-repeat bg-cover bg-center object-cover   ' />
-          <div className=' text-white bg-blurblack absolute  px-10 py-3 z-30 font-semibold text-lg sm:text-xl rounded-lg '><p>Glamour Grove</p></div>
+          <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='h-full w-full lg:rounded-bl-xl lg:rounded-tl-xl  lg:rounded-t-none        bg-no-repeat bg-cover bg-center object-cover   ' />
+          <div className=' text-white  bg-blurblack absolute  px-10 py-3 z-30 font-semibold text-lg sm:text-xl rounded-lg '><p>Glamour Grove</p></div>
         </div>
-        <form  onSubmit={handleSubmit}className='flex flex-col gap-3 sm:gap-4 lg:gap-5 pb-3 sm:pb-6  w-full  lg:pr-12 lg:pl-0 px-3 sm:px-7 lg:px-6   '>
-            <h1 className='font-bold text-xl sm:text-2xl lg:text-3xl '>Sign Up</h1>
+        <form  onSubmit={handleSubmit}className='flex flex-col gap-5 lg:gap-5 pb-3 sm:pb-6  w-full  lg:pr-12 lg:pl-0 px-3 sm:px-7 lg:px-6   '>
+            <h1 className='font-bold text-2xl lg:text-3xl lg:text-center'>Sign Up</h1>
             <div>
-            <p className=''>Have an account already? <NavLink to={'/login'}><span className={`text-yellow-900 ${mode.colormode?'text-yellow-700':'text-yellow-900'} font-medium  `}>Sign In</span></NavLink> </p>
+            <p className='lg:text-center'>Have an account already? <NavLink to={'/login'}><span className={`text-yellow-900 ${mode.colormode?'text-yellow-700':'text-yellow-900'} font-medium  `}>Sign In</span></NavLink> </p>
             <div className='w-full relative h-14 flex items-end'>
             {user.username&&<p className=' text-red-600 absolute top-0  text-sm sm:text-base'>{user.username}</p>}
-            <input type='text' placeholder='Username'  value={formData.input1} name="input1" onChange={handlechange} className={`   outline-none  ${mode.colormode?'bg-stone-800 ':'bg-gray-200 '} py-1 pl-2 lg:py-2   ${mode.colormode?'text-white placeholder:text-white':'text-black placeholder:text-black'}  w-full`} />
+            <input type='text' placeholder='Username'  value={formData.input1} name="input1" onChange={handlechange} className={`   outline-none  ${mode.colormode?'bg-stone-800 ':'bg-fadeblack '} py-1 pl-2 lg:py-2   ${mode.colormode?'text-white placeholder:text-white':'text-black placeholder:text-black'}  w-full`} />
             </div>
             <div className='w-full relative h-14 flex items-end '>
             {user.password&&<p className=' text-red-600 absolute top-0 text-sm sm:text-base'>{user.password}</p>}
-            <input type='password' placeholder='Password'  value={formData.input2} name="input2" onChange={handlechange}  className={`  outline-none  ${mode.colormode?'bg-stone-800  ':'bg-gray-200'} py-1 pl-2 lg:py-2 ${mode.colormode?'text-white placeholder:text-white':'text-black placeholder:text-black'} w-full  `} />
+            <input type='password' placeholder='Password'  value={formData.input2} name="input2" onChange={handlechange}  className={`  outline-none  ${mode.colormode?'bg-stone-800  ':'bg-fadeblack'} py-1 pl-2 lg:py-2 ${mode.colormode?'text-white placeholder:text-white':'text-black placeholder:text-black'} w-full  `} />
             </div>
             </div>
             <div className='flex items-center gap-3'>

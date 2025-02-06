@@ -6,7 +6,7 @@ import { color, delay, motion } from 'framer-motion'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import myitems from './Newarrival.json'
-import React, { useRef } from 'react'
+import React, { useRef,useEffect } from 'react'
 
 const Landing = () => {
     const [menubar, setmenubar] = useState(false)
@@ -17,6 +17,185 @@ const Landing = () => {
     const mode = useSelector((state)=>state.changemode.value)
     const bgcolor = mode?.colorBgtext
     const textcolor = mode?.colortext
+    const nextBtn = useRef(null);
+    const prevBtn = useRef(null);
+    const carousel = useRef(null);
+    const list = useRef(null);
+    const runningTime = useRef(null);
+    const content = useRef(null);
+  
+  
+    const timeRunning = 3000;
+    const timeAutoNext = 7000;
+  
+    // State to track the slider items
+    const [sliderItems, setSliderItems] = useState([
+        { name: "EAGLE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275" },
+        { name: "OWL", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/69/885248/1.jpg?9651" },
+        { name: "CROW", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/53/122776/1.jpg?7527" },
+        { name: "BUTTERFLY", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/649156/1.jpg?8476" },
+        { name: "KINGFISHER", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/65/2996252/1.jpg?8267" },
+        { name: "PARROT", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/68/9023002/1.jpg?3955" }
+    ]);
+  
+    let runTimeOut;
+    let runTimeOut2;
+   
+    let runNextAuto;
+    let runNextAuto2;
+  
+    useEffect(() => {
+      if (!nextBtn.current || !prevBtn.current) return;
+  
+      function showSlider(type) {
+        let updatedItems = [...sliderItems];
+  
+        if (type === "next") {
+         
+          const nextPic = list.current.children
+          updatedItems.push(updatedItems.shift()); // Move first item to the end
+          setSliderItems(updatedItems);
+          // clearTimeout(runTimeOut2);
+          // runTimeOut2=setTimeout(() => {
+          //   updatedItems.push(updatedItems.shift()); // Move first item to the end
+          //   setSliderItems(updatedItems);
+          //   }, 3000);
+          // const a = nextPic[2].classList.add("nextpic");
+          // clearTimeout(runTimeOut);
+          // runTimeOut = setTimeout(() => {
+           
+          //   //  nextPic[2].classList.add("current"); 
+          //    nextPic[2].classList.remove("nextpic"); 
+          // }, 3000);
+          // clearTimeout(runTimeOut2);
+          // runTimeOut2 = setTimeout(() => {
+          //   updatedItems.push(updatedItems.shift()); // Move first item to the end
+          //   setSliderItems(updatedItems); // Update state
+          //   //  nextPic[2].classList.remove("nextpic"); // Reset for the next transition
+          // }, 3000);
+          
+          
+       
+       
+        } else {
+          updatedItems.unshift(updatedItems.pop()); // Move last to first
+          carousel.current.classList.add("prev");
+        }
+  
+        clearTimeout(runNextAuto);
+        runNextAuto = setTimeout(() => {
+            if(nextBtn.current&&window.location.pathname=='/landing')
+          nextBtn.current.click();
+        }, timeAutoNext);
+  
+        resetTimeAnimation();
+        resetTimeAnimation2();
+      }
+  
+      nextBtn.current.addEventListener("click", () => showSlider("next"));
+      prevBtn.current.addEventListener("click", () => showSlider("prev"));
+  
+      runNextAuto = setTimeout(() => {
+        if(nextBtn.current&&window.location.pathname=='/landing')
+        nextBtn.current.click();
+      }, timeAutoNext);
+  
+      return () => {
+        clearTimeout(runNextAuto);
+      };
+    }, [sliderItems]);
+  
+    function resetTimeAnimation() {
+      if (list.current) {
+        const nextPic = list.current.children
+        nextPic[1].style.animation = "none";
+        void nextPic[1].offsetHeight; // Trigger reflow
+        nextPic[1].style.animation = "animate2 1s ease-in-out 5.5s 1 forwards"; 
+        nextPic[0].children[1].children[0].style.animation= "none";
+        void nextPic[0].children[1].children[0].offsetHeight;
+        nextPic[0].children[1].children[0].style.animation= "animate 1s ease-in-out 0.3s 1 forwards";
+        nextPic[0].children[1].children[1].style.animation= "none";
+        void nextPic[0].children[1].children[1].offsetHeight;
+        nextPic[0].children[1].children[1].style.animation= "animate 1s ease-in-out 0.6s 1 forwards";
+        nextPic[0].children[1].children[2].style.animation= "none";
+        void nextPic[0].children[1].children[2].offsetHeight;
+        nextPic[0].children[1].children[2].style.animation= "animate 1s ease-in-out 0.9s 1 forwards";
+        nextPic[0].children[1].children[3].style.animation= "none";
+        void nextPic[0].children[1].children[3].offsetHeight;
+        nextPic[0].children[1].children[3].style.animation= "animate 1s ease-in-out 1.2s 1 forwards";
+      }
+    }
+    function resetTimeAnimation2() {
+      if (runningTime.current) {
+        runningTime.current.style.animation = "none";
+        void runningTime.current.offsetHeight; // Trigger reflow
+        runningTime.current.style.animation = "runningTime 7s linear 1 forwards";
+      }
+    }
+  console.log('ran')
+//     const nextBtn = useRef(null)
+//     const prevBtn = useRef(null)
+//     const carousel = useRef(null)
+//     let list = useRef(null)
+//     // item = document.querySelectorAll('.item')
+//     let runningTime = useRef()
+
+// let timeRunning = 3000 
+// let timeAutoNext = 7000
+
+// nextBtn.onclick = function(){
+//     showSlider('next')
+// }
+
+// prevBtn.onclick = function(){
+//     showSlider('prev')
+// }
+
+// let runTimeOut 
+
+// let runNextAuto = setTimeout(() => {
+//     nextBtn.click()
+// }, timeAutoNext)
+
+
+// function resetTimeAnimation() {
+//     runningTime.current.style.animation = 'none'
+//     // runningTime.current.offsetHeight
+//     runningTime.current.style.animation = null 
+//     runningTime.current.style.animation = 'runningTime 7s linear 1 forwards'
+// }
+
+
+// function showSlider(type) {
+//     let sliderItemsDom = list
+//     console.log(sliderItemsDom)
+//     if(type === 'next'){
+//         list.current.appendChild(sliderItemsDom[0])
+//         carousel.current.classList.add('next')
+//     } else{
+//         list.current.prepend(sliderItemsDom[sliderItemsDom.length - 1])
+//         carousel.current.classList.add('prev')
+//     }
+
+//     clearTimeout(runTimeOut)
+
+//     runTimeOut = setTimeout( () => {
+        
+//         carousel.current.classList.remove('next')
+//         carousel.current.classList.remove('prev')
+//     }, timeRunning)
+
+
+//     clearTimeout(runNextAuto)
+//     runNextAuto = setTimeout(() => {
+//         nextBtn.click()
+//     }, timeAutoNext)
+
+//     resetTimeAnimation() // Reset the running time animation
+// }
+
+// // Start the initial animation 
+// resetTimeAnimation()
 const navSignIn = ()=>{
     navigate('/login')  
 }
@@ -56,6 +235,7 @@ const textRevealVariants2 = {
       } 
     }
   };
+  console.log(items)
   return (
     <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white fixed before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
     {/* <div className='w-full  h-screen px-2 sm:px-5 pb-5   '>
@@ -85,10 +265,10 @@ const textRevealVariants2 = {
             </div>
         </div>
     </div> */}
-        <div className='w-full h-screen px-2 sm:px-5 pb-8'>
-            <div className='w-full h-full flex flex-col '>
+        <div className='w-full h-screen '>
+            <div className='w-full h-full'>
                 {/* Small Header */}
-                <header className={`flex justify-between items-center h-14 sm:h-16 lg:h-20  ${mode.colormode && 'shadow-stone-700 shadow-md'} w-full  ${bgcolor} ${textcolor}`}>
+                <header className={`flex justify-between landHeader absolute px-5  items-center h-14 sm:h-16 lg:h-20 z-50  w-full text-white`}>
                 <p className="font-bold text-lg sm:text-xl lg:text-2xl">Glamour Grove</p>
                 <ul className='hidden lg:flex lg:gap-18 xl:gap-20 md:text-base'>
                     <NavLink to='/login'>
@@ -104,14 +284,13 @@ const textRevealVariants2 = {
                     <li>About Us</li>
                     </NavLink>
                 </ul>
-                <div className='flex gap-4 items-center'>
-                    <button className='font-semibold' onClick={navSignIn}>Sign in</button>
+                <div className='flex gap-2 sm:gap-4 items-center'>
+                    <button className='font-semibold bg-fadeblack px-3 py-1 sm:py-2 sm:px-5  rounded-xl' onClick={navSignIn}>Sign in</button>
                     <button className='bg-yellow-900 font-semibold px-3 py-1 sm:py-2 sm:px-5  rounded-xl text-white ' onClick={navSignUp}>Sign up</button>
                 </div>
                 </header>
                 {/* Hero section filling remaining space */}
-                <div className='flex-grow relative hero rounded-xl overflow-hidden before:bg-gradient-to-r  before:from-blurblack  before:via-blurblack   before:to-blurblack2'>
-                {/* Hero text container */}
+                {/* <div className='flex-grow relative hero rounded-xl overflow-hidden before:bg-gradient-to-r  before:from-blurblack  before:via-blurblack   before:to-blurblack2'>
                 <motion.div variants={containerVariants} initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }} className='absolute flex flex-col text-white justify-center gap-7 sm:gap-9 lg:gap-8 z-10 h-full pl-5 w-130 sm:w-140 xl:w-22'>
                     <motion.h1 variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} className='font-bold font-serif text-4xl sm:text-5xl  lg:text-6xl  leading11'>More than just a shopping app</motion.h1>
                     <motion.p variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} className='font-serif text-sm sm:text-base leading-6 sm:leading-8'>
@@ -119,14 +298,48 @@ const textRevealVariants2 = {
                     </motion.p>
                     <motion.button variants={textRevealVariants2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}  onClick={navSignIn} className='px-3 w-32 py-2 lg:py-3 sm:w-52 bg-yellow-900 text-white rounded-xl'>Shop Now</motion.button>
                 </motion.div>
-
-                {/* Hero image */}
                 <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' 
                     className='w-full h-full object-cover  bg-no-repeat bg-cover bg-center' 
                     alt="Shopping banner"
                 />
-                </div>
-            </div>
+                </div> */}
+    
+    <div className="carousel" ref={carousel }>
+
+<div className="list" ref={list }>
+
+{sliderItems.map((item, index) => (
+          <div className="item" key={index}>
+             <img src={item.image} alt={item.name} className="slider-img bg-no-repeat bg-cover bg-center " />
+            <div className="content" ref={content}>
+              <div className="title">SLIDER</div>
+              <div className="name">{item.name}</div>
+              <div className="des">
+              Glamour Grove is your one-stop shop for your clothes, shoes, jewelry, and more. We weren't just given the title "the best shopping app," we earned it.
+              </div>
+              <div className="btn">
+                <button>Shop Now</button>
+                {/* <button>Subscribe</button> */}
+              </div>
+            </div> 
+          </div>
+        ))}
+
+</div>
+
+
+<div className="arrows">
+    <button className="prev" ref={prevBtn}>{'<'}</button>
+    <button className="next" ref={nextBtn}>{'>'}</button>
+</div>
+
+
+
+<div className="timeRunning" ref={runningTime}></div>
+
+</div>
+            </div> 
+
             </div>
                 <div className='w-120 m-auto lg:pt-6 pb-3  '>
                 <h1 className='font-bold      text-2xl sm:text-3xl '>Our Services</h1>

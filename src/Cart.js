@@ -301,7 +301,7 @@ const nextcart = async () => {
                 </div>
                 <FaEllipsisV className='absolute right-3 sm:static' />
             </header >
-            {error?.message !=='Failed to fetch' && error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 ${bgcolor}  min-h-101 sm:min-h-102 lg:min-h-101 `}>
+            {/* {error?.message !=='Failed to fetch' && error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 ${bgcolor}  min-h-101 sm:min-h-102 lg:min-h-101 `}>
                 <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>
@@ -310,9 +310,9 @@ const nextcart = async () => {
                         <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={() =>setError(null)}> Try again</button></div>
                     </div>
                 </div>
-            </div>} 
+            </div>}  */}
             <div  >
-                {cart?.product?.length === 0 || myid === null ? <div className='      lg:pt-10 h-screen flex flex-col justify-center items-center '> {!mode.colormode?<img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> :<img src='https://img.freepik.com/premium-photo/shopping-cart-black-background-shopping-trolley-grocery-push-cart-3d-render-illustration_989822-1813.jpg?size=626&ext=jpg&ga=GA1.1.732548087.1710974042&semt=ais' alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 '/>}<p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
+                {cart?.product?.length === 0 || myid === null ? <div className='     lg:pt-10 h-screen flex flex-col justify-center items-center '> {!mode.colormode?<img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> :<img src='https://img.freepik.com/premium-photo/shopping-cart-black-background-shopping-trolley-grocery-push-cart-3d-render-illustration_989822-1813.jpg?size=626&ext=jpg&ga=GA1.1.732548087.1710974042&semt=ais' alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 '/>}<p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
                     <section className='  pt-28 sm:pt-32     lg:pt-32 '>
                         {cart.product ? <>
                             <h1 className='text-center   font-semibold text-xl  sm:mb-5  mb-5   md:mb-5  lg:mb-7 xl:text-3xl sm:text-2xl lg:text-3xl'>{cart?.title}</h1>
@@ -330,7 +330,7 @@ const nextcart = async () => {
                         <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                             <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                             <div className='flex flex-col justify-center gap-1'>
-                                <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
+                                {/* <h1 className='font-bold sm:text-xl '>{error?.message}</h1> */}
                                 <p className='md:text-lg'>Check your internet connection</p>
                                 < div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' onClick={()=>window.location.reload()}>Reload</button></div>
                             </div>

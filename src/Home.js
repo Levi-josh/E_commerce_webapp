@@ -150,7 +150,7 @@ const scrolltoPage1 = (currentRef)=> {
         }, 2000);    
     }
     
-console.log(error.message)
+
 // function opencollection() {
 //         setscroll(scroll)
 //         setpopout(prev => !prev)
@@ -200,7 +200,7 @@ console.log(error.message)
 //     setnewcartText('')
 //     setshowinput(false)
 //     }
-console.log(data)
+
     return (
         <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full flex-col flex ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-4 sm:px-8 md:px-12 lg:px-3   w-full m-0 ${bgcolor} ${textcolor} z-20  `}>
@@ -329,7 +329,7 @@ console.log(data)
 
                 
             </motion.div> */}
-            {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 ${bgcolor}  min-h-101 sm:min-h-102 lg:min-h-101 `}>
+            {/* {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 ${bgcolor}  min-h-101 sm:min-h-102 lg:min-h-101 `}>
                 <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
                     <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
                     <div className='flex flex-col justify-center gap-1'>
@@ -338,7 +338,7 @@ console.log(data)
                         onClick={()=>{seterror({'message':undefined})}}>Ok</button></div>
                     </div>
                 </div>
-            </div>}
+            </div>} */}
             <div className={` bg-yellow-900 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
                 <p>you're logged in</p>
             </div>

@@ -122,7 +122,8 @@ module.exports = {
       colors:{
         blurblack:'rgba(0, 0, 0, 0.7)',
         blurblack2:'rgba(0, 0, 0, 0.3)',
-        bluryellow:'rgba(113, 63, 18, 0.7)'
+        bluryellow:'rgba(113, 63, 18, 0.7)',
+        fadeblack:'#eee4'
       },
       lineHeight:{
         leading11:'60px'
