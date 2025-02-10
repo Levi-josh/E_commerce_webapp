@@ -11,6 +11,7 @@ import React, { useRef,useEffect } from 'react'
 const Landing = () => {
     const [menubar, setmenubar] = useState(false)
     const [popout, setpopout] = useState(false)
+    const [changeSlider, setchangeSlider] = useState(false)
     const navigate = useNavigate()
     const [items,setitems]=useState(myitems)
     const [error,seterror]=useState({})
@@ -40,89 +41,87 @@ const Landing = () => {
   
     let runTimeOut;
     let runTimeOut2;
-   
     let runNextAuto;
     let runNextAuto2;
   
     useEffect(() => {
       if (!nextBtn.current || !prevBtn.current) return;
-  
       function showSlider(type) {
         let updatedItems = [...sliderItems];
-  
         if (type === "next") {
-         
-          const nextPic = list.current.children
           updatedItems.push(updatedItems.shift()); // Move first item to the end
           setSliderItems(updatedItems);
-          // clearTimeout(runTimeOut2);
-          // runTimeOut2=setTimeout(() => {
-          //   updatedItems.push(updatedItems.shift()); // Move first item to the end
-          //   setSliderItems(updatedItems);
-          //   }, 3000);
-          // const a = nextPic[2].classList.add("nextpic");
-          // clearTimeout(runTimeOut);
-          // runTimeOut = setTimeout(() => {
-           
-          //   //  nextPic[2].classList.add("current"); 
-          //    nextPic[2].classList.remove("nextpic"); 
-          // }, 3000);
-          // clearTimeout(runTimeOut2);
-          // runTimeOut2 = setTimeout(() => {
-          //   updatedItems.push(updatedItems.shift()); // Move first item to the end
-          //   setSliderItems(updatedItems); // Update state
-          //   //  nextPic[2].classList.remove("nextpic"); // Reset for the next transition
-          // }, 3000);
-          
-          
-       
-       
-        } else {
-          updatedItems.unshift(updatedItems.pop()); // Move last to first
-          carousel.current.classList.add("prev");
-        }
-  
-        clearTimeout(runNextAuto);
-        runNextAuto = setTimeout(() => {
-            if(nextBtn.current&&window.location.pathname=='/landing')
-          nextBtn.current.click();
-        }, timeAutoNext);
-  
-        resetTimeAnimation();
-        resetTimeAnimation2();
+        } 
       }
-  
-      nextBtn.current.addEventListener("click", () => showSlider("next"));
-      prevBtn.current.addEventListener("click", () => showSlider("prev"));
-  
+      function nextshowSlider(type) {
+        let updatedItems = [...sliderItems];
+        const nextPic = list.current.children
+        if (type === "next") {
+            nextPic[1].style.animation = "none";
+            void nextPic[1].offsetHeight; // Trigger reflow
+            nextPic[1].style.animation = "animate2 1s ease-in-out 0s 1 forwards";
+            clearTimeout(runNextAuto);
+            runNextAuto = setTimeout(() => {
+                updatedItems.push(updatedItems.shift()); // Move first item to the end
+                setSliderItems(updatedItems);
+              }, 1500);
+              
+        } 
+        else{
+            // nextPic[1].style.animation = "none";
+            // void nextPic[1].offsetHeight; // Trigger reflow
+            updatedItems.push(updatedItems.pop()); // Move first item to the end
+            setSliderItems(updatedItems);
+        }
+      }
+      nextBtn.current.addEventListener("click", () => nextshowSlider("next"));
+      prevBtn.current.addEventListener("click", () => nextshowSlider("prev"));
       runNextAuto = setTimeout(() => {
-        if(nextBtn.current&&window.location.pathname=='/landing')
-        nextBtn.current.click();
+        showSlider("next")
       }, timeAutoNext);
-  
+      resetTimeAnimation();
+      console.log('ran')
+      resetTimeAnimation2();
       return () => {
         clearTimeout(runNextAuto);
+     
       };
     }, [sliderItems]);
-  
+// console.log(sliderItems)
     function resetTimeAnimation() {
       if (list.current) {
         const nextPic = list.current.children
+        //animation for second div 
         nextPic[1].style.animation = "none";
         void nextPic[1].offsetHeight; // Trigger reflow
-        nextPic[1].style.animation = "animate2 1s ease-in-out 5.5s 1 forwards"; 
+        nextPic[1].style.animation = "animate2 1s ease-in-out 5.5s 1 forwards";
+        //animation for the remaining divs
+        nextPic[2].style.transition = "none";
+        void nextPic[2].offsetHeight;
+        nextPic[3].style.transition = "none";
+        void nextPic[3].offsetHeight;
+        nextPic[4].style.transition = "none";
+        void nextPic[4].offsetHeight;
+        nextPic[5].style.transition = "none";
+        void nextPic[5].offsetHeight;
+        nextPic[1].style.transition='all 3s linear'
+        nextPic[3].style.transition='all 3s linear'
+        nextPic[3].style.transition='all 3s linear'
+        nextPic[4].style.transition='all 3s linear'
+        nextPic[5].style.transition='all 3s linear'
+        //animation fr content
         nextPic[0].children[1].children[0].style.animation= "none";
         void nextPic[0].children[1].children[0].offsetHeight;
-        nextPic[0].children[1].children[0].style.animation= "animate 1s ease-in-out 0.3s 1 forwards";
+        nextPic[0].children[1].children[0].style.animation= "animate 1s ease-in-out 0.1s 1 forwards";
         nextPic[0].children[1].children[1].style.animation= "none";
         void nextPic[0].children[1].children[1].offsetHeight;
-        nextPic[0].children[1].children[1].style.animation= "animate 1s ease-in-out 0.6s 1 forwards";
+        nextPic[0].children[1].children[1].style.animation= "animate 1s ease-in-out 0.3s 1 forwards";
         nextPic[0].children[1].children[2].style.animation= "none";
         void nextPic[0].children[1].children[2].offsetHeight;
-        nextPic[0].children[1].children[2].style.animation= "animate 1s ease-in-out 0.9s 1 forwards";
+        nextPic[0].children[1].children[2].style.animation= "animate 1s ease-in-out 0.6s 1 forwards";
         nextPic[0].children[1].children[3].style.animation= "none";
         void nextPic[0].children[1].children[3].offsetHeight;
-        nextPic[0].children[1].children[3].style.animation= "animate 1s ease-in-out 1.2s 1 forwards";
+        nextPic[0].children[1].children[3].style.animation= "animate 1s ease-in-out 0.9s 1 forwards";
       }
     }
     function resetTimeAnimation2() {
@@ -132,70 +131,8 @@ const Landing = () => {
         runningTime.current.style.animation = "runningTime 7s linear 1 forwards";
       }
     }
-  console.log('ran')
-//     const nextBtn = useRef(null)
-//     const prevBtn = useRef(null)
-//     const carousel = useRef(null)
-//     let list = useRef(null)
-//     // item = document.querySelectorAll('.item')
-//     let runningTime = useRef()
-
-// let timeRunning = 3000 
-// let timeAutoNext = 7000
-
-// nextBtn.onclick = function(){
-//     showSlider('next')
-// }
-
-// prevBtn.onclick = function(){
-//     showSlider('prev')
-// }
-
-// let runTimeOut 
-
-// let runNextAuto = setTimeout(() => {
-//     nextBtn.click()
-// }, timeAutoNext)
 
 
-// function resetTimeAnimation() {
-//     runningTime.current.style.animation = 'none'
-//     // runningTime.current.offsetHeight
-//     runningTime.current.style.animation = null 
-//     runningTime.current.style.animation = 'runningTime 7s linear 1 forwards'
-// }
-
-
-// function showSlider(type) {
-//     let sliderItemsDom = list
-//     console.log(sliderItemsDom)
-//     if(type === 'next'){
-//         list.current.appendChild(sliderItemsDom[0])
-//         carousel.current.classList.add('next')
-//     } else{
-//         list.current.prepend(sliderItemsDom[sliderItemsDom.length - 1])
-//         carousel.current.classList.add('prev')
-//     }
-
-//     clearTimeout(runTimeOut)
-
-//     runTimeOut = setTimeout( () => {
-        
-//         carousel.current.classList.remove('next')
-//         carousel.current.classList.remove('prev')
-//     }, timeRunning)
-
-
-//     clearTimeout(runNextAuto)
-//     runNextAuto = setTimeout(() => {
-//         nextBtn.click()
-//     }, timeAutoNext)
-
-//     resetTimeAnimation() // Reset the running time animation
-// }
-
-// // Start the initial animation 
-// resetTimeAnimation()
 const navSignIn = ()=>{
     navigate('/login')  
 }
@@ -235,7 +172,7 @@ const textRevealVariants2 = {
       } 
     }
   };
-  console.log(items)
+  
   return (
     <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white fixed before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
     {/* <div className='w-full  h-screen px-2 sm:px-5 pb-5   '>
@@ -304,10 +241,8 @@ const textRevealVariants2 = {
                 />
                 </div> */}
     
-    <div className="carousel" ref={carousel }>
-
+<div className="carousel" ref={carousel }>
 <div className="list" ref={list }>
-
 {sliderItems.map((item, index) => (
           <div className="item" key={index}>
              <img src={item.image} alt={item.name} className="slider-img bg-no-repeat bg-cover bg-center " />
@@ -324,10 +259,7 @@ const textRevealVariants2 = {
             </div> 
           </div>
         ))}
-
 </div>
-
-
 <div className="arrows">
     <button className="prev" ref={prevBtn}>{'<'}</button>
     <button className="next" ref={nextBtn}>{'>'}</button>

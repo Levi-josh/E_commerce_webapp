@@ -396,16 +396,9 @@ transform: rotate(360deg);
         0% {
             transform: translate(-50%, 130px);
 
-
-
-
         }
-
-
         100% {
             transform: translate(-50%, 0px);
-
-
         }
     }
     .added{
@@ -484,7 +477,7 @@ a:hover{
 
 .carousel{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     /* margin-top: -50px; */
     overflow: hidden;
     position: relative;
@@ -510,12 +503,8 @@ a:hover{
     background-position: center;
     background-size: cover;
     z-index: 100;
-    transition:all 1s ease-in-out;
-   
-   
+    transition:all 1s ease-in-out;  
 }
-
-
 .carousel .list .item:nth-child(1){
     top: 0;
     left: 0;
@@ -523,7 +512,7 @@ a:hover{
     border-radius: 0;
     width: 100%;
     height: 100%; 
-    transition:all 1s ease-in-out;
+    transition:all 3s linear;
     position: absolute;
 }
 .carousel .list .item:nth-child(1)::before {
@@ -536,14 +525,12 @@ a:hover{
 .carousel .list .item:nth-child(2){
     left: 67%;
     border-radius: 20px; 
-    animation: animate2 1s ease-in-out 5.5s 1 forwards,animate4 1s ease-in-out 1s 1 forwards;
+    animation: animate2 1s ease-in-out 5.5s 1 forwards;
     overflow: hidden;
-    transition:all 1s ease-in-out;  
+    transition:all 3s linear;  
    
 }
 @keyframes animate2 {
-    
-
     to{    top: 0;
         left: 0;
         transform: translate(0, 0);
@@ -551,7 +538,6 @@ a:hover{
         position: absolute;
         width: 100%;
         height: 100%;}
-
 }
 @keyframes animate4 {
     
@@ -574,7 +560,7 @@ a:hover{
 .carousel .list .item:nth-child(3){
     left: calc(67% + 200px);
     border-radius: 20px;    
-    transition:all 1s ease-in-out;
+    transition:all 3s linear;
     /* animation: animate4 1s ease-in-out 1s 1 forwards; */
 }
 
@@ -644,11 +630,6 @@ a:hover{
     opacity: 0;
    
 }
-
-
-
-
-
 .list .item .content{
     position: absolute;
     top: 50%;
@@ -674,9 +655,7 @@ a:hover{
     
     from{
         opacity: 0;
-     
     }
-
     to{
         opacity: 1;
     }
@@ -688,7 +667,7 @@ a:hover{
     font-weight: bold;
     line-height: 1;
     opacity: 0;
-    animation: animate 1s ease-in-out 0.3s 1 forwards;
+    animation: animate 1s ease-in-out 0.1s 1 forwards;
 }
 .content .name{
     font-size: 100px;
@@ -697,7 +676,7 @@ a:hover{
     line-height: 1;
     color: rgba(133, 77, 13);
     opacity: 0;
-    animation: animate 1s ease-in-out 0.6s 1 forwards;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
 }
 .content .des{
     margin-top: 10px;
@@ -705,14 +684,13 @@ a:hover{
     font-size: 18px;
     margin-left: 5px;
     opacity: 0;
-    animation: animate 1s ease-in-out 0.9s 1 forwards;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
 }
 
 .content .btn{
     margin-left: 5px;
-
     opacity: 0;
-    animation: animate 1s ease-in-out 1.2s 1 forwards;
+    animation: animate 1s ease-in-out 0.9s 1 forwards;
 }
 
 .content .btn button{
@@ -733,18 +711,15 @@ a:hover{
 .content .btn button:nth-child(1):hover{
     background-color:  rgba(113, 63, 18, 1);
     color: #fff;
-  
 }
 
 
-@keyframes animate {
-    
+@keyframes animate { 
     from{
         opacity: 0;
         transform: translate(0, 100px);
         filter: blur(33px);
     }
-
     to{
         opacity: 1;
         transform: translate(0);
