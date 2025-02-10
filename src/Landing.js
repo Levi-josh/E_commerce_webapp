@@ -70,7 +70,7 @@ const Landing = () => {
         else{
             // nextPic[1].style.animation = "none";
             // void nextPic[1].offsetHeight; // Trigger reflow
-            updatedItems.push(updatedItems.pop()); // Move first item to the end
+            updatedItems.unshift(updatedItems.pop()); // Move first item to the end
             setSliderItems(updatedItems);
         }
       }
