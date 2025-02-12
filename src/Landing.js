@@ -68,10 +68,15 @@ const Landing = () => {
               
         } 
         else{
-            // nextPic[1].style.animation = "none";
-            // void nextPic[1].offsetHeight; // Trigger reflow
             updatedItems.unshift(updatedItems.pop()); // Move first item to the end
             setSliderItems(updatedItems);
+            clearTimeout(runNextAuto);
+            runNextAuto = setTimeout(() => {
+                nextPic[1].style.animation = "none";
+                void nextPic[1].offsetHeight; // Trigger reflow
+                nextPic[1].style.animation = "animate4 1s ease-in-out 0s 1 forwards";    
+              }, 10);
+   
         }
       }
       nextBtn.current.addEventListener("click", () => nextshowSlider("next"));
@@ -80,7 +85,6 @@ const Landing = () => {
         showSlider("next")
       }, timeAutoNext);
       resetTimeAnimation();
-      console.log('ran')
       resetTimeAnimation2();
       return () => {
         clearTimeout(runNextAuto);

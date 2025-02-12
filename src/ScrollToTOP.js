@@ -19,16 +19,13 @@ const ScrollToTOP = () => {
     const accesstoken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N…4MTB9.6uPNKFjMZFwtnelOQ2_akSpeafLSeOAp6XyVRFbqkFE`
  
     useEffect(() => {
-        window.scrollTo(0, 0);
-        
+        window.scrollTo(0, 0);  
     }, [location]);
  
     useEffect(() => {
     const myid = localStorage.getItem('myid')
     console.log(`Mid:${myid}`)
-    
     if(!myid&&location.pathname =='/'){
-
         navigate('/landing');
     }
     setId(myid)

@@ -126,9 +126,9 @@ const Signup = () => {
     <NavLink to='/landing' > <FaAngleLeft className='font-bold absolute z-20 text-white lg:text-black top-5 left-3  sm:top-10 sm:left-5  text-2xl sm:text-3xl ' ></FaAngleLeft></NavLink>
 
     <div className={`w-full sm:w-140  lg:w-130  xl:w-140 lg:h-96  lg:rounded-xl overflow-hidden  justify-center lg:items-center   items-start flex flex-col lg:flex-row  ${window.matchMedia('(max-width: 600px)').matches?'':mode.colormode?'addShadow2':'addShadow'}  gap-10  lg:gap-12 `}>
-        <div className='w-full md:h-full flex items-center justify-center hero '>
-          <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='h-full w-full lg:rounded-bl-xl lg:rounded-tl-xl  lg:rounded-t-none        bg-no-repeat bg-cover bg-center object-cover   ' />
-          <div className=' text-white  bg-blurblack absolute  px-10 py-3 z-30 font-semibold text-lg sm:text-xl rounded-lg '><p>Glamour Grove</p></div>
+        <div className='w-full md:h-full flex items-center justify-center hero before:bg-blurblack2  '>
+          <img src='https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275' className='h-full w-full lg:rounded-bl-xl lg:rounded-tl-xl  lg:rounded-t-none        bg-no-repeat bg-cover bg-center object-cover   ' />
+          <div className=' text-white text-2xl  absolute  px-10 py-3 z-30 font-semibold sm:text-3xl rounded-lg '><p>Glamour Grove</p></div>
         </div>
         <form  onSubmit={handleSubmit}className='flex flex-col gap-5 lg:gap-5 pb-3 sm:pb-6  w-full  lg:pr-12 lg:pl-0 px-3 sm:px-7 lg:px-6   '>
             <h1 className='font-bold text-2xl lg:text-3xl lg:text-center'>Sign Up</h1>
