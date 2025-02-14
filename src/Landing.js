@@ -53,34 +53,6 @@ const Landing = () => {
           setSliderItems(updatedItems);
         } 
       }
-      function nextshowSlider(type) {
-        let updatedItems = [...sliderItems];
-        const nextPic = list.current.children
-        if (type === "next") {
-            nextPic[1].style.animation = "none";
-            void nextPic[1].offsetHeight; // Trigger reflow
-            nextPic[1].style.animation = "animate2 1s ease-in-out 0s 1 forwards";
-            clearTimeout(runNextAuto);
-            runNextAuto = setTimeout(() => {
-                updatedItems.push(updatedItems.shift()); // Move first item to the end
-                setSliderItems(updatedItems);
-              }, 1500);
-              
-        } 
-        else{
-            updatedItems.unshift(updatedItems.pop()); // Move first item to the end
-            setSliderItems(updatedItems);
-            clearTimeout(runNextAuto);
-            runNextAuto = setTimeout(() => {
-                nextPic[1].style.animation = "none";
-                void nextPic[1].offsetHeight; // Trigger reflow
-                nextPic[1].style.animation = "animate4 1s ease-in-out 0s 1 forwards";    
-              }, 10);
-   
-        }
-      }
-      nextBtn.current.addEventListener("click", () => nextshowSlider("next"));
-      prevBtn.current.addEventListener("click", () => nextshowSlider("prev"));
       runNextAuto = setTimeout(() => {
         showSlider("next")
       }, timeAutoNext);
@@ -91,11 +63,13 @@ const Landing = () => {
      
       };
     }, [sliderItems]);
-// console.log(sliderItems)
+
     function resetTimeAnimation() {
       if (list.current) {
         const nextPic = list.current.children
+        console.log(sliderItems)
         //animation for second div 
+        // nextPic[1].classList.add('item')
         nextPic[1].style.animation = "none";
         void nextPic[1].offsetHeight; // Trigger reflow
         nextPic[1].style.animation = "animate2 1s ease-in-out 5.5s 1 forwards";
@@ -135,7 +109,30 @@ const Landing = () => {
         runningTime.current.style.animation = "runningTime 7s linear 1 forwards";
       }
     }
-
+    function nextshowSlider(type) {
+        let updatedItems = [...sliderItems];
+        const nextPic = list.current.children
+        if (type === "next") {
+            nextPic[1].style.animation = "none";
+            void nextPic[1].offsetHeight; // Trigger reflow
+            nextPic[1].style.animation = "animate2 1s ease-in-out 0s 1 forwards";
+            clearTimeout(runNextAuto);  
+            runNextAuto = setTimeout(() => {
+                updatedItems.push(updatedItems.shift()); // Move first item to the end
+                setSliderItems(updatedItems);
+              }, 1000);  
+        } 
+        else{
+            updatedItems.unshift(updatedItems.pop()); // Move first item to the end
+            setSliderItems(updatedItems);  
+             setTimeout(() => {
+                nextPic[1].style.animation = "none";
+                void nextPic[1].offsetHeight; // Trigger reflow
+                nextPic[1].style.animation = "animate4 1s ease-in-out 0s 1 forwards";  
+              }, 0);  
+             
+        }
+      }
 
 const navSignIn = ()=>{
     navigate('/login')  
@@ -209,7 +206,7 @@ const textRevealVariants2 = {
         <div className='w-full h-screen '>
             <div className='w-full h-full'>
                 {/* Small Header */}
-                <header className={`flex justify-between landHeader absolute px-5  items-center h-14 sm:h-16 lg:h-20 z-50  w-full text-white`}>
+                <header className={`flex justify-between landHeader absolute px-3 sm:px-5  items-center h-14 sm:h-16 lg:h-20 z-50  w-full text-white`}>
                 <p className="font-bold text-lg sm:text-xl lg:text-2xl">Glamour Grove</p>
                 <ul className='hidden lg:flex lg:gap-18 xl:gap-20 md:text-base'>
                     <NavLink to='/login'>
@@ -265,8 +262,8 @@ const textRevealVariants2 = {
         ))}
 </div>
 <div className="arrows">
-    <button className="prev" ref={prevBtn}>{'<'}</button>
-    <button className="next" ref={nextBtn}>{'>'}</button>
+    <button className="prev" ref={prevBtn} onClick={()=>nextshowSlider("prev")}>{'<'}</button>
+    <button className="next" ref={nextBtn} onClick={()=>nextshowSlider("next")}>{'>'}</button>
 </div>
 
 
