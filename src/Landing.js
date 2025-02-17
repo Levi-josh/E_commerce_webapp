@@ -31,17 +31,18 @@ const Landing = () => {
   
     // State to track the slider items
     const [sliderItems, setSliderItems] = useState([
-        { name: "EAGLE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275" },
-        { name: "OWL", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/69/885248/1.jpg?9651" },
-        { name: "CROW", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/53/122776/1.jpg?7527" },
-        { name: "BUTTERFLY", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/649156/1.jpg?8476" },
-        { name: "KINGFISHER", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/65/2996252/1.jpg?8267" },
-        { name: "PARROT", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/68/9023002/1.jpg?3955" }
+        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275" },
+        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/69/885248/1.jpg?9651" },
+        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/53/122776/1.jpg?7527" },
+        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/649156/1.jpg?8476" },
+        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/65/2996252/1.jpg?8267" },
+        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/68/9023002/1.jpg?3955" }
     ]);
   
     let runTimeOut;
     let runTimeOut2;
     let runNextAuto;
+    
     let runNextAuto2;
   
     useEffect(() => {
@@ -62,14 +63,13 @@ const Landing = () => {
         clearTimeout(runNextAuto);
      
       };
-    }, [sliderItems]);
+    }, [sliderItems,changeSlider]);
 
     function resetTimeAnimation() {
       if (list.current) {
         const nextPic = list.current.children
         console.log(sliderItems)
         //animation for second div 
-        // nextPic[1].classList.add('item')
         nextPic[1].style.animation = "none";
         void nextPic[1].offsetHeight; // Trigger reflow
         nextPic[1].style.animation = "animate2 1s ease-in-out 5.5s 1 forwards";
@@ -125,11 +125,25 @@ const Landing = () => {
         else{
             updatedItems.unshift(updatedItems.pop()); // Move first item to the end
             setSliderItems(updatedItems);  
+             nextPic[1].classList.add('prev')
+                
              setTimeout(() => {
                 nextPic[1].style.animation = "none";
                 void nextPic[1].offsetHeight; // Trigger reflow
-                nextPic[1].style.animation = "animate4 1s ease-in-out 0s 1 forwards";  
-              }, 0);  
+                nextPic[1].style.animation = "animate4 1s ease-in-out 0s 1 forwards";    
+              }, 0);      
+            setTimeout(() => {
+                nextPic[1].classList.remove('prev')
+            
+              }, 2000);     
+              
+            //  setTimeout(() => {
+            //     updatedItems.push(updatedItems.shift()); // Move first item to the end
+            //     setSliderItems(updatedItems);
+            //   },3000 ); 
+            //  setTimeout(() => {
+            //     setchangeSlider(prev=>!prev) 
+            //   },3000 ); 
              
         }
       }
@@ -248,7 +262,7 @@ const textRevealVariants2 = {
           <div className="item" key={index}>
              <img src={item.image} alt={item.name} className="slider-img bg-no-repeat bg-cover bg-center " />
             <div className="content" ref={content}>
-              <div className="title">SLIDER</div>
+              <div className="title">FASHION</div>
               <div className="name">{item.name}</div>
               <div className="des">
               Glamour Grove is your one-stop shop for your clothes, shoes, jewelry, and more. We weren't just given the title "the best shopping app," we earned it.

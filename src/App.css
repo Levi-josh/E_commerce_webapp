@@ -526,10 +526,10 @@ a:hover{
     border-radius: 20px; 
     animation: animate2 1s ease-in-out 5.5s 1 forwards;
     overflow: hidden;
-    transition:all 3s linear;  
+    transition:all 1s ease-in-out;  
    
 }
-.carousel .list .item.next:nth-child(2){
+.carousel .list .item.prev:nth-child(2){
         top: 0;
         left: 0;
         transform: translate(0, 0);
@@ -538,7 +538,7 @@ a:hover{
         width: 100%;
         height: 100%; 
         animation: animate4 1s ease-in-out 0s 1 forwards;
-        transition:all 3s linear;    
+        transition:all 1s ease-in-out;    
 }
 
 @keyframes animate2 {
@@ -728,7 +728,7 @@ a:hover{
 
 .content .btn button:nth-child(1){
     margin-right: 15px;
-    background-color:  #eee4;
+    background-color:  rgba(133, 77, 13);
     transition: 0.3s;
 }
 
