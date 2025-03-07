@@ -46,12 +46,15 @@ const Landing = () => {
     let runNextAuto2;
   
     useEffect(() => {
+        const nextPic = list.current.children
       if (!nextBtn.current || !prevBtn.current) return;
       function showSlider(type) {
         let updatedItems = [...sliderItems];
         if (type === "next") {
           updatedItems.push(updatedItems.shift()); // Move first item to the end
           setSliderItems(updatedItems);
+        //   nextPic[1].style.display = "none";
+          console.log(nextPic[1].style)
         } 
       }
       runNextAuto = setTimeout(() => {
@@ -70,6 +73,7 @@ const Landing = () => {
         const nextPic = list.current.children
         console.log(sliderItems)
         //animation for second div 
+        //  nextPic[1].style.display = "block";
         nextPic[1].style.animation = "none";
         void nextPic[1].offsetHeight; // Trigger reflow
         nextPic[1].style.animation = "animate2 1s ease-in-out 5.5s 1 forwards";

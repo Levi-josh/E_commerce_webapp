@@ -9,7 +9,7 @@ const ScrollToTOP = () => {
     const b = useRef()
     const [Error, setError] = useState({})
     const location = useLocation();
-    const [data, setdata] = useState({})
+    const [data, setdata] = useState(null)
     const [note, setnote] = useState({})
     const [runEffect, setRunEffect] = useState(false);
     const [runEffect2, setRunEffect2] = useState(false);
@@ -30,10 +30,10 @@ const ScrollToTOP = () => {
     }
     setId(myid)
   },[location,id])
-console.log(id)
+
     useEffect(() => {
         
-        
+      
         const getusersDocuments = async () => {
             
             const option = {
@@ -43,6 +43,7 @@ console.log(id)
                 }
             }
             try {
+             
                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getuser/${id}`, option);
                 const data = await response.json()
                 console.log(data)
@@ -54,8 +55,8 @@ console.log(id)
             }
         } 
     id&&getusersDocuments()
-    }, [data,id]);
-    console.log(data)
+    }, []);
+  
     function changeRunEffect() {
         setRunEffect(prev => !prev)
     }

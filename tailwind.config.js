@@ -105,6 +105,8 @@ module.exports = {
         20: '60%',
         25: '50%',
         30: '28%',
+        35:'22%',
+        37:'25%',
         40: '35%',
         80: '80%'
       },
@@ -123,7 +125,8 @@ module.exports = {
         blurblack:'rgba(0, 0, 0, 0.7)',
         blurblack2:'rgba(0, 0, 0, 0.3)',
         bluryellow:'rgba(113, 63, 18, 0.7)',
-        fadeblack:'#eee4'
+        fadeblack:'#eee4',
+        brown:'rgb(71, 31, 8)'
       },
       lineHeight:{
         leading11:'60px'

@@ -4,7 +4,9 @@ const mode = localStorage.getItem('mode');
 let currentmode;
 if(mode===null){
 currentmode=false   
-}else{currentmode=mode}
+}else{
+    currentmode=mode
+}
 const myid = localStorage.getItem('myid')
 export const modeSlice = createSlice({
     name:"mode",

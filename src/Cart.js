@@ -48,21 +48,21 @@ const Cart = () => {
     }
    
     useEffect(() => { 
-    let currentid;
-    const myId = localStorage.getItem('mycart')
-    setmyId(myId)
-    if (params.id !== myId) {
-        currentid = params.id 
-      }
-    if (params.id === myId) {
-        currentid = myId
-    }
-    if (params.id === ':id') {
-        currentid = myId
-    }
-    if ( myId==null) {
-        currentid = params.id
-    }
+    // let currentid;
+    // const myId = localStorage.getItem('mycart')
+    // setmyId(myId)
+    // if (params.id !== myId) {
+    //     currentid = params.id 
+    //   }
+    // if (params.id === myId) {
+    //     currentid = myId
+    // }
+    // if (params.id === ':id') {
+    //     currentid = myId
+    // }
+    // if ( myId==null) {
+    //     currentid = params.id
+    // }
     const getcart = async () => {
                
         const option = {
@@ -72,19 +72,22 @@ const Cart = () => {
                 }
             }
             try {
-                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getcart/${currentid}`, option);
+                const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getcart/${params.id}`, option);
+                
                 const data = await response.json()
+                console.log(data)
                 setcart(data)
                
             }
 
             catch (err) {
                 setError(err)
+                console.log(err)
 
             }
       }
     
-    id&&getcart()
+    getcart()
       
     const getcountry = async()=> {
          const option = {
@@ -157,14 +160,11 @@ const nextcart = async () => {
                 const data = await response.json()
                console.log(data)
             }
-
             catch (err) {
             setError(err) 
             console.log(err)
         } 
-        
         setchangecart(prev => !prev)
-
         if (window.matchMedia('(max-width: 600px)').matches) {
 
             firstref.current.style.translate = "-10px"
@@ -294,10 +294,9 @@ const nextcart = async () => {
   
     return (
         <div className={`  ${showcountry ? `background ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} ${bgcolor} ${textcolor} ${cart?.product?'h-screen':'h-screen'}  `}>
-            <header className={`fixed flex sm:justify-between gap-4 ${bgcolor} ${textcolor} ${mode.colormode&&' shadow-stone-800  shadow-md'} items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0  z-10 ${menubar ? 'shadow-none lg:shadow-lg' : 'shadow-lg'} `}>
-                <NavLink to='../' className={'sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
-                <div className='sm:m-auto flex items-center text-xl sm:text-2xl lg:text-3xl font-semibold'>
-                    <h1 className=''>Cart</h1>
+            <header className={`fixed flex sm:justify-between gap-4  ${textcolor} items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0  z-10 bg-transparent  `}>
+                <NavLink to='/listcols' className={'sm:absolute '}> <FaAngleLeft className='font-bold  text-xl md:text-2xl ' ></FaAngleLeft></NavLink>
+                <div className='sm:m-auto flex items-center text-xl sm:text-2xl lg:text-3xl font-semibold'> 
                 </div>
                 <FaEllipsisV className='absolute right-3 sm:static' />
             </header >
@@ -312,16 +311,17 @@ const nextcart = async () => {
                 </div>
             </div>}  */}
             <div  >
-                {cart?.product?.length === 0 || myid === null ? <div className='     lg:pt-10 h-screen flex flex-col justify-center items-center '> {!mode.colormode?<img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> :<img src='https://img.freepik.com/premium-photo/shopping-cart-black-background-shopping-trolley-grocery-push-cart-3d-render-illustration_989822-1813.jpg?size=626&ext=jpg&ga=GA1.1.732548087.1710974042&semt=ais' alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 '/>}<p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
-                    <section className='  pt-28 sm:pt-32     lg:pt-32 '>
+                {cart?.product?.length === 0  ? <div className='     lg:pt-10 h-screen flex flex-col justify-center items-center '> {!mode.colormode?<img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 ' /> :<img src='https://img.freepik.com/premium-photo/shopping-cart-black-background-shopping-trolley-grocery-push-cart-3d-render-illustration_989822-1813.jpg?size=626&ext=jpg&ga=GA1.1.732548087.1710974042&semt=ais' alt="" className='w-140 sm:w-22 md:w-10 lg:w-20 '/>}<p className='font-bold font-sans text-2xl sm:text-3xl lg:text-4xl'>Your cart is empty!</p><button className='bg-yellow-900 text-white font-semibold lg:text-lg w-12 sm:w-14 lg:w-16 h-10 mt-3  rounded-full' onClick={startshop}>Start Shopping</button></div> :
+                    <section className='  pt-10 sm:pt-14     '>
                         {cart.product ? <>
-                            <h1 className='text-center   font-semibold text-xl  sm:mb-5  mb-5   md:mb-5  lg:mb-7 xl:text-3xl sm:text-2xl lg:text-3xl'>{cart?.title}</h1>
+                        <div className={`w-full h-auto ${bgcolor}  flex flex-col sticky top-0 py-5`}>
+                            <h1 className='text-center  font-semibold text-xl  sm:mb-5  mb-5   md:mb-5  lg:mb-7 xl:text-3xl sm:text-2xl lg:text-3xl'>{cart?.title}</h1>
                             <div className='flex   top-20 sm:top-24   sm:overflow-visible  overflow-hidden  w-full pl-3 sm:px-5 md:pl-0 gap-5 sm:gap-2 xl:gap-6  sm:justify-center  '>
-                                <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${shopitems?.progess ? 'bg-yellow-900' : mode.colormode?'bg-white':'bg-black'} flex justify-center items-center`}>{shopitems?.progess ? <FaCheck className='text-sm' /> : <p className={`${mode.colormode?'text-black':'text-white'}`}>1</p>}</div><div className={`flex ${shopitems?.progess ? ' text-yellow-900' : mode.colormode?'text-white':'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${shopitems?.progess ? 'border-yellow-900' : mode.colormode?'border-white':'border-black'} w-full border mt-4`}></div></div>
-                                <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${checkitems?.progess ? ' bg-yellow-900 ' : mode.colormode?'bg-white':'bg-black'} flex justify-center items-center`}>{checkitems?.progess ? <FaCheck className='text-sm' /> : <p className={`${mode.colormode?'text-black':'text-white'}`}>2</p>}</div><div className={`flex ${checkitems?.progess ? ' text-yellow-900' : mode.colormode?'text-white':'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${checkitems?.progess ? 'border-yellow-900' : mode.colormode?'border-white':'border-black'} w-full border mt-4`}></div></div>
-                                <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-900 ' :  mode.colormode?'bg-white':'bg-black'} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : <p className={`${mode.colormode?'text-black':'text-white'}`}>3</p>}</div><div className={`flex ${changecart3 ? 'text-yellow-900' : mode.colormode?'text-white':'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-900 w-full border mt-4 ` : `${mode.colormode?'border-white':'border-black'} w-full border mt-4`}></div></div>
+                                <div ref={firstref} className={`block  sm:translate-x-0`}> <div className='flex items-center   text-lg font-bold gap-3 w-44 sm:w-48  md:w-52 lg:w-60'>   <div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${shopitems?.progess ? 'bg-yellow-900' : mode.colormode?'bg-stone-800':'bg-gray-300'} flex justify-center items-center`}>{shopitems?.progess ? <FaCheck className='text-sm' /> : <p className={`${mode.colormode?'text-white':'text-black'}`}>1</p>}</div><div className={`flex ${shopitems?.progess ? ' text-yellow-900' : mode.colormode?'text-white':'text-black'}`}>Shopping <span className='flex flex-nowrap'>cart</span></div></div><div className={`${shopitems?.progess ? 'border-yellow-900' : mode.colormode?'border-stone-800':'border-gray-300'} w-full border mt-4`}></div></div>
+                                <div ref={secondref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9  rounded-3xl text-white ${checkitems?.progess ? ' bg-yellow-900 ' : mode.colormode?'bg-stone-800':'bg-gray-300'} flex justify-center items-center`}>{checkitems?.progess ? <FaCheck className='text-sm' /> : <p className={`${mode.colormode?'text-white':'text-black'}`}>2</p>}</div><div className={`flex ${checkitems?.progess ? ' text-yellow-900' : mode.colormode?'text-white':'text-black'}`}>Check  <span className='flex flex-nowrap'>out detail</span></div></div><div className={`${checkitems?.progess ? 'border-yellow-900' : mode.colormode?'border-stone-800':'border-gray-300'} w-full border mt-4`}></div></div>
+                                <div ref={thirdref} className={`block   sm:translate-x-0 `}>   <div className='flex items-center text-lg font-bold gap-3 w-44 sm:w-48 md:w-52 lg:w-60'><div className={`w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-3xl text-white ${changecart3 ? 'bg-yellow-900 ' :  mode.colormode?'bg-stone-800':'bg-gray-300'} flex justify-center items-center`}>{changecart3 ? <FaCheck className='text-sm' /> : <p className={`${mode.colormode?'text-white':'text-black'}`}>3</p>}</div><div className={`flex ${changecart3 ? 'text-yellow-900' : mode.colormode?'text-white':'text-black'} `}>Complete</div></div><div className={changecart3 ? `border-yellow-900 w-full border mt-4 ` : `${mode.colormode?'border-stone-800':'border-gray-300'} w-full border mt-4`}></div></div>
                             </div>
-
+                        </div>
                             <Outlet context={{ nextcart,showerror,clearError, completeitems, nextcart2, nextcart3, checkitems, showcountry, data, getcountry, cart, countries, shopitems, deleteitem }} />
                         </> : !error.message ?
                         <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='fixed popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 w-9 h-9 lg:w-11 lg:h-11 rounded-full  '>
