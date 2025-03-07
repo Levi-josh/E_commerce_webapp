@@ -24,6 +24,7 @@
 }
 .scroll-target {
     scroll-margin-top: 30px;
+    position: relative;
 }
 .addShadow{
     box-shadow: 1px 1px 8px rgb(212, 210, 210); 

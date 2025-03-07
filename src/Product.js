@@ -23,6 +23,7 @@ function Product() {
     const textcolor = mode?.colortext
     const navigate = useNavigate()
     const [activeCategory, setActiveCategory] = useState("All")
+    const [showCategory, setshowCategory] = useState(true)
     const {data,note,runEffect,changeRunEffect1,Error1,id,signout,runEffect2}= useOutletContext()
 
     // useEffect(() => {
@@ -43,6 +44,7 @@ function Product() {
         setshowinput1(prev => !prev)
         setitems('')
         setshowinput(false)
+        setstartSearch(prev=>!prev)
     }
     function searchfunc2() {
         setshowinput1(prev => !prev)
@@ -94,7 +96,7 @@ function Product() {
     //     window.scrollTo(0, scroll)
         
     // }, [popout])
-console.log(items)
+
 const getusersDocuments = async () => {
    
     const option = {
@@ -107,8 +109,7 @@ const getusersDocuments = async () => {
         const response = await fetch('https://backend-e-commerce-g7of.onrender.com/getdemo', option);
         const data = await response.json()
        if(data && activeCategory !== 'All'){
-        
-        const filteredProd = data.filter(prev=>prev.description==activeCategory)
+        const filteredProd = data.filter(prev=>prev.description==activeCategory.toLowerCase())
         console.log(filteredProd )
         setitems(filteredProd)}
         else{
@@ -117,36 +118,33 @@ const getusersDocuments = async () => {
     }
     catch (err) {
         seterror(err)
-    }
-   
+    }  
 }
 useLayoutEffect(() => {
-    console.log('ran')
  !startSearch&&getusersDocuments()
-}, [activeCategory]);
+}, [activeCategory,startSearch]);
 
 return (
         <div className={` ${items.length >= 1 ?'h-full pb-10':'h-screen'}  ${bgcolor} `}>
             <header className={`fixed flex sm:justify-between gap-2 ${bgcolor} ${textcolor}  $  sm:gap-0 items-center h-20 md:h-24 lg:h-24 px-2 sm:px-5 md:px-2 lg:px-4 w-full m-0  z-10 `}>
-                {!showinput1 ? <NavLink to='../' relative='path' className={' sm:absolute  '}> <FaAngleLeft className='font-bold z-40 hover:cursor-pointer  text-xl md:text-2xl '  ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc2} className='font-bold hover:cursor-pointer md:absolute  text-xl md:text-2xl ' ></FaAngleLeft>}
+                {!showinput1 ? <NavLink to='../' relative='path' className={' sm:absolute  '}> <FaAngleLeft className='font-bold z-40 hover:cursor-pointer  text-xl md:text-2xl '  ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc}  className='font-bold hover:cursor-pointer md:absolute  text-xl md:text-2xl ' ></FaAngleLeft>}
                 {showinput1 ? <form className=' w-full flex relative sm:w-130 md:w-25  sm:m-auto' ><input type='text' placeholder='Search' className={`w-full   rounded-lg ${!mode.colormode?'bg-gray-200':'bg-stone-800'} py-1  md:pr-12 pl-3 pr-11  outline-none ${mode.colormode?'border-yellow-900 bg-stone-700 placeholder-white':'border-black'} `}  autoFocus  /><div className='bg-yellow-900 flex items-center justify-center text-xl hover:cursor-pointer  rounded-e-lg absolute h-full right-0 w-16 ' ><FaSearch className='text-white ' /></div></form>
                     : <h1 className=' sm:m-auto  text-xl sm:text-2xl font-semibold'>Products</h1>}
                 <div  className={`${showinput1 ? 'hidden' : 'block'} right-4  sm:right-6 md:right-4 lg:right-6 absolute hover:cursor-pointer ${!mode.colormode?'bg-gray-200':'bg-stone-800'} p-2 rounded-lg`} onClick={searchfunc}><FaSearch  /></div>
             </header >
-
             <div className={` bg-yellow-900 ${ added && !error?.message? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
                 <p>Added to cart</p>
             </div>
             <div className={`sm:pt-24 pt-16     `}>
-               {items&&!startSearch&&<div className={`flex flex-col gap-3 lg:gap-4  w-full ${bgcolor}  justify-center mb-3 sticky top-0 z-20   pb-3 pt-4 `}>
+               {items.length>1&&!startSearch&&<div className={`flex flex-col gap-3 lg:gap-4  w-full ${bgcolor}  justify-center mb-3 sticky top-0 z-20   pb-3 pt-4 `}>
                     <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-lg pl-4 placeholder:pl-4  ' value={searcheditems} onChange={handleSearch} placeholder='Search products' />
                     <div className='flex px-3  sm:justify-center gap-4 overflowPro   overflow-x-auto     md:gap-12 lg:gap-20 sm:gap-10'>
-                    {["All", "clothes", "shoes", "glasses", "watches"].map((category) => (
+                    {["All", "Clothes", "Shoes", "Glasses", "Watches"].map((category) => (
                         <button className={`w-350  flex justify-center items-center flex-shrink-0 font-semibold sm:w-16 lg:w-13 ${mode.colormode?'bg-stone-800':'bg-gray-200'} ${textcolor} py-1 md:py-2    hover:bg-yellow-900 hover:text-white ${activeCategory === category?'bg-yellow-900 text-white':''}    rounded-lg `}  onClick={() => handleCategoryClick(category)}>{category}</button>
                     ))}
                     </div>
                 </div>}
-                {items? <div className='grid grid-cols-2 lg:pt-3 px-3 gap-x-3 gap-y-5 md:gap-x-6 md:gap-y-8 lg:px-7  sm:gap-5 sm:px-5  md:px-2 md:grid-cols-3 lg:grid-cols-4          '>
+                {items.length>1? <div className='grid grid-cols-2 lg:pt-3 px-3 gap-x-3 gap-y-5 md:gap-x-6 md:gap-y-8 lg:px-7  sm:gap-5 sm:px-5  md:px-2 md:grid-cols-3 lg:grid-cols-4          '>
                     {items.map(prev => {
                         return (<div className={`p-2 md:p-3  ${bgcolor} ${textcolor}  rounded-lg border-2 ${mode.colormode&&'bg-opacity-50 bg-black border-none shadow-stone-700  shadow-md'} shadow-lg  `}>
                             <img src={prev.image} alt='' className='rounded-lg w-full lg:h-52 object-cover ' />
@@ -164,7 +162,10 @@ return (
                             </div>
                         </div>)
                     })}
-                </div>:<p className='font-bold text-lg text-black  absolute'>No result found!</p>}
+                </div>:startSearch?<p className='font-bold text-lg text-black popout  absolute'>Make your search</p>:  
+                    <motion.div animate={{ rotate: 360 }} initial={{ x: '50%', x: '-50%' }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
+                        <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
+                    </motion.div>}
             </div> 
             
         </div>
