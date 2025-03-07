@@ -128,7 +128,7 @@ return (
         <div className={` ${items.length >= 1 ?'h-full pb-10':'h-screen'}  ${bgcolor} `}>
             <header className={`fixed flex sm:justify-between gap-2 ${bgcolor} ${textcolor}  $  sm:gap-0 items-center h-20 md:h-24 lg:h-24 px-2 sm:px-5 md:px-2 lg:px-4 w-full m-0  z-10 `}>
                 {!showinput1 ? <NavLink to='../' relative='path' className={' sm:absolute  '}> <FaAngleLeft className='font-bold z-40 hover:cursor-pointer  text-xl md:text-2xl '  ></FaAngleLeft></NavLink> : <FaAngleLeft onClick={searchfunc}  className='font-bold hover:cursor-pointer md:absolute  text-xl md:text-2xl ' ></FaAngleLeft>}
-                {showinput1 ? <form className=' w-full flex relative sm:w-130 md:w-25  sm:m-auto' ><input type='text' placeholder='Search' className={`w-full   rounded-lg ${!mode.colormode?'bg-gray-200':'bg-stone-800'} py-1  md:pr-12 pl-3 pr-11  outline-none ${mode.colormode?'border-yellow-900 bg-stone-700 placeholder-white':'border-black'} `}  autoFocus  /><div className='bg-yellow-900 flex items-center justify-center text-xl hover:cursor-pointer  rounded-e-lg absolute h-full right-0 w-16 ' ><FaSearch className='text-white ' /></div></form>
+                {showinput1 ? <form className=' w-full flex relative sm:w-130 md:w-25  sm:m-auto' ><input type='text' placeholder='Search' className={`w-full   rounded-lg ${!mode.colormode?'bg-gray-200':'bg-stone-800'} py-1  md:pr-12 pl-3 pr-11  outline-none ${mode.colormode?'border-yellow-900 bg-stone-700 placeholder-white':'border-black'} `}  autoFocus  /><div className='bg-brown flex items-center justify-center text-xl hover:cursor-pointer  rounded-e-lg absolute h-full right-0 w-16 ' ><FaSearch className='text-white ' /></div></form>
                     : <h1 className=' sm:m-auto  text-xl sm:text-2xl font-semibold'>Products</h1>}
                 <div  className={`${showinput1 ? 'hidden' : 'block'} right-4  sm:right-6 md:right-4 lg:right-6 absolute hover:cursor-pointer ${!mode.colormode?'bg-gray-200':'bg-stone-800'} p-2 rounded-lg`} onClick={searchfunc}><FaSearch  /></div>
             </header >
@@ -140,7 +140,7 @@ return (
                     <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-lg pl-4 placeholder:pl-4  ' value={searcheditems} onChange={handleSearch} placeholder='Search products' />
                     <div className='flex px-3  sm:justify-center gap-4 overflowPro   overflow-x-auto     md:gap-12 lg:gap-20 sm:gap-10'>
                     {["All", "Clothes", "Shoes", "Glasses", "Watches"].map((category) => (
-                        <button className={`w-350  flex justify-center items-center flex-shrink-0 font-semibold sm:w-16 lg:w-13 ${mode.colormode?'bg-stone-800':'bg-gray-200'} ${textcolor} py-1 md:py-2    hover:bg-yellow-900 hover:text-white ${activeCategory === category?'bg-yellow-900 text-white':''}    rounded-lg `}  onClick={() => handleCategoryClick(category)}>{category}</button>
+                        <button className={`w-350  flex justify-center items-center flex-shrink-0 font-semibold sm:w-16 lg:w-13 ${mode.colormode?'bg-stone-800':'bg-gray-200'} ${textcolor} py-1 md:py-2    hover:bg-brown hover:text-white ${activeCategory === category?'bg-brown text-white':''}    rounded-lg `}  onClick={() => handleCategoryClick(category)}>{category}</button>
                     ))}
                     </div>
                 </div>}

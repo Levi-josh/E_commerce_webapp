@@ -209,7 +209,7 @@ console.log('ran')
 
     return (
         <>{id&&<div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full flex-col flex ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
-            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-4 sm:px-8 md:px-12 lg:px-3   w-full m-0 ${bgcolor} ${textcolor} z-20  `}>
+            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 sm:px-8 md:px-12 lg:px-3   w-full m-0 ${bgcolor} ${textcolor} z-20  `}>
                 <motion.div animate={{ x: 0 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`    ${menubar ? 'invisible lg:visible' : 'visble'}`} >
                     <div className='flex gap-2 items-center '>
                     <img src={'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275'} className={` w-410 h-10 sm:w-418 sm:h-12 rounded-full`}/>
@@ -223,7 +223,7 @@ console.log('ran')
                     <li className='hover:cursor-pointer' onClick={()=>scrolltoPage1(contactRef)}>contact</li>
                     <li className='hover:cursor-pointer' onClick={()=>scrolltoPage1(aboutRef)} >About us</li>
                 </ul>
-                <div className='flex gap-10 sm:gap-20 md:gap-24 lg:gap-4  items-center     '>
+                <div className='flex gap-7 sm:gap-20 md:gap-24 lg:gap-4  items-center     '>
                 <NavLink to='/note' className=' '><div className={`flex ${bgcolor} ${textcolor}  items-center text-lg sm:text-xl   md:text-2xl justify-center text-black lg:hover:text-white lg:h-10 lg:w-101 rounded-full  hover:cursor-pointer lg:hover:bg-brown`}><p className='hidden'>Cart</p><svg
                     className="w-6 h-6 sm:w-7    sm:h-7"
                     viewBox="0 0 24 24"
@@ -373,17 +373,17 @@ console.log('ran')
                         }}
                     //onSwiper={(swiper) => console.log(swiper)}
                     /*onSlideChange={() => console.log('slide change')} */ className='   w-120  lg:w-110 m-auto h-full   rounded-xl    '>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-full rounded-xl       bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-full rounded-xl       bg-no-repeat bg-cover bg-center   object-cover' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz6odanAlur6EPzOrDU6Nj2oofspV-bsYG9M7w--oO0y1gvvIy_Fl9Tgk1hFyTsuhxJnU&usqp=CAU' className='min-w-full  rounded-xl       bg-no-repeat bg-cover bg-center h-full     ' />
+                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz6odanAlur6EPzOrDU6Nj2oofspV-bsYG9M7w--oO0y1gvvIy_Fl9Tgk1hFyTsuhxJnU&usqp=CAU' className='min-w-full  rounded-xl       bg-no-repeat bg-cover bg-center h-full   object-cover  ' />
                         </SwiperSlide>
                         <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqecwmhypUjuCqjdpZ_6lTj1W7BbxWkXdlb746j0SJwTs3fJHq3bnlAHirmsMei5xP8ro&usqp=CAU' className='min-w-full  rounded-xl       bg-no-repeat bg-cover bg-center object-cover h-full    ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full   rounded-xl       bg-no-repeat bg-cover bg-center h-full    ' />
+                        <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full   rounded-xl       bg-no-repeat bg-cover bg-center h-full   object-cover ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-vector/flat-design-minimal-boutique-sale-background_23-2149337460.jpg' className='min-w-full h-full   rounded-xl       bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://img.freepik.com/free-vector/flat-design-minimal-boutique-sale-background_23-2149337460.jpg' className='min-w-full h-full   rounded-xl       bg-no-repeat bg-cover bg-center   object-cover' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://marketplace.canva.com/EAFKwirl3N8/1/0/1600w/canva-brown-minimalist-fashion-product-banner-iRHpbHTqh-A.jpg' className='min-w-full h-full   rounded-xl       bg-no-repeat bg-cover bg-center   ' />
+                        <SwiperSlide>                <img src='https://marketplace.canva.com/EAFKwirl3N8/1/0/1600w/canva-brown-minimalist-fashion-product-banner-iRHpbHTqh-A.jpg' className='min-w-full h-full   rounded-xl       bg-no-repeat bg-cover bg-center object-cover  ' />
                         </SwiperSlide>
                     </Swiper>
                 </div >

@@ -707,7 +707,7 @@ a:hover{
     text-transform: uppercase;
     font-weight: bold;
     line-height: 1;
-    color: rgba(133, 77, 13);
+    color: rgb(71, 31, 8);
     opacity: 0;
     animation: animate 1s ease-in-out 0.6s 1 forwards;
 }
@@ -736,13 +736,13 @@ a:hover{
 
 .content .btn button:nth-child(1){
     margin-right: 15px;
-    background-color:  rgba(133, 77, 13);
+    background-color:  rgb(71, 31, 8);
     transition: 0.3s;
 }
 
 
 .content .btn button:nth-child(1):hover{
-    background-color:  rgba(113, 63, 18, 1);
+    background-color:  rgb(71, 31, 8);
     color: #fff;
 }
 
@@ -801,7 +801,7 @@ a:hover{
 }
 
 .arrows button:hover{
-    background: rgba(113, 63, 18, 1);
+    background: rgb(71, 31, 8);
     color: white;
 }
 
@@ -812,7 +812,7 @@ a:hover{
     z-index: 1000;
     width: 0%;
     height: 4px;
-    background-color:  rgba(113, 63, 18, 1);
+    background-color:  rgb(71, 31, 8);
     left: 0;
     top: 0;
     animation: runningTime 7s linear 1 forwards;

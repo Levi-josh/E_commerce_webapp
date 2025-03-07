@@ -208,14 +208,14 @@ const textRevealVariants2 = {
                 </ul>
                 <div className='flex gap-4 items-center     '>
                     <button>Sign in</button>
-                    <button className='bg-yellow-900  px-3 py-1 sm:px-5 sm:py-2 rounded-xl text-white'>Sign up</button>
+                    <button className='bg-brown  px-3 py-1 sm:px-5 sm:py-2 rounded-xl text-white'>Sign up</button>
                 </div>
             </header>
             <div className='w-full h-123 hero rounded-xl overflow-hidden before:bg-gradient-to-r  before:from-blurblack  before:via-blurblack   before:to-blurblack2  '>
                 <div className='absolute flex flex-col text-white justify-center gap-5 z-10  h-full pl-5 w-130 sm:w-140 xl:w-22'>
                     <h1 className='  font-bold text-5xl sm:text-6xl lg:text-7xl  font-serif leading11  '>More than just a shopping app</h1>
                     <p className='font-serif text-sm sm:text-base leading-7 sm:leading-10'>Glamour Grove is your one stop shop for your clothes,shoes,jewellries and more.we were not just given the title "the best shopping app" we earned it.</p>
-                    <button className='px-3 w-32 py-1 bg-yellow-900 text-white rounded-xl'>Shopping now</button>
+                    <button className='px-3 w-32 py-1 bg-brown text-white rounded-xl'>Shopping now</button>
                 </div>
                 <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full h-full object-cover  bg-no-repeat bg-cover bg-center   ' />
             </div>
@@ -242,7 +242,7 @@ const textRevealVariants2 = {
                 </ul>
                 <div className='flex gap-2 sm:gap-4 items-center'>
                     <button className='font-semibold bg-fadeblack px-3 py-1 sm:py-2 sm:px-5  rounded-xl' onClick={navSignIn}>Sign in</button>
-                    <button className='bg-yellow-900 font-semibold px-3 py-1 sm:py-2 sm:px-5  rounded-xl text-white ' onClick={navSignUp}>Sign up</button>
+                    <button className='bg-brown font-semibold px-3 py-1 sm:py-2 sm:px-5  rounded-xl text-white ' onClick={navSignUp}>Sign up</button>
                 </div>
                 </header>
                 {/* Hero section filling remaining space */}
@@ -252,7 +252,7 @@ const textRevealVariants2 = {
                     <motion.p variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} className='font-serif text-sm sm:text-base leading-6 sm:leading-8'>
                     Glamour Grove is your one-stop shop for your clothes, shoes, jewelry, and more. We weren't just given the title "the best shopping app," we earned it.
                     </motion.p>
-                    <motion.button variants={textRevealVariants2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}  onClick={navSignIn} className='px-3 w-32 py-2 lg:py-3 sm:w-52 bg-yellow-900 text-white rounded-xl'>Shop Now</motion.button>
+                    <motion.button variants={textRevealVariants2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}  onClick={navSignIn} className='px-3 w-32 py-2 lg:py-3 sm:w-52 bg-brown text-white rounded-xl'>Shop Now</motion.button>
                 </motion.div>
                 <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' 
                     className='w-full h-full object-cover  bg-no-repeat bg-cover bg-center' 
@@ -336,7 +336,7 @@ const textRevealVariants2 = {
                                         </div>
                                         <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
                                         <p className='text-sm sm:text-base'>{`$${prev.price}`}</p>
-                                        <button className={`w-full bg-yellow-900 font-semibold py-2 text-sm sm:text-base ${!mode.colormode?'text-white':'text-black'}`} onClick={navSignIn}>Add to cart</button>
+                                        <button className={`w-full bg-brown font-semibold py-2 text-sm sm:text-base ${!mode.colormode?'text-white':'text-black'}`} onClick={navSignIn}>Add to cart</button>
                                     </div>
                                 </div>
                             )
@@ -358,7 +358,7 @@ const textRevealVariants2 = {
                     </p>
                     <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
                         <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  `} >30% OFF</h1>
-                        <NavLink to={'/login'}> <button className={`w-40 bg-yellow-900 mt-4 ${!mode.colormode?'text-white':'text-black'} md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 text-sm sm:text-base`}>Shop Now</button></NavLink>
+                        <NavLink to={'/login'}> <button className={`w-40 bg-brown mt-4 ${!mode.colormode?'text-white':'text-black'} md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 text-sm sm:text-base`}>Shop Now</button></NavLink>
                     </div>
                 </div>
             </div>
@@ -370,7 +370,7 @@ const textRevealVariants2 = {
                     <motion.div  className={`py-4 sm:p-4   ${mode.colormode?'addShadow2':'addShadow'}  md:p-5 m-auto px-2 w-120 ${bgcolor} ${textcolor}  rounded-xl flex flex-col gap-3`}  initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
                         <div className="w-full flex gap-5   flex-col md:flex-row items-center ">
                             <motion.div  className={`w-full flex border ${mode.colormode && 'border-0.5 border-stone-800'}  flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52   hover:cursor-pointer  rounded-xl `}>
-                                <div className="bg-yellow-900 text-white w-11 h-11 sm:w-426 sm:h-14  flex-shrink-0 rounded-full flex items-center justify-center">
+                                <div className="bg-brown text-white w-11 h-11 sm:w-426 sm:h-14  flex-shrink-0 rounded-full flex items-center justify-center">
                                 <svg 
                                 className="sm:w-5 sm:h-5 w-4 h-4" 
                                 viewBox="0 0 24 24" 
@@ -391,7 +391,7 @@ const textRevealVariants2 = {
                                 </div>
                             </motion.div>
                             <motion.div  className={`w-full flex border ${mode.colormode && 'border-0.5 border-stone-800'} flex-row md:flex-col items-center gap-3 md:gap-2 p-3  h-20 sm:h-24 md:h-52   hover:cursor-pointer  rounded-xl `}>
-                                <div className="bg-yellow-900 text-white w-11 h-11 sm:w-426 sm:h-14   flex-shrink-0 rounded-full flex items-center justify-center">
+                                <div className="bg-brown text-white w-11 h-11 sm:w-426 sm:h-14   flex-shrink-0 rounded-full flex items-center justify-center">
                                 <svg 
                                     className="sm:w-5 sm:h-5 w-4 h-4 " 
                                     viewBox="0 0 24 24" 
@@ -412,7 +412,7 @@ const textRevealVariants2 = {
                                 </div>
                             </motion.div>
                             <motion.div  className={`w-full flex border flex-row md:flex-col  ${mode.colormode && 'border-0.5 border-stone-800'} items-center gap-3 md:gap-2 p-3 h-20 sm:h-24 md:h-52   hover:cursor-pointer rounded-xl `}>
-                                <div className="bg-yellow-900 w-11 h-11 sm:w-426 sm:h-14 flex-shrink-0 rounded-full flex items-center justify-center text-white">
+                                <div className="bg-brown w-11 h-11 sm:w-426 sm:h-14 flex-shrink-0 rounded-full flex items-center justify-center text-white">
                                 <svg 
                                 className="sm:w-5 sm:h-5 w-4 h-4" 
                                 viewBox="0 0 24 24" 

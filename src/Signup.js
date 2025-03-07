@@ -144,10 +144,10 @@ const Signup = () => {
             </div>
             </div>
             <div className='flex items-center gap-3'>
-                <input type='checkbox' className={`${mode.colormode?'bg-stone-800 ':'bg-gray-200'} accent-yellow-900 sm:w-4 sm:h-4 hover:cursor-pointer lg:w-5 lg:h-5`} />
+                <input type='checkbox' className={`${mode.colormode?'bg-stone-800 ':'bg-gray-200'} accent-brown sm:w-4 sm:h-4 hover:cursor-pointer lg:w-5 lg:h-5`} />
                 <p className='whitespace-nowrap  lg:font-semibold'>I agree to the terms and condition</p>
             </div>
-            <button className={`w-full py-2 md:py-3  sm:text-lg lg:text-xl flex justify-center items-center font-semibold  bg-yellow-900 text-white  ${disabled ? mode.colormode?'opacity-50 cursor-not-allowed':'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}>{!ran?`Sign Up`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
+            <button className={`w-full py-2 md:py-3  sm:text-lg lg:text-xl flex justify-center items-center font-semibold  bg-brown text-white  ${disabled ? mode.colormode?'opacity-50 cursor-not-allowed':'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}>{!ran?`Sign Up`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
