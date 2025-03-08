@@ -812,7 +812,7 @@ a:hover{
     z-index: 1000;
     width: 0%;
     height: 4px;
-    background-color:  rgb(71, 31, 8);
+    background-color:  transparent;
     left: 0;
     top: 0;
     animation: runningTime 7s linear 1 forwards;

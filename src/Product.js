@@ -23,7 +23,7 @@ function Product() {
     const textcolor = mode?.colortext
     const navigate = useNavigate()
     const [activeCategory, setActiveCategory] = useState("All")
-    const [showCategory, setshowCategory] = useState(true)
+    const [showCategory, setshowCategory] = useState(false)
     const {data,note,runEffect,changeRunEffect1,Error1,id,signout,runEffect2}= useOutletContext()
 
     // useEffect(() => {
@@ -54,12 +54,12 @@ function Product() {
 
     const handleCategoryClick = (category) => {
         setActiveCategory(category);
-        if(category !== 'All'){
-        const filteredProd = items.filter(prev=>prev.description==category)
-        setitems(filteredProd)}
-        else{
-            setitems(items)
-        }
+        // if(category !== 'All'){
+        // const filteredProd = items.filter(prev=>prev.description==category)
+        // setitems(filteredProd)}
+        // else{
+        //     setitems(items)
+        // }
     };
     const buyorder = async (id) => {  
         const selectedid = data?.items?.filter(prev => prev.selected === true)
@@ -111,9 +111,11 @@ const getusersDocuments = async () => {
        if(data && activeCategory !== 'All'){
         const filteredProd = data.filter(prev=>prev.description==activeCategory.toLowerCase())
         console.log(filteredProd )
-        setitems(filteredProd)}
+        setitems(filteredProd)
+        setshowCategory(true)}
         else{
             setitems(data)
+            setshowCategory(true)
         }
     }
     catch (err) {
@@ -136,11 +138,11 @@ return (
                 <p>Added to cart</p>
             </div>
             <div className={`sm:pt-24 pt-16     `}>
-               {items.length>1&&!startSearch&&<div className={`flex flex-col gap-3 lg:gap-4  w-full ${bgcolor}  justify-center mb-3 sticky top-0 z-20   pb-3 pt-4 `}>
+               {showCategory&&!startSearch&&<div className={`flex flex-col gap-3 lg:gap-4  w-full ${bgcolor}  justify-center mb-3 sticky top-0 z-20   pb-3 pt-4 `}>
                     <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-lg pl-4 placeholder:pl-4  ' value={searcheditems} onChange={handleSearch} placeholder='Search products' />
                     <div className='flex px-3  sm:justify-center gap-4 overflowPro   overflow-x-auto     md:gap-12 lg:gap-20 sm:gap-10'>
                     {["All", "Clothes", "Shoes", "Glasses", "Watches"].map((category) => (
-                        <button className={`w-350  flex justify-center items-center flex-shrink-0 font-semibold sm:w-16 lg:w-13 ${mode.colormode?'bg-stone-800':'bg-gray-200'} ${textcolor} py-1 md:py-2    hover:bg-brown hover:text-white ${activeCategory === category?'bg-brown text-white':''}    rounded-lg `}  onClick={() => handleCategoryClick(category)}>{category}</button>
+                        <button className={`w-350  flex justify-center items-center flex-shrink-0 font-semibold sm:w-16 lg:w-13 ${mode.colormode?'bg-stone-800':'bg-gray-200'} ${textcolor} py-1 md:py-2    hover:bg-brown hover:text-white ${activeCategory === category.toLowerCase()?'bg-brown text-white':''}    rounded-lg `}  onClick={() => handleCategoryClick(category)}>{category}</button>
                     ))}
                     </div>
                 </div>}

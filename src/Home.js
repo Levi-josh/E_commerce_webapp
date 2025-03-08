@@ -85,7 +85,7 @@ const scrolltoPage1 = (currentRef)=> {
     setmenubar(false)
     console.log(currentRef)
     setTimeout(() => {
-        currentRef.current?.scrollIntoView({ behavior: "smooth" });  
+        currentRef.current?.scrollIntoView({ behavior: "smooth" ,block:'center'});  
     }, 500);
 
     

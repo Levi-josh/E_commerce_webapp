@@ -6,7 +6,7 @@ import { color, delay, motion } from 'framer-motion'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import myitems from './Newarrival.json'
-import React, { useRef,useEffect } from 'react'
+import React, { useRef,useEffect,useLayoutEffect } from 'react'
 
 const Landing = () => {
     const [menubar, setmenubar] = useState(false)
@@ -45,16 +45,15 @@ const Landing = () => {
     
     let runNextAuto2;
   
-    useEffect(() => {
+    useLayoutEffect(() => {
         const nextPic = list.current.children
       if (!nextBtn.current || !prevBtn.current) return;
       function showSlider(type) {
         let updatedItems = [...sliderItems];
         if (type === "next") {
           updatedItems.push(updatedItems.shift()); // Move first item to the end
-          setSliderItems(updatedItems);
-        //   nextPic[1].style.display = "none";
-          console.log(nextPic[1].style)
+          setSliderItems(updatedItems); 
+   
         } 
       }
       runNextAuto = setTimeout(() => {
@@ -64,7 +63,6 @@ const Landing = () => {
       resetTimeAnimation2();
       return () => {
         clearTimeout(runNextAuto);
-     
       };
     }, [sliderItems,changeSlider]);
 
@@ -117,6 +115,7 @@ const Landing = () => {
         let updatedItems = [...sliderItems];
         const nextPic = list.current.children
         if (type === "next") {
+
             nextPic[1].style.animation = "none";
             void nextPic[1].offsetHeight; // Trigger reflow
             nextPic[1].style.animation = "animate2 1s ease-in-out 0s 1 forwards";
@@ -124,6 +123,7 @@ const Landing = () => {
             runNextAuto = setTimeout(() => {
                 updatedItems.push(updatedItems.shift()); // Move first item to the end
                 setSliderItems(updatedItems);
+                // nextPic[1].style.zIndex='-1'
               }, 1000);  
         } 
         else{
