@@ -292,7 +292,7 @@ console.log('ran')
                         </div>
                     </div>
                     <div className=' flex justify-end  lg:mt-0 lg:items-center '>
-                        <NavLink to={'/login'}> <p className={`font-bold   sm:text-xl ${mode.colormode?'text-white':'text-yellow-900'} text-right  mb-7 mr-7 `} onClick={signout} >Sign Out</p></NavLink>
+                        <NavLink to={'/landing'}> <p className={`font-bold   sm:text-xl ${mode.colormode?'text-white':'text-yellow-900'} text-right  mb-7 mr-7 `} onClick={signout} >Sign Out</p></NavLink>
                     </div>
                 </div>
             </motion.div>

@@ -45,21 +45,11 @@ function Product() {
         setitems('')
         setshowinput(false)
         setstartSearch(prev=>!prev)
-    }
-    function searchfunc2() {
-        setshowinput1(prev => !prev)
-        setstartSearch(prev=>!prev)
-        setshowinput(false)
+        setshowCategory(false)
     }
 
     const handleCategoryClick = (category) => {
         setActiveCategory(category);
-        // if(category !== 'All'){
-        // const filteredProd = items.filter(prev=>prev.description==category)
-        // setitems(filteredProd)}
-        // else{
-        //     setitems(items)
-        // }
     };
     const buyorder = async (id) => {  
         const selectedid = data?.items?.filter(prev => prev.selected === true)
@@ -164,9 +154,18 @@ return (
                             </div>
                         </div>)
                     })}
-                </div>:startSearch?<p className='font-bold text-lg text-black popout  absolute'>Make your search</p>:  
-                    <motion.div animate={{ rotate: 360 }} initial={{ x: '50%', x: '-50%' }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
-                        <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
+                </div>:startSearch?<p className={` text-lg ${textcolor} popout  absolute`}>Make your search</p>:  
+                    <motion.div animate={{ rotate: 360 }} initial={{ x: '50%', x: '-50%' }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }} className='absolute popout '>
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2V6" stroke={mode.colormode?"white":'black'} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 18V22" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4.929 4.929L7.757 7.757" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M16.243 16.243L19.071 19.071" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 12H6" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M18 12H22" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4.929 19.071L7.757 16.243" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M16.243 7.757L19.071 4.929" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                     </motion.div>}
             </div> 
             
