@@ -46,6 +46,7 @@ const ScrollToTOP = () => {
              
                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getuser/${id}`, option);
                 const data = await response.json()
+                console.log(id)
                 console.log(data)
                 setdata(data)
             }
@@ -54,8 +55,8 @@ const ScrollToTOP = () => {
                 console.log(err.message)
             }
         } 
-    id&&getusersDocuments()
-    }, []);
+        id&&getusersDocuments()
+    }, [id]);
   
     function changeRunEffect() {
         setRunEffect(prev => !prev)

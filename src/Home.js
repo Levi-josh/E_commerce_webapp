@@ -124,8 +124,7 @@ console.log('ran')
    setmenubar(prev=>!prev)
        
     }
-    console.log(data?.items?.length<1)
-    console.log(selectedcart===undefined)
+   
     const buyorder = async (id) => {  
         console.log(selectedcart) 
     const option = {
@@ -156,57 +155,6 @@ console.log('ran')
         }, 2000);    
     }
     
-
-// function opencollection() {
-//         setscroll(scroll)
-//         setpopout(prev => !prev)
-//         setshowinput(false)
-//         setmenubar(false) 
-// }
-// const selectcartFunc = async(id)=> {
-//     const option = {
-//                 method: 'PUT',
-//                 headers: {
-//                     'content-type': 'application/json',
-//                 }
-//             }
-//             try {
-//                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/select/${id}`, option);
-//                 const data = await response.json()
-//                console.log(data)
-//             }
-//             catch (err) {
-//             seterror(err) 
-//             console.log(err)
-//     }
-// }
-  
-// const handleChange = (e) => {
-//     setnewcartText(e.target.value)
-// }
-// const handleSubmit = async (e) => {
-// e.preventDefault()
-// const option = {
-//                 method: 'POST',
-//                 headers: {
-//                     'content-type': 'application/json',
-//                 },
-//                 body:JSON.stringify({"id":data._id,"title":newcartText})
-//             }
-//             try {
-//                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/newcart`, option);
-//                 const data = await response.json()
-//                console.log(data)
-//             }
-
-//             catch (err) {
-//             seterror(err) 
-//             console.log(err)
-//     } 
-//     setnewcartText('')
-//     setshowinput(false)
-//     }
-
     return (
         <>{id&&<div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full flex-col flex ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
             <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 sm:px-8 md:px-12 lg:px-3   w-full m-0 ${bgcolor} ${textcolor} z-20  `}>

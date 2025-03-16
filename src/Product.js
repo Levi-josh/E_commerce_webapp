@@ -132,7 +132,7 @@ return (
                     <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-lg pl-4 placeholder:pl-4  ' value={searcheditems} onChange={handleSearch} placeholder='Search products' />
                     <div className='flex px-3  sm:justify-center gap-4 overflowPro   overflow-x-auto     md:gap-12 lg:gap-20 sm:gap-10'>
                     {["All", "Clothes", "Shoes", "Glasses", "Watches"].map((category) => (
-                        <button className={`w-350  flex justify-center items-center flex-shrink-0 font-semibold sm:w-16 lg:w-13 ${mode.colormode?'bg-stone-800':'bg-gray-200'} ${textcolor} py-1 md:py-2    hover:bg-brown hover:text-white ${activeCategory === category.toLowerCase()?'bg-brown text-white':''}    rounded-lg `}  onClick={() => handleCategoryClick(category)}>{category}</button>
+                        <button className={`w-350  flex justify-center items-center flex-shrink-0 font-semibold sm:w-16 lg:w-13 ${activeCategory === category?'bg-black text-white ':mode.colormode?'bg-stone-800':'bg-gray-200'} ${textcolor} py-1 md:py-2    hover:bg-brown hover:text-white ${activeCategory === category?'bg-black ':''}    rounded-lg `}  onClick={() => handleCategoryClick(category)}>{category}</button>
                     ))}
                     </div>
                 </div>}
