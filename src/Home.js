@@ -56,6 +56,7 @@ const Home = () => {
     const aboutRef = useRef(null);
     const lpMenu = useRef(null);
     const smMenu = useRef(null);
+   
     // useEffect(() => {
     //     window.scrollTo(0, scroll)
     // }, [menubar || popout])
@@ -90,21 +91,9 @@ const scrolltoPage1 = (currentRef)=> {
 
     
   }
-  const handleScroll = () => {
-    const element = contactRef.current;
-    if (element) {
-        const offset = 30; // Space from the top
-        window.scrollTo({
-            top: element.getBoundingClientRect().top + window.scrollY - offset,
-            behavior: "smooth"
-        });
-    }
-};
     function showmenu() {
         // setscroll(menubar ? scroll : window.scrollY)
         setmenubar(prev => !prev)
-        
-console.log('ran')
                 // Notification.requestPermission().then(perm => {
                 //     if (perm === 'granted') {
                 //         new Notification('new note', {
@@ -126,7 +115,6 @@ console.log('ran')
     }
    
     const buyorder = async (id) => {  
-        console.log(selectedcart) 
     const option = {
                 method: 'POST',
                 headers: {
@@ -134,14 +122,22 @@ console.log('ran')
                 }
             }
             try {
+               
                 if(data?.items?.length<1 && selectedcart===undefined){
                    navigate('/listcols')
                 }if( data?.items.length>0 && selectedcart===undefined){
                     navigate('/listcols')
                 }
+                setdisplaynote(false)
                 const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/addcart/${selectedcart}/${id}`, option);
                 const data1 = await response.json()
-               console.log(data1)
+               if(data1){
+                setdisplaynote(true)
+                 setTimeout(() => {
+                    setdisplaynote(false)
+                   }, 3000);
+               }
+
                
             }
 
@@ -210,7 +206,7 @@ console.log('ran')
                     <div className={`lg:flex items-center    ${textcolor} justify-center ${menubar ? '  text-white bg-brown hover:transition-all hover:duration-200 hover:ease-in-out' : 'lg:hover:bg-brown lg:hover:text-white'} text-black hover:cursor-pointer  text-lg  w-101  rounded-full hidden h-10 font-bold hover:font-normal `} onClick={showLpMenu} ref={lpMenu}><p className=''>Menu</p></div>
                 </div>
             </header>
-            <div>{<motion.div  initial={{x:'100%'}} animate={{x:menubar?window.matchMedia('(max-width: 768px)').matches?0:-12 :'100%'}} transition={{type:'tween',duration: 0.1, delay: 0}} className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full ${textcolor}    ${bgcolor}  lg:top-24 shadow-lg shadow-black rounded-lg right-0    z-30  lg:h-120  `}>
+            <div>{<motion.div  initial={{x:'100%'}} animate={{x:menubar?window.matchMedia('(max-width: 768px)').matches?0:-12 :'100%'}} transition={{type:'tween',duration: 0.01}} className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full ${textcolor}    ${bgcolor}  lg:top-24 shadow-lg shadow-black rounded-lg right-0    z-30  lg:h-120  `}>
 
                 <div className={` h-190 md:h-140 bg-brown  lg:border-b ${mode.colormode&&'lg:border-stone-700'} lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center`}>
                     <FaTimesCircle className='absolute lg:hidden left-4 top-4  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
@@ -245,68 +241,20 @@ console.log('ran')
                 </div>
             </motion.div>
             }</div>
-            {/* <motion.div className={`fixed   w-130 sm:w-25 md:w-22 ${bgcolor} ${textcolor} popout lg:w-10     z-20 h-80 sm:h-96 lg:h-80    rounded-xl  ${popout&&!error.message ? 'block ' : 'hidden'}  `}>
-                <FaTimesCircle className='absolute right-0  text-yellow-900  z-40 text-xl sm:text-2xl hover:cursor-pointer ' onClick={() => {
-                    setscroll(scroll)
-                    setpopout(prev => !prev)
-                    setshowinput(false)
-                    setmenubar(false)
-                }} />
-                <div className={`flex fixed rounded-t-xl top-0  ${mode.colormode&&'  shadow-stone-700 shadow-md '}  ${bgcolor} ${textcolor}  w-full z-10 px-8 justify-between items-center py-4 sm:py-4 shadow-lg`}>
-                    <h1 className='text-xl lg:text-2xl font-extrabold'>Cart</h1>
-                    <button className='w-10 p-1 lg:w-350  xl:w-14 bg-yellow-900 text-white font-semibold whitespace-nowrap' onClick={() => { setshowinput(prev => !prev) }}>New cart</button>
-                </div>
-                <div className='px-4 pt-16 sm:pt-16 lg:pt-16 h-80 sm:h-96 overflow-y-auto lg:h-80 overflow-div     '>
-                {id?
-                    data.items ?
-                    data.items<1?
-                    <div>
-                    {showinput? <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 border border-black outline-none ${mode.colormode?'border-yellow-900 bg-stone-700 placeholder-white':'border-black'} `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>:
-                    <div className='absolute flex flex-col popout'><h1 className='font-bold'>Empty cart</h1><p>Your cart is empty, click on the button above to create a cart.</p></div>}
-                    </div>:
-                        <div>
-                            <div>
-                                {showinput && <form className=' relative mt-3 sm:mt-4' ><input type='text' placeholder='create new cart' className={`w-full py-1 lg:py-2 md:pr-12 pl-3 pr-11 ${mode.colormode?'border-stone-700 bg-stone-800 placeholder-white':'border-black'} border  outline-none `} value={newcartText} autoFocus onChange={handleChange} /><div className='bg-yellow-900'><FaPlusSquare className='absolute md:right-5 sm:right-4 right-3 text-lg lg:text-xl  flex top-2   lg:top-3' onClick={handleSubmit} /></div></form>}
-                            </div>
-                            {data?.items?.map(prev => {
-                            return (<div className={`     relative flex w-full     border-b ${mode.colormode?'hover:bg-stone-700 border-stone-600':'border-yellow-900 hover:bg-neutral-100'} hover:cursor-pointer  `}>
-                                    <NavLink to={`/cart/${prev._id}`} className={'w-full'}> <div className={` py-3    `}><p className='font-semibold sm:text-lg lg:text-xl  '>{prev.title}</p></div></NavLink> 
-                                    <div className=' bg-inherit  pl-3 flex items-center justify-end'><input type="radio" className='hover:cursor-pointer  accent-yellow-900  lg:w-4' name='collection' checked={checked === prev.selected} onClick={() => selectcartFunc(prev._id)} /></div>
-                                </div>)}).reverse()}
-                                <p className='font-semibold mt-3 text-center sm:text-lg'>Click on the cart you created to see your items</p>
-                        </div> : 
-                        <motion.div animate={{rotate:360}} initial={{x:'50%',x:'-50%'}} transition={{duration:2,repeat: Infinity, ease: 'linear'}} className='absolute popout bg-gradient-to-r z-30 from-white bg-opacity-100 via-yellow-900   to-yellow-900 lg:w-11 lg:h-11 w-9 h-9 rounded-full  '>
-                        <div className='lg:w-8 lg:h-8 w-6 h-6 bg-white popout rounded-full absolute'></div>
-                        </motion.div>:
-                        <p className='font-semibold sm:text-lg lg:text-xl popout fixed'>Empty!</p>
-                    }
-                </div>
-
-                
-            </motion.div> */}
-            {/* {error?.message && <div className={` w-107 sm:w-108 md:w-109 flex items-center justify-center   rounded-xl shadow-xl outline-yellow-900  outline outline-2  fixed popout z-30 ${bgcolor}  min-h-101 sm:min-h-102 lg:min-h-101 `}>
-                <div className='flex md:items-start flex-col md:flex-row  gap-3 md:gap-5'>
-                    <FaExclamationCircle className='lg:text-5xl sm:text-4xl text-3xl text-yellow-900' />
-                    <div className='flex flex-col justify-center gap-1'>
-                        <h1 className='font-bold sm:text-xl '>{error?.message}</h1>
-                        <div><button className='px-6 py-1 rounded-full bg-yellow-900 text-white' 
-                        onClick={()=>{seterror({'message':undefined})}}>Ok</button></div>
-                    </div>
-                </div>
-            </div>} */}
             <div className={` bg-yellow-900 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
                 <p>you're logged in</p>
             </div>
-            {/* <motion.div animate={{y:displaynote?130:0,x:'50%',x:'-50%'}} initial={{x:'50%',x:'-50%'}} transition={{ type: 'tween', duration: 1 }}     className={` hidden bg-white allpopout outline-yellow-900 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20 fixed  justify-center flex-col   text-black  `} ref={noteref} >
-                <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4' >
+            <motion.div animate={{y:displaynote?`200%`:0,x:'50%',x:'-50%'}} initial={{x:'50%',x:'-50%',y:'-20%'}} transition={{ type: 'tween', duration: 0.1 }}     className={`  bg-white allpopout outline-yellow-900 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20 fixed  justify-center flex-col   text-black  `} ref={noteref} >
+                {/* <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4' >
                         <FaBell className='text-yellow-900 text-lg sm:text-xl lg:text-2xl' />
                         <p>{(note&&note[0]?.note)?.length>30?`${(note&&note[0]?.note).slice(0,30)}...`:note&&note[0]?.note}</p>
                 </div>
                 <div className='flex justify-center items-center gap-3'>
-                    <button className='bg-yellow-900 text-white w-15 font-semibold' onClick={read}>Read</button>
+                    <button className='bg-yellow-900 text-white w-15 font-semibold' >Read</button>
                     <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
-                </div>
-            </motion.div > */}
+                </div> */}
+                <p>Cart added</p>
+            </motion.div >
             
             <div className='   h-screen lg:h-full   gap-5 sm:gap-10  pt-24 sm:pt-32 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
                 <div className='h-192 lg:h-screen   lg:pb-10 lg:pt-24'>

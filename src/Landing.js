@@ -138,16 +138,7 @@ const Landing = () => {
               }, 0);      
             setTimeout(() => {
                 nextPic[1].classList.remove('prev')
-            
               }, 2000);     
-              
-            //  setTimeout(() => {
-            //     updatedItems.push(updatedItems.shift()); // Move first item to the end
-            //     setSliderItems(updatedItems);
-            //   },3000 ); 
-            //  setTimeout(() => {
-            //     setchangeSlider(prev=>!prev) 
-            //   },3000 ); 
              
         }
       }
