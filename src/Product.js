@@ -1,9 +1,10 @@
 import React, { useLayoutEffect } from 'react'
 import { Link, NavLink,useOutletContext,useNavigate } from 'react-router-dom'
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useSelector } from 'react-redux'
-import { FaBars, FaSearch, FaBell,FaExclamationCircle,FaPlusSquare, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaAngleLeft, FaTimesCircle } from 'react-icons/fa'
+import notify from './short-success-sound-glockenspiel-treasure-video-game-6346.mp3'
+import { FaBars, FaSearch, FaBell,FaExclamationCircle,FaPlusSquare, FaAddressBook, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaAngleLeft, FaTimesCircle, FaCheckCircle } from 'react-icons/fa'
 function Product() {
     const [popout, setpopout] = useState(true)
     const [showinput, setshowinput] = useState(false)
@@ -18,6 +19,8 @@ function Product() {
     const [startSearch,setstartSearch]=useState(false)
     const [searcheditems,setsearcheditems]=useState('')
     const [selectedcart, setseletedcart] = useState('');
+    const audiosound = useRef()
+    const noteref = useRef()
     const mode = useSelector((state)=>state.changemode.value)
     const bgcolor = mode?.colorBgtext
     const textcolor = mode?.colortext
@@ -26,10 +29,10 @@ function Product() {
     const [showCategory, setshowCategory] = useState(false)
     const {data,note,runEffect,changeRunEffect1,Error1,id,signout,runEffect2}= useOutletContext()
 
-    // useEffect(() => {
-    //     const selectedid = data?.items?.filter(prev => prev.selected === true)
-    //        setseletedcart(selectedid && selectedid[0]?._id)
-    //    })
+    useEffect(() => {
+        const selectedid = data?.items?.filter(prev => prev.selected === true)
+           setseletedcart(selectedid && selectedid[0]?._id)
+       })
     useEffect(() => {
         const searching=()=>{
         const searchedProd =  items.filter(prev=>prev.itemname==setsearcheditems)
@@ -61,14 +64,22 @@ function Product() {
                  }
              }
              try {
-                if( data||data?.items?.length<1 && myCartId===undefined){
+                if(data?.items?.length<1 && selectedcart===undefined){
                     navigate('/listcols')
-                 }if( data||data?.items.length>0&&myCartId===undefined){
+                 }if( data?.items.length>0 && selectedcart===undefined){
                      navigate('/listcols')
                  }
                  const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/addcart/${myCartId}/${id}`, option);
                  const data1 = await response.json()
-                console.log(data1)
+                 if(data1){
+                    setdisplaynote(true)
+                    if (audiosound.current) {
+                        audiosound.current.play();
+                    }
+                     setTimeout(() => {
+                        setdisplaynote(false)
+                       }, 2000);
+                   }
                 
              }
  
@@ -124,15 +135,22 @@ return (
                     : <h1 className=' sm:m-auto  text-xl sm:text-2xl font-semibold'>Products</h1>}
                 <div  className={`${showinput1 ? 'hidden' : 'block'} right-4  sm:right-6 md:right-4 lg:right-6 absolute hover:cursor-pointer ${!mode.colormode?'bg-gray-200':'bg-stone-800'} p-2 rounded-lg`} onClick={searchfunc}><FaSearch  /></div>
             </header >
-            <div className={` bg-yellow-900 ${ added && !error?.message? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
+            {/* <div className={` bg-yellow-900 ${ added && !error?.message? 'opacity-90':'opacity-0'}  w-106 transition-all added flex h-10 justify-center items-center fixed  text-white  rounded-full  `} >
                 <p>Added to cart</p>
-            </div>
+            </div> */}
+            <motion.div animate={{y:displaynote?`80px`:0,x:'50%',x:'-50%'}} initial={{x:'50%',x:'-50%',y:'-70px'}} transition={{ type: 'tween', duration: 0.1 }}     className={`  bg-brown allpopout  md:w-108   gap-3  w-208 h-14 md:h-16 fixed  justify-center items-center flex rounded-lg   text-white  `} ref={noteref} >
+                <p>Item added to cart</p>
+                <FaCheckCircle/>
+            </motion.div >
             <div className={`sm:pt-24 pt-16     `}>
+                <audio controls className='hidden' ref={audiosound}>
+                    <source src={notify} type="audio/mp3" />
+                </audio>
                {showCategory&&!startSearch&&<div className={`flex flex-col gap-3 lg:gap-4  w-full ${bgcolor}  justify-center mb-3 sticky top-0 z-20   pb-3 pt-4 `}>
                     <input className='outline-none hidden  border w-130 border-black lg:w-25 m-auto h-9 lg:h-11 rounded-lg pl-4 placeholder:pl-4  ' value={searcheditems} onChange={handleSearch} placeholder='Search products' />
                     <div className='flex px-3  sm:justify-center gap-4 overflowPro   overflow-x-auto     md:gap-12 lg:gap-20 sm:gap-10'>
                     {["All", "Clothes", "Shoes", "Glasses", "Watches"].map((category) => (
-                        <button className={`w-350  flex justify-center items-center flex-shrink-0 font-semibold sm:w-16 lg:w-13 ${activeCategory === category?'bg-black text-white ':mode.colormode?'bg-stone-800':'bg-gray-200'} ${textcolor} py-1 md:py-2    hover:bg-brown hover:text-white ${activeCategory === category?'bg-black ':''}    rounded-lg `}  onClick={() => handleCategoryClick(category)}>{category}</button>
+                        <button className={`w-350  flex justify-center items-center flex-shrink-0 font-semibold sm:w-16 lg:w-13 ${activeCategory === category?'bg-brown text-white ':mode.colormode?'bg-stone-800':'bg-gray-200'} ${textcolor} py-1 md:py-2    hover:bg-brown hover:text-white    rounded-lg `}  onClick={() => handleCategoryClick(category)}>{category}</button>
                     ))}
                     </div>
                 </div>}

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { FaBars, FaSearch, FaBell, FaAddressBook,FaSun, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown, FaToggleOn, FaToggleOff, FaSubscript, FaUser, FaQuestion, FaVest, FaShare, FaMoneyBill, FaLightbulb, FaSearchPlus, FaPlusSquare, FaMoon, } from 'react-icons/fa'
+import { FaBars, FaSearch, FaBell, FaAddressBook,FaSun, FaCar, FaWallet, FaLock, FaPhone, FaShoppingCart, FaStar, FaInstagram, FaFacebook, FaYoutube, FaFacebookMessenger, FaFacebookF, FaStarHalf, FaStarHalfAlt, FaUserCircle, FaTimesCircle, FaHome, FaShoppingBag, FaExclamationCircle, FaShopify, FaShoppingBasket, FaHistory, FaArrowRight, FaAngleRight, FaArrowDown, FaAngleDown, FaToggleOn, FaToggleOff, FaSubscript, FaUser, FaQuestion, FaVest, FaShare, FaMoneyBill, FaLightbulb, FaSearchPlus, FaPlusSquare, FaMoon, FaCheckCircle, } from 'react-icons/fa'
 import homeimage from './hotdog image.jpg'
 import { Link, NavLink, json, useLocation, useNavigate,useSearchParams, useOutletContext } from 'react-router-dom'
 import { useState } from 'react'
@@ -57,11 +57,6 @@ const Home = () => {
     const lpMenu = useRef(null);
     const smMenu = useRef(null);
    
-    // useEffect(() => {
-    //     window.scrollTo(0, scroll)
-    // }, [menubar || popout])
-
-  
  useEffect(() => {
      const selectedid = data?.items?.filter(prev => prev.selected === true)
         setseletedcart(selectedid && selectedid[0]?._id)
@@ -133,9 +128,12 @@ const scrolltoPage1 = (currentRef)=> {
                 const data1 = await response.json()
                if(data1){
                 setdisplaynote(true)
+                if (audiosound.current) {
+                    audiosound.current.play();
+                }
                  setTimeout(() => {
                     setdisplaynote(false)
-                   }, 3000);
+                   }, 2000);
                }
 
                
@@ -244,16 +242,9 @@ const scrolltoPage1 = (currentRef)=> {
             <div className={` bg-yellow-900 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
                 <p>you're logged in</p>
             </div>
-            <motion.div animate={{y:displaynote?`200%`:0,x:'50%',x:'-50%'}} initial={{x:'50%',x:'-50%',y:'-20%'}} transition={{ type: 'tween', duration: 0.1 }}     className={`  bg-white allpopout outline-yellow-900 sm:w-108 md:w-109 outline outline-2 gap-3 shadow-lg w-107 h-20 fixed  justify-center flex-col   text-black  `} ref={noteref} >
-                {/* <div className='flex justify-start items-center gap-3 px-3 sm:gap-4 sm:px-4 lg:gap-4 lg:px-4' >
-                        <FaBell className='text-yellow-900 text-lg sm:text-xl lg:text-2xl' />
-                        <p>{(note&&note[0]?.note)?.length>30?`${(note&&note[0]?.note).slice(0,30)}...`:note&&note[0]?.note}</p>
-                </div>
-                <div className='flex justify-center items-center gap-3'>
-                    <button className='bg-yellow-900 text-white w-15 font-semibold' >Read</button>
-                    <button className='bg-yellow-900 text-white w-15 font-semibold'>cancel</button>
-                </div> */}
-                <p>Cart added</p>
+            <motion.div animate={{y:displaynote?`80px`:0,x:'50%',x:'-50%'}} initial={{x:'50%',x:'-50%',y:'-70px'}} transition={{ type: 'tween', duration: 0.1 }}     className={`  bg-brown allpopout  md:w-108   gap-3  w-208 h-14 md:h-16 fixed  justify-center items-center flex rounded-lg   text-white  `} ref={noteref} >
+                <p>Item added to cart</p>
+                <FaCheckCircle/>
             </motion.div >
             
             <div className='   h-screen lg:h-full   gap-5 sm:gap-10  pt-24 sm:pt-32 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>

@@ -300,11 +300,11 @@ transform: rotate(360deg);
 
 @media screen and (max-width:640px) {
     .allpopout{
-        top: -20%;
+        top: -70px;
         left: 50%;
         transform: translate(-50%);
         z-index: 30;
-        opacity: 0.9;
+       
 }
     .popout1 {
         top: 0;
@@ -422,11 +422,11 @@ transform: rotate(360deg);
         z-index: 8;
 }
 .allpopout{
-        top: -20%;
+        top: -70px;
         left: 50%;
       transform: translate(-50%);
         z-index: 50;
-        opacity: 0.9;
+        
 }
 }
 @media screen and (max-width: 1020px) {
