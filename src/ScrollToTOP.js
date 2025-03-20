@@ -104,9 +104,8 @@ const ScrollToTOP = () => {
     }*/
     return (
 
-        <div className=''>
+        <div className='w-full'>
             <Outlet context={{data,note,runEffect,runEffect2,id,changeRunEffect,changeRunEffect1,signout}} />
-            {/* //  <Outlet context={{data,note,runEffect,changeRunEffect,changeRunEffect1,Error}} /> */}
         </div>
     )
 }

@@ -184,34 +184,7 @@ const textRevealVariants2 = {
   };
   
   return (
-    <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white fixed before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
-    {/* <div className='w-full  h-screen px-2 sm:px-5 pb-5   '>
-        <div className='w-full h-full flex flex-col    '>
-           <header className={` flex justify-between items-center  h-107  ${mode.colormode&&' shadow-stone-700  shadow-md'}   w-full m-0 ${bgcolor} ${textcolor}  `}>
-                <motion.div animate={{ x: 0 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`    ${menubar ? 'invisible lg:visible' : 'visble'}`} >
-                    <p className="font-bold text-lg sm:text-2xl  xl:text-3xl">Glamour Grove</p>
-                </motion.div>
-                <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
-                    <NavLink to='/'>  <li className=''>Home</li></NavLink>
-                    <NavLink to='/product'><li>Product</li></NavLink>
-                    <NavLink ><li>contact</li></NavLink>
-                    <NavLink ><li>About us</li></NavLink>
-                </ul>
-                <div className='flex gap-4 items-center     '>
-                    <button>Sign in</button>
-                    <button className='bg-brown  px-3 py-1 sm:px-5 sm:py-2 rounded-xl text-white'>Sign up</button>
-                </div>
-            </header>
-            <div className='w-full h-123 hero rounded-xl overflow-hidden before:bg-gradient-to-r  before:from-blurblack  before:via-blurblack   before:to-blurblack2  '>
-                <div className='absolute flex flex-col text-white justify-center gap-5 z-10  h-full pl-5 w-130 sm:w-140 xl:w-22'>
-                    <h1 className='  font-bold text-5xl sm:text-6xl lg:text-7xl  font-serif leading11  '>More than just a shopping app</h1>
-                    <p className='font-serif text-sm sm:text-base leading-7 sm:leading-10'>Glamour Grove is your one stop shop for your clothes,shoes,jewellries and more.we were not just given the title "the best shopping app" we earned it.</p>
-                    <button className='px-3 w-32 py-1 bg-brown text-white rounded-xl'>Shopping now</button>
-                </div>
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full h-full object-cover  bg-no-repeat bg-cover bg-center   ' />
-            </div>
-        </div>
-    </div> */}
+    <div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white fixed before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full w-full overflow-x-hidden ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
         <div className='w-full h-screen '>
             <div className='w-full h-full'>
                 {/* Small Header */}

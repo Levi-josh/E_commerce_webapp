@@ -150,12 +150,12 @@ const scrolltoPage1 = (currentRef)=> {
     }
     
     return (
-        <>{id&&<div className={`  ${menubar ? ` home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} m-0  h-full flex-col flex ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
-            <header className={`fixed flex justify-between items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 sm:px-8 md:px-12 lg:px-3   w-full m-0 ${bgcolor} ${textcolor} z-20  `}>
+        <>{id&&<div className={`  ${menubar ? ` home  ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}  w-full overflow-x-hidden  h-full flex-col flex ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
+            <header className={`fixed flex justify-between px-3  items-center h-20 sm:h-24 md:h-24 lg:h-24 sm:px-8 md:px-12 lg:px-3    w-full  ${bgcolor} ${textcolor} z-20  `}>
                 <motion.div animate={{ x: 0 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`    ${menubar ? 'invisible lg:visible' : 'visble'}`} >
                     <div className='flex gap-2 items-center '>
-                    <img src={'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275'} className={` w-410 h-10 sm:w-418 sm:h-12 rounded-full`}/>
-                    <p className={`font-semibold text-lg sm:text-xl`}>Glamour Grove</p>
+                    <img src={'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275'} className={` w-405 h-9 sm:w-418 sm:h-12 rounded-full`}/>
+                    <p className={`font-semibold text-base sm:text-xl`}>Glamour Grove</p>
 
                     </div>
                 </motion.div>
