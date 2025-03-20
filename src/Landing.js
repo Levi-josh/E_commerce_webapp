@@ -31,12 +31,12 @@ const Landing = () => {
   
     // State to track the slider items
     const [sliderItems, setSliderItems] = useState([
-        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275" },
-        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/69/885248/1.jpg?9651" },
-        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/53/122776/1.jpg?7527" },
-        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/649156/1.jpg?8476" },
-        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/65/2996252/1.jpg?8267" },
-        { name: "STORE", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/68/9023002/1.jpg?3955" }
+        { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275" },
+        { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/69/885248/1.jpg?9651" },
+        { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/53/122776/1.jpg?7527" },
+        { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/649156/1.jpg?8476" },
+        { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/65/2996252/1.jpg?8267" },
+        { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/68/9023002/1.jpg?3955" }
     ]);
   
     let runTimeOut;
@@ -205,24 +205,10 @@ const textRevealVariants2 = {
                     </NavLink>
                 </ul>
                 <div className='flex gap-2 sm:gap-4 items-center'>
-                    <button className='font-semibold bg-fadeblack px-3 py-1 sm:py-2 sm:px-5  rounded-xl' onClick={navSignIn}>Sign in</button>
-                    <button className='bg-brown font-semibold px-3 py-1 sm:py-2 sm:px-5  rounded-xl text-white ' onClick={navSignUp}>Sign up</button>
+                    <button className=' bg-fadeblack px-3 py-1 sm:py-2 sm:px-5  rounded-lg text-sm sm:text-base' onClick={navSignIn}>Sign in</button>
+                    <button className='bg-brown  px-3 py-1 sm:py-2 sm:px-5  rounded-lg text-white text-sm sm:text-base  ' onClick={navSignUp}>Sign up</button>
                 </div>
                 </header>
-                {/* Hero section filling remaining space */}
-                {/* <div className='flex-grow relative hero rounded-xl overflow-hidden before:bg-gradient-to-r  before:from-blurblack  before:via-blurblack   before:to-blurblack2'>
-                <motion.div variants={containerVariants} initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }} className='absolute flex flex-col text-white justify-center gap-7 sm:gap-9 lg:gap-8 z-10 h-full pl-5 w-130 sm:w-140 xl:w-22'>
-                    <motion.h1 variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} className='font-bold font-serif text-4xl sm:text-5xl  lg:text-6xl  leading11'>More than just a shopping app</motion.h1>
-                    <motion.p variants={textRevealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} className='font-serif text-sm sm:text-base leading-6 sm:leading-8'>
-                    Glamour Grove is your one-stop shop for your clothes, shoes, jewelry, and more. We weren't just given the title "the best shopping app," we earned it.
-                    </motion.p>
-                    <motion.button variants={textRevealVariants2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}  onClick={navSignIn} className='px-3 w-32 py-2 lg:py-3 sm:w-52 bg-brown text-white rounded-xl'>Shop Now</motion.button>
-                </motion.div>
-                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' 
-                    className='w-full h-full object-cover  bg-no-repeat bg-cover bg-center' 
-                    alt="Shopping banner"
-                />
-                </div> */}
     
 <div className="carousel" ref={carousel }>
 <div className="list" ref={list }>
@@ -230,10 +216,10 @@ const textRevealVariants2 = {
           <div className="item" key={index}>
              <img src={item.image} alt={item.name} className="slider-img bg-no-repeat bg-cover bg-center " />
             <div className="content" ref={content}>
-              <div className="title">FASHION</div>
+              <div className="title">Elevate</div>
               <div className="name">{item.name}</div>
               <div className="des">
-              Glamour Grove is your one-stop shop for your clothes, shoes, jewelry, and more. We weren't just given the title "the best shopping app," we earned it.
+              Discover the latest in fashion, footwear, and accessories all in one place. Shop effortlessly, dress impeccably, and shine confidently. Your perfect look starts here! 
               </div>
               <div className="btn">
                 <button>Shop Now</button>
@@ -256,7 +242,7 @@ const textRevealVariants2 = {
             </div> 
 
             </div>
-                <div className='w-120 m-auto lg:pt-6 pb-3  '>
+                <div className='w-120 m-auto lg:pt-6 pb-3 pt-5  '>
                 <h1 className='font-bold      text-2xl sm:text-3xl '>Our Services</h1>
                 </div> 
                 <section className=''>
@@ -300,7 +286,7 @@ const textRevealVariants2 = {
                                         </div>
                                         <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
                                         <p className='text-sm sm:text-base'>{`$${prev.price}`}</p>
-                                        <button className={`w-full bg-brown font-semibold py-2 text-sm sm:text-base ${!mode.colormode?'text-white':'text-black'}`} onClick={navSignIn}>Add to cart</button>
+                                        <button className={`w-full bg-brown text-white font-semibold py-2 text-sm sm:text-base  `} onClick={navSignIn}>Add to cart</button>
                                     </div>
                                 </div>
                             )
@@ -322,7 +308,7 @@ const textRevealVariants2 = {
                     </p>
                     <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
                         <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  `} >30% OFF</h1>
-                        <NavLink to={'/login'}> <button className={`w-40 bg-brown mt-4 ${!mode.colormode?'text-white':'text-black'} md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 text-sm sm:text-base`}>Shop Now</button></NavLink>
+                        <NavLink to={'/login'}> <button className={`w-40 bg-brown mt-4 text-white  md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 text-sm sm:text-base`}>Shop Now</button></NavLink>
                     </div>
                 </div>
             </div>
