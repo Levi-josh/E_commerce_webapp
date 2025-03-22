@@ -98,7 +98,7 @@ function Product() {
         
     // }, [popout])
 
-const getusersDocuments = async () => {
+const getProducts = async () => {
    
     const option = {
         method: 'GET',
@@ -124,7 +124,7 @@ const getusersDocuments = async () => {
     }  
 }
 useLayoutEffect(() => {
- !startSearch&&getusersDocuments()
+ !startSearch&&getProducts()
 }, [activeCategory,startSearch]);
 
 return (

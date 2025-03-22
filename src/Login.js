@@ -58,7 +58,6 @@ const Login = () => {
       setRan(true)
       const response = await fetch('https://backend-e-commerce-g7of.onrender.com/login', option);
       const data = await response.json()
-      data?.UserId &&changeRunEffect()
       data?.UserId && localStorage.setItem('myid',data?.UserId)
       data?.UserId && navigate(`/`)
       if(!response.ok){

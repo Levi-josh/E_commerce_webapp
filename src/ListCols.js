@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import {  motion } from 'framer-motion'
-import { FaAngleLeft,FaCross,FaEllipsisV ,FaTelegramPlane,FaPlusSquare } from 'react-icons/fa'
+import { FaAngleLeft,FaTelegramPlane } from 'react-icons/fa'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import {  NavLink,useOutletContext,useNavigate } from 'react-router-dom'
+import {  NavLink,useNavigate } from 'react-router-dom'
 
 const ListCols = () => {
     const mode = useSelector((state)=>state.changemode.value)
@@ -13,14 +13,35 @@ const ListCols = () => {
     const [showinput, setshowinput] = useState(true)
     const navigate = useNavigate()
     const [newcartText, setnewcartText] = useState('');
-    const {data}= useOutletContext()
+    const [data, setdata] = useState(null)
     const [error,seterror]=useState({})
-    const [checked,setchecked]=useState(true)
+    const [check,setchecked]=useState(true)
+    const [isChecked, setIsChecked] = useState(false);
      useEffect(() => {
-
+      const id = localStorage.getItem('myid')
+      const getCollections = async () => {   
+        const option = {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+            }
+        }
+        try {
+            const response = await fetch(`https://backend-e-commerce-g7of.onrender.com/getCols/${id}`, option);
+            const data = await response.json()
+            console.log(id)
+            console.log(data)
+            setdata(data)
+        }
+        catch (err) {
+            seterror(err)
+            console.log(err.message)
+        }
+    } 
+    getCollections()
      },[data])
-    const selectcartFunc = async(id)=> {
-      console.log('selected')
+    const selectcartFunc = async(event,id)=> {
+      setIsChecked(event.target.checked);
       const option = {
                   method: 'PUT',
                   headers: {
@@ -44,8 +65,7 @@ const ListCols = () => {
   const changeInput = ()=>{
     setshowinput(prev=>!prev)
   }
-  console.log(data)
-  //||Object.keys(data).length === 0
+
   const handleSubmit = async (e) => {
   e.preventDefault()
   const option = {
@@ -69,12 +89,7 @@ const ListCols = () => {
       setnewcartText('')
       setshowinput(false)
       }
-      // console.log(Object.keys(data).length === 0)
-      // if (!data || Object.keys(data).length === 0) {
-      //   console.log("Object is either undefined, null, or empty");
-      // } else {
-      //   console.log("Object has properties:", data);
-      // }
+
   return (
     <div className={`w-full overflow-auto h-screen   ${bgcolor} ${textcolor}`}>
         <header className={`fixed flex sm:justify-between gap-4 ${bgcolor} items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0  z-10  `}>
@@ -100,15 +115,15 @@ const ListCols = () => {
           </div>
         
           <div className='w-full lg:w-140 gap-7   lg:pl-5    h-auto  items-center mt-5 sm:mt-10 lg:mt-0 lg:pt-44 pb-10  flex flex-col'>
-            {data?.items<1?
+            {data?.length<1?
             <div className={` h-full pt-10 lg:pt-0 lg:pb-80`}><p className='font-blod text-2xl sm:text-3xl lg:text-4xl  font-serif'>No carts yet!</p><p className=' text-sm sm:text-base'>Create a cart first, before adding any item</p></div>:
-            ( data?.items?.map(prev => { return <div className={`flex items-center lg:items-end gap-10 p-2 sm:p-5 rounded-xl w-full      h-40 sm:h-44 shadow-lg  ${mode.colormode?'addShadow2':'addShadow'}  `}> 
+            data?( data.map(prev => { return <div className={`flex items-center lg:items-end gap-10 p-2 sm:p-5 rounded-xl w-full      h-40 sm:h-44 shadow-lg  ${mode.colormode?'addShadow2':'addShadow'}  `}> 
               <div className='flex items-center gap-2 sm:gap-5 w-full h-full '>
                 {!mode.colormode?<img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-32 sm:w-56 md:w-64 h-full rounded-xl       bg-no-repeat bg-cover bg-center object-cover  ' /> :<img src='https://img.freepik.com/premium-photo/shopping-cart-black-background-shopping-trolley-grocery-push-cart-3d-render-illustration_989822-1813.jpg?size=626&ext=jpg&ga=GA1.1.732548087.1710974042&semt=ais' alt="" className='w-32 sm:w-56 md:w-64 h-full rounded-xl  bg-no-repeat bg-cover bg-center object-cover  '/>}
                 <div className='flex flex-col justify-between h-full w-full '>
                   <p className={'text-sm sm:text-base'}>Cart Name: {prev.title}</p>
                   <p className={'text-sm sm:text-base'}>Added Items: {prev.total}</p>
-                  <div><input type='checkbox' checked={checked === prev.selected} onChange={() => selectcartFunc(prev._id)}className='sm:w-6 sm:h-6 w-5 h-5 rounded-lg accent-yellow-800'/></div>
+                  <div><input type='checkbox' checked={isChecked?isChecked:isChecked||prev.selected} onChange={(event) => selectcartFunc(event,prev._id)}className='sm:w-6 sm:h-6 w-5 h-5 rounded-lg accent-yellow-800'/></div>
                   <div className='flex items-center text-white  hover:cursor-pointer text-sm lg:hidden justify-center bg-brown rounded-xl w-full h-10'onClick={()=>navigate(`/cart/${prev._id}`)}>
                     <p>View cart</p>
                   </div>
@@ -117,7 +132,19 @@ const ListCols = () => {
               <div className='items-center hidden text-white  hover:cursor-pointer lg:flex text-base justify-center bg-brown rounded-xl w-24 sm:w-44 h-10' onClick={()=>navigate(`/cart/${prev._id}`)}>
                   <p className={'text-sm sm:text-base'}>View cart</p>
               </div>
-            </div>}))}
+            </div>})):
+            <motion.div animate={{ rotate: 360 }} initial={{ x: '50%', x: '-50%' }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} className=' '>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2V6" stroke={mode.colormode?"white":'black'} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 18V22" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4.929 4.929L7.757 7.757" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16.243 16.243L19.071 19.071" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12H6" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M18 12H22" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4.929 19.071L7.757 16.243" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16.243 7.757L19.071 4.929" stroke={mode.colormode?"white":'black'}  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            </motion.div>}
           </div>
         </div>
     </div>

@@ -85,13 +85,12 @@ useEffect(() => {
             {shopitems?.progess===false && <div className='lg:flex items-start lg:w-120 xl:w-110 m-auto gap-10 '>
                 <div className={` lg:w-140 flex flex-col gap-5 lg:justify-center items-center  w-110 sm:w-140 m-auto lg:m-0   `}>
                     {cart?.product?.map(prev => {
-                        return (<div className={`flex  sm:gap-10 justify-center  w-full   gap-3 ${mode.colormode?'addShadow2':'addShadow'}    sm:m-auto rounded-lg p-3 sm:py-5 lg:justify-evenly   `}>
+                        return (<div className={`flex  sm:gap-10  justify-center relative  w-full   gap-3 ${mode.colormode?'addShadow2':'addShadow'}    sm:m-auto rounded-lg p-3 sm:py-5 lg:justify-evenly   `}>
                             <img src={prev.image} className='w-40 sm:w-52  h-full  ' />
-
+                            <div className={`sm:w-7 sm:h-7 h-6 w-6 top-0 ${mode.colormode?'bg-stone-800 text-white ':' bg-gray-300 text-black'}  flex items-center justify-center absolute right-0 hover:cursor-pointer ${mode.colormode?'text-white':' text-black'}   rounded-full  `} onClick={() => deleteitem(prev?._id)}><FaTimes /></div>
                                 <div className='flex flex-col  justify-between w-22   '>
                                     <div className='flex items-center justify-between'>
                                     <h1 className='sm:font-bold font-medium whitespace-nowrap'>{prev.itemname}</h1>
-                                    <div className={`sm:w-7 sm:h-7 h-6 w-6 flex items-center justify-center hover:cursor-pointer ${mode.colormode?'text-white':' text-black'}   rounded-full  `} onClick={() => deleteitem(prev?._id)}><FaTimes /></div>
                                     </div>
                                     <div className='flex justify-between'>
                                     <h1 className='sm:font-bold font-medium '>Price:</h1>

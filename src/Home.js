@@ -481,7 +481,7 @@ const scrolltoPage1 = (currentRef)=> {
                     </ul>
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
-                    <div className='flex justify-center gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
+                    <div className='flex justify-center text-sm gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
                         <p className='whitespace-nowrap'>Copyright 2023 Glamour Grove.All rights reserved. </p>
                         <div className='flex justify-center gap-6 md:gap-4 lg:gap-5 xl:gap-7 font-semibold'>
                             <p className=' whitespace-nowrap'>Privacy policy</p>
