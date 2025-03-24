@@ -155,7 +155,7 @@ const scrolltoPage1 = (currentRef)=> {
                 <motion.div animate={{ x: 0 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`    ${menubar ? 'invisible lg:visible' : 'visble'}`} >
                     <div className='flex gap-2 items-center '>
                     <img src={'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275'} className={` w-405 h-9 sm:w-418 sm:h-12 rounded-full`}/>
-                    <p className={`font-semibold text-base sm:text-xl`}>Glamour Grove</p>
+                    <p className={`font-semibold text-sm sm:text-base`}>Glamour Grove</p>
 
                     </div>
                 </motion.div>
@@ -212,36 +212,33 @@ const scrolltoPage1 = (currentRef)=> {
                     <div className='flex items-center flex-col gap-2'>
 
                         <img src='https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275' className='  w-105 h-105 sm:w-106 sm:h-106    rounded-full  bg-no-repeat bg-cover bg-center    ' />
-                        <p className='text-white font-serif'>The best shopping app </p>
+                        <p className='text-white font-serif text-sm md:text-base'>The best shopping app </p>
                     </div>
                 </div>
                 <div className='flex flex-col h-200  justify-between   lg:h-170   '>
                     <div>
                         <div className='flex flex-col lg:text-center pt-2 sm:pt-3 lg:hidden'>
 
-                            <NavLink to={'/'} ><div className='flex hover:lg:bg-neutral-100  gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaHome className='text-lg sm:text-xl md:text-2xl' /> <p className='    py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
-                            <NavLink to={'/product'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaShopify className='text-lg sm:text-xl md:text-2xl' /><p className='  py-3 sm:py-4 sm:text-lg md:text-xl font-semibold  lg:hidden'>Products</p></div></NavLink>
-                            <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl ' /><p className=' py-3 sm:py-4  sm:text-lg md:text-xl font-semibold  lg:hidden' onClick={()=>scrolltoPage1(contactRef)}>Contact</p></div>
-                            <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  sm:text-lg font-semibold hover:lg:bg-neutral-100 lg:hidden' onClick={()=>scrolltoPage1(aboutRef)}>About</p></div>
+                            <NavLink to={'/'} ><div className='flex hover:lg:bg-neutral-100  gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaHome className='text-lg sm:text-xl md:text-2xl' /> <p className='    py-4 sm:py-5 text-sm md:text-base font-semibold  lg:hidden' onClick={() => { setmenubar(false) }}>Home</p></div></NavLink>
+                            <NavLink to={'/product'}><div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaShopify className='text-lg sm:text-xl md:text-2xl' /><p className='  py-4 sm:py-5 text-sm md:text-base font-semibold  lg:hidden'>Products</p></div></NavLink>
+                            <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'> <FaPhone className='text-lg sm:text-xl md:text-2xl ' /><p className=' py-4 sm:py-5  text-sm md:text-base font-semibold  lg:hidden' onClick={()=>scrolltoPage1(contactRef)}>Contact</p></div>
+                            <div className='flex hover:lg:bg-neutral-100 gap-2 sm:gap-3 items-center pl-3 sm:pl-4'><FaExclamationCircle className='text-lg sm:text-xl md:text-2xl' /><p className=' py-4  sm:py-5 text-sm md:text-base font-semibold hover:lg:bg-neutral-100 lg:hidden' onClick={()=>scrolltoPage1(aboutRef)}>About</p></div>
                         </div>
                         <div className='flex flex-col lg:bg-inherit pl-3 sm:pl-4 lg:pl-0  '>
                             <div className={`hidden lg:flex items-center justify-between lg:cursor-pointer lg:border-b  px-6 ${mode.colormode?' border-stone-700':'hover:lg:bg-neutral-200'}`}>
-                                <p className='text-xl font-semibold py-4'>{mode.colormode?'Dark':'Light'} </p>
+                                <p className='text-base font-semibold py-4'>{mode.colormode?'Dark':'Light'} </p>
                                 {mode.colormode?<FaToggleOff className='text-2xl ' onClick={()=>{dispatch(changemode())}}/>:<FaToggleOn  className='text-2xl ' onClick={()=>{dispatch(changemode())}}/>}
                             </div>
-                            <NavLink to={'/listcols'}><div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?' border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b `}> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-3  sm:py-4 md:text-xl  font-semibold sm:text-lg ' >Carts</p></div></NavLink>
-                            <NavLink to={'/history'}><div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?' border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b`}><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-3  sm:py-4 sm:text-lg md:text-xl font-semibold '>History</p></div></NavLink>
+                            <NavLink to={'/listcols'}><div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?' border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b `}> <FaShoppingCart className='text-lg sm:text-xl md:text-2xl' /><p className=' py-4  sm:py-5 text-sm md:text-base  font-semibold  ' >Carts</p></div></NavLink>
+                            <NavLink to={'/history'}><div className={`flex lg:flex-row-reverse lg:justify-between items-center lg:px-6 ${mode.colormode?' border-stone-700':'hover:lg:bg-neutral-200'} gap-2 sm:gap-3 lg:cursor-pointer lg:border-b`}><FaHistory className='text-lg sm:text-xl md:text-2xl' /> <p className=' py-4  sm:py-5 text-sm md:text-base font-semibold '>History</p></div></NavLink>
                         </div>
                     </div>
                     <div className=' flex justify-end  lg:mt-0 lg:items-center '>
-                        <NavLink to={'/landing'}> <p className={`font-bold   sm:text-xl ${mode.colormode?'text-white':'text-yellow-900'} text-right  mb-7 mr-7 `} onClick={signout} >Sign Out</p></NavLink>
+                        <NavLink to={'/landing'}> <p className={`font-bold   md:text-lg ${mode.colormode?'text-white':'text-yellow-900'} text-right  mb-7 mr-7 `} onClick={signout} >Sign Out</p></NavLink>
                     </div>
                 </div>
             </motion.div>
             }</div>
-            <div className={` bg-yellow-900 ${ loggedin? 'popout1':'popout3'}  w-106 hidden h-10 justify-center items-center fixed  text-white  rounded-full  `} ref={lognote}>
-                <p>you're logged in</p>
-            </div>
             <motion.div animate={{y:displaynote?`80px`:0,x:'50%',x:'-50%'}} initial={{x:'50%',x:'-50%',y:'-70px'}} transition={{ type: 'tween', duration: 0.1 }}     className={`  bg-brown allpopout  md:w-108   gap-3  w-208 h-14 md:h-16 fixed  justify-center items-center flex rounded-lg   text-white  `} ref={noteref} >
                 <p>Item added to cart</p>
                 <FaCheckCircle/>
@@ -276,44 +273,30 @@ const scrolltoPage1 = (currentRef)=> {
                 </div >
                 <div className='flex justify-center h-191 w-full items-center '>
                     <div className={`flex  w-120  ${bgcolor} ${mode.colormode?'addShadow2':'addShadow'}  h-full hero2 overflow-hidden rounded-xl  before:bg-gradient-to-r   before:from-blurblack  before:via-blurblack   before:to-blurblack2`}>
-                        <div className='lg:before:bg-gradient-to-r   lg:before:from-blurblack  lg:before:via-blurblack   lg:before:to-blurblack2 hero  w-full h-full'><img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full h-full    bg-no-repeat bg-cover bg-center   ' /></div>
+                        <div className=' hero  w-full h-full'><img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full h-full    bg-no-repeat bg-cover bg-center   ' /></div>
                         <div className={`flex   flex-col z-10 lg:z-0 w-full p-2 sm:p-5 absolute  lg:static gap-3 sm:gap-6 justify-between  h-full `}>
                             <div className='flex w-full items-center justify-between '>
-                                <p className=' bg-brown px-3 lg:px-6 py-1 lg:py-2 rounded-lg text-base sm:text-lg text-white font-semibold'>LIMITED EDITION</p>
-                                <h1 className='text-base sm:text-lg lg:text-xl font-semibold text-white lg:text-current'>Hurry up! 30% OFF</h1>
+                                <p className=' bg-brown px-3 lg:px-6 py-1 lg:py-2 rounded-lg text-base sm:text-lg text-white font-semibold font-serif'>LIMITED EDITION</p>
+                                <h1 className='text-base sm:text-lg  font-semibold text-white lg:text-current'>Hurry up! 30% OFF</h1>
                             </div>
                             <p className='text-sm sm:text-base text-white lg:text-current'>Find clothes that fits your lifestyle</p>
                             <div className='flex flex-col gap-2 sm:gap-3'>
                                 <p className='text-sm sm:text-base text-white lg:text-current'>Offer expires in:</p>
                                 <div className='flex gap-5 items-center w-full font-bold text-black'>
-                                    <div className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10  ${mode.colormode?'bg-stone-800 text-white ':'lg:bg-gray-300 bg-white '}  flex justify-center items-center`}>02</div>
-                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'bg-stone-800 text-white':'lg:bg-gray-300 bg-white'} flex justify-center items-center`}>12</div>
-                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'bg-stone-800 text-white':'lg:bg-gray-300 bg-white'}  flex justify-center items-center`}>45</div>
-                                    <div  className={`rounded-xl sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'bg-stone-800 text-white':'lg:bg-gray-300 bg-white'}  flex justify-center items-center`}>05</div>
+                                    <div className={`rounded-xl text-sm sm:text-base sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10  ${mode.colormode?'bg-stone-800 text-white ':'lg:bg-gray-300 bg-white '}  flex justify-center items-center`}>02</div>
+                                    <div  className={`rounded-xl text-sm sm:text-base sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'bg-stone-800 text-white':'lg:bg-gray-300 bg-white'} flex justify-center items-center`}>12</div>
+                                    <div  className={`rounded-xl text-sm sm:text-base sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'bg-stone-800 text-white':'lg:bg-gray-300 bg-white'}  flex justify-center items-center`}>45</div>
+                                    <div  className={`rounded-xl text-sm sm:text-base sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'bg-stone-800 text-white':'lg:bg-gray-300 bg-white'}  flex justify-center items-center`}>05</div>
                                 </div>
                             </div>
-                            <div><button className='bg-brown px-3 text-white lg:px-8 lg:py-2 py-1 rounded-lg' onClick={navSignIn}>Shop Now</button></div> 
+                            <div><button className='bg-brown px-3 text-sm sm:text-base text-white lg:px-8 lg:py-2 py-1 rounded-lg' onClick={navSignIn}>Shop Now</button></div> 
                         </div>
                     </div>
-                    {/* <div className={` md:mt-12 lg:mt-20   md:mb-9  gap-3 p-3 h-full   w-120  sm:w-110 flex flex-col md:flex-row   bg-yellow-900   rounded-xl  `}>
-                        <div className={`${bgcolor} rounded-xl w-full flex lg:flex-col h-full items-center pl-3 gap-5`}>
-                            <div className='bg-yellow-900 rounded-xl lg:rounded-full w-8 h-8'>  </div>
-                            <p className={``}>Secured transaction</p>
-                        </div>
-                        <div className={`${bgcolor} rounded-xl flex lg:flex-col  w-full h-full items-center pl-3 gap-5`}>
-                            <div className='bg-yellow-900 rounded-xl lg:rounded-full w-8 h-8'>  </div>
-                            <p className={``}>24/7 support</p>
-                        </div>
-                        <div className={`${bgcolor} rounded-xl flex lg:flex-col  w-full h-full  items-center pl-3 gap-5`}>
-                            <div className='bg-yellow-900 rounded-xl lg:rounded-full w-8 h-8 overflow-hidden'><img className='w-full h-full ' src={!mode.colormode?'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpNUVmFzVC6x-hpP0fHTr1hOvQKg4VwWbopg&s':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLGqGinjbyBoX1AEvGGa6Nht-pUTwBsE5joQ&s'}/>  </div>
-                            <p className={``}>Fast delivery</p>
-                        </div>
-                    </div> */}
                 </div>
 
                 </div> 
-                <div className='w-120 m-auto lg:pt-6 pb-3  '>
-                <h1 className='font-bold      text-2xl sm:text-3xl '>Our Services</h1>
+                <div className='w-120 m-auto lg:pt-6 pb-3   mt-0 '>
+                <h1 className='font-bold text-lg  sm:text-xl font-serif'>Our Services</h1>
                 </div> 
                 <section className=''>
                     <audio controls className='hidden' ref={audiosound}>
@@ -321,19 +304,19 @@ const scrolltoPage1 = (currentRef)=> {
                     </audio>
                 <div className='flex flex-col w-120   sm:grid sm:grid-cols-2 lg:flex  lg:flex-row   gap-8 sm:gap-4 md:gap-5 lg:gap-3   m-auto    justify-center  items-center'>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden'>
-                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-3xl sm:text-4xl  '>Clothes</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-lg sm:text-xl font-serif '>Clothes</h1><FaArrowRight className=' font-bold pt-1'/></div>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-full h-60  sm:h-72 lg:h-64   xl:h-100  ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden '>
-                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-3xl sm:text-4xl  '>Glasses</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-lg sm:text-xl  font-serif'>Glasses</h1><FaArrowRight className='font-bold pt-1'/></div>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-full h-60  sm:h-72 lg:h-64  xl:h-100 object-cover ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center  overflow-hidden'>
-                    <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b '><h1 className='font-bold text-3xl sm:text-4xl  '>Watches</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                    <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b '><h1 className='font-bold text-lg sm:text-xl font-serif '>Watches</h1><FaArrowRight className='font-bold pt-1'/></div>
                     <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-full h-60  sm:h-72 lg:h-64   xl:h-100 object-cover ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden  '>
-                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-3xl sm:text-4xl  '>Shoes</h1><FaArrowRight className='pt-2 sm:pt-3 sm:text-3xl font-bold text-2xl'/></div>
+                <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-lg sm:text-xl  font-serif'>Shoes</h1><FaArrowRight className='font-bold pt-1'/></div>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-full h-60  sm:h-72 lg:h-64 xl:h-100   ' />
                 </div>
             </div>
@@ -341,8 +324,8 @@ const scrolltoPage1 = (currentRef)=> {
 
                     {/* <div >*/}
                     <div className='flex justify-between items-end w-120 m-auto pt-6'>
-                        <h1 className=' font-bold  text-2xl sm:text-3xl'>New Arrivals</h1>
-                        <NavLink to={'/product'}>   <div className=' font-semibold flex items-center   md:text-lg gap-2 flex-nowrap '> <p className=' lg:text-lg'>{`see more`}</p><div className='pt-1 '><FaArrowRight className='text-base' /></div></div></NavLink>
+                        <h1 className=' font-bold  text-lg  sm:text-xl font-serif'>New Arrivals</h1>
+                        <NavLink to={'/product'}>   <div className='  flex items-center  gap-1 flex-nowrap '> <p className=' text-sm sm:text-base'>{`see more`}</p><div className=''><FaArrowRight className='text-sm' /></div></div></NavLink>
                     </div>
                     <div className={` m-auto w-120   gap-4 sm:gap-6 md:gap-7 lg:gap-5 flex overflow-x-auto ${mode.colormode?'overflow-div2':'overflow-div'} py-3   `}>
                         {items?.map(prev => {
@@ -350,16 +333,16 @@ const scrolltoPage1 = (currentRef)=> {
                                 <div className={`min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40  lg:min-w-37 xl:min-w-35 rounded-lg  ${mode.colormode?'addShadow2':'addShadow'}          `}>
                                     <img src={prev.image} alt='' className='rounded-lg w-full lg:h-44  xl:h-52 object-cover' />
                                     <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
-                                        <div className={`flex ${mode.colormode?'text-white':'text-black'} sm:text-lg lg:text-xl `}>
+                                        <div className={`flex ${mode.colormode?'text-white':'text-black'} sm:text-lg  `}>
                                             <FaStar />
                                             <FaStar />
                                             <FaStar />
                                             <FaStar />
                                             <FaStarHalfAlt />
                                         </div>
-                                        <h1 className='text-lg font-bold lg:text-xl'>{prev.itemname}</h1>
+                                        <h1 className='sm:text-lg font-semibold'>{prev.itemname}</h1>
                                         <p className=' text-sm sm:text-base '>{`$${prev.price}`}</p>
-                                        <button className={`w-full bg-brown  font-semibold py-2 text-sm sm:text-base text-white`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
+                                        <button className={`w-full bg-brown  py-2 text-sm sm:text-base text-white`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
                                     </div>
                                 </div>
                             )
@@ -373,21 +356,21 @@ const scrolltoPage1 = (currentRef)=> {
 
                         <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' />
                         <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
-                            <h1 className='font-bold text-lg md:text-2xl lg:text-3xl font-serif    '>
+                            <h1 className='font-bold text-lg  sm:text-xl font-serif    '>
                                About Us
                             </h1>
                             <p className='mt-3 md:mt-4 lg:mt-8 text-sm sm:text-base'>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eum illum quam numquam impedit quo? Facere, optio! Voluptatum, possimus? Voluptatum corrupti error.
                             </p>
                             <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
-                                <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-bold md:text-lg h-8  `} onClick={showmenu1}>30% OFF</h1>
-                                <NavLink to={'/product'}> <button className={`w-40 rgb(71, 31, 8) bg-brown mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg font-semibold h-8 text-sm sm:text-base `}>Shop Now</button></NavLink>
+                                <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex text-sm sm:text-base font-semibold justify-center items-center  h-8  `} onClick={showmenu1}>30% OFF</h1>
+                                <NavLink to={'/product'}> <button className={`w-40 bg-brown mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg  h-8 text-sm sm:text-base `}>Shop Now</button></NavLink>
                             </div>
                         </div>
                     </div>
                     {/*about ends*/}
                     <div className='w-120 m-auto mt-6 pb-3   ' ref={contactRef}>
-                        <h1 className='font-bold  text-2xl sm:text-3xl '>Contact Us</h1>
+                        <h1 className='font-bold  text-lg  sm:text-xl font-serif '>Contact Us</h1>
                     </div>
                     
                     <motion.div ref={contactRef} className={`py-4 scroll-target  sm:p-4    ${mode.colormode?'addShadow2':'addShadow'}  md:p-5 m-auto px-2 w-120 ${bgcolor} ${textcolor}  rounded-xl flex flex-col gap-3`}  initial="hidden"whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
@@ -406,7 +389,6 @@ const scrolltoPage1 = (currentRef)=> {
                                     stroke-linecap="round" 
                                     stroke-linejoin="round"/>
                                 </svg>
-
                                 </div>
                                 <div className="w-full flex flex-col  md:gap-2 md:items-center ">
                                 <p className="text-base sm:text-lg font-semibold">Phone Number</p>
@@ -427,7 +409,6 @@ const scrolltoPage1 = (currentRef)=> {
                                     stroke-linecap="round" 
                                     stroke-linejoin="round"/>
                                 </svg>
-
                                 </div>  
                                 <div className="w-full flex flex-col  md:gap-2 md:items-center md:h-full ">  
                                     <p className="text-base sm:text-lg font-semibold">Support Team</p>
@@ -465,7 +446,7 @@ const scrolltoPage1 = (currentRef)=> {
                 <div className='flex flex-col md:flex-row items-center  md:justify-between md:items-end border-b-0.5 pb-8 sm:pb-10   lg:pb-10  xl:pb-12  '>
                     <div className='flex flex-col justify-center md:flex-row md:items-end items-center     '>
                         <div className='md:border-r-0.5 pb-5 sm:pb-7 md:pb-0 md:pr-5 lg:pr-7 xl:pr-10 flex items-center   '>
-                            <h1 className='font-bold text-lg sm:text-2xl md:text-2xl lg:text-3xl '>Glamour Grove</h1>
+                            <h1 className='font-semibold text-lg sm:text-xl  '>Glamour Grove</h1>
                         </div>
                         <div className='pb-6 sm:pb-8 md:pb-0 md:pl-5 xl:pl-10 lg:pl-7 font-semibold flex items-center '>
 
