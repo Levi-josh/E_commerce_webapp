@@ -353,12 +353,7 @@ const scrolltoPage1 = (currentRef)=> {
 
                     {/*about starts*/}
                     <div className={`md:flex md:p-10 shadow-lg w-120  m-auto  mt-10  ${mode.colormode?'addShadow2':'addShadow'}       p-5 sm:p-10 sm:px-20 `} ref={aboutRef}>
-                      
-                        <video src='https://v.ftcdn.net/09/91/05/19/240_F_991051916_FYC6iBEMJRI49VQNOM6SE2yAEOCvOM0O_ST.mp4' className='w-auto md:w-22  md:h-72 h-64 '    autoPlay 
-                        loop 
-                        muted 
-                        playsInline/>
-                        {/* <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' /> */}
+                        <video src='https://v.ftcdn.net/09/91/05/19/240_F_991051916_FYC6iBEMJRI49VQNOM6SE2yAEOCvOM0O_ST.mp4' className='w-auto md:w-22  md:h-72 h-64 '    autoPlay  loop  muted playsInline/>
                         <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
                             <h1 className='font-bold text-lg  sm:text-xl font-serif    '>
                                About Us

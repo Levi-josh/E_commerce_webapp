@@ -249,19 +249,19 @@ const textRevealVariants2 = {
                 <div className='flex flex-col w-120   sm:grid sm:grid-cols-2 lg:flex  lg:flex-row   gap-8 sm:gap-4 md:gap-5 lg:gap-3   m-auto    justify-center  items-center'>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden'>
                 <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-lg sm:text-xl  font-serif  '>Clothes</h1><FaArrowRight className='font-bold pt-1'/></div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-full h-60  sm:h-72  xl:h-100  ' />
+                    <img src="https://t4.ftcdn.net/jpg/03/54/36/69/240_F_354366971_n0scSjKZjqmXeJgIwfGp4NbMcdHCu5zX.jpg" className='w-full h-60  sm:h-72  xl:h-100  ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden '>
                 <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-lg sm:text-xl  font-serif  '>Glasses</h1><FaArrowRight className='font-bold pt-1'/></div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
+                    <img src="https://t4.ftcdn.net/jpg/04/95/58/79/240_F_495587995_kshGNmXzKC3sXxuN156Os4fS3CdjWFl5.jpg" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center  overflow-hidden'>
                     <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b '><h1 className='font-bold text-lg sm:text-xl  font-serif  '>Watches</h1><FaArrowRight className='font-bold pt-1'/></div>
-                    <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
+                    <img src="https://t4.ftcdn.net/jpg/01/30/97/83/240_F_130978369_P9ly40UoKcBX8AxObjiRjrebs9GDE53U.jpg" className='w-full h-60  sm:h-72  xl:h-100 object-cover ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden  '>
                 <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-lg sm:text-xl  font-serif  '>Shoes</h1><FaArrowRight className='font-bold pt-1'/></div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-full h-60  sm:h-72 xl:h-100   ' />
+                    <img src="https://t4.ftcdn.net/jpg/02/69/15/79/240_F_269157997_8ds8Yr7EvUEDKNVupCVjzCjEY5Sj16qz.jpg" className='w-full h-60  sm:h-72 xl:h-100   ' />
                 </div>
             </div>
             {/*overflow hidden divs*/}
@@ -269,7 +269,7 @@ const textRevealVariants2 = {
             {/* <div >*/}
             <div className='flex justify-between items-end w-120 m-auto pt-6'>
                         <h1 className=' text-lg  sm:text-xl font-serif'>New Arrivals</h1>
-                        <NavLink to={'/login'}>   <div className=' font-semibold flex items-center   md:text-lg gap-2 flex-nowrap '> <p className='  text-sm sm:text-base'>{`see more`}</p><div className=''><FaArrowRight className='text-base' /></div></div></NavLink>
+                        <NavLink to={'/login'}>   <div className=' font-semibold flex items-center font-serif   md:text-lg gap-2 flex-nowrap '> <p className='  text-sm sm:text-base'>{`see more`}</p><div className=''><FaArrowRight className='text-base' /></div></div></NavLink>
                     </div>
                     <div className={` m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto ${mode.colormode?'overflow-div2':'overflow-div'} py-3   `}>
                         {items?.map(prev => {
@@ -297,14 +297,13 @@ const textRevealVariants2 = {
 
             {/*about starts*/}
             <div className={`md:flex md:p-10 shadow-lg w-120 m-auto  mt-10 ${mode.colormode?'addShadow2':'addShadow'}      p-5 sm:p-10 sm:px-20 `}>
-
-                <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' />
+            <video src='https://v.ftcdn.net/09/91/05/19/240_F_991051916_FYC6iBEMJRI49VQNOM6SE2yAEOCvOM0O_ST.mp4' className='w-auto md:w-22  md:h-72 h-64 '    autoPlay loop  muted playsInline/>
                 <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
                     <h1 className='text-lg  sm:text-xl font-serif   '>
                         About Us
                     </h1>
-                    <p className='mt-3 md:mt-4 lg:mt-8 md:text-lg'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eum illum quam numquam impedit quo? Facere, optio! Voluptatum, possimus? Voluptatum corrupti error.
+                    <p className='mt-3 md:mt-4 lg:mt-8 text-sm sm:text-base font-serif'>
+                    we are passionate about bringing you the latest trends, timeless styles, and fashion essentials all in one place. Whether you're looking for everyday wear, statement pieces, or the perfect accessories, we've got you covered. We believe fashion is more than just clothing — it's a form of self-expression. 
                     </p>
                     <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
                         <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-semibold text-sm sm:text-base h-8  `} >30% OFF</h1>
@@ -410,7 +409,7 @@ const textRevealVariants2 = {
         <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
             <div className='flex justify-center gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
                 <p className='whitespace-nowrap text-sm sm:text-base'>Copyright 2023 Glamour Grove.All rights reserved. </p>
-                <div className='flex justify-center text-sm sm:text-base gap-6 md:gap-4 lg:gap-5 xl:gap-7 font-semibold'>
+                <div className='flex justify-center text-sm sm:text-base gap-6 md:gap-4 lg:gap-5 xl:gap-7 '>
                     <p className=' whitespace-nowrap'>Privacy policy</p>
                     <p className=' whitespace-nowrap'>Terms of use</p>
                 </div>
