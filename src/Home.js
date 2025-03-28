@@ -151,10 +151,10 @@ const scrolltoPage1 = (currentRef)=> {
     
     return (
         <>{id&&<div className={`  ${menubar ? ` home  ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}  w-full overflow-x-hidden  h-full flex-col flex ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
-            <header className={`fixed flex justify-between px-3  items-center h-20 sm:h-24 md:h-24 lg:h-24 sm:px-8 md:px-12 lg:px-3    w-full  ${bgcolor} ${textcolor} z-20  `}>
+            <header className={`fixed flex justify-between px-3  items-center h-16 sm:h-20 sm:px-8 md:px-12 lg:px-8    w-full  ${bgcolor} ${textcolor} z-20  `}>
                 <motion.div animate={{ x: 0 }} transition={{ type: 'tween', duration: 1 }} initial={{ x: -100 }} className={`    ${menubar ? 'invisible lg:visible' : 'visble'}`} >
                     <div className='flex gap-2 items-center '>
-                    <img src={'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275'} className={` w-405 h-9 sm:w-418 sm:h-12 rounded-full`}/>
+                    {/* <img src={'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275'} className={` w-405 h-9 sm:w-418 sm:h-12 rounded-full`}/> */}
                     <p className={`font-semibold text-sm sm:text-base`}>Glamour Grove</p>
 
                     </div>
@@ -244,8 +244,8 @@ const scrolltoPage1 = (currentRef)=> {
                 <FaCheckCircle/>
             </motion.div >
             
-            <div className='   h-screen lg:h-full   gap-5 sm:gap-10  pt-24 sm:pt-32 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
-                <div className='h-192 lg:h-screen   lg:pb-10 lg:pt-24'>
+            <div className='   h-screen lg:h-full   gap-5 sm:gap-10  pt-16 sm:pt-20 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
+                <div className='h-192 lg:h-screen   lg:pb-5 lg:pt-20'>
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                         spaceBetween={20}
                         slidesPerView={1}
@@ -256,18 +256,18 @@ const scrolltoPage1 = (currentRef)=> {
                             disableOnInteraction: false, // Allow manual navigation to stop autoplay
                         }}
                     //onSwiper={(swiper) => console.log(swiper)}
-                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120  lg:w-110 m-auto h-full   rounded-xl    '>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='min-w-full h-full rounded-xl       bg-no-repeat bg-cover bg-center   object-cover' />
+                    /*onSlideChange={() => console.log('slide change')} */ className='   w-120  m-auto h-full   rounded-xl    '>
+                        <SwiperSlide>                <img src='https://t4.ftcdn.net/jpg/04/43/50/77/240_F_443507753_8cepWB5igFoxwWZrhfljCt9fhp2IEmlC.jpg' className='min-w-full h-full rounded-xl       bg-no-repeat bg-cover bg-center   object-cover' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz6odanAlur6EPzOrDU6Nj2oofspV-bsYG9M7w--oO0y1gvvIy_Fl9Tgk1hFyTsuhxJnU&usqp=CAU' className='min-w-full  rounded-xl       bg-no-repeat bg-cover bg-center h-full   object-cover  ' />
+                        <SwiperSlide>                <img src='https://t4.ftcdn.net/jpg/05/14/84/05/240_F_514840575_uSpCTjOIJ2FZxf50D5hjhGd4LKZ5q8kz.jpg' className='min-w-full  rounded-xl       bg-no-repeat bg-cover bg-center h-full   object-cover  ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqecwmhypUjuCqjdpZ_6lTj1W7BbxWkXdlb746j0SJwTs3fJHq3bnlAHirmsMei5xP8ro&usqp=CAU' className='min-w-full  rounded-xl       bg-no-repeat bg-cover bg-center object-cover h-full    ' />
+                        <SwiperSlide>                <img src='https://t3.ftcdn.net/jpg/07/81/14/56/240_F_781145603_nIxYJXBYOhB19qQJA0LGVYlZIB4sGRxZ.jpg' className='min-w-full  rounded-xl       bg-no-repeat bg-cover bg-center object-cover h-full    ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://ng.jumia.is/cms/0-1-initiatives/flashsale/2023/Slider.png' className='min-w-full   rounded-xl       bg-no-repeat bg-cover bg-center h-full   object-cover ' />
+                        <SwiperSlide>                <img src='https://t3.ftcdn.net/jpg/04/04/14/26/240_F_404142602_Y2wuSHD5janWigIQiLDF3LcRW6ZTMD6k.jpg' className='min-w-full   rounded-xl       bg-no-repeat bg-cover bg-center h-full   object-cover lg:object-fill object-center  ' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://img.freepik.com/free-vector/flat-design-minimal-boutique-sale-background_23-2149337460.jpg' className='min-w-full h-full   rounded-xl       bg-no-repeat bg-cover bg-center   object-cover' />
+                        <SwiperSlide>                <img src='https://t4.ftcdn.net/jpg/01/30/97/83/240_F_130978369_P9ly40UoKcBX8AxObjiRjrebs9GDE53U.jpg' className='min-w-full h-full   rounded-xl       bg-no-repeat bg-cover bg-center   object-cover' />
                         </SwiperSlide>
-                        <SwiperSlide>                <img src='https://marketplace.canva.com/EAFKwirl3N8/1/0/1600w/canva-brown-minimalist-fashion-product-banner-iRHpbHTqh-A.jpg' className='min-w-full h-full   rounded-xl       bg-no-repeat bg-cover bg-center object-cover  ' />
+                        <SwiperSlide>                <img src='https://t4.ftcdn.net/jpg/03/54/36/69/240_F_354366971_n0scSjKZjqmXeJgIwfGp4NbMcdHCu5zX.jpg' className='min-w-full h-full   rounded-xl       bg-no-repeat bg-cover bg-center object-cover ' />
                         </SwiperSlide>
                     </Swiper>
                 </div >
@@ -305,19 +305,19 @@ const scrolltoPage1 = (currentRef)=> {
                 <div className='flex flex-col w-120   sm:grid sm:grid-cols-2 lg:flex  lg:flex-row   gap-8 sm:gap-4 md:gap-5 lg:gap-3   m-auto    justify-center  items-center'>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden'>
                 <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-lg sm:text-xl font-serif '>Clothes</h1><FaArrowRight className=' font-bold pt-1'/></div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7JiZVoTByZDrxh9SjmEj2075W9KcHcupMhg&usqp=CAU" className='w-full h-60  sm:h-72 lg:h-64   xl:h-100  ' />
+                    <img src="https://t4.ftcdn.net/jpg/03/54/36/69/240_F_354366971_n0scSjKZjqmXeJgIwfGp4NbMcdHCu5zX.jpg" className='w-full h-60  sm:h-72 lg:h-64   xl:h-100  ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden '>
                 <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-lg sm:text-xl  font-serif'>Glasses</h1><FaArrowRight className='font-bold pt-1'/></div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xJ3fGQhyam7imxMbfaS8HTSCjNDapwOPug&usqp=CAU" className='w-full h-60  sm:h-72 lg:h-64  xl:h-100 object-cover ' />
+                    <img src="https://t4.ftcdn.net/jpg/04/95/58/79/240_F_495587995_kshGNmXzKC3sXxuN156Os4fS3CdjWFl5.jpg" className='w-full h-60  sm:h-72 lg:h-64  xl:h-100 object-cover ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center  overflow-hidden'>
                     <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b '><h1 className='font-bold text-lg sm:text-xl font-serif '>Watches</h1><FaArrowRight className='font-bold pt-1'/></div>
-                    <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1408&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-full h-60  sm:h-72 lg:h-64   xl:h-100 object-cover ' />
+                    <img src="https://t4.ftcdn.net/jpg/01/30/97/83/240_F_130978369_P9ly40UoKcBX8AxObjiRjrebs9GDE53U.jpg" className='w-full h-60  sm:h-72 lg:h-64   xl:h-100 object-cover ' />
                 </div>
                 <div className='w-full blurr rounded-xl flex items-center justify-center overflow-hidden  '>
                 <div onClick={navSignIn} className='absolute text-white z-10 flex items-center pl-1 pb-1 border-b'><h1 className='font-bold text-lg sm:text-xl  font-serif'>Shoes</h1><FaArrowRight className='font-bold pt-1'/></div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIsGgY9dePqgfLjVghJAGmeI2_7i812lW-wg&usqp=CAU" className='w-full h-60  sm:h-72 lg:h-64 xl:h-100   ' />
+                    <img src="https://t4.ftcdn.net/jpg/02/69/15/79/240_F_269157997_8ds8Yr7EvUEDKNVupCVjzCjEY5Sj16qz.jpg" className='w-full h-60  sm:h-72 lg:h-64 xl:h-100   ' />
                 </div>
             </div>
                     {/*overflow hidden divs*/}
@@ -353,8 +353,8 @@ const scrolltoPage1 = (currentRef)=> {
 
                     {/*about starts*/}
                     <div className={`md:flex md:p-10 shadow-lg w-120  m-auto  mt-10  ${mode.colormode?'addShadow2':'addShadow'}       p-5 sm:p-10 sm:px-20 `} ref={aboutRef}>
-
-                        <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' />
+                        <video src='https://v.ftcdn.net/09/91/05/19/240_F_991051916_FYC6iBEMJRI49VQNOM6SE2yAEOCvOM0O_ST.mp4' className='w-auto md:w-22  md:h-72 h-64 '/>
+                        {/* <img src='https://img.freepik.com/free-vector/banner-black-friday-super-sale-realistic-3d-black-shopping-cart_548887-22.jpg?size=626&ext=jpg&ga=GA1.2.732548087.1710974042&semt=ais' className='w-auto md:w-22  md:h-72 h-64 ' /> */}
                         <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
                             <h1 className='font-bold text-lg  sm:text-xl font-serif    '>
                                About Us
@@ -450,11 +450,11 @@ const scrolltoPage1 = (currentRef)=> {
                         </div>
                         <div className='pb-6 sm:pb-8 md:pb-0 md:pl-5 xl:pl-10 lg:pl-7 font-semibold flex items-center '>
 
-                            <p className=' lg:text-lg'>Fashion store</p>
+                            <p className=' md:text-lg'>Fashion store</p>
                         </div>
                     </div>
 
-                    <ul className='flex flex-col items-center justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14'>
+                    <ul className='flex flex-col items-center text-sm sm:text-base justify-center md:flex-row gap-5 sm:gap-7 md:gap-5 lg:gap-8 xl:gap-14'>
                         <NavLink to='/'>  <li>Home</li></NavLink>
                         <NavLink to='product'><li>Product</li></NavLink>
                         <li onClick={()=>scrolltoPage1(contactRef)} className='hover:cursor-pointer'>Contact</li>
@@ -463,8 +463,8 @@ const scrolltoPage1 = (currentRef)=> {
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
                     <div className='flex justify-center text-sm gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
-                        <p className='whitespace-nowrap'>Copyright 2023 Glamour Grove.All rights reserved. </p>
-                        <div className='flex justify-center gap-6 md:gap-4 lg:gap-5 xl:gap-7 font-semibold'>
+                        <p className='whitespace-nowrap text-sm sm:text-base'>Copyright 2023 Glamour Grove.All rights reserved. </p>
+                        <div className='flex justify-center text-sm sm:text-base gap-6 md:gap-4 lg:gap-5 xl:gap-7 font-semibold'>
                             <p className=' whitespace-nowrap'>Privacy policy</p>
                             <p className=' whitespace-nowrap'>Terms of use</p>
                         </div>

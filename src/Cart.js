@@ -48,21 +48,7 @@ const Cart = () => {
     }
    
     useEffect(() => { 
-    // let currentid;
-    // const myId = localStorage.getItem('mycart')
-    // setmyId(myId)
-    // if (params.id !== myId) {
-    //     currentid = params.id 
-    //   }
-    // if (params.id === myId) {
-    //     currentid = myId
-    // }
-    // if (params.id === ':id') {
-    //     currentid = myId
-    // }
-    // if ( myId==null) {
-    //     currentid = params.id
-    // }
+
     const getcart = async () => {
                
         const option = {
@@ -106,7 +92,7 @@ const Cart = () => {
                 setError(err)
             }
     }
-    id&&getcountry()
+    getcountry()
       
 }, [cart]);
 
@@ -142,8 +128,6 @@ useEffect(() => {
       }
     
   }, [cart]);
-
-console.log(showerror.country)
 const nextcart = async () => {
         const isSelected = cart.shipping.filter(prev=>prev.checked===true)
         if(isSelected.length===0 ){
@@ -176,7 +160,7 @@ const nextcart = async () => {
             secondref.current.style.translate = '0px'
             thirdref.current.style.translate = '0px'
         }
-        navigate('/cart/:id/checkout')}
+        navigate(`/cart/${params.id}/checkout`)}
     }
     console.log(cart.Paymethod)
     const nextcart2 = async()=>{
@@ -272,7 +256,6 @@ const nextcart = async () => {
     }
 
     const deleteitem = async (id) => {
-        console.log(id)
         const option = {
                 method: 'DELETE',
                 headers: {
@@ -291,7 +274,7 @@ const nextcart = async () => {
         } 
         
     }
-  
+  console.log(cart)
     return (
         <div className={`  ${showcountry ? `background ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''} ${menubar ? 'home' : ''}${popout ? 'p-home' : ''} ${bgcolor} ${textcolor} ${cart?.product?'h-screen':'h-screen'}  `}>
             <header className={`fixed flex sm:justify-between gap-4  ${textcolor} items-center h-20 sm:h-24 md:h-24 lg:h-24 px-3 lg:px-4 w-full m-0  z-20 bg-transparent  `}>

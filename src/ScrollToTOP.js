@@ -32,8 +32,6 @@ const ScrollToTOP = () => {
   },[location,id])
 
     useEffect(() => {
-        
-      
         const getusersDocuments = async () => {
             
             const option = {
