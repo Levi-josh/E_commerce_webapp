@@ -325,7 +325,7 @@ const scrolltoPage1 = (currentRef)=> {
                     {/* <div >*/}
                     <div className='flex justify-between items-end w-120 m-auto pt-6'>
                         <h1 className=' font-bold  text-lg  sm:text-xl font-serif'>New Arrivals</h1>
-                        <NavLink to={'/product'}>   <div className='  flex items-center  gap-1 flex-nowrap '> <p className=' text-sm sm:text-base'>{`see more`}</p><div className=''><FaArrowRight className='text-sm' /></div></div></NavLink>
+                        <NavLink to={'/product'}>   <div className='  flex items-center  gap-1 flex-nowrap '> <p className=' text-sm sm:text-base font-serif'>{`see more`}</p><div className=''><FaArrowRight className='text-sm' /></div></div></NavLink>
                     </div>
                     <div className={` m-auto w-120   gap-4 sm:gap-6 md:gap-7 lg:gap-5 flex overflow-x-auto ${mode.colormode?'overflow-div2':'overflow-div'} py-3   `}>
                         {items?.map(prev => {
@@ -340,9 +340,9 @@ const scrolltoPage1 = (currentRef)=> {
                                             <FaStar />
                                             <FaStarHalfAlt />
                                         </div>
-                                        <h1 className='sm:text-lg font-semibold'>{prev.itemname}</h1>
+                                        <h1 className='text-sm sm:text-base font-semibold'>{prev.itemname}</h1>
                                         <p className=' text-sm sm:text-base '>{`$${prev.price}`}</p>
-                                        <button className={`w-full bg-brown  py-2 text-sm sm:text-base text-white`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
+                                        <button className={`w-full bg-brown font-serif  py-2 text-sm sm:text-base text-white`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
                                     </div>
                                 </div>
                             )
@@ -353,13 +353,13 @@ const scrolltoPage1 = (currentRef)=> {
 
                     {/*about starts*/}
                     <div className={`md:flex md:p-10 shadow-lg w-120  m-auto  mt-10  ${mode.colormode?'addShadow2':'addShadow'}       p-5 sm:p-10 sm:px-20 `} ref={aboutRef}>
-                        <video src='https://v.ftcdn.net/09/91/05/19/240_F_991051916_FYC6iBEMJRI49VQNOM6SE2yAEOCvOM0O_ST.mp4' className='w-auto md:w-22  md:h-72 h-64 '    autoPlay  loop  muted playsInline/>
+                        <video src='https://v.ftcdn.net/09/91/05/19/240_F_991051916_FYC6iBEMJRI49VQNOM6SE2yAEOCvOM0O_ST.mp4' className='w-auto md:w-22 h-full '    autoPlay  loop  muted playsInline/>
                         <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
                             <h1 className='font-bold text-lg  sm:text-xl font-serif    '>
                                About Us
                             </h1>
                             <p className='mt-3 md:mt-4 lg:mt-8 text-sm sm:text-base'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eum illum quam numquam impedit quo? Facere, optio! Voluptatum, possimus? Voluptatum corrupti error.
+                            We are passionate about bringing you the latest trends, timeless styles, and fashion essentials all in one place. Whether you're looking for everyday wear, statement pieces, or the perfect accessories, we've got you covered. We believe fashion is more than just clothing — it's a form of self-expression. 
                             </p>
                             <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
                                 <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex text-sm sm:text-base font-semibold justify-center items-center  h-8  `} onClick={showmenu1}>30% OFF</h1>
@@ -461,8 +461,8 @@ const scrolltoPage1 = (currentRef)=> {
                     </ul>
                 </div>
                 <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
-                    <div className='flex justify-center text-sm gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
-                        <p className='whitespace-nowrap text-sm sm:text-base'>Copyright 2023 Glamour Grove.All rights reserved. </p>
+                    <div className='flex justify-center  gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
+                        <p className='whitespace-nowrap text-xs sm:text-sm'>Copyright 2023 Glamour Grove.All rights reserved. </p>
                         <div className='flex justify-center text-sm sm:text-base gap-6 md:gap-4 lg:gap-5 xl:gap-7 font-semibold'>
                             <p className=' whitespace-nowrap'>Privacy policy</p>
                             <p className=' whitespace-nowrap'>Terms of use</p>

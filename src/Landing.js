@@ -31,12 +31,12 @@ const Landing = () => {
   
     // State to track the slider items
     const [sliderItems, setSliderItems] = useState([
-        { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275" },
+        { name: "Your Style", image: "https://t3.ftcdn.net/jpg/02/98/15/10/240_F_298151092_FoZqMO9umr6IxLT89iwQ4rFqR4h7mibs.jpg" },
         { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/69/885248/1.jpg?9651" },
-        { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/53/122776/1.jpg?7527" },
+        { name: "Your Style", image: "https://t4.ftcdn.net/jpg/09/84/25/39/240_F_984253947_wJXQNS8Eahm74kBbMktSFUZiP9f1MB9g.jpg" },
         { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/649156/1.jpg?8476" },
-        { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/65/2996252/1.jpg?8267" },
-        { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/68/9023002/1.jpg?3955" }
+        { name: "Your Style", image: "https://t3.ftcdn.net/jpg/03/69/46/96/240_F_369469619_Elun4FHW4tzgyxKZJhug3lFSw8FJIXxM.jpg" },
+        { name: "Your Style", image: "https://t4.ftcdn.net/jpg/09/48/21/49/240_F_948214973_Rnbze0OW1ZArdkY5xENrQZiO47XEoMd2.jpg" }
     ]);
   
     let runTimeOut;
@@ -210,11 +210,11 @@ const textRevealVariants2 = {
                 </div>
                 </header>
     
-<div className="carousel" ref={carousel }>
+<div className="carousel " ref={carousel }>
 <div className="list" ref={list }>
 {sliderItems.map((item, index) => (
-          <div className="item" key={index}>
-             <img src={item.image} alt={item.name} className="slider-img bg-no-repeat bg-cover bg-center " />
+          <div className="item " key={index}>
+             <img src={item.image} alt={item.name} className="slider-img bg-no-repeat bg-cover bg-center object-cover " />
             <div className="content" ref={content}>
               <div className="title">Elevate</div>
               <div className="name">{item.name}</div>
@@ -269,7 +269,7 @@ const textRevealVariants2 = {
             {/* <div >*/}
             <div className='flex justify-between items-end w-120 m-auto pt-6'>
                         <h1 className=' text-lg  sm:text-xl font-serif'>New Arrivals</h1>
-                        <NavLink to={'/login'}>   <div className=' font-semibold flex items-center font-serif   md:text-lg gap-2 flex-nowrap '> <p className='  text-sm sm:text-base'>{`see more`}</p><div className=''><FaArrowRight className='text-base' /></div></div></NavLink>
+                        <NavLink to={'/login'}>   <div className='  flex items-center font-serif   md:text-lg gap-2 flex-nowrap '> <p className='  text-sm sm:text-base'>{`see more`}</p><div className=''><FaArrowRight className='text-sm' /></div></div></NavLink>
                     </div>
                     <div className={` m-auto w-120   gap-3 sm:gap-4 md:gap-5 lg:gap-5 flex overflow-x-auto ${mode.colormode?'overflow-div2':'overflow-div'} py-3   `}>
                         {items?.map(prev => {
@@ -284,9 +284,9 @@ const textRevealVariants2 = {
                                             <FaStar />
                                             <FaStarHalfAlt />
                                         </div>
-                                        <h1 className='sm:text-lg font-semibold'>{prev.itemname}</h1>
+                                        <h1 className='text-sm sm:text-base font-semibold'>{prev.itemname}</h1>
                                         <p className='text-sm sm:text-base'>{`$${prev.price}`}</p>
-                                        <button className={`w-full bg-brown text-white  py-2 text-sm sm:text-base  `} onClick={navSignIn}>Add to cart</button>
+                                        <button className={`w-full bg-brown text-white  py-2 text-sm sm:text-base font-serif  `} onClick={navSignIn}>Add to cart</button>
                                     </div>
                                 </div>
                             )
@@ -297,13 +297,13 @@ const textRevealVariants2 = {
 
             {/*about starts*/}
             <div className={`md:flex md:p-10 shadow-lg w-120 m-auto  mt-10 ${mode.colormode?'addShadow2':'addShadow'}      p-5 sm:p-10 sm:px-20 `}>
-            <video src='https://v.ftcdn.net/09/91/05/19/240_F_991051916_FYC6iBEMJRI49VQNOM6SE2yAEOCvOM0O_ST.mp4' className='w-auto md:w-22  md:h-72 h-64 '    autoPlay loop  muted playsInline/>
+            <video src='https://v.ftcdn.net/09/91/05/19/240_F_991051916_FYC6iBEMJRI49VQNOM6SE2yAEOCvOM0O_ST.mp4' className='w-auto md:w-22  h-full  '    autoPlay loop  muted playsInline/>
                 <div className='w-full pt-4 text-center md:pt-0 md:pl-8'>
                     <h1 className='text-lg  sm:text-xl font-serif   '>
                         About Us
                     </h1>
                     <p className='mt-3 md:mt-4 lg:mt-8 text-sm sm:text-base font-serif'>
-                    we are passionate about bringing you the latest trends, timeless styles, and fashion essentials all in one place. Whether you're looking for everyday wear, statement pieces, or the perfect accessories, we've got you covered. We believe fashion is more than just clothing — it's a form of self-expression. 
+                    We are passionate about bringing you the latest trends, timeless styles, and fashion essentials all in one place. Whether you're looking for everyday wear, statement pieces, or the perfect accessories, we've got you covered. We believe fashion is more than just clothing — it's a form of self-expression. 
                     </p>
                     <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
                         <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-semibold text-sm sm:text-base h-8  `} >30% OFF</h1>
