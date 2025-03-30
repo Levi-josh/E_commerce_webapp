@@ -544,7 +544,7 @@ a:hover{
     transition:all 1s ease-in-out;  
    
 }
-.carousel .list .item.prev:nth-child(2){
+/* .carousel .list .item.prev:nth-child(2){
         top: 0;
         left: 0;
         transform: translate(0, 0);
@@ -554,14 +554,9 @@ a:hover{
         height: 100%; 
         animation: animate4 1s ease-in-out 0s 1 forwards;
         transition:all 1s ease-in-out;    
-}
+} */
 
 @keyframes animate2 {
-    from{
-        left: 67%;
-        border-radius: 20px; 
-        background: rgba(0, 0, 0, 0.3);   
-    }
     to{    top: 0;
         left: 0;
         transform: translate(0, 0);
@@ -582,6 +577,7 @@ a:hover{
         position: absolute;
         width: 100%;
         height: 100%;  
+        
     }
     to{  
         left: 67%;
@@ -599,6 +595,13 @@ a:hover{
     content: "";
     position: absolute;
     inset: 0;
+     
+}
+.carousel .list.prev .item:nth-child(2)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3); 
      
 }
  
@@ -809,7 +812,7 @@ a:hover{
     color: #fff;
     border: none;
     outline: none;
-    font-size: 16px;
+    font-size: 20px;
     font-family: monospace;
     font-weight: bold;
     transition: .5s;

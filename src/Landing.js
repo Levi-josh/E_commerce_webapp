@@ -42,18 +42,17 @@ const Landing = () => {
     let runTimeOut;
     let runTimeOut2;
     let runNextAuto;
-    
+    let clearFunc;
     let runNextAuto2;
   
     useLayoutEffect(() => {
-        const nextPic = list.current.children
       if (!nextBtn.current || !prevBtn.current) return;
       function showSlider(type) {
         let updatedItems = [...sliderItems];
         if (type === "next") {
           updatedItems.push(updatedItems.shift()); // Move first item to the end
           setSliderItems(updatedItems); 
-   
+          list.current.classList.remove('prev')
         } 
       }
       runNextAuto = setTimeout(() => {
@@ -69,12 +68,16 @@ const Landing = () => {
     function resetTimeAnimation() {
       if (list.current) {
         const nextPic = list.current.children
-        console.log(sliderItems)
         //animation for second div 
-        //  nextPic[1].style.display = "block";
+        list?.current?.classList?.remove('prev')
         nextPic[1].style.animation = "none";
         void nextPic[1].offsetHeight; // Trigger reflow
         nextPic[1].style.animation = "animate2 1s ease-in-out 5.5s 1 forwards";
+        clearTimeout(clearFunc)
+        clearFunc = setTimeout(() => {
+          list?.current?.classList?.add('prev')
+        }, 5500);
+     
         //animation for the remaining divs
         nextPic[2].style.transition = "none";
         void nextPic[2].offsetHeight;
@@ -115,7 +118,7 @@ const Landing = () => {
         let updatedItems = [...sliderItems];
         const nextPic = list.current.children
         if (type === "next") {
-
+          list.current.classList.add('prev')
             nextPic[1].style.animation = "none";
             void nextPic[1].offsetHeight; // Trigger reflow
             nextPic[1].style.animation = "animate2 1s ease-in-out 0s 1 forwards";
@@ -123,13 +126,13 @@ const Landing = () => {
             runNextAuto = setTimeout(() => {
                 updatedItems.push(updatedItems.shift()); // Move first item to the end
                 setSliderItems(updatedItems);
-                // nextPic[1].style.zIndex='-1'
+                list.current.classList.remove('prev')
               }, 1000);  
         } 
         else{
             updatedItems.unshift(updatedItems.pop()); // Move first item to the end
             setSliderItems(updatedItems);  
-             nextPic[1].classList.add('prev')
+            list.current.classList.remove('prev')
                 
              setTimeout(() => {
                 nextPic[1].style.animation = "none";
@@ -408,8 +411,8 @@ const textRevealVariants2 = {
         </div>
         <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
             <div className='flex justify-center gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
-                <p className='whitespace-nowrap text-sm sm:text-base'>Copyright 2023 Glamour Grove.All rights reserved. </p>
-                <div className='flex justify-center text-sm sm:text-base gap-6 md:gap-4 lg:gap-5 xl:gap-7 '>
+                <p className='whitespace-nowrap text-xs sm:text-sm'>Copyright 2023 Glamour Grove.All rights reserved. </p>
+                <div className='flex justify-center text-sm sm:text-sm gap-6 md:gap-4 lg:gap-5 xl:gap-7 '>
                     <p className=' whitespace-nowrap'>Privacy policy</p>
                     <p className=' whitespace-nowrap'>Terms of use</p>
                 </div>

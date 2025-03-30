@@ -75,31 +75,32 @@ const Login = () => {
  
     return (
         <div className={`flex justify-center  ${bgcolor} ${textcolor} fixed sm:items-center items-start w-full  h-screen `}>
-            <NavLink to='/landing'> <FaAngleLeft className='font-bold absolute top-5 left-3 z-20 text-white sm:text-black  sm:top-10 sm:left-5  text-2xl sm:text-3xl ' ></FaAngleLeft></NavLink>
+            <NavLink to='/landing'> <FaAngleLeft className='font-bold absolute top-5 left-3 z-20 text-white  sm:top-10 sm:left-5  text-2xl sm:text-3xl ' ></FaAngleLeft></NavLink>
 
-            <div className={`w-full sm:w-140  lg:w-130  xl:w-140 lg:h-96  sm:rounded-xl overflow-hidden  ${window.matchMedia('(max-width: 600px)').matches?'':mode.colormode?'addShadow2':'addShadow'}  justify-center lg:items-center   items-start flex flex-col lg:flex-row gap-10  lg:gap-12 `}>
-                <div className='w-full md:h-full flex items-center justify-center hero before:bg-blurblack2 '>
-                  <img src='https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275' className='h-full w-full lg:rounded-bl-xl lg:rounded-tl-xl  lg:rounded-t-none        bg-no-repeat bg-cover bg-center object-cover   ' />
+            <div className={`w-full   overflow-hidden  ${window.matchMedia('(max-width: 600px)').matches?'':mode.colormode?'addShadow2':'addShadow'}  justify-center lg:items-center   items-start flex flex-col lg:flex-row gap-10  lg:gap-12 `}>
+                <div className='w-full lg:h-full flex items-center justify-center hero before:bg-blurblack2 '>
+                  <img src='https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275' className='h-full w-full       bg-no-repeat bg-cover bg-center object-cover   ' />
                   <div className=' text-white  absolute px-10 py-3 z-30 font-semibold text-2xl sm:text-3xl rounded-lg '><p>Welcome Back!</p></div>
                 </div>
-                <form  onSubmit={handleSubmit}className='flex flex-col gap-5 lg:gap-5 pb-6  w-full  lg:pr-12 lg:pl-0 px-3 sm:px-7 lg:px-6   '>
+                <form  onSubmit={handleSubmit}className='flex flex-col gap-5 lg:gap-8 pb-6  w-full lg:w-140 lg:pr-12 lg:pl-0 px-3 sm:px-7 lg:px-6   '>
                     <h1 className='font-bold lg:text-center text-2xl lg:text-3xl '>Sign In</h1>
                     <div>
-                    <p className='lg:text-center'>Don't have an accout yet? <NavLink to={'/signup'}><span className={`${mode.colormode?'text-yellow-700':'text-yellow-900'} font-medium `}>Sign Up</span></NavLink> </p>
-                    <div className='w-full relative h-14 flex items-end'>
+                    <p className='lg:text-center text-sm sm:text-base'>Don't have an accout yet? <NavLink to={'/signup'}><span className={`${mode.colormode?'text-yellow-700':'text-yellow-900'} font-bold`}>Sign Up</span></NavLink> </p>
+                    <div className='w-full relative h-14 sm:h-20 flex items-end'>
                     {user.username&&<p className=' text-red-600 absolute top-0  text-sm sm:text-base'>{user.username}</p>}
-                    <input type='text' placeholder='Username'  value={formData.input1} name="input1" onChange={handlechange} className={`outline-none  ${mode.colormode?'bg-stone-800 ':'bg-fadeblack'}  py-1 pl-2 lg:py-2   ${mode.colormode?'text-white placeholder:text-white':'text-black placeholder:text-black'}   w-full`} />
+                    <input type='text' placeholder='Username'  value={formData.input1} name="input1" onChange={handlechange} className={`outline-none  ${mode.colormode?'bg-stone-800 ':'bg-gray-200'}  py-2 rounded-lg pl-2 lg:py-3 placeholder:text-sm placeholder:lg:text-base   ${mode.colormode?'text-white placeholder:text-white':'text-black placeholder:text-black'}   w-full`} />
                     </div>
-                    <div className='w-full relative h-14 flex items-end '>
+                    <div className='w-full relative h-14 sm:h-20  flex items-end '>
                     {user.password&&<p className=' text-red-600 absolute top-0 text-sm sm:text-base'>{user.password}</p>}
-                    <input type='password' placeholder='Password'  value={formData.input2} name="input2" onChange={handlechange}  className={`outline-none   ${mode.colormode?'bg-stone-800 ':'bg-fadeblack'} py-1 lg:py-2 pl-2  ${mode.colormode?'text-white placeholder:text-white':'text-black placeholder:text-black'}  w-full  `} />
+                    <input type='password' placeholder='Password'  value={formData.input2} name="input2" onChange={handlechange}  className={`outline-none   ${mode.colormode?'bg-stone-800 ':'bg-gray-200'} py-2 rounded-lg lg:py-3 pl-2 placeholder:text-sm placeholder:lg:text-base   ${mode.colormode?'text-white placeholder:text-white':'text-black placeholder:text-black'}  w-full  `} />
                     </div>
                     </div>
+                    <div className='flex flex-col w-full gap-2'>
                     <div className='flex items-center gap-3'>
                         <input type='checkbox' className={`${mode.colormode?'bg-stone-800 ':'bg-gray-200'} accent-brown sm:w-4 sm:h-4 hover:cursor-pointer lg:w-5 lg:h-5`} />
-                        <p className='whitespace-nowrap  lg:font-semibold'>I agree to the terms and condition</p>
+                        <p className='whitespace-nowrap text-sm sm:text-base '>Save your password</p>
                     </div>
-                    <button className={`w-full relative py-2 md:py-3  sm:text-lg lg:text-xl font-semibold flex items-center justify-center  bg-brown text-white  ${disabled ? mode.colormode?'opacity-50 cursor-not-allowed':'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}>{!ran?`Sign In`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
+                    <button className={`w-full rounded-lg relative py-2 md:py-3 text-sm sm:text-base  flex items-center justify-center  bg-brown text-white  ${disabled ? mode.colormode?'opacity-50 cursor-not-allowed':'opacity-80 cursor-not-allowed' : 'opacity-100'}`} disabled={disabled}>{!ran?`Sign In`:<motion.div animate={{rotate:360}} transition={{duration:1,repeat: Infinity, ease: 'linear'}} className='' >
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12 2V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       <path d="M12 18V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -112,6 +113,7 @@ const Login = () => {
                     </svg>
                   </motion.div>}
                   </button>
+                  </div>
                 </form>
             </div>
         </div>
