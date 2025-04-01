@@ -244,8 +244,8 @@ const scrolltoPage1 = (currentRef)=> {
                 <FaCheckCircle/>
             </motion.div >
             
-            <div className='   h-screen lg:h-full   gap-5 sm:gap-10  pt-16 sm:pt-20 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
-                <div className='h-192 lg:h-screen   lg:pb-5 lg:pt-20'>
+            <div className='   h-screen lg:h-full   gap-7 sm:gap-10  pt-16 sm:pt-20 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
+                <div className='h-191 lg:h-screen   lg:pb-5 lg:pt-20'>
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                         spaceBetween={20}
                         slidesPerView={1}
