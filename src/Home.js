@@ -244,8 +244,8 @@ const scrolltoPage1 = (currentRef)=> {
                 <FaCheckCircle/>
             </motion.div >
             
-            <div className='   h-screen lg:h-full   gap-7 sm:gap-10  pt-16 sm:pt-20 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
-                <div className='h-191 lg:h-screen   lg:pb-5 lg:pt-20'>
+            <div className='   h-124 lg:h-full  pb-7 lg:pb-0   gap-7 sm:gap-10  pt-16 sm:pt-20 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
+                <div className='h-192 lg:h-screen   lg:pb-5 lg:pt-20'>
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                         spaceBetween={20}
                         slidesPerView={1}
@@ -271,16 +271,16 @@ const scrolltoPage1 = (currentRef)=> {
                         </SwiperSlide>
                     </Swiper>
                 </div >
-                <div className='flex justify-center h-191 w-full items-center '>
+                <div className='flex justify-center h-192 w-full items-center '>
                     <div className={`flex  w-120  ${bgcolor} ${mode.colormode?'addShadow2':'addShadow'}  h-full hero2 overflow-hidden rounded-xl  before:bg-gradient-to-r   before:from-blurblack  before:via-blurblack   before:to-blurblack2`}>
                         <div className=' hero  w-full h-full'><img src='https://img.freepik.com/free-photo/lot-different-clothes-hanging-wardrobe_181624-16122.jpg?size=626&ext=jpg&ga=GA1.1.103364066.1699032278&semt=sph' className='w-full h-full    bg-no-repeat bg-cover bg-center   ' /></div>
-                        <div className={`flex   flex-col z-10 lg:z-0 w-full p-2 sm:p-5 absolute  lg:static gap-3 sm:gap-6 justify-between  h-full `}>
+                        <div className={`flex   flex-col z-10 lg:z-0 w-full p-2 sm:p-5 absolute  lg:static gap-3 sm:gap-4   h-full `}>
                             <div className='flex w-full items-center justify-between '>
-                                <p className=' bg-brown px-3 lg:px-6 py-1 lg:py-2 rounded-lg text-base sm:text-lg text-white font-semibold font-serif'>LIMITED EDITION</p>
-                                <h1 className='text-base sm:text-lg  font-semibold text-white lg:text-current'>Hurry up! 30% OFF</h1>
+                                <p className=' bg-brown px-3 lg:px-6 py-1 lg:py-2  text-base sm:text-lg text-white font-semibold font-serif'>LIMITED EDITION</p>
+                                <h1 className='text-base sm:text-lg   text-white lg:text-current'>Hurry up! 30% OFF</h1>
                             </div>
-                            <p className='text-sm sm:text-base text-white lg:text-current'>Find clothes that fits your lifestyle</p>
-                            <div className='flex flex-col gap-2 sm:gap-3'>
+                            <p className='text-sm sm:text-base text-white lg:text-current'>Find clothes that fits your lifestyle and taste.</p>
+                            <div className='flex flex-col gap-3 sm:gap-4'>
                                 <p className='text-sm sm:text-base text-white lg:text-current'>Offer expires in:</p>
                                 <div className='flex gap-5 items-center w-full font-bold text-black'>
                                     <div className={`rounded-xl text-sm sm:text-base sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10  ${mode.colormode?'bg-stone-800 text-white ':'lg:bg-gray-300 bg-white '}  flex justify-center items-center`}>02</div>
@@ -289,14 +289,15 @@ const scrolltoPage1 = (currentRef)=> {
                                     <div  className={`rounded-xl text-sm sm:text-base sm:w-418 lg:w-426 lg:h-14 sm:h-12 w-410 h-10 ${mode.colormode?'bg-stone-800 text-white':'lg:bg-gray-300 bg-white'}  flex justify-center items-center`}>05</div>
                                 </div>
                             </div>
-                            <div><button className='bg-brown px-3 text-sm sm:text-base text-white lg:px-8 lg:py-2 py-1 rounded-lg' onClick={navSignIn}>Shop Now</button></div> 
+                            <div><button className='bg-brown mt-6 px-3 text-sm sm:text-base text-white lg:px-8 lg:py-2 py-1 rounded-lg' onClick={navSignIn}>Shop Now</button></div> 
                         </div>
                     </div>
                 </div>
+                {/* <h1 className='font-bold text-lg  w-120 m-auto lg:hidden sm:text-xl font-serif'>Our Services</h1> */}
 
                 </div> 
-                <div className='w-120 m-auto lg:pt-6 pb-3   mt-0 '>
-                <h1 className='font-bold text-lg  sm:text-xl font-serif'>Our Services</h1>
+                <div className='w-120 m-auto sm:pt-6 pb-3    mt-0 pt-0 '>
+                <h1 className='font-bold text-lg lg:text-xl font-serif'>Our Services</h1>
                 </div> 
                 <section className=''>
                     <audio controls className='hidden' ref={audiosound}>
@@ -362,8 +363,8 @@ const scrolltoPage1 = (currentRef)=> {
                             We are passionate about bringing you the latest trends, timeless styles, and fashion essentials all in one place. Whether you're looking for everyday wear, statement pieces, or the perfect accessories, we've got you covered. We believe fashion is more than just clothing — it's a form of self-expression. 
                             </p>
                             <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
-                                <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex text-sm sm:text-base font-semibold justify-center items-center  h-8  `} onClick={showmenu1}>30% OFF</h1>
-                                <NavLink to={'/product'}> <button className={`w-40 bg-brown mt-4 text-white md:w-24 md:mt-0  md:h-10 md:rounded-lg  h-8 text-sm sm:text-base `}>Shop Now</button></NavLink>
+                                <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0 lg:w-28  md:w-24 md:rounded-lg md:h-10 flex text-sm sm:text-base font-semibold justify-center items-center  h-8  `} onClick={showmenu1}>30% OFF</h1>
+                                <NavLink to={'/product'}> <button className={`w-40 bg-brown mt-4 text-white md:w-24 lg:w-28 md:mt-0  md:h-10 md:rounded-lg  h-8 text-sm sm:text-base `}>Shop Now</button></NavLink>
                             </div>
                         </div>
                     </div>
@@ -463,7 +464,7 @@ const scrolltoPage1 = (currentRef)=> {
                 <div className='flex items-center gap-5  flex-col-reverse md:flex-row pt-5 md:justify-between sm:pt-7 '>
                     <div className='flex justify-center  gap-5 md:gap-4 flex-col-reverse md:flex-row  lg:gap-6 xl:gap-8'>
                         <p className='whitespace-nowrap text-xs sm:text-sm'>Copyright 2023 Glamour Grove.All rights reserved. </p>
-                        <div className='flex justify-center text-xs sm:text-sm gap-6 md:gap-4 lg:gap-5 xl:gap-7 font-semibold'>
+                        <div className='flex justify-center text-sm gap-6 md:gap-4 lg:gap-5 xl:gap-7 '>
                             <p className=' whitespace-nowrap'>Privacy policy</p>
                             <p className=' whitespace-nowrap'>Terms of use</p>
                         </div>
