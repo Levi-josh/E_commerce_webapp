@@ -10,6 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import notify from './short-success-sound-glockenspiel-treasure-video-game-6346.mp3'
 import { color, delay, motion } from 'framer-motion'
 import cartimg from './icons8-shopping-cart-48.png';
+
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import 'swiper/css/pagination';
@@ -159,7 +160,7 @@ const scrolltoPage1 = (currentRef)=> {
 
                     </div>
                 </motion.div>
-                <ul className='hidden lg:flex  lg:gap-18 xl:gap-20 md:text-lg '>
+                <ul className='hidden lg:flex  lg:gap-18 xl:gap-20  '>
                     <NavLink to='/'>  <li className=''>Home</li></NavLink>
                     <NavLink to='/product'><li>Product's</li></NavLink>
                     <li className='hover:cursor-pointer' onClick={()=>scrolltoPage1(contactRef)}>contact</li>
