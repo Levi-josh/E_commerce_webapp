@@ -57,6 +57,7 @@ const Home = () => {
     const aboutRef = useRef(null);
     const lpMenu = useRef(null);
     const smMenu = useRef(null);
+    const rating = 4.6
    
  useEffect(() => {
      const selectedid = data?.items?.filter(prev => prev.selected === true)
@@ -149,7 +150,7 @@ const scrolltoPage1 = (currentRef)=> {
         setadded(prev => !prev)  
         }, 2000);    
     }
-    
+
     return (
         <>{id&&<div className={`  ${menubar ? ` home  ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}${popout ? `p-home ${mode.colormode?'before:bg-white before:bg-opacity-20':'before:bg-black before:bg-opacity-20'}` : ''}  w-full overflow-x-hidden  h-full flex-col flex ${bgcolor}  ${textcolor} `}  onScroll={(e) => { console.log(e) }} >
             <header className={`fixed flex justify-between px-3  items-center h-16 sm:h-20 sm:px-8 md:px-12 lg:px-8    w-full  ${bgcolor} ${textcolor} z-20  `}>
@@ -333,17 +334,11 @@ const scrolltoPage1 = (currentRef)=> {
                         {items?.map(prev => {
                             return (
                                 <div className={`min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40  lg:min-w-37 xl:min-w-35 rounded-lg  ${mode.colormode?'addShadow2':'addShadow'}          `}>
-                                    <img src={prev.image} alt='' className='rounded-lg w-full lg:h-44  xl:h-52 object-cover' />
-                                    <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
-                                        <div className={`flex ${mode.colormode?'text-white':'text-black'} sm:text-lg  `}>
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStarHalfAlt />
-                                        </div>
-                                        <h1 className='text-sm sm:text-base font-semibold'>{prev.itemname}</h1>
-                                        <p className=' text-sm sm:text-base '>{`$${prev.price}`}</p>
+                                    <img src={prev.image} alt='' className='rounded-lg w-full h-60 lg:h-44  xl:h-52 object-cover' />
+                                    <div className='flex flex-col pt-2 gap-2 sm:gap-2'>
+                                        <h1 className='text-sm sm:text-base  font-serif'>{prev.itemname}</h1>
+                                        <h1 className=' text-sm sm:text-base font-serif'>{`$${prev.price}`}</h1>
+                                        <div className='flex items-center gap-1  text-sm sm:text-bas'><p>{prev.rating}</p><FaStar className=' ' /></div>
                                         <button className={`w-full bg-brown font-serif  py-2 text-sm sm:text-base text-white`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
                                     </div>
                                 </div>
@@ -360,7 +355,7 @@ const scrolltoPage1 = (currentRef)=> {
                             <h1 className='font-bold text-lg  sm:text-xl font-serif    '>
                                About Us
                             </h1>
-                            <p className='mt-3 md:mt-4 lg:mt-8 text-sm sm:text-base'>
+                            <p className='mt-3 md:mt-4 lg:mt-8 text-sm sm:text-base font-serif'>
                             We are passionate about bringing you the latest trends, timeless styles, and fashion essentials all in one place. Whether you're looking for everyday wear, statement pieces, or the perfect accessories, we've got you covered. We believe fashion is more than just clothing — it's a form of self-expression. 
                             </p>
                             <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>

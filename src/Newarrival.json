@@ -1,18 +1,19 @@
 [
  
-{"id": "65ce04f95e3b3b18060c8151", "image": "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/68/9023002/1.jpg?3955", "itemname": "louis vuitton", "rating": 5, "price": 3000 },
+{"id": "65ce04f95e3b3b18060c8151", "image": "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/68/9023002/1.jpg?3955", "itemname": "louis vuitton", "rating": 5.0, "price": 3000 },
 
 {"id": "65ce06945e3b3b18060c8154", "image": "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275", "itemname": "Gucci", "rating": 4.5, "price": 2500 },
  
-{"id": "65ce075e5e3b3b18060c8155", "image": "https://t3.ftcdn.net/jpg/01/70/71/34/240_F_170713428_KgRrmdjyiRauJGAXJwVSqKlDXEO2YU8i.jpg", "itemname": "Chain watch", "rating": 4.5, "price": 2000 },
+{"id": "65ce0b025e3b3b18060c815b", "image": "https://t3.ftcdn.net/jpg/00/82/94/04/240_F_82940423_cNOTqJyC7yL8uvGaBXkmp3ebr6mmtAeL.jpg", "itemname": "Silver watch", "rating": 4.0,"price": 2200},
 
-{"id": "65ce07c75e3b3b18060c8156", "image": "https://t3.ftcdn.net/jpg/02/09/82/26/240_F_209822653_Fzoff04bZ8QHnseFCHy7vkLmWl1mIDHO.jpg", "itemname": "Adidas", "rating": 4, "price": 3000 },
+{"id": "65ce07c75e3b3b18060c8156", "image": "https://t3.ftcdn.net/jpg/02/09/82/26/240_F_209822653_Fzoff04bZ8QHnseFCHy7vkLmWl1mIDHO.jpg", "itemname": "Adidas", "rating": 4.0, "price": 3000 },
 
-{"id": "65ce086d5e3b3b18060c8157", "image": "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/53/122776/1.jpg?7527", "itemname": "Sqaure black", "rating": 3, "price": 1000 },
+{"id": "65ce086d5e3b3b18060c8157", "image": "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/53/122776/1.jpg?7527", "itemname": "Sqaure black", "rating": 3.0, "price": 1000 },
  
 {"id": "65ce08cb5e3b3b18060c8158", "image": "https://t3.ftcdn.net/jpg/02/61/09/76/240_F_261097606_93ZswBTIFrzj67qQGeVL97gg6S7NvdEu.jpg", "itemname": "Round glass", "rating": 3.5, "price": 1000},
  
-{"id": "65ce0b025e3b3b18060c815b", "image": "https://t3.ftcdn.net/jpg/00/82/94/04/240_F_82940423_cNOTqJyC7yL8uvGaBXkmp3ebr6mmtAeL.jpg", "itemname": "Silver watch", "rating": 4,"price": 2200}
+{"id": "65ce075e5e3b3b18060c8155", "image": "https://t3.ftcdn.net/jpg/01/70/71/34/240_F_170713428_KgRrmdjyiRauJGAXJwVSqKlDXEO2YU8i.jpg", "itemname": "Chain watch", "rating": 4.5, "price": 2000 }
+
 
 
 ]
