@@ -79,6 +79,7 @@ const Home = () => {
 const navSignIn = ()=>{
     navigate('/product')  
 }
+console.log(myitems)
 const scrolltoPage1 = (currentRef)=> {
     setmenubar(false)
     console.log(currentRef)
