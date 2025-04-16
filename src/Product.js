@@ -157,7 +157,7 @@ return (
                 {items.length>1? <div className='grid grid-cols-2 lg:pt-3 px-3 gap-x-3 gap-y-5 md:gap-x-6 md:gap-y-8 lg:px-7  sm:gap-5 sm:px-5  md:px-2 md:grid-cols-3 lg:grid-cols-4          '>
                     {items.map(prev => {
                         return (<div className={`p-2 md:p-3  ${bgcolor} ${textcolor}  rounded-lg border-2 ${mode.colormode&&'bg-opacity-50 bg-black border-none shadow-stone-700  shadow-md'} shadow-lg  `}>
-                            <img src={prev.image} alt='' className='rounded-lg w-full h-60 lg:h-52 object-cover ' />
+                            <img src={prev.image} alt='' className='rounded-lg w-full h-40 sm:h-60 lg:h-52 object-cover ' />
                             <div className='flex flex-col pt-2 gap-2 sm:gap-2'>
                                 <h1 className='text-sm sm:text-base  font-serif'>{prev.itemname}</h1>
                                 <p className='text-sm sm:text-base  font-serif'>{`$${prev.price}`}</p>

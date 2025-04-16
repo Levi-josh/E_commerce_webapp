@@ -278,17 +278,11 @@ const textRevealVariants2 = {
                         {items?.map(prev => {
                             return (
                                 <div className={`min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40  lg:min-w-37 xl:min-w-35 addShadow  rounded-lg  ${mode.colormode?'addShadow2':'addShadow'}          `}>
-                                    <img src={prev.image} alt='' className='rounded-lg w-full lg:h-44  xl:h-52 object-cover ' />
+                                    <img src={prev.image} alt='' className='rounded-lg w-full h-60 lg:h-44  xl:h-52 object-cover ' />
                                     <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
-                                        <div className={`flex ${mode.colormode?'text-white':'text-black'} sm:text-lg `}>
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStarHalfAlt />
-                                        </div>
                                         <h1 className='text-sm sm:text-base font-semibold'>{prev.itemname}</h1>
                                         <p className='text-sm sm:text-base'>{`$${prev.price}`}</p>
+                                        <div className='flex items-center gap-1  text-sm sm:text-bas'><p>{prev.rating}</p><FaStar className=' ' /></div>
                                         <button className={`w-full bg-brown text-white  py-2 text-sm sm:text-base font-serif  `} onClick={navSignIn}>Add to cart</button>
                                     </div>
                                 </div>

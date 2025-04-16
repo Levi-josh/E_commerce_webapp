@@ -122,9 +122,9 @@ const ListCols = () => {
               <div className='flex items-center gap-2 sm:gap-5 w-full h-full '>
                 {/* {!mode.colormode?<img src="https://img.freepik.com/free-vector/shopping-cart-realistic_1284-6011.jpg?size=626&ext=jpg&ga=GA1.2.103364066.1699032278&semt=ais" alt="" className='w-32 sm:w-56 md:w-64 h-full rounded-xl       bg-no-repeat bg-cover bg-center object-cover  ' /> :<img src='https://img.freepik.com/premium-photo/shopping-cart-black-background-shopping-trolley-grocery-push-cart-3d-render-illustration_989822-1813.jpg?size=626&ext=jpg&ga=GA1.1.732548087.1710974042&semt=ais' alt="" className='w-32 sm:w-56 md:w-64 h-full rounded-xl  bg-no-repeat bg-cover bg-center object-cover  '/>} */<img src={CartImage} className=' bg-transparent w-36 sm:w-56 md:w-64 h-full rounded-xl  bg-no-repeat bg-cover bg-center   '/>}
                 <div className='flex flex-col justify-between h-full w-full '>
-                  <p className={'text-sm sm:text-base'}>Cart Name: {prev.title}</p>
+                  <p className={'text-sm sm:text-base font-semibold'}>{prev.title}</p>
                   <p className={'text-sm sm:text-base'}>Added Items: {prev.total}</p>
-                  <div><input type='checkbox' checked={isChecked?isChecked:isChecked||prev.selected} onChange={(event) => selectcartFunc(event,prev._id)}className='sm:w-6 sm:h-6 w-5 h-5 rounded-lg accent-yellow-800'/></div>
+                  <div><input type='checkbox' checked={isChecked?isChecked:isChecked||prev.selected} onChange={(event) => selectcartFunc(event,prev._id)}className='sm:w-6 sm:h-6 w-5 h-5 rounded-lg accent-brown'/></div>
                   <div className='flex items-center text-white  hover:cursor-pointer text-sm lg:hidden justify-center bg-brown rounded-xl w-full h-10'onClick={()=>navigate(`/cart/${prev._id}`)}>
                     <p>View cart</p>
                   </div>
