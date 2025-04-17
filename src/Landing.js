@@ -31,7 +31,7 @@ const Landing = () => {
   
     // State to track the slider items
     const [sliderItems, setSliderItems] = useState([
-        { name: "Your Style", image: "https://t3.ftcdn.net/jpg/02/98/15/10/240_F_298151092_FoZqMO9umr6IxLT89iwQ4rFqR4h7mibs.jpg" },
+        { name: "Your Style", image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2xvdGhlc3xlbnwwfHwwfHx8MA%3D%3D" },
         { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/69/885248/1.jpg?9651" },
         { name: "Your Style", image: "https://t4.ftcdn.net/jpg/09/84/25/39/240_F_984253947_wJXQNS8Eahm74kBbMktSFUZiP9f1MB9g.jpg" },
         { name: "Your Style", image: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/23/649156/1.jpg?8476" },
@@ -278,11 +278,11 @@ const textRevealVariants2 = {
                         {items?.map(prev => {
                             return (
                                 <div className={`min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40  lg:min-w-37 xl:min-w-35 addShadow  rounded-lg  ${mode.colormode?'addShadow2':'addShadow'}          `}>
-                                    <img src={prev.image} alt='' className='rounded-lg w-full h-60 lg:h-44  xl:h-52 object-cover ' />
+                                    <img src={prev.image} alt='' className='rounded-lg w-full h-44 sm:h-60 lg:h-44  xl:h-52 object-cover ' />
                                     <div className='flex flex-col pt-2 gap-1 sm:gap-2'>
                                         <h1 className='text-sm sm:text-base font-semibold'>{prev.itemname}</h1>
                                         <p className='text-sm sm:text-base'>{`$${prev.price}`}</p>
-                                        <div className='flex items-center gap-1  text-sm sm:text-bas'><p>{prev.rating}</p><FaStar className=' ' /></div>
+                                        <div className='flex items-center gap-1  text-sm sm:text-base'><p>{prev.rating}</p><FaStar className=' pb-0.5 sm:pb-1 sm:text-base ' /></div>
                                         <button className={`w-full bg-brown text-white  py-2 text-sm sm:text-base font-serif  `} onClick={navSignIn}>Add to cart</button>
                                     </div>
                                 </div>
@@ -303,8 +303,8 @@ const textRevealVariants2 = {
                     We are passionate about bringing you the latest trends, timeless styles, and fashion essentials all in one place. Whether you're looking for everyday wear, statement pieces, or the perfect accessories, we've got you covered. We believe fashion is more than just clothing — it's a form of self-expression. 
                     </p>
                     <div className='md:flex justify-center items-center gap-5 mt-6 lg:mt-10'>
-                        <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-semibold text-sm sm:text-base h-8  `} >30% OFF</h1>
-                        <NavLink to={'/login'}> <button className={`w-40 bg-brown mt-4 text-white  md:w-24 md:mt-0  md:h-10 md:rounded-lg h-8 text-sm sm:text-base`}>Shop Now</button></NavLink>
+                        <h1 className={`w-30 border border-dashed ${mode.colormode?'border-white':' border-black'} mt-3 md:mt-0 lg:w-28  md:w-24 md:rounded-lg md:h-10 flex justify-center items-center font-semibold text-sm sm:text-base h-8  `} >30% OFF</h1>
+                        <NavLink to={'/login'}> <button className={`w-40 bg-brown mt-4 text-white  md:w-24 md:mt-0 lg:w-28   md:h-10 md:rounded-lg h-8 text-sm sm:text-base`}>Shop Now</button></NavLink>
                     </div>
                 </div>
             </div>

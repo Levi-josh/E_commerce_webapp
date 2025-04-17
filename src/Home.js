@@ -208,7 +208,6 @@ const scrolltoPage1 = (currentRef)=> {
                 </div>
             </header>
             <div>{<motion.div  initial={{x:'100%'}} animate={{x:menubar?window.matchMedia('(max-width: 768px)').matches?0:-12 :'100%'}} transition={{type:'tween',duration: 0.01}} className={`menu lg:w-15 fixed md:w-140 sm:w-130 w-110 h-full ${textcolor}    ${bgcolor}  lg:top-24 shadow-lg shadow-black rounded-lg right-0    z-30  lg:h-120  `}>
-
                 <div className={` h-190 md:h-140 bg-brown  lg:border-b ${mode.colormode&&'lg:border-stone-700'} lg:rounded-t-xl flex rounded-b-xl lg:rounded-b-none justify-center items-center`}>
                     <FaTimesCircle className='absolute lg:hidden left-4 top-4  text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={showmenu} />
                     {mode.colormode?<FaMoon className='absolute lg:hidden right-4 top-4 spin2    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{dispatch(changemode())}}/>:<FaSun className='absolute spin2 lg:hidden right-4 top-4    text-white z-40 text-2xl sm:text-2xl hover:cursor-pointer ' onClick={()=>{dispatch(changemode());console.log('ran')}} />}
@@ -246,7 +245,6 @@ const scrolltoPage1 = (currentRef)=> {
                 <p>Item added to cart</p>
                 <FaCheckCircle/>
             </motion.div >
-            
             <div className='   h-124 lg:h-full  pb-7 lg:pb-0   gap-7 sm:gap-10  pt-16 sm:pt-20 lg:pt-0 flex flex-col  lg:gap-0 lg:block'>
                 <div className='h-192 lg:h-screen   lg:pb-5 lg:pt-20'>
                     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -335,11 +333,11 @@ const scrolltoPage1 = (currentRef)=> {
                         {items?.map(prev => {
                             return (
                                 <div className={`min-w-20 p-2 md:p-3 lg:p-4 sm:min-w-25 md:min-w-40  lg:min-w-37 xl:min-w-35 rounded-lg  ${mode.colormode?'addShadow2':'addShadow'}          `}>
-                                    <img src={prev.image} alt='' className='rounded-lg w-full h-60 lg:h-44  xl:h-52 object-cover' />
+                                    <img src={prev.image} alt='' className='rounded-lg w-full h-44 sm:h-60 lg:h-44  xl:h-52 object-cover' />
                                     <div className='flex flex-col pt-2 gap-2 sm:gap-2'>
                                         <h1 className='text-sm sm:text-base  font-serif'>{prev.itemname}</h1>
                                         <h1 className=' text-sm sm:text-base font-serif'>{`$${prev.price}`}</h1>
-                                        <div className='flex items-center gap-1  text-sm sm:text-bas'><p>{prev.rating}</p><FaStar className=' ' /></div>
+                                        <div className='flex items-center gap-1  text-sm sm:text-base'><p>{prev.rating}</p><FaStar className=' pb-0.5 sm:pb-1 sm:text-base' /></div>
                                         <button className={`w-full bg-brown font-serif  py-2 text-sm sm:text-base text-white`} onClick={() => {buyorder(prev.id)}}>Add to cart</button>
                                     </div>
                                 </div>

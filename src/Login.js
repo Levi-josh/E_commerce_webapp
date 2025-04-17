@@ -79,7 +79,7 @@ const Login = () => {
 
             <div className={`w-full   overflow-hidden  ${window.matchMedia('(max-width: 600px)').matches?'':mode.colormode?'addShadow2':'addShadow'}  justify-center lg:items-center   items-start flex flex-col lg:flex-row gap-10  lg:gap-12 `}>
                 <div className='w-full lg:h-full flex items-center justify-center hero before:bg-blurblack2 '>
-                  <img src='https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/79/3012041/1.jpg?6275' className='h-full w-full       bg-no-repeat bg-cover bg-center object-cover   ' />
+                  <img src='https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2xvdGhlc3xlbnwwfHwwfHx8MA%3D%3D' className='h-full w-full       bg-no-repeat bg-cover bg-center object-cover   ' />
                   <div className=' text-white  absolute px-10 py-3 z-30 font-semibold text-2xl sm:text-3xl rounded-lg '><p>Welcome Back!</p></div>
                 </div>
                 <form  onSubmit={handleSubmit}className='flex flex-col gap-5 lg:gap-8 pb-6  w-full lg:w-140 lg:pr-12 lg:pl-0 px-3 sm:px-7 lg:px-6   '>
