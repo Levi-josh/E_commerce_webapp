@@ -217,7 +217,7 @@ const textRevealVariants2 = {
 <div className="list" ref={list }>
 {sliderItems.map((item, index) => (
           <div className="item " key={index}>
-             <img src={item.image} alt={item.name} className="slider-img bg-no-repeat bg-cover bg-center object-cover " />
+             <img src={item.image} alt={item.name} className="slider-img bg-no-repeat bg-cover bg-center md:object-cover " />
             <div className="content" ref={content}>
               <div className="title">Elevate</div>
               <div className="name">{item.name}</div>
